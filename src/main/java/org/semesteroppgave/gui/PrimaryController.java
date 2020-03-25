@@ -1,9 +1,10 @@
-package org.semesteroppgave;
+package org.semesteroppgave.gui;
 
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.semesteroppgave.Main;
 
 public class PrimaryController {
 

@@ -1,8 +1,9 @@
-package org.semesteroppgave;
+package org.semesteroppgave.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import org.semesteroppgave.Main;
 
 import java.io.IOException;
 

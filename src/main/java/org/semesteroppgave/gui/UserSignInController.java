@@ -1,10 +1,11 @@
-package org.semesteroppgave;
+package org.semesteroppgave.gui;
 
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import org.semesteroppgave.Main;
 
 public class UserSignInController {
 
