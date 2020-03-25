@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 public class PrimaryController {
 
     @FXML
-    void btnAdmin(ActionEvent event) {
-
+    void btnAdmin(ActionEvent event) throws IOException {
+        Main.setRoot("adminsignin");
     }
 
     @FXML
