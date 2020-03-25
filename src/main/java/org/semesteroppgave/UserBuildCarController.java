@@ -24,13 +24,13 @@ public class UserBuildCarController {
     private Label lblMessage;
 
     @FXML
-    void btnShowConfigs(ActionEvent event) {
-
+    void btnShowConfigs(ActionEvent event) throws IOException {
+        Main.setRoot("configuredcars");
     }
 
     @FXML
-    void btnShowMyConfig(ActionEvent event) {
-
+    void btnShowMyConfig(ActionEvent event) throws IOException {
+        Main.setRoot("configuredcars");
     }
 
     @FXML
