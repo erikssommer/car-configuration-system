@@ -12,8 +12,8 @@ public class UserSignInController {
     private TextField txtUsername, txtPassword;
 
     @FXML
-    void btnRegister(ActionEvent event) {
-
+    void btnRegister(ActionEvent event) throws IOException {
+        Main.setRoot("userregister");
     }
 
     @FXML
