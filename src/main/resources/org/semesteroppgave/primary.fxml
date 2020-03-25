@@ -5,16 +5,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.PrimaryController">
    <children>
-      <Label layoutX="212.0" layoutY="69.0" text="Velkommen">
+      <Label layoutX="287.0" layoutY="118.0" text="Velkommen">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="268.0" layoutY="137.0" text="Velg bruker" />
-      <Button layoutX="172.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnAdmin" prefHeight="43.0" prefWidth="81.0" text="Admin" />
-      <Button layoutX="347.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUser" prefHeight="43.0" prefWidth="81.0" text="Bruker" />
+      <Label layoutX="334.0" layoutY="229.0" text="Velg bruker">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Button layoutX="206.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnAdmin" prefHeight="43.0" prefWidth="81.0" text="Admin" />
+      <Button layoutX="463.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnUser" prefHeight="43.0" prefWidth="81.0" text="Bruker" />
    </children>
 </AnchorPane>
