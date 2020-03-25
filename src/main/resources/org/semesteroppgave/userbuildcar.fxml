@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.UserBuildCarController">
+   <children>
+      <Label layoutX="46.0" layoutY="43.0" text="Bygg og pris">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="97.0" text="Velg først en modell">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="204.0" layoutY="95.0" onContextMenuRequested="#choiseMade" prefWidth="150.0" />
+      <TableView fx:id="tableViewComponent" layoutX="46.0" layoutY="178.0" prefHeight="255.0" prefWidth="141.0">
+        <columns>
+          <TableColumn prefWidth="140.0" text="Velg komponent" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableViewVersion" layoutX="204.0" layoutY="178.0" prefHeight="255.0" prefWidth="241.0">
+        <columns>
+          <TableColumn prefWidth="163.0" text="Versjon" />
+          <TableColumn prefWidth="77.0" text="Pris" />
+        </columns>
+      </TableView>
+      <Label layoutX="487.0" layoutY="178.0" text="Tilpasninger">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="491.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbGps" text="GPS" />
+      <CheckBox layoutX="559.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbSunroof" text="Soltak" />
+      <CheckBox layoutX="491.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbHitch" text="Henger" />
+      <CheckBox layoutX="559.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbAutopilot" text="Autopilot" />
+      <Label layoutX="491.0" layoutY="297.0" text="Total:" />
+      <TextField fx:id="txtTotalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="528.0" layoutY="292.0" prefHeight="22.0" prefWidth="119.0" promptText="0,0kr" />
+      <Label fx:id="lblMessage" alignment="TOP_LEFT" layoutX="492.0" layoutY="339.0" prefHeight="50.0" prefWidth="220.0" />
+      <Button layoutX="492.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnShowMyConfig" text="Vis min konfig" />
+      <Button layoutX="602.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnShowConfigs" text="Fullførte konfiger" />
+      <Button layoutX="647.0" layoutY="493.0" mnemonicParsing="false" onAction="#btnSignout" prefHeight="27.0" prefWidth="64.0" text="Logg ut" />
+   </children>
+</AnchorPane>

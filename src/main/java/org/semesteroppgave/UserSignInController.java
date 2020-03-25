@@ -17,8 +17,8 @@ public class UserSignInController {
     }
 
     @FXML
-    void btnSignin(ActionEvent event) {
-
+    void btnSignin(ActionEvent event) throws IOException {
+        Main.setRoot("userbuildcar");
     }
 
     @FXML
