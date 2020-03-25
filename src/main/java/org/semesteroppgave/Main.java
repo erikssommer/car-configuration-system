@@ -15,6 +15,10 @@ public class Main extends Application {
 
     private static Scene scene;
 
+    public static Scene getScene(){
+        return scene;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"));

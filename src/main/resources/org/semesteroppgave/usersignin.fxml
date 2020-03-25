@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.UserSignInController">
+   <children>
+      <Label layoutX="56.0" layoutY="61.0" text="Logg inn bruker">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="137.0" text="Brukernavn">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="192.0" text="Passord">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" layoutX="152.0" layoutY="135.0" />
+      <TextField fx:id="txtPassword" layoutX="152.0" layoutY="187.0" />
+      <Button layoutX="56.0" layoutY="244.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer ny" />
+      <Button layoutX="247.0" layoutY="244.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn" />
+      <Button layoutX="513.0" layoutY="342.0" mnemonicParsing="false" onAction="#btnCancel" text="Avbryt" />
+   </children>
+</AnchorPane>
