@@ -4,8 +4,8 @@ public class Electric extends Car {
 
     private Battery battery;
 
-    public Electric(Motor motor, Rim rim, Seatcover seatcover, Spoiler spoiler, Drivetype drivetype, Tires tires, Battery battery) {
-        super(motor, rim, seatcover, spoiler, drivetype, tires);
+    public Electric(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Battery battery) {
+        super(motor, rim, seatcover, spoiler, tires);
         this.battery = battery;
     }
 

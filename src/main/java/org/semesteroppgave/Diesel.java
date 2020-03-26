@@ -5,8 +5,8 @@ public class Diesel extends Car {
     private FuelContainer fuelContainer;
     private Gearbox gearbox;
 
-    public Diesel(Motor motor, Rim rim, Seatcover seatcover, Spoiler spoiler, Drivetype drivetype, Tires tires, FuelContainer fuelContainer, Gearbox gearbox) {
-        super(motor, rim, seatcover, spoiler, drivetype, tires);
+    public Diesel(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, FuelContainer fuelContainer, Gearbox gearbox) {
+        super(motor, rim, seatcover, spoiler, tires);
         this.fuelContainer = fuelContainer;
         this.gearbox = gearbox;
     }

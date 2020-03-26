@@ -4,8 +4,8 @@ public class Hybrid extends Car {
     private Battery battery;
     private FuelContainer fuelContainer;
 
-    public Hybrid(Motor motor, Rim rim, Seatcover seatcover, Spoiler spoiler, Drivetype drivetype, Tires tires, Battery battery, FuelContainer fuelContainer) {
-        super(motor, rim, seatcover, spoiler, drivetype, tires);
+    public Hybrid(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Battery battery, FuelContainer fuelContainer) {
+        super(motor, rim, seatcover, spoiler, tires);
         this.battery = battery;
         this.fuelContainer = fuelContainer;
     }
