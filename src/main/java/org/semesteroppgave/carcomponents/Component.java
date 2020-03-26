@@ -1,5 +1,7 @@
 package org.semesteroppgave.carcomponents;
 
+import java.util.ArrayList;
+
 public abstract class Component {
 
     private String version;
@@ -28,5 +30,6 @@ public abstract class Component {
     public void setPrice(double price) {
         this.price = price;
     }
+
 
 }

@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class RegisterComponent {
 
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
+    private String newComponent;
 
     public RegisterComponent(ObservableList<Component> componentsList){
         this.componentsList = componentsList;
@@ -31,6 +32,15 @@ public class RegisterComponent {
         List<Component> personListe = (List<Component>) s.readObject();
         componentsList = FXCollections.observableArrayList();
         componentsList.addAll(personListe);
+    }
+
+    //Brukes til å finne ut hvilken type komponent som skal opprettet av admin
+    public void setNewComponent(String newComponent){
+        this.newComponent = newComponent;
+    }
+
+    public String getNewComponent(){
+        return this.newComponent;
     }
 
     public void leggTil(ObservableList<Component> componentsList){
