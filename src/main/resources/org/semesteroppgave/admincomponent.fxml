@@ -9,9 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminComponentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminComponentController">
    <children>
       <Label layoutX="53.0" layoutY="56.0" text="Opprettelse av komponenter">
          <font>
@@ -27,9 +25,9 @@
       </Label>
       <TableView fx:id="tableViewComponents" layoutX="53.0" layoutY="220.0" prefHeight="239.0" prefWidth="645.0">
         <columns>
-          <TableColumn prefWidth="204.0" text="Modell" />
-          <TableColumn prefWidth="319.0" text="Versjon" />
-            <TableColumn prefWidth="121.0" text="Pris" />
+          <TableColumn onEditCommit="#editModel" prefWidth="204.0" text="Modell" />
+          <TableColumn onEditCommit="#editVersion" prefWidth="319.0" text="Versjon" />
+            <TableColumn onEditCommit="#editPrice" prefWidth="121.0" text="Pris" />
         </columns>
       </TableView>
       <Label layoutX="522.0" layoutY="175.0" text="Søkeord:">
