@@ -43,11 +43,15 @@ public class RegisterComponent {
         return this.newComponent;
     }
 
-    public void leggTil(ObservableList<Component> componentsList){
+    public void setComponentsList(ObservableList<Component> componentsList){
         this.componentsList = componentsList;
     }
 
-    public ObservableList<Component> getListe(){
+    public void setComponentsList(Component component){
+        componentsList.add(component);
+    }
+
+    public ObservableList<Component> getComponentsList(){
         return this.componentsList;
     }
 
@@ -62,7 +66,7 @@ public class RegisterComponent {
         return componentsList.stream().filter(component -> component.getVersion().contains(value)).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public ObservableList<Component> searchPrice(int value){
+    public ObservableList<Component> searchPrice(double value){
 
         return componentsList.stream().filter(component -> component.getPrice()==(value)).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }

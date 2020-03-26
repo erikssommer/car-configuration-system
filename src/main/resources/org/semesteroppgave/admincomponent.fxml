@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -23,11 +25,26 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TableView fx:id="tableViewComponents" layoutX="53.0" layoutY="220.0" prefHeight="239.0" prefWidth="645.0">
+      <TableView fx:id="tableViewComponents" editable="true" layoutX="53.0" layoutY="220.0" prefHeight="239.0" prefWidth="645.0">
         <columns>
-          <TableColumn onEditCommit="#editModel" prefWidth="204.0" text="Modell" />
-          <TableColumn onEditCommit="#editVersion" prefWidth="319.0" text="Versjon" />
-            <TableColumn onEditCommit="#editPrice" prefWidth="121.0" text="Pris" />
+          <TableColumn onEditCommit="#editModel" prefWidth="204.0" text="Komponent">
+             <cellValueFactory>
+                <PropertyValueFactory property="component" />
+             </cellValueFactory>
+             <cellFactory>
+                <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+          </TableColumn>
+          <TableColumn onEditCommit="#editVersion" prefWidth="319.0" text="Versjon">
+             <cellValueFactory>
+                <PropertyValueFactory property="version" />
+             </cellValueFactory>
+             <cellFactory>
+                <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+          </TableColumn>
+           <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="121.0" text="Pris">
+           </TableColumn>
         </columns>
       </TableView>
       <Label layoutX="522.0" layoutY="175.0" text="Søkeord:">
@@ -35,7 +52,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="581.0" layoutY="171.0" onKeyPressed="#txtSearch" prefHeight="27.0" prefWidth="116.0" />
+      <TextField fx:id="txtSearch" layoutX="581.0" layoutY="171.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
       <ChoiceBox fx:id="cbFilter" layoutX="390.0" layoutY="171.0" prefHeight="27.0" prefWidth="122.0" />
       <Label layoutX="322.0" layoutY="176.0" text="Filtrer etter:" />
       <Button layoutX="639.0" layoutY="483.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
