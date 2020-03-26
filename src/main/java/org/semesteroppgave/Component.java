@@ -1,23 +1,17 @@
 package org.semesteroppgave;
 
 public abstract class Component {
-    private String component;
+
     private String version;
     private double price;
 
-    public Component(String component, String version, double price) {
-        this.component = component;
+    public Component(String version, double price) {
         this.version = version;
         this.price = price;
     }
 
-    public String getComponent() {
-        return component;
-    }
-
-    public void setComponent(String component) {
-        this.component = component;
-    }
+    public abstract String getComponent();
+    public abstract void setComponent(String component);
 
     public String getVersion() {
         return version;

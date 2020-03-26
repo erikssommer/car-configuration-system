@@ -5,17 +5,15 @@ import java.io.Serializable;
 public abstract class Car implements Serializable {
     private Motor motor;
     private Rim rim;
-    private Seatcover seatcover;
+    private SeatCover seatcover;
     private Spoiler spoiler;
-    private Drivetype drivetype;
     private Tires tires;
 
-    public Car(Motor motor, Rim rim, Seatcover seatcover, Spoiler spoiler, Drivetype drivetype, Tires tires) {
+    public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires) {
         this.motor = motor;
         this.rim = rim;
         this.seatcover = seatcover;
         this.spoiler = spoiler;
-        this.drivetype = drivetype;
         this.tires = tires;
     }
 
@@ -37,11 +35,11 @@ public abstract class Car implements Serializable {
         this.rim = rim;
     }
 
-    public Seatcover getSeatcover() {
+    public SeatCover getSeatCover() {
         return seatcover;
     }
 
-    public void setSeatcover(Seatcover seatcover) {
+    public void setSeatCover(SeatCover seatcover) {
         this.seatcover = seatcover;
     }
 
@@ -51,14 +49,6 @@ public abstract class Car implements Serializable {
 
     public void setSpoiler(Spoiler spoiler) {
         this.spoiler = spoiler;
-    }
-
-    public Drivetype getDrivetype() {
-        return drivetype;
-    }
-
-    public void setDrivetype(Drivetype drivetype) {
-        this.drivetype = drivetype;
     }
 
     public Tires getTires() {

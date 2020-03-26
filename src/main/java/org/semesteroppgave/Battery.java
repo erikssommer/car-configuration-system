@@ -1,18 +1,20 @@
 package org.semesteroppgave;
 
-public class Motor extends Component{
+public class Battery extends Component{
 
     private String component;
 
-    public Motor(String version, double price) {
+    public Battery(String version, double price) {
         super(version, price);
-        this.component = "Motor";
+        this.component = "Batteri";
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }
