@@ -1,12 +1,14 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carcomponents;
 
-public class Rim extends Component{
+import org.semesteroppgave.carcomponents.Component;
+
+public class Battery extends Component {
 
     private String component;
 
-    public Rim(String version, double price) {
+    public Battery(String version, double price) {
         super(version, price);
-        this.component = "Felg";
+        this.component = "Batteri";
     }
 
     @Override

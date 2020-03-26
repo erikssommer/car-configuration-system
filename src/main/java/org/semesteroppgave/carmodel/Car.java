@@ -1,4 +1,6 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carmodel;
+
+import org.semesteroppgave.carcomponents.*;
 
 import java.io.Serializable;
 

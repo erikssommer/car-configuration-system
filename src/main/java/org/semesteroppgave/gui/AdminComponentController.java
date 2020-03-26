@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyEvent;
-import org.semesteroppgave.Component;
+import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carcomponents;
 
 public abstract class Component {
 

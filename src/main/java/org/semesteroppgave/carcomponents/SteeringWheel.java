@@ -1,12 +1,14 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carcomponents;
 
-public class SeatCover extends Component{
+import org.semesteroppgave.carcomponents.Component;
+
+public class SteeringWheel extends Component {
 
     private String component;
 
-    public SeatCover(String version, double price) {
+    public SteeringWheel(String version, double price) {
         super(version, price);
-        this.component = "Setetrekk";
+        this.component = "Ratt";
     }
 
     @Override

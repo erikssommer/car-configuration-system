@@ -1,4 +1,6 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carmodel;
+
+import org.semesteroppgave.carcomponents.*;
 
 public class Hybrid extends Car {
     private Battery battery;

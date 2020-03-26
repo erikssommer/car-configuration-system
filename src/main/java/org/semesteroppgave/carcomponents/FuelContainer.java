@@ -1,12 +1,14 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carcomponents;
 
-public class Battery extends Component{
+import org.semesteroppgave.carcomponents.Component;
+
+public class FuelContainer extends Component {
 
     private String component;
 
-    public Battery(String version, double price) {
+    public FuelContainer(String version, double price) {
         super(version, price);
-        this.component = "Batteri";
+        this.component = "Tank";
     }
 
     @Override

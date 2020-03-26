@@ -1,6 +1,8 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carcomponents;
 
-public class Motor extends Component{
+import org.semesteroppgave.carcomponents.Component;
+
+public class Motor extends Component {
 
     private String component;
 

@@ -1,12 +1,14 @@
-package org.semesteroppgave;
+package org.semesteroppgave.carcomponents;
 
-public class Gearbox extends Component{
+import org.semesteroppgave.carcomponents.Component;
+
+public class Tires extends Component {
 
     private String component;
 
-    public Gearbox(String version, double price) {
+    public Tires(String version, double price) {
         super(version, price);
-        this.component = "Girboks";
+        this.component = "Dekk";
     }
 
     @Override
