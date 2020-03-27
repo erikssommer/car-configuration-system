@@ -4,11 +4,23 @@ import org.semesteroppgave.carcomponents.Component;
 
 public class Battery extends Component {
 
+    private String model;
     private String component;
 
-    public Battery(String version, double price) {
+    public Battery(String version, double price, String model) {
         super(version, price);
         this.component = "Batteri";
+        this.model = model;
+    }
+
+    @Override
+    public String getModel() {
+        return this.model;
+    }
+
+    @Override
+    public void setModel(String model) {
+        this.model = model;
     }
 
     @Override
@@ -20,4 +32,5 @@ public class Battery extends Component {
     public void setComponent(String component) {
         this.component = component;
     }
+
 }

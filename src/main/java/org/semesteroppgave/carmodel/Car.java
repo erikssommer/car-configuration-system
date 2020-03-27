@@ -19,6 +19,8 @@ public abstract class Car implements Serializable {
         this.tires = tires;
     }
 
+    public Car(){}
+
     public abstract int getPrice();
 
     public Motor getMotor() {

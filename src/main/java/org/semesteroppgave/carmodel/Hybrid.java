@@ -12,6 +12,8 @@ public class Hybrid extends Car {
         this.fuelContainer = fuelContainer;
     }
 
+    public Hybrid(){}
+
     public Battery getBattery() {
         return battery;
     }

@@ -13,6 +13,8 @@ public class Diesel extends Car {
         this.gearbox = gearbox;
     }
 
+    public Diesel(){}
+
     public FuelContainer getFuelContainer() {
         return fuelContainer;
     }

@@ -9,8 +9,13 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.semesteroppgave.Context;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.carmodel.Car;
+import org.semesteroppgave.carmodel.Diesel;
+import org.semesteroppgave.carmodel.Electric;
+import org.semesteroppgave.carmodel.Hybrid;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,11 +69,14 @@ public class UserBuildCarController implements Initializable {
             @Override
             public void changed(ObservableValue ov, String previous, String active) {
                 switch (active){
-                    case "Elektrisk": tableViewComponent.setItems(null);
+                    case "Elektrisk": tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
+                        Car newElectric = new Electric();
                         break;
                     case "Diesel": tableViewComponent.setItems(null);
+                        Car newDiesel = new Diesel();
                         break;
                     case "Hybrid": tableViewComponent.setItems(null);
+                        Car newHybrid = new Hybrid();
                         break;
                 }
             }

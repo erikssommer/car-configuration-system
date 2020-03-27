@@ -10,8 +10,8 @@
 <?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 <?import javafx.scene.control.ComboBox?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminComponentController">
    <children>
       <Label layoutX="53.0" layoutY="56.0" text="Opprettelse av komponenter">

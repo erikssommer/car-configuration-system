@@ -4,11 +4,23 @@ import org.semesteroppgave.carcomponents.Component;
 
 public class Tires extends Component {
 
+    private String model;
     private String component;
 
-    public Tires(String version, double price) {
+    public Tires(String version, double price, String model) {
         super(version, price);
         this.component = "Dekk";
+        this.model = model;
+    }
+
+    @Override
+    public String getModel() {
+        return model;
+    }
+
+    @Override
+    public void setModel(String model) {
+        this.model = model;
     }
 
     @Override

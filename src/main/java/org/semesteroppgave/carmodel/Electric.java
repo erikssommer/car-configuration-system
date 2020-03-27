@@ -11,6 +11,8 @@ public class Electric extends Car {
         this.battery = battery;
     }
 
+    public Electric(){}
+
     public Battery getBattery() {
         return battery;
     }

@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
@@ -28,13 +30,34 @@
       <ComboBox fx:id="cbModel" layoutX="204.0" layoutY="95.0" onShown="#choiseMade" prefWidth="150.0" />
       <TableView fx:id="tableViewComponent" layoutX="46.0" layoutY="178.0" prefHeight="255.0" prefWidth="141.0">
         <columns>
-          <TableColumn prefWidth="140.0" text="Velg komponent" />
+          <TableColumn prefWidth="140.0" text="Velg komponent">
+             <cellValueFactory>
+                <PropertyValueFactory property="component"/>
+             </cellValueFactory>
+             <cellFactory>
+                <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+          </TableColumn>
         </columns>
       </TableView>
       <TableView fx:id="tableViewVersion" layoutX="204.0" layoutY="178.0" prefHeight="255.0" prefWidth="241.0">
         <columns>
-          <TableColumn prefWidth="163.0" text="Versjon" />
-          <TableColumn prefWidth="77.0" text="Pris" />
+          <TableColumn prefWidth="163.0" text="Versjon">
+             <cellValueFactory>
+                <PropertyValueFactory property="version"/>
+             </cellValueFactory>
+             <cellFactory>
+                <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+          </TableColumn>
+          <TableColumn prefWidth="77.0" text="Pris">
+             <cellValueFactory>
+                <PropertyValueFactory property="price"/>
+             </cellValueFactory>
+             <cellFactory>
+                <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+          </TableColumn>
         </columns>
       </TableView>
       <Label layoutX="487.0" layoutY="178.0" text="Tilpasninger">

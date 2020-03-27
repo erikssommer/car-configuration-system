@@ -11,7 +11,8 @@ public abstract class Component {
         this.version = version;
         this.price = price;
     }
-
+    public abstract String getModel();
+    public abstract void setModel(String model);
     public abstract String getComponent();
     public abstract void setComponent(String component);
 
