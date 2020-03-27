@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ComboBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
@@ -24,7 +25,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="204.0" layoutY="95.0" onContextMenuRequested="#choiseMade" prefWidth="150.0" />
+      <ComboBox fx:id="cbModel" layoutX="204.0" layoutY="95.0" onShown="#choiseMade" prefWidth="150.0" />
       <TableView fx:id="tableViewComponent" layoutX="46.0" layoutY="178.0" prefHeight="255.0" prefWidth="141.0">
         <columns>
           <TableColumn prefWidth="140.0" text="Velg komponent" />
@@ -41,10 +42,10 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <CheckBox layoutX="491.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbGps" text="GPS" />
-      <CheckBox layoutX="559.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbSunroof" text="Soltak" />
-      <CheckBox layoutX="491.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbHitch" text="Henger" />
-      <CheckBox layoutX="559.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbAutopilot" text="Autopilot" />
+      <CheckBox layoutX="491.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbClicked" text="GPS" />
+      <CheckBox layoutX="559.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbClicked" text="Soltak" />
+      <CheckBox layoutX="491.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbClicked" text="Henger" />
+      <CheckBox fx:id="chAutopilot" layoutX="559.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbClicked" text="Autopilot" />
       <Label layoutX="491.0" layoutY="297.0" text="Total:" />
       <TextField fx:id="txtTotalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="528.0" layoutY="292.0" prefHeight="22.0" prefWidth="119.0" promptText="0,0kr" />
       <Label fx:id="lblMessage" alignment="TOP_LEFT" layoutX="492.0" layoutY="339.0" prefHeight="50.0" prefWidth="220.0" />

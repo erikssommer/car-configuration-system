@@ -3,6 +3,7 @@ package org.semesteroppgave;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.exceptions.InvalidPriceException;
@@ -32,7 +33,7 @@ public class ComponentSearch {
 
     }
 
-    public void loadFilter(ChoiceBox<String> cbFilter) {
+    public void loadFilter(ComboBox<String> cbFilter) {
         componentFilter.removeAll();
         String choice1 = "Komponent";
         String choise2 = "Versjon";

@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminComponentController">
    <children>
       <Label layoutX="53.0" layoutY="56.0" text="Opprettelse av komponenter">
@@ -53,7 +54,7 @@
          </font>
       </Label>
       <TextField fx:id="txtSearch" layoutX="581.0" layoutY="171.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
-      <ChoiceBox fx:id="cbFilter" layoutX="390.0" layoutY="171.0" prefHeight="27.0" prefWidth="122.0" />
+      <ComboBox fx:id="cbFilter" layoutX="390.0" layoutY="171.0" prefHeight="27.0" prefWidth="122.0" />
       <Label layoutX="322.0" layoutY="176.0" text="Filtrer etter:" />
       <Button layoutX="639.0" layoutY="483.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
       <Button layoutX="53.0" layoutY="483.0" mnemonicParsing="false" onAction="#btnExport" text="Eksporter" />
@@ -62,7 +63,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="cbCreate" layoutX="121.0" layoutY="110.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbCreate" layoutX="121.0" layoutY="110.0" prefWidth="150.0" />
       <Button layoutX="295.0" layoutY="110.0" mnemonicParsing="false" onAction="#btnCreate" text="Opprett ny" />
    </children>
 </AnchorPane>

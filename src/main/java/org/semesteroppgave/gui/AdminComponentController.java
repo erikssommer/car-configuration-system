@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class AdminComponentController implements Initializable {
 
-    private ObservableList<String> componentChoise = FXCollections.observableArrayList();
+    private ObservableList<String> componentChoice = FXCollections.observableArrayList();
     private ObservableList<String> componentFilter = FXCollections.observableArrayList();
     private ComponentSearch newSearch = new ComponentSearch();
 
@@ -38,10 +38,10 @@ public class AdminComponentController implements Initializable {
     private TableColumn<Component, Double> txtPriceColumn;
 
     @FXML
-    private ChoiceBox<String> cbFilter;
+    private ComboBox<String> cbFilter;
 
     @FXML
-    private ChoiceBox<String> cbCreate;
+    private ComboBox<String> cbCreate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -131,10 +131,10 @@ public class AdminComponentController implements Initializable {
     }
 
     public void loadChoice(){
-        componentChoise.removeAll();
-        componentChoise.addAll("Motor","Felg","Setetrekk","Ratt","Spoiler","Dekk","Batteri","Tank","Girboks");
-        cbCreate.getItems().addAll(componentChoise);
-        cbCreate.setValue(componentChoise.get(0));
+        componentChoice.removeAll();
+        componentChoice.addAll("Motor","Felg","Setetrekk","Ratt","Spoiler","Dekk","Batteri","Tank","Girboks");
+        cbCreate.getItems().addAll(componentChoice);
+        cbCreate.setValue(componentChoice.get(0));
 
     }
 }
