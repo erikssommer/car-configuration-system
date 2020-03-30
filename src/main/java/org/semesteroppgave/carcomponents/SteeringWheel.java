@@ -4,22 +4,22 @@ import org.semesteroppgave.carcomponents.Component;
 
 public class SteeringWheel extends Component {
 
-    private String model;
+    private String [] model;
     private String component;
 
-    public SteeringWheel(String version, double price, String model) {
+    public SteeringWheel(String version, double price, String... model) {
         super(version, price);
         this.component = "Ratt";
         this.model = model;
     }
 
     @Override
-    public String getModel() {
+    public String [] getModel() {
         return model;
     }
 
     @Override
-    public void setModel(String model) {
+    public void setModel(String [] model) {
         this.model = model;
     }
 

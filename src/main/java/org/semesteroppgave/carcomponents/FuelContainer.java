@@ -4,22 +4,22 @@ import org.semesteroppgave.carcomponents.Component;
 
 public class FuelContainer extends Component {
 
-    private String model;
+    private String [] model;
     private String component;
 
-    public FuelContainer(String version, double price, String model) {
+    public FuelContainer(String version, double price, String... model) {
         super(version, price);
         this.component = "Tank";
         this.model = model;
     }
 
     @Override
-    public String getModel() {
+    public String [] getModel() {
         return model;
     }
 
     @Override
-    public void setModel(String model) {
+    public void setModel(String [] model) {
         this.model = model;
     }
 

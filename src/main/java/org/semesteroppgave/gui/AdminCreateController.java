@@ -39,23 +39,23 @@ public class AdminCreateController implements Initializable {
     @FXML
     void btnAdd(ActionEvent event) {
         switch (Context.getInstance().getRegisterComponent().getNewComponent()){
-            case "Motor": newComponent = new Motor(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Motor": newComponent = new Motor(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "universial");
                 break;
-            case "Felg": newComponent = new Rim(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Felg": newComponent = new Rim(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "universial");
                 break;
-            case "Setetrekk": newComponent = new SeatCover(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Setetrekk": newComponent = new SeatCover(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "universial");
                 break;
-            case "Ratt": newComponent = new SteeringWheel(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Ratt": newComponent = new SteeringWheel(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "universial");
                 break;
-            case "Spoiler": newComponent = new Spoiler(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Spoiler": newComponent = new Spoiler(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "universial");
                 break;
-            case  "Dekk": newComponent = new Tires(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case  "Dekk": newComponent = new Tires(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "universial");
                 break;
-            case "Batteri": newComponent = new Battery(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Batteri": newComponent = new Battery(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "Hybrid","Electric");
                 break;
-            case "Tank": newComponent = new FuelContainer(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Tank": newComponent = new FuelContainer(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "Diesel", "Hybrid");
                 break;
-            case "Girboks": newComponent = new Gearbox(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), null);
+            case "Girboks": newComponent = new Gearbox(txtVersion.getText(), Double.parseDouble(txtPrice.getText()), "Diesel");
                 break;
             default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
         }

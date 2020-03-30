@@ -9,13 +9,10 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.carmodel.Car;
-import org.semesteroppgave.carmodel.Diesel;
-import org.semesteroppgave.carmodel.Electric;
-import org.semesteroppgave.carmodel.Hybrid;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +35,9 @@ public class UserBuildCarController implements Initializable {
     private TableView<Component> tableViewVersion;
 
     @FXML
+    private TableColumn<Component, Double> txtPriceColumn;
+
+    @FXML
     private TextField txtTotalPrice;
 
     @FXML
@@ -45,6 +45,7 @@ public class UserBuildCarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
         loadChoice();
     }
 
@@ -69,18 +70,58 @@ public class UserBuildCarController implements Initializable {
             @Override
             public void changed(ObservableValue ov, String previous, String active) {
                 switch (active){
-                    case "Elektrisk": tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
-                        Car newElectric = new Electric();
+                    case "Elektrisk": createNewCar("Electric", "universial");
                         break;
-                    case "Diesel": tableViewComponent.setItems(null);
-                        Car newDiesel = new Diesel();
+                    case "Diesel": createNewCar("Diesel", "universial");
                         break;
-                    case "Hybrid": tableViewComponent.setItems(null);
-                        Car newHybrid = new Hybrid();
+                    case "Hybrid": createNewCar("Hybrid", "universial");
                         break;
                 }
             }
         });
+    }
+
+    public void createNewCar(String model1, String model2){
+        Context.getInstance().getRegisterComponent().clearModelComponentsList();
+        for (Component model : Context.getInstance().getRegisterComponent().getComponentsList()){
+            for (String componentModel : model.getModel()){
+                if (componentModel.equals(model1) || componentModel.equals(model2)){
+                    if (!redundance(model.getComponent())){
+                        Context.getInstance().getRegisterComponent().setModelComponentsList(model);
+                    }
+                }
+            }
+        }
+        tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getModelComponentsList());
+
+        tableViewComponent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            showComponents(tableViewComponent.getSelectionModel().getSelectedItem().getComponent());
+        });
+    }
+
+    public boolean redundance(String componentModel){
+        boolean redundance = false;
+        for (Component component : Context.getInstance().getRegisterComponent().getModelComponentsList()){
+            redundance = componentModel.equals(component.getComponent());
+        }
+        return redundance;
+    }
+
+    public void showComponents(String selectedComponent){
+        Context.getInstance().getRegisterComponent().clearChooseComponentList();
+        for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
+            if (component.getComponent().equals(selectedComponent)){
+                Context.getInstance().getRegisterComponent().setChooseComponentList(component);
+            }
+        }
+        tableViewVersion.setItems(Context.getInstance().getRegisterComponent().getChooseComponentList());
+        tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            addToCar();
+        });
+    }
+
+    public void addToCar(){
+
     }
 
 

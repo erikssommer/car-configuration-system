@@ -4,22 +4,22 @@ import org.semesteroppgave.carcomponents.Component;
 
 public class Spoiler extends Component {
 
-    private String model;
+    private String [] model;
     private String component;
 
-    public Spoiler(String version, double price, String model) {
+    public Spoiler(String version, double price, String... model) {
         super(version, price);
         this.component = "Spioler";
         this.model = model;
     }
 
     @Override
-    public String getModel() {
+    public String [] getModel() {
         return model;
     }
 
     @Override
-    public void setModel(String model) {
+    public void setModel(String [] model) {
         this.model = model;
     }
 

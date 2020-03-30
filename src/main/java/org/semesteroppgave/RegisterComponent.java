@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 public class RegisterComponent {
 
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
+    private ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
+    private ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
     private String newComponent;
 
     public RegisterComponent(ObservableList<Component> componentsList){
@@ -29,9 +31,9 @@ public class RegisterComponent {
 
     @SuppressWarnings("unchecked")
     public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException{
-        List<Component> personListe = (List<Component>) s.readObject();
+        List<Component> newComponentList = (List<Component>) s.readObject();
         componentsList = FXCollections.observableArrayList();
-        componentsList.addAll(personListe);
+        componentsList.addAll(newComponentList);
     }
 
     //Brukes til å finne ut hvilken type komponent som skal opprettet av admin
@@ -53,6 +55,30 @@ public class RegisterComponent {
 
     public ObservableList<Component> getComponentsList(){
         return this.componentsList;
+    }
+
+    public void setModelComponentsList(Component component){
+        modelComponentsList.add(component);
+    }
+
+    public ObservableList<Component> getModelComponentsList(){
+        return this.modelComponentsList;
+    }
+
+    public void clearModelComponentsList(){
+        this.modelComponentsList.clear();
+    }
+
+    public void setChooseComponentList(Component component){
+        chooseComponentList.add(component);
+    }
+
+    public ObservableList<Component> getChooseComponentList(){
+        return this.chooseComponentList;
+    }
+
+    public void clearChooseComponentList(){
+        this.chooseComponentList.clear();
     }
 
     //Søkefunksjon med streams
