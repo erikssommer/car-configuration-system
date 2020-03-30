@@ -6,11 +6,13 @@ public class Diesel extends Car {
 
     private FuelContainer fuelContainer;
     private Gearbox gearbox;
+    private String model;
 
     public Diesel(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, FuelContainer fuelContainer, Gearbox gearbox) {
         super(motor, rim, seatcover, spoiler, tires);
         this.fuelContainer = fuelContainer;
         this.gearbox = gearbox;
+        this.model = "Diesel";
     }
 
     public Diesel(){}
@@ -29,6 +31,10 @@ public class Diesel extends Car {
 
     public void setGearbox(Gearbox gearbox) {
         this.gearbox = gearbox;
+    }
+
+    public String getModel(){
+        return this.model;
     }
 
     @Override

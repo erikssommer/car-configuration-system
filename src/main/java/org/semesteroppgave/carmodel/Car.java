@@ -10,6 +10,7 @@ public abstract class Car implements Serializable {
     private SeatCover seatcover;
     private Spoiler spoiler;
     private Tires tires;
+    private double price;
 
     public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires) {
         this.motor = motor;

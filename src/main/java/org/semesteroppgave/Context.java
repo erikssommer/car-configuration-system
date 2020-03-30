@@ -8,10 +8,16 @@ public class Context {
     }
 
     private RegisterComponent registerComponent = new RegisterComponent();
+    private RegisterProduct registerProduct = new RegisterProduct();
 
     public RegisterComponent getRegisterComponent() {
-        return registerComponent;
+        return this.registerComponent;
     }
+
+    public RegisterProduct getRegisterProduct(){
+        return this.registerProduct;
+    }
+
 
     //Her kan vi fortsette å legge til globale objekter
 }

@@ -47,7 +47,7 @@
                 <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
           </TableColumn>
-          <TableColumn fx:id="txtPriceColumn" prefWidth="77.0" text="Pris"/>
+          <TableColumn fx:id="txtPriceColumn" prefWidth="77.0" text="Pris" />
         </columns>
       </TableView>
       <Label layoutX="487.0" layoutY="178.0" text="Tilpasninger">
@@ -65,5 +65,6 @@
       <Button layoutX="492.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnShowMyConfig" text="Vis min konfig" />
       <Button layoutX="602.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnShowConfigs" text="Fullførte konfiger" />
       <Button layoutX="647.0" layoutY="493.0" mnemonicParsing="false" onAction="#btnSignout" prefHeight="27.0" prefWidth="64.0" text="Logg ut" />
+      <Button layoutX="390.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnDone" text="Ferdig" />
    </children>
 </AnchorPane>

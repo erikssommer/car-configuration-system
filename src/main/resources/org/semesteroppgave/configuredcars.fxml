@@ -7,9 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.ConfiguredCarsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.ConfiguredCarsController">
    <children>
       <Label layoutX="36.0" layoutY="35.0" text="Tidligere konfigurerte biler">
          <font>
@@ -25,7 +23,7 @@
             <TableColumn prefWidth="87.0" text="Ratt" />
             <TableColumn text="Girsystem" />
             <TableColumn prefWidth="100.0" text="Tilpasninger" />
-            <TableColumn prefWidth="109.0" text="Pris" />
+            <TableColumn fx:id="txtPriceColumn" prefWidth="109.0" text="Pris" />
         </columns>
       </TableView>
       <Label layoutX="36.0" layoutY="300.0" text="Min konfig">
@@ -42,7 +40,7 @@
             <TableColumn prefWidth="87.0" text="Ratt" />
             <TableColumn text="Girsystem" />
             <TableColumn prefWidth="100.0" text="Tilpasninger" />
-            <TableColumn prefWidth="109.0" text="Pris" />
+            <TableColumn fx:id="txtPriceColumnMy" prefWidth="109.0" text="Pris" />
          </columns>
       </TableView>
       <Button layoutX="631.0" layoutY="492.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="82.0" text="Tilbake" />

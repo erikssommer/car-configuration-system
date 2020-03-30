@@ -5,10 +5,12 @@ import org.semesteroppgave.carcomponents.*;
 public class Electric extends Car {
 
     private Battery battery;
+    private String model;
 
     public Electric(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Battery battery) {
         super(motor, rim, seatcover, spoiler, tires);
         this.battery = battery;
+        this.model = "Elektrisk";
     }
 
     public Electric(){}
@@ -19,6 +21,10 @@ public class Electric extends Car {
 
     public void setBattery(Battery battery) {
         this.battery = battery;
+    }
+
+    public String getModel(){
+        return this.model;
     }
 
     @Override

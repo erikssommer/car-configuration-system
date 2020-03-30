@@ -14,6 +14,7 @@ import org.semesteroppgave.Context;
 import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.carmodel.Car;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,9 +48,9 @@ public class UserBuildCarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        newCar = new UserCreateCar(tableViewComponent, tableViewVersion);
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
         loadChoice();
+        newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel);
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
     }
 
     @FXML
@@ -97,6 +98,14 @@ public class UserBuildCarController implements Initializable {
             lblMessage.setText(value + " er false");
         }
     }
+
+    @FXML
+    void btnDone(ActionEvent event) {
+        Car car = newCar.finishedCar();
+        Context.getInstance().getRegisterProduct().setCarList(car);
+    }
+
+
 
     public void loadChoice(){
         modelChoice.removeAll();
