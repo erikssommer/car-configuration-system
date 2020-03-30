@@ -28,9 +28,18 @@ public class ConfiguredCarsController implements Initializable {
     @FXML
     private TableColumn<Car, Double> txtPriceColumnMy;
 
+    @FXML
+    private TableColumn<Car, String> txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtTireColumn, txtGearboxColumn;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtMotorColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("motor"));
+        txtRimColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("rim"));
+        txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("seatCover"));
+        txtTireColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("tires"));
+        txtGearboxColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("gearbox"));
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
+
         txtPriceColumnMy.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
         tableViewConfigs.setItems(Context.getInstance().getRegisterProduct().getCarList());
     }

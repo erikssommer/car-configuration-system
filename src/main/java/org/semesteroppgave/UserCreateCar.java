@@ -1,6 +1,7 @@
 package org.semesteroppgave;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.carcomponents.*;
 import org.semesteroppgave.carmodel.Car;
@@ -82,7 +83,7 @@ public class UserCreateCar {
                 break;
             case "Spoiler": spoiler = (Spoiler) tableViewVersion.getSelectionModel().getSelectedItem();
                 break;
-            case  "Dekk": tires = (Tires) tableViewVersion.getSelectionModel().getSelectedItem();
+            case "Dekk": tires = (Tires) tableViewVersion.getSelectionModel().getSelectedItem();
                 break;
             case "Batteri": battery = (Battery) tableViewVersion.getSelectionModel().getSelectedItem();
                 break;

@@ -10,10 +10,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.carcomponents.Motor;
 import org.semesteroppgave.carmodel.Car;
 
 import java.io.IOException;

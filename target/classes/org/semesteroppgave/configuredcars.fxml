@@ -4,12 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.ConfiguredCarsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.ConfiguredCarsController">
    <children>
       <Label layoutX="36.0" layoutY="35.0" text="Tidligere konfigurerte biler">
          <font>
@@ -18,14 +18,25 @@
       </Label>
       <TableView fx:id="tableViewConfigs" layoutX="36.0" layoutY="75.0" prefHeight="200.0" prefWidth="677.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Modell" />
-          <TableColumn prefWidth="75.0" text="Motor" />
-            <TableColumn prefWidth="75.0" text="Felger" />
-            <TableColumn prefWidth="75.0" text="Setetrekk" />
-            <TableColumn prefWidth="87.0" text="Ratt" />
-            <TableColumn text="Girsystem" />
-            <TableColumn prefWidth="100.0" text="Tilpasninger" />
-            <TableColumn prefWidth="109.0" text="Pris" />
+          <TableColumn prefWidth="75.0" text="Modell">
+              <cellValueFactory>
+                  <PropertyValueFactory property="model" />
+              </cellValueFactory>
+              <cellFactory>
+                  <TextFieldTableCell fx:factory="forTableColumn" />
+              </cellFactory>
+          </TableColumn>
+          <TableColumn fx:id="txtMotorColumn" prefWidth="75.0" text="Motor">
+          </TableColumn>
+            <TableColumn fx:id="txtRimColumn" prefWidth="87.0" text="Felger">
+            </TableColumn>
+            <TableColumn fx:id="txtSeatcoverColumn" prefWidth="112.0" text="Setetrekk">
+            </TableColumn>
+            <TableColumn fx:id="txtTireColumn" prefWidth="105.0" text="Dekk">
+            </TableColumn>
+            <TableColumn fx:id="txtGearboxColumn" prefWidth="119.0" text="Girsystem">
+            </TableColumn>
+            <TableColumn fx:id="txtPriceColumn" prefWidth="103.0" text="Pris" />
         </columns>
       </TableView>
       <Label layoutX="36.0" layoutY="300.0" text="Min konfig">
@@ -42,7 +53,7 @@
             <TableColumn prefWidth="87.0" text="Ratt" />
             <TableColumn text="Girsystem" />
             <TableColumn prefWidth="100.0" text="Tilpasninger" />
-            <TableColumn prefWidth="109.0" text="Pris" />
+            <TableColumn fx:id="txtPriceColumnMy" prefWidth="109.0" text="Pris" />
          </columns>
       </TableView>
       <Button layoutX="631.0" layoutY="492.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="82.0" text="Tilbake" />

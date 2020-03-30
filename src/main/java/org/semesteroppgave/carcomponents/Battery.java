@@ -33,4 +33,9 @@ public class Battery extends Component {
         this.component = component;
     }
 
+    @Override
+    public String toString(){
+        return super.getVersion();
+    }
+
 }

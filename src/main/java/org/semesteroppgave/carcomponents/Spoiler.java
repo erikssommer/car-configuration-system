@@ -32,4 +32,9 @@ public class Spoiler extends Component {
     public void setComponent(String component) {
         this.component = component;
     }
+
+    @Override
+    public String toString(){
+        return super.getVersion();
+    }
 }

@@ -1,5 +1,7 @@
 package org.semesteroppgave.carcomponents;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 
 public abstract class Component {
@@ -11,13 +13,14 @@ public abstract class Component {
         this.version = version;
         this.price = price;
     }
+
     public abstract String [] getModel();
     public abstract void setModel(String [] model);
     public abstract String getComponent();
     public abstract void setComponent(String component);
 
-    public String getVersion() {
-        return version;
+    public String getVersion(){
+        return this.version;
     }
 
     public void setVersion(String version) {
@@ -31,6 +34,4 @@ public abstract class Component {
     public void setPrice(double price) {
         this.price = price;
     }
-
-
 }
