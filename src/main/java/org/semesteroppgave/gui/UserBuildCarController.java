@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.Context;
+import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
 
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 public class UserBuildCarController implements Initializable {
 
     private ObservableList<String> modelChoice = FXCollections.observableArrayList();
+    UserCreateCar newCar;
 
     @FXML
     private ComboBox<String> cbModel;
@@ -45,6 +47,7 @@ public class UserBuildCarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        newCar = new UserCreateCar(tableViewComponent, tableViewVersion);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
         loadChoice();
     }
@@ -70,58 +73,15 @@ public class UserBuildCarController implements Initializable {
             @Override
             public void changed(ObservableValue ov, String previous, String active) {
                 switch (active){
-                    case "Elektrisk": createNewCar("Electric", "universial");
+                    case "Elektrisk": newCar.createNewCar("Electric", "universial");
                         break;
-                    case "Diesel": createNewCar("Diesel", "universial");
+                    case "Diesel": newCar.createNewCar("Diesel", "universial");
                         break;
-                    case "Hybrid": createNewCar("Hybrid", "universial");
+                    case "Hybrid": newCar.createNewCar("Hybrid", "universial");
                         break;
                 }
             }
         });
-    }
-
-    public void createNewCar(String model1, String model2){
-        Context.getInstance().getRegisterComponent().clearModelComponentsList();
-        for (Component model : Context.getInstance().getRegisterComponent().getComponentsList()){
-            for (String componentModel : model.getModel()){
-                if (componentModel.equals(model1) || componentModel.equals(model2)){
-                    if (!redundance(model.getComponent())){
-                        Context.getInstance().getRegisterComponent().setModelComponentsList(model);
-                    }
-                }
-            }
-        }
-        tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getModelComponentsList());
-
-        tableViewComponent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            showComponents(tableViewComponent.getSelectionModel().getSelectedItem().getComponent());
-        });
-    }
-
-    public boolean redundance(String componentModel){
-        boolean redundance = false;
-        for (Component component : Context.getInstance().getRegisterComponent().getModelComponentsList()){
-            redundance = componentModel.equals(component.getComponent());
-        }
-        return redundance;
-    }
-
-    public void showComponents(String selectedComponent){
-        Context.getInstance().getRegisterComponent().clearChooseComponentList();
-        for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
-            if (component.getComponent().equals(selectedComponent)){
-                Context.getInstance().getRegisterComponent().setChooseComponentList(component);
-            }
-        }
-        tableViewVersion.setItems(Context.getInstance().getRegisterComponent().getChooseComponentList());
-        tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            addToCar();
-        });
-    }
-
-    public void addToCar(){
-
     }
 
 
