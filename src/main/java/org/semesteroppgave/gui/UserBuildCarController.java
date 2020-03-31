@@ -31,7 +31,7 @@ public class UserBuildCarController implements Initializable {
     private ComboBox<String> cbModel;
 
     @FXML
-    private CheckBox chAutopilot;
+    private CheckBox cbAutopilot;
 
     @FXML
     private TableView<Component> tableViewComponent;
@@ -53,6 +53,7 @@ public class UserBuildCarController implements Initializable {
         loadChoice();
         newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
+        cbAutopilot.setVisible(false);
     }
 
     @FXML
@@ -77,6 +78,7 @@ public class UserBuildCarController implements Initializable {
             public void changed(ObservableValue ov, String previous, String active) {
                 switch (active){
                     case "Elektrisk": newCar.createNewCar("Electric", "universial");
+                        cbAutopilot.setVisible(true);
                         break;
                     case "Diesel": newCar.createNewCar("Diesel", "universial");
                         break;

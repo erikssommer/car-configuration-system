@@ -27,6 +27,7 @@ public class UserCreateCar {
     private Tires tires = null;
 
     private double livePrice;
+    private double previousPrice;
 
     public UserCreateCar(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice){
         this.tableViewComponent = tableViewComponent;
@@ -88,36 +89,47 @@ public class UserCreateCar {
         //System.out.println(selectedComponent);
         switch (selectedComponent){
             case "Motor": motor = (Motor) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += motor.getPrice();
+                addToPrice(motor);
                 break;
             case "Felg": rim = (Rim) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += rim.getPrice();
+                addToPrice(rim);
                 break;
             case "Setetrekk": seatCover = (SeatCover) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += seatCover.getPrice();
+                addToPrice(seatCover);
                 break;
             case "Ratt": steeringWheel = (SteeringWheel) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += steeringWheel.getPrice();
+                addToPrice(steeringWheel);
                 break;
             case "Spoiler": spoiler = (Spoiler) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += spoiler.getPrice();
+                addToPrice(spoiler);
                 break;
             case "Dekk": tires = (Tires) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += tires.getPrice();
+                addToPrice(tires);
                 break;
             case "Batteri": battery = (Battery) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += battery.getPrice();
+                addToPrice(battery);
                 break;
             case "Tank": fuelContainer = (FuelContainer) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += fuelContainer.getPrice();
+                addToPrice(fuelContainer);
                 break;
             case "Girboks": gearbox = (Gearbox) tableViewVersion.getSelectionModel().getSelectedItem();
-                livePrice += gearbox.getPrice();
+                addToPrice(gearbox);
                 break;
             default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
         }
         txtTotalPrice.setText(String.valueOf(livePrice));
         lblMessage.setText("Du har opprettet ny "+selectedComponent.toLowerCase());
+    }
+
+    public void addToPrice(Component component){
+        if (!component.getAdded()){
+            previousPrice = component.getPrice();
+            livePrice += component.getPrice();
+            component.setAdded(true);
+        }else {
+            livePrice -= previousPrice;
+            livePrice += component.getPrice();
+        }
     }
 
     public Car finishedCar (){

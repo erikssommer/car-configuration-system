@@ -8,6 +8,7 @@ public abstract class Component {
 
     private String version;
     private double price;
+    private boolean added = false;
 
     public Component(String version, double price) {
         this.version = version;
@@ -33,5 +34,13 @@ public abstract class Component {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public boolean getAdded(){
+        return added;
+    }
+
+    public void setAdded(boolean added){
+        this.added = added;
     }
 }

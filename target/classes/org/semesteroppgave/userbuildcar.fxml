@@ -58,7 +58,7 @@
       <CheckBox layoutX="491.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbClicked" text="GPS" />
       <CheckBox layoutX="559.0" layoutY="216.0" mnemonicParsing="false" onAction="#cbClicked" text="Soltak" />
       <CheckBox layoutX="491.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbClicked" text="Henger" />
-      <CheckBox fx:id="chAutopilot" layoutX="559.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbClicked" text="Autopilot" />
+      <CheckBox fx:id="cbAutopilot" layoutX="559.0" layoutY="252.0" mnemonicParsing="false" onAction="#cbClicked" text="Autopilot" />
       <Label layoutX="491.0" layoutY="297.0" text="Total:" />
       <TextField fx:id="txtTotalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="528.0" layoutY="292.0" prefHeight="22.0" prefWidth="119.0" promptText="0,0kr" />
       <Label fx:id="lblMessage" alignment="TOP_LEFT" layoutX="492.0" layoutY="339.0" prefHeight="50.0" prefWidth="220.0" />
