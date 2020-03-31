@@ -36,6 +36,17 @@ public class PrimaryController implements Initializable {
         Context.getInstance().getRegisterComponent().setComponentsList(tires2);
         Tires tires3 = new Tires("Alround",2000,"universial");
         Context.getInstance().getRegisterComponent().setComponentsList(tires3);
+        Gearbox gearbox = new Gearbox("Manuell",3000,"Diesel");
+        Context.getInstance().getRegisterComponent().setComponentsList(gearbox);
+        Gearbox gearbox2 = new Gearbox("Automat",5000,"Diesel");
+        Context.getInstance().getRegisterComponent().setComponentsList(gearbox2);
+        Battery battery = new Battery("Li-ion",10000,"Hybrid", "Electric");
+        Context.getInstance().getRegisterComponent().setComponentsList(battery);
+        FuelContainer fuelContainer = new FuelContainer("50-liter",5000,"Diesel", "Hybrid");
+        Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer);
+        FuelContainer fuelContainer2 = new FuelContainer("100-liter",10000,"Diesel", "Hybrid");
+        Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer2);
+
     }
 
     @FXML

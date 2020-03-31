@@ -2,6 +2,10 @@ package org.semesteroppgave;
 
 import javafx.scene.control.*;
 import org.semesteroppgave.carcomponents.*;
+import org.semesteroppgave.carcustomization.Autopilot;
+import org.semesteroppgave.carcustomization.Gps;
+import org.semesteroppgave.carcustomization.Sunroof;
+import org.semesteroppgave.carcustomization.Towbar;
 import org.semesteroppgave.carmodel.Car;
 import org.semesteroppgave.carmodel.Diesel;
 import org.semesteroppgave.carmodel.Electric;
@@ -25,6 +29,11 @@ public class UserCreateCar {
     private Spoiler spoiler = null;
     private SteeringWheel steeringWheel = null;
     private Tires tires = null;
+
+    private Autopilot autopilot = null;
+    private Gps gps = null;
+    private Sunroof sunroof = null;
+    private Towbar towbar = null;
 
     private double livePrice;
     private double previousPrice;
@@ -122,6 +131,7 @@ public class UserCreateCar {
     }
 
     public void addToPrice(Component component){
+        //TODO liveprisen funker ikke helt som den skal. Hvordan skal programmet huske forrige pris?
         if (!component.getAdded()){
             previousPrice = component.getPrice();
             livePrice += component.getPrice();
@@ -132,14 +142,61 @@ public class UserCreateCar {
         }
     }
 
+
+    public void customization(CheckBox cbAutopilot,CheckBox cbTowbar,CheckBox cbSunroof,CheckBox cbGps){
+
+        if (cbAutopilot.isSelected() && autopilot == null){
+            System.out.println("Autopilot");
+            autopilot = new Autopilot();
+            livePrice += autopilot.getPrice();
+        }
+
+        if (cbTowbar.isSelected() && towbar == null){
+            System.out.println("Towbar");
+            towbar = new Towbar();
+            livePrice += towbar.getPrice();
+        }
+
+        if (cbSunroof.isSelected() && sunroof == null){
+            System.out.println("Sunroof");
+            sunroof = new Sunroof();
+            livePrice += sunroof.getPrice();
+        }
+
+        if (cbGps.isSelected() && gps == null){
+            System.out.println("Gps");
+            gps = new Gps();
+            livePrice += gps.getPrice();
+        }
+
+        txtTotalPrice.setText(String.valueOf(livePrice));
+
+        /*
+        switch (choice){
+            case "Autopilot": autopilot = new Autopilot();
+                livePrice += autopilot.getPrice();
+                break;
+            case "Towbar": towbar = new Towbar();
+                livePrice += towbar.getPrice();
+                break;
+            case "Sunroof": sunroof = new Sunroof();
+                livePrice += sunroof.getPrice();
+                break;
+            case "Gps": gps = new Gps();
+                livePrice += gps.getPrice();
+                break;
+        }
+         */
+    }
+
     public Car finishedCar (){
         Car product = null;
         switch (cbModel.getValue()){
-            case "Elektrisk": product = new Electric(motor, rim, seatCover, spoiler, tires, battery);
+            case "Elektrisk": product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
             break;
-            case "Diesel": product = new Diesel(motor, rim, seatCover, spoiler, tires, fuelContainer, gearbox);
+            case "Diesel": product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
             break;
-            case "Hybrid": product = new Hybrid(motor, rim, seatCover, spoiler, tires, battery, fuelContainer);
+            case "Hybrid": product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
         }
         return product;
     }

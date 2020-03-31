@@ -16,6 +16,10 @@ import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.carcomponents.Motor;
+import org.semesteroppgave.carcustomization.Autopilot;
+import org.semesteroppgave.carcustomization.Gps;
+import org.semesteroppgave.carcustomization.Sunroof;
+import org.semesteroppgave.carcustomization.Towbar;
 import org.semesteroppgave.carmodel.Car;
 
 import java.io.IOException;
@@ -25,13 +29,13 @@ import java.util.ResourceBundle;
 public class UserBuildCarController implements Initializable {
 
     private ObservableList<String> modelChoice = FXCollections.observableArrayList();
-    UserCreateCar newCar;
+    private UserCreateCar newCar;
 
     @FXML
     private ComboBox<String> cbModel;
 
     @FXML
-    private CheckBox cbAutopilot;
+    private CheckBox cbAutopilot, cbTowbar, cbSunroof, cbGps;
 
     @FXML
     private TableView<Component> tableViewComponent;
@@ -73,6 +77,7 @@ public class UserBuildCarController implements Initializable {
 
     @FXML
     void choiseMade(Event event) {
+        //TODO dette kan nok skrives på en bedre måte, men det funker
         cbModel.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String previous, String active) {
@@ -81,8 +86,10 @@ public class UserBuildCarController implements Initializable {
                         cbAutopilot.setVisible(true);
                         break;
                     case "Diesel": newCar.createNewCar("Diesel", "universial");
+                        cbAutopilot.setVisible(false);
                         break;
                     case "Hybrid": newCar.createNewCar("Hybrid", "universial");
+                        cbAutopilot.setVisible(false);
                         break;
                 }
             }
@@ -92,15 +99,41 @@ public class UserBuildCarController implements Initializable {
 
     @FXML
     void cbClicked(ActionEvent event) {
+
+        newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
+
+        /*
+        if (cbAutopilot.isSelected()){
+            newCar.customization("Autopilot");
+        }
+
+        if (cbTowbar.isSelected()){
+            newCar.customization("Towbar");
+        }
+
+        if (cbSunroof.isSelected()){
+            newCar.customization("Sunroof");
+        }
+
+        if (cbGps.isSelected()){
+            newCar.customization("Gps");
+        }
+
+         */
+
+        /*
         //Samler alle checkboxer i ￿￿￿￿én metode
         String value = ((CheckBox)event.getSource()).getText();
         boolean state = ((CheckBox)event.getSource()).isSelected();
+        System.out.println(cbAutopilot.isSelected());
 
         if (state){
             lblMessage.setText(value + " er true");
         }else {
             lblMessage.setText(value + " er false");
         }
+
+         */
     }
 
     @FXML
@@ -109,14 +142,10 @@ public class UserBuildCarController implements Initializable {
         Context.getInstance().getRegisterProduct().setCarList(car);
     }
 
-
-
     public void loadChoice(){
         modelChoice.removeAll();
         modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
         cbModel.getItems().addAll(modelChoice);
         cbModel.setPromptText("Velg modell");
-
-
     }
 }

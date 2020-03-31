@@ -8,6 +8,7 @@ public abstract class Component {
 
     private String version;
     private double price;
+    //Dette er testkode
     private boolean added = false;
 
     public Component(String version, double price) {
@@ -36,6 +37,7 @@ public abstract class Component {
         this.price = price;
     }
 
+    //Dette er testkode
     public boolean getAdded(){
         return added;
     }

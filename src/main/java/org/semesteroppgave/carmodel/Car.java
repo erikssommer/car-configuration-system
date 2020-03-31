@@ -1,5 +1,8 @@
 package org.semesteroppgave.carmodel;
 
+import org.semesteroppgave.carcustomization.Gps;
+import org.semesteroppgave.carcustomization.Sunroof;
+import org.semesteroppgave.carcustomization.Towbar;
 import org.semesteroppgave.carcomponents.*;
 
 import java.io.Serializable;
@@ -10,17 +13,21 @@ public abstract class Car implements Serializable {
     private SeatCover seatcover;
     private Spoiler spoiler;
     private Tires tires;
+    private Gps gps;
+    private Sunroof sunroof;
+    private Towbar towbar;
     private double price;
 
-    public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires) {
+    public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar) {
         this.motor = motor;
         this.rim = rim;
         this.seatcover = seatcover;
         this.spoiler = spoiler;
         this.tires = tires;
+        this.gps = gps;
+        this.sunroof = sunroof;
+        this.towbar = towbar;
     }
-
-    public Car(){}
 
     public abstract double getPrice();
 
@@ -64,5 +71,27 @@ public abstract class Car implements Serializable {
         this.tires = tires;
     }
 
+    public Gps getGps() {
+        return this.gps;
+    }
 
+    public void setGps(Gps gps) {
+        this.gps = gps;
+    }
+
+    public Sunroof getSunroof() {
+        return this.sunroof;
+    }
+
+    public void setSunroof(Sunroof sunroof) {
+        this.sunroof = sunroof;
+    }
+
+    public Towbar getTowbar() {
+        return this.towbar;
+    }
+
+    public void setTowbar(Towbar towbar) {
+        this.towbar = towbar;
+    }
 }
