@@ -28,7 +28,8 @@ public class Electric extends Car {
     }
 
     @Override
-    public int getPrice() {
-        return 0;
+    public double getPrice() {
+        return getMotor().getPrice() + getRim().getPrice() + getSeatCover().getPrice() +
+                getSpoiler().getPrice() + getTires().getPrice(); // + getBattery().getPrice();
     }
 }

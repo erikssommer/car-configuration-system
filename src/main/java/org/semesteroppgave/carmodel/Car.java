@@ -22,10 +22,10 @@ public abstract class Car implements Serializable {
 
     public Car(){}
 
-    public abstract int getPrice();
+    public abstract double getPrice();
 
-    public Motor getMotor() {
-        return motor;
+    public Motor getMotor(){
+        return this.motor;
     }
 
     public void setMotor(Motor motor) {
@@ -63,4 +63,6 @@ public abstract class Car implements Serializable {
     public void setTires(Tires tires) {
         this.tires = tires;
     }
+
+
 }
