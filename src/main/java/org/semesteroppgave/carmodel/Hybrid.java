@@ -12,6 +12,7 @@ public class Hybrid extends Car {
 
     public Hybrid(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, FuelContainer fuelContainer) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
+        if (fuelContainer == null || battery == null) throw new NullPointerException("Du har glemt å opprette et batteri eller en tank");
         this.battery = battery;
         this.fuelContainer = fuelContainer;
         this.model = "Hybrid";

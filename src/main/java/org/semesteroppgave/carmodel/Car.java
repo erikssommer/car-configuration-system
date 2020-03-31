@@ -19,6 +19,7 @@ public abstract class Car implements Serializable {
     private double price;
 
     public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar) {
+        if (motor == null || rim == null || spoiler == null || tires == null) throw new NullPointerException("Du har glemt å opprette en eller flere komponenter");
         this.motor = motor;
         this.rim = rim;
         this.seatcover = seatcover;
