@@ -151,10 +151,20 @@ public class UserCreateCar {
             livePrice += autopilot.getPrice();
         }
 
+        if (!cbAutopilot.isSelected() && autopilot != null){
+            livePrice -= autopilot.getPrice();
+            autopilot = null;
+        }
+
         if (cbTowbar.isSelected() && towbar == null){
             System.out.println("Towbar");
             towbar = new Towbar();
             livePrice += towbar.getPrice();
+        }
+
+        if (!cbTowbar.isSelected() && towbar != null){
+            livePrice -= towbar.getPrice();
+            towbar = null;
         }
 
         if (cbSunroof.isSelected() && sunroof == null){
@@ -163,10 +173,20 @@ public class UserCreateCar {
             livePrice += sunroof.getPrice();
         }
 
+        if (!cbSunroof.isSelected() && sunroof != null){
+            livePrice -= sunroof.getPrice();
+            sunroof = null;
+        }
+
         if (cbGps.isSelected() && gps == null){
             System.out.println("Gps");
             gps = new Gps();
             livePrice += gps.getPrice();
+        }
+
+        if (!cbGps.isSelected() && gps != null){
+            livePrice -= gps.getPrice();
+            gps = null;
         }
 
         txtTotalPrice.setText(String.valueOf(livePrice));
