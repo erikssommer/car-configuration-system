@@ -119,8 +119,7 @@ public class UserBuildCarController implements Initializable {
 
     @FXML
     void btnDone(ActionEvent event) {
-        Car car = newCar.finishedCar();
-        Context.getInstance().getRegisterProduct().setCarList(car);
+        newCar.finishedCar();
     }
 
     public void loadChoice(){

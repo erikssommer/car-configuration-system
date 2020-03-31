@@ -192,15 +192,63 @@ public class UserCreateCar {
         txtTotalPrice.setText(String.valueOf(livePrice));
     }
 
-    public Car finishedCar (){
-        Car product = null;
-        switch (cbModel.getValue()){
-            case "Elektrisk": product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
-            break;
-            case "Diesel": product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
-            break;
-            case "Hybrid": product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
+    public void finishedCar (){
+
+        if (cbModel.getValue() != null){
+            Car product = null;
+
+            if (cbModel.getValue().equals("Elektrisk") && testNullPointerUniversial() && testNullPointerElectric()){
+                product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
+            }
+
+            if (cbModel.getValue().equals("Diesel") && testNullPointerUniversial() && testNullPointerElectric()){
+                product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
+            }
+
+            if (cbModel.getValue().equals("Hybrid") && testNullPointerUniversial() && testNullPointerHybrid()){
+                product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
+            }
+
+
+            if (product == null){
+                Dialogs.showErrorDialog("Oups!", "Feil i oppretting av produkt", "Du har glemt å legge til en eller flere komponenter");
+            }else {
+                Context.getInstance().getRegisterProduct().setCarList(product);
+            }
+        }else {
+            Dialogs.showErrorDialog("Oups!", "Du må velge modell", "Deretter velge komponenter til bilen");
         }
-        return product;
+    }
+
+    public boolean testNullPointerUniversial(){
+        boolean test = false;
+        if (motor != null || rim != null || seatCover != null || spoiler != null || tires != null){
+            test = true;
+        }
+        return test;
+    }
+
+    public boolean testNullPointerElectric(){
+        boolean test = false;
+        if (battery != null){
+            test = true;
+        }
+        return test;
+    }
+
+    public boolean testNullPointerDiesel(){
+        boolean test = false;
+        if (fuelContainer != null || gearbox != null){
+            test = true;
+        }
+        return test;
+    }
+
+    public boolean testNullPointerHybrid(){
+        boolean test = false;
+        if (fuelContainer != null || battery != null){
+            test = true;
+        }
+        return test;
     }
 }
