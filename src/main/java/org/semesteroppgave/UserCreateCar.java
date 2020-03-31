@@ -170,23 +170,6 @@ public class UserCreateCar {
         }
 
         txtTotalPrice.setText(String.valueOf(livePrice));
-
-        /*
-        switch (choice){
-            case "Autopilot": autopilot = new Autopilot();
-                livePrice += autopilot.getPrice();
-                break;
-            case "Towbar": towbar = new Towbar();
-                livePrice += towbar.getPrice();
-                break;
-            case "Sunroof": sunroof = new Sunroof();
-                livePrice += sunroof.getPrice();
-                break;
-            case "Gps": gps = new Gps();
-                livePrice += gps.getPrice();
-                break;
-        }
-         */
     }
 
     public Car finishedCar (){

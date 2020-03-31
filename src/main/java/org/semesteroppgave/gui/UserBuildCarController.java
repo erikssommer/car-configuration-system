@@ -103,25 +103,6 @@ public class UserBuildCarController implements Initializable {
         newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
 
         /*
-        if (cbAutopilot.isSelected()){
-            newCar.customization("Autopilot");
-        }
-
-        if (cbTowbar.isSelected()){
-            newCar.customization("Towbar");
-        }
-
-        if (cbSunroof.isSelected()){
-            newCar.customization("Sunroof");
-        }
-
-        if (cbGps.isSelected()){
-            newCar.customization("Gps");
-        }
-
-         */
-
-        /*
         //Samler alle checkboxer i ￿￿￿￿én metode
         String value = ((CheckBox)event.getSource()).getText();
         boolean state = ((CheckBox)event.getSource()).isSelected();
