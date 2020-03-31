@@ -1,6 +1,7 @@
 package org.semesteroppgave;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.carcomponents.*;
@@ -15,6 +16,7 @@ public class UserCreateCar {
     private TableView<Component> tableViewComponent;
     private TableView<Component> tableViewVersion;
     private ComboBox<String> cbModel;
+    private Label lblMessage;
 
     private Battery battery = null;
     private FuelContainer fuelContainer = null;
@@ -26,10 +28,11 @@ public class UserCreateCar {
     private SteeringWheel steeringWheel = null;
     private Tires tires = null;
 
-    public UserCreateCar(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel){
+    public UserCreateCar(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage){
         this.tableViewComponent = tableViewComponent;
         this.tableViewVersion = tableViewVersion;
         this.cbModel = cbModel;
+        this.lblMessage = lblMessage;
     }
 
     public void createNewCar(String model1, String model2){
@@ -39,6 +42,7 @@ public class UserCreateCar {
                 if (componentModel.equals(model1) || componentModel.equals(model2)){
                     if (!redundance(model.getComponent())){
                         Context.getInstance().getRegisterComponent().setModelComponentsList(model);
+                        lblMessage.setText("Du kan nå velge komponenter til din \n"+model1+" bil");
                     }
                 }
             }
@@ -46,7 +50,9 @@ public class UserCreateCar {
         tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getModelComponentsList());
 
         tableViewComponent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            showComponents(tableViewComponent.getSelectionModel().getSelectedItem().getComponent());
+            if (newSelection != null){
+                showComponents(tableViewComponent.getSelectionModel().getSelectedItem().getComponent());
+            }
         });
     }
 
@@ -67,11 +73,14 @@ public class UserCreateCar {
         }
         tableViewVersion.setItems(Context.getInstance().getRegisterComponent().getChooseComponentList());
         tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            addToCar(selectedComponent);
+            if (newSelection != null){
+                addToCar(newSelection.getComponent());
+            }
         });
     }
 
     public void addToCar(String selectedComponent){
+        //System.out.println(selectedComponent);
         switch (selectedComponent){
             case "Motor": motor = (Motor) tableViewVersion.getSelectionModel().getSelectedItem();
                 break;
@@ -93,6 +102,7 @@ public class UserCreateCar {
                 break;
             default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
         }
+        lblMessage.setText("Du har opprettet ny "+selectedComponent.toLowerCase());
     }
 
     public Car finishedCar (){

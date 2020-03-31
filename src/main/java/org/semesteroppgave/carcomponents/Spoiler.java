@@ -9,7 +9,7 @@ public class Spoiler extends Component {
 
     public Spoiler(String version, double price, String... model) {
         super(version, price);
-        this.component = "Spioler";
+        this.component = "Spoiler";
         this.model = model;
     }
 

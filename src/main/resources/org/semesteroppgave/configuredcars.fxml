@@ -32,9 +32,9 @@
             </TableColumn>
             <TableColumn fx:id="txtSeatcoverColumn" prefWidth="112.0" text="Setetrekk">
             </TableColumn>
-            <TableColumn fx:id="txtTireColumn" prefWidth="105.0" text="Dekk">
+            <TableColumn fx:id="txtSpoilerColumn" prefWidth="105.0" text="Spoiler">
             </TableColumn>
-            <TableColumn fx:id="txtGearboxColumn" prefWidth="119.0" text="Girsystem">
+            <TableColumn fx:id="txtTireColumn" prefWidth="119.0" text="Dekk">
             </TableColumn>
             <TableColumn fx:id="txtPriceColumn" prefWidth="103.0" text="Pris" />
         </columns>

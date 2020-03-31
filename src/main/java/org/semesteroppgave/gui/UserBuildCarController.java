@@ -51,7 +51,7 @@ public class UserBuildCarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadChoice();
-        newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel);
+        newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
     }
 

@@ -29,15 +29,15 @@ public class ConfiguredCarsController implements Initializable {
     private TableColumn<Car, Double> txtPriceColumnMy;
 
     @FXML
-    private TableColumn<Car, String> txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtTireColumn, txtGearboxColumn;
+    private TableColumn<Car, String> txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtMotorColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("motor"));
         txtRimColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("rim"));
         txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("seatCover"));
+        txtSpoilerColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("spoiler"));
         txtTireColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("tires"));
-        txtGearboxColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("gearbox"));
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
 
         txtPriceColumnMy.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
