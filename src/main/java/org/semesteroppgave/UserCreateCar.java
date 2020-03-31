@@ -143,7 +143,7 @@ public class UserCreateCar {
     }
 
 
-    public void customization(CheckBox cbAutopilot,CheckBox cbTowbar,CheckBox cbSunroof,CheckBox cbGps){
+    public void customization(CheckBox cbAutopilot, CheckBox cbTowbar, CheckBox cbSunroof, CheckBox cbGps){
 
         if (cbAutopilot.isSelected() && autopilot == null){
             System.out.println("Autopilot");
