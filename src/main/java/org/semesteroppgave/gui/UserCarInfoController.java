@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserCarInfoController implements Initializable {
+
     @FXML
     private TextArea txtInfo;
 
