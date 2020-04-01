@@ -67,17 +67,17 @@ public class Diesel extends Car {
         String message =
                 "Bilmodell: "+getModel()+"\nModellpris: "+getModelPrice()+"\n\n"+
                 super.toString()+
-                "Tank: "+getFuelContainer().getVersion()+"\npris: "+ getFuelContainer().getPrice()+"\nBeskrivelse: "+getFuelContainer().getDescription()+"\n\n"+
-                "Girboks: "+getGearbox().getVersion()+"\npris: "+ getGearbox().getPrice()+"\nBeskrivelse: "+getGearbox().getDescription()+"\n\n"+
+                "Tank: "+getFuelContainer().getVersion()+"\nPris: "+ getFuelContainer().getPrice()+"\nBeskrivelse: "+getFuelContainer().getDescription()+"\n\n"+
+                "Girboks: "+getGearbox().getVersion()+"\nPris: "+ getGearbox().getPrice()+"\nBeskrivelse: "+getGearbox().getDescription()+"\n\n"+
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
         if (getGps() != null){
-            message += getGps().getCustomProperty()+"\npris: "+getGps().getPrice()+"\n\n";
+            message += getGps().getCustomProperty()+"\nPris: "+getGps().getPrice()+"\n\n";
         }
         if (getSunroof() != null){
-            message += getSunroof().getCustomProperty()+"\npris: "+getSunroof().getPrice()+"\n\n";
+            message += getSunroof().getCustomProperty()+"\nPris: "+getSunroof().getPrice()+"\n\n";
         }
         if (getTowbar() != null){
-            message += getTowbar().getCustomProperty()+"\npris: "+getTowbar().getPrice()+"\n\n";
+            message += getTowbar().getCustomProperty()+"\nPris: "+getTowbar().getPrice()+"\n\n";
         }
         if (getGps() == null && getSunroof() == null && getTowbar() == null){
             message += "Denne komfigurasjonen har ingen tilpasninger\n\n";

@@ -71,19 +71,19 @@ public class Electric extends Car {
         String message =
                 "Bilmodell: "+getModel()+"\nModellpris: "+getModelPrice()+"\n\n"+
                 super.toString()+
-                "Batteri : "+getBattery().getVersion()+"\npris: "+ getBattery().getPrice()+"\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
+                "Batteri : "+getBattery().getVersion()+"\nPris: "+ getBattery().getPrice()+"\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
         if (getAutopilot() != null){
-            message += getAutopilot().getCustomProperty()+"\npris: "+getAutopilot().getPrice()+"\n\n";
+            message += getAutopilot().getCustomProperty()+"\nPris: "+getAutopilot().getPrice()+"\n\n";
         }
         if (getGps() != null){
-            message += getGps().getCustomProperty()+"\npris: "+getGps().getPrice()+"\n\n";
+            message += getGps().getCustomProperty()+"\nPris: "+getGps().getPrice()+"\n\n";
         }
         if (getSunroof() != null){
-            message += getSunroof().getCustomProperty()+"\npris: "+getSunroof().getPrice()+"\n\n";
+            message += getSunroof().getCustomProperty()+"\nPris: "+getSunroof().getPrice()+"\n\n";
         }
         if (getTowbar() != null){
-            message += getTowbar().getCustomProperty()+"\npris: "+getTowbar().getPrice()+"\n\n";
+            message += getTowbar().getCustomProperty()+"\nPris: "+getTowbar().getPrice()+"\n\n";
         }
         if (getAutopilot() == null && getGps() == null && getSunroof() == null && getTowbar() == null){
             message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
