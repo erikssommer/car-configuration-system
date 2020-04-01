@@ -198,7 +198,7 @@ public class UserCreateCar {
             try {
                 Car product = null;
                 switch (cbModel.getValue()){
-                    case "Elektisk": product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
+                    case "Elektrisk": product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
                         break;
                     case "Diesel": product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
                         break;

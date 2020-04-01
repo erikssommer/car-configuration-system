@@ -56,6 +56,15 @@ public class ConfiguredCarsController implements Initializable {
 
     @FXML
     void btnMoreInfo(ActionEvent event) throws IOException {
-        Main.setRoot("usercarinfo");
+        if (tableViewConfigs.getSelectionModel().getSelectedItem() != null){
+            Context.getInstance().getRegisterProduct().setSelectedCar(tableViewConfigs.getSelectionModel().getSelectedItem());
+            try{
+                Main.setRoot("usercarinfo");
+            } catch (IOException e){
+                Dialogs.showErrorDialog("Oups", "Det har skjedd en feil i åpning av nytt vindu", e.getMessage());
+            }
+        }else {
+            Dialogs.showErrorDialog("Oups", "Du må velge en bil først!", "Prøv igjen etter å ha valgt et produkt");
+        }
     }
 }

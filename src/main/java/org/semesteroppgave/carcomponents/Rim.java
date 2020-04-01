@@ -7,8 +7,8 @@ public class Rim extends Component {
     private String [] model;
     private String component;
 
-    public Rim(String version, double price, String... model) {
-        super(version, price);
+    public Rim(String version, double price, String description, String... model) {
+        super(version, price, description);
         this.component = "Felg";
         this.model = model;
     }

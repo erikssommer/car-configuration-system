@@ -7,8 +7,8 @@ public class Tires extends Component {
     private String [] model;
     private String component;
 
-    public Tires(String version, double price, String... model) {
-        super(version, price);
+    public Tires(String version, double price, String description, String... model) {
+        super(version, price, description);
         this.component = "Dekk";
         this.model = model;
     }

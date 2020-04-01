@@ -16,7 +16,7 @@ public abstract class Car implements Serializable {
     private Gps gps;
     private Sunroof sunroof;
     private Towbar towbar;
-    private double price;
+    private double totalPrice;
 
     public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar) {
         if (motor == null || rim == null || spoiler == null || tires == null) throw new NullPointerException("Du har glemt å opprette en eller flere komponenter");
@@ -94,5 +94,22 @@ public abstract class Car implements Serializable {
 
     public void setTowbar(Towbar towbar) {
         this.towbar = towbar;
+    }
+
+    public double getTotalPrice(){
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice){
+        this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public String toString(){
+        return "Motor: "+getMotor().getVersion()+"\nPris: "+ getMotor().getPrice()+"\nBeskrivelse: "+getMotor().getDescription()+"\n\n"+
+                "Felg: "+getRim().getVersion()+"\nPris: "+ getRim().getPrice()+"\nBeskrivelse: "+getRim().getDescription()+"\n\n"+
+                "Setetrekk: "+getSeatCover().getVersion()+"\nPris: "+ getSeatCover().getPrice()+"\nBeskrivelse: "+getSeatCover().getDescription()+"\n\n"+
+                "Spoiler: "+getSpoiler().getVersion()+"\nPris: "+ getSpoiler().getPrice()+"\nBeskrivelse: "+getSpoiler().getDescription()+"\n\n"+
+                "Dekk: "+getTires().getVersion()+"\nPris: "+ getTires().getPrice()+"\nBeskrivelse: "+getTires().getDescription()+"\n\n";
     }
 }

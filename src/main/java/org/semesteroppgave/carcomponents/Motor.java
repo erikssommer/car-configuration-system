@@ -7,8 +7,8 @@ public class Motor extends Component {
     private String [] model;
     private String component;
 
-    public Motor(String version, double price, String... model) {
-        super(version, price);
+    public Motor(String version, double price, String description, String... model) {
+        super(version, price, description);
         this.component = "Motor";
         this.model = model;
     }
