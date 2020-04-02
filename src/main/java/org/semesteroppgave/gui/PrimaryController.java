@@ -1,10 +1,14 @@
 package org.semesteroppgave.gui;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.semesteroppgave.Context;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.carcomponents.*;
 
 public class PrimaryController {
 

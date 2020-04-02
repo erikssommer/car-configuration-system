@@ -1,28 +1,56 @@
 package org.semesteroppgave.gui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.ContextMenuEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.semesteroppgave.UserCreateCar;
+import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UserBuildCarController {
+public class UserBuildCarController implements Initializable {
+
+    private ObservableList<String> modelChoice = FXCollections.observableArrayList();
+    private UserCreateCar newCar;
 
     @FXML
-    private TableView<?> tableViewComponent;
+    private ComboBox<String> cbModel;
 
     @FXML
-    private TableView<?> tableViewVersion;
+    private CheckBox cbAutopilot, cbTowbar, cbSunroof, cbGps;
+
+    @FXML
+    private TableView<Component> tableViewComponent;
+
+    @FXML
+    private TableView<Component> tableViewVersion;
+
+    @FXML
+    private TableColumn<Component, Double> txtPriceColumn;
 
     @FXML
     private TextField txtTotalPrice;
 
     @FXML
     private Label lblMessage;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadChoice();
+        newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
+        cbAutopilot.setVisible(false);
+    }
 
     @FXML
     void btnShowConfigs(ActionEvent event) throws IOException {
@@ -40,29 +68,66 @@ public class UserBuildCarController {
     }
 
     @FXML
-    void cbAutopilot(ActionEvent event) {
+    void choiseMade(Event event) {
+        //TODO dette kan nok skrives på en bedre måte, men det funker
+        //Teller som forsikrer at changed metoden bare kjøres én gang for hver event
+        final int[] counter = {0};
+        cbModel.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String previous, String active) {
+                if (counter[0] == 0){
+                    switch (active){
+                        case "Elektrisk": newCar.createNewCar("Electric", "universial");
+                            resetChoiceBox(true);
+                            counter[0]++;
+                            break;
+                        case "Diesel": newCar.createNewCar("Diesel", "universial");
+                            resetChoiceBox(false);
+                            counter[0]++;
+                            break;
+                        case "Hybrid": newCar.createNewCar("Hybrid", "universial");
+                            resetChoiceBox(false);
+                            counter[0]++;
+                            break;
+                    }
+                }
+            }
+        });
+    }
+
+    public void resetChoiceBox(boolean state){
+
+        if (state){
+            cbAutopilot.setVisible(true);
+        }else {
+            cbAutopilot.setVisible(false);
+        }
+
+        cbAutopilot.setSelected(false);
+        cbGps.setSelected(false);
+        cbSunroof.setSelected(false);
+        cbTowbar.setSelected(false);
+        newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
+        newCar.updateLivePrice();
+    }
+
+
+    @FXML
+    void cbClicked(ActionEvent event) {
+
+        newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
 
     }
 
     @FXML
-    void cbGps(ActionEvent event) {
-
+    void btnDone(ActionEvent event) {
+        newCar.finishedCar();
     }
 
-    @FXML
-    void cbHitch(ActionEvent event) {
-
+    public void loadChoice(){
+        modelChoice.removeAll();
+        modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
+        cbModel.getItems().addAll(modelChoice);
+        cbModel.setPromptText("Velg modell");
     }
-
-    @FXML
-    void cbSunroof(ActionEvent event) {
-
-    }
-
-    @FXML
-    void choiseMade(ContextMenuEvent event) {
-
-    }
-
-
 }
