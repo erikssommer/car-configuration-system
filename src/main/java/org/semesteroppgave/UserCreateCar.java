@@ -20,20 +20,19 @@ public class UserCreateCar {
     private Label lblMessage;
     private TextField txtTotalPrice;
 
-    private Battery battery = null;
-    private FuelContainer fuelContainer = null;
-    private Gearbox gearbox = null;
-    private Motor motor = null;
-    private Rim rim = null;
-    private SeatCover seatCover = null;
-    private Spoiler spoiler = null;
-    private SteeringWheel steeringWheel = null;
-    private Tires tires = null;
+    private Battery battery;
+    private FuelContainer fuelContainer;
+    private Gearbox gearbox;
+    private Motor motor;
+    private Rim rim;
+    private SeatCover seatCover;
+    private Spoiler spoiler;
+    private Tires tires;
 
-    private Autopilot autopilot = null;
-    private Gps gps = null;
-    private Sunroof sunroof = null;
-    private Towbar towbar = null;
+    private Autopilot autopilot;
+    private Gps gps;
+    private Sunroof sunroof;
+    private Towbar towbar;
 
     private double livePrice;
     private double previousPrice;
@@ -106,9 +105,6 @@ public class UserCreateCar {
             case "Setetrekk": seatCover = (SeatCover) tableViewVersion.getSelectionModel().getSelectedItem();
                 addToPrice(seatCover);
                 break;
-            case "Ratt": steeringWheel = (SteeringWheel) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(steeringWheel);
-                break;
             case "Spoiler": spoiler = (Spoiler) tableViewVersion.getSelectionModel().getSelectedItem();
                 addToPrice(spoiler);
                 break;
@@ -126,7 +122,7 @@ public class UserCreateCar {
                 break;
             default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
         }
-        txtTotalPrice.setText(String.valueOf(livePrice));
+        updateLivePrice();
         lblMessage.setText("Du har opprettet ny "+selectedComponent.toLowerCase());
     }
 
@@ -189,7 +185,19 @@ public class UserCreateCar {
             gps = null;
         }
 
+        updateLivePrice();
+    }
+
+    public void updateLivePrice(){
         txtTotalPrice.setText(String.valueOf(livePrice));
+    }
+
+    public double getLivePrice(){
+        return this.livePrice;
+    }
+
+    public void resetLivePrice(){
+        this.livePrice = 0;
     }
 
     public void finishedCar (){

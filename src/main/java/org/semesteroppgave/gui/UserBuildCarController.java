@@ -78,22 +78,43 @@ public class UserBuildCarController implements Initializable {
     @FXML
     void choiseMade(Event event) {
         //TODO dette kan nok skrives på en bedre måte, men det funker
+        //Teller som forsikrer at changed metoden bare kjøres én gang for hver event
+        final int[] counter = {0};
         cbModel.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue ov, String previous, String active) {
-                switch (active){
-                    case "Elektrisk": newCar.createNewCar("Electric", "universial");
-                        cbAutopilot.setVisible(true);
-                        break;
-                    case "Diesel": newCar.createNewCar("Diesel", "universial");
-                        cbAutopilot.setVisible(false);
-                        break;
-                    case "Hybrid": newCar.createNewCar("Hybrid", "universial");
-                        cbAutopilot.setVisible(false);
-                        break;
+                if (counter[0] == 0){
+                    switch (active){
+                        case "Elektrisk": newCar.createNewCar("Electric", "universial");
+                            resetChoiseBox(true);
+                            counter[0]++;
+                            break;
+                        case "Diesel": newCar.createNewCar("Diesel", "universial");
+                            resetChoiseBox(false);
+                            counter[0]++;
+                            break;
+                        case "Hybrid": newCar.createNewCar("Hybrid", "universial");
+                            resetChoiseBox(false);
+                            counter[0]++;
+                            break;
+                    }
                 }
             }
         });
+    }
+
+    public void resetChoiseBox(boolean state){
+        if (state){
+            cbAutopilot.setVisible(true);
+        }else {
+            cbAutopilot.setVisible(false);
+        }
+        cbAutopilot.setSelected(false);
+        cbGps.setSelected(false);
+        cbSunroof.setSelected(false);
+        cbTowbar.setSelected(false);
+        newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
+        newCar.updateLivePrice();
     }
 
 
@@ -102,19 +123,6 @@ public class UserBuildCarController implements Initializable {
 
         newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
 
-        /*
-        //Samler alle checkboxer i ￿￿￿￿én metode
-        String value = ((CheckBox)event.getSource()).getText();
-        boolean state = ((CheckBox)event.getSource()).isSelected();
-        System.out.println(cbAutopilot.isSelected());
-
-        if (state){
-            lblMessage.setText(value + " er true");
-        }else {
-            lblMessage.setText(value + " er false");
-        }
-
-         */
     }
 
     @FXML
