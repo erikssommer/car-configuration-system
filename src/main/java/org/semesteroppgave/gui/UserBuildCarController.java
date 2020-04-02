@@ -10,17 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
-import org.semesteroppgave.Context;
 import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.carcomponents.Motor;
-import org.semesteroppgave.carcustomization.Autopilot;
-import org.semesteroppgave.carcustomization.Gps;
-import org.semesteroppgave.carcustomization.Sunroof;
-import org.semesteroppgave.carcustomization.Towbar;
-import org.semesteroppgave.carmodel.Car;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,15 +78,15 @@ public class UserBuildCarController implements Initializable {
                 if (counter[0] == 0){
                     switch (active){
                         case "Elektrisk": newCar.createNewCar("Electric", "universial");
-                            resetChoiseBox(true);
+                            resetChoiceBox(true);
                             counter[0]++;
                             break;
                         case "Diesel": newCar.createNewCar("Diesel", "universial");
-                            resetChoiseBox(false);
+                            resetChoiceBox(false);
                             counter[0]++;
                             break;
                         case "Hybrid": newCar.createNewCar("Hybrid", "universial");
-                            resetChoiseBox(false);
+                            resetChoiceBox(false);
                             counter[0]++;
                             break;
                     }
@@ -103,12 +95,14 @@ public class UserBuildCarController implements Initializable {
         });
     }
 
-    public void resetChoiseBox(boolean state){
+    public void resetChoiceBox(boolean state){
+
         if (state){
             cbAutopilot.setVisible(true);
         }else {
             cbAutopilot.setVisible(false);
         }
+
         cbAutopilot.setSelected(false);
         cbGps.setSelected(false);
         cbSunroof.setSelected(false);
