@@ -14,7 +14,8 @@ public class Diesel extends Car {
 
     public Diesel(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, FuelContainer fuelContainer, Gearbox gearbox) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (fuelContainer == null || gearbox == null) throw new NullPointerException("Du har glemt å opprette en tank eller en girboks");
+        if (fuelContainer == null) throw new NullPointerException("Du har glemt å velge en tank");
+        if (gearbox == null) throw new NullPointerException("Du har glemt å velge en girboks");
         this.fuelContainer = fuelContainer;
         this.gearbox = gearbox;
         this.model = "Diesel";

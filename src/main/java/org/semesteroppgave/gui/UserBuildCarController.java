@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.Main;
@@ -39,6 +40,9 @@ public class UserBuildCarController implements Initializable {
     private TableColumn<Component, Double> txtPriceColumn;
 
     @FXML
+    private GridPane gridPaneCustom;
+
+    @FXML
     private TextField txtTotalPrice;
 
     @FXML
@@ -50,15 +54,13 @@ public class UserBuildCarController implements Initializable {
         newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
         cbAutopilot.setVisible(false);
+        gridPaneCustom.setDisable(true);
+        tableViewComponent.setDisable(true);
+        tableViewVersion.setDisable(true);
     }
 
     @FXML
-    void btnShowConfigs(ActionEvent event) throws IOException {
-        Main.setRoot("configuredcars");
-    }
-
-    @FXML
-    void btnShowMyConfig(ActionEvent event) throws IOException {
+    void btnShowConfig(ActionEvent event) throws IOException {
         Main.setRoot("configuredcars");
     }
 
@@ -103,6 +105,9 @@ public class UserBuildCarController implements Initializable {
             cbAutopilot.setVisible(false);
         }
 
+        gridPaneCustom.setDisable(false);
+        tableViewComponent.setDisable(false);
+        tableViewVersion.setDisable(false);
         cbAutopilot.setSelected(false);
         cbGps.setSelected(false);
         cbSunroof.setSelected(false);

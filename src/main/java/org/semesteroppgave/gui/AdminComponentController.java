@@ -63,8 +63,8 @@ public class AdminComponentController implements Initializable {
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Bekreft");
-            alert.setHeaderText("Du har valgt komponenten: " + tableViewComponents.getSelectionModel().getSelectedItem().getComponent().toLowerCase()
-                    + ", versjon: "+ tableViewComponents.getSelectionModel().getSelectedItem().getVersion().toLowerCase());
+            alert.setHeaderText("Du har valgt komponenten: " + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
+                    + ", versjon: "+ tableViewComponents.getSelectionModel().getSelectedItem().getVersion());
             alert.setContentText("Ønsker du virkerlig å slette denne komponenten?");
             alert.showAndWait().ifPresent(response -> {
                 if(response == ButtonType.OK){
