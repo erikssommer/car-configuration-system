@@ -17,6 +17,7 @@ import org.semesteroppgave.exceptions.InvalidVersionException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AdminComponentController implements Initializable {
@@ -55,6 +56,24 @@ public class AdminComponentController implements Initializable {
     void btnCreate(ActionEvent event) throws IOException {
         Context.getInstance().getRegisterComponent().setNewComponent(cbCreate.getValue());
         Main.setRoot("admincreate");
+    }
+
+    @FXML
+    void btnDeleteComponent(ActionEvent event) {
+        if (tableViewComponents.getSelectionModel().getSelectedItem() != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Bekreft");
+            alert.setHeaderText("Du har valgt komponenten: " + tableViewComponents.getSelectionModel().getSelectedItem().getComponent().toLowerCase()
+                    + ", versjon: "+ tableViewComponents.getSelectionModel().getSelectedItem().getVersion().toLowerCase());
+            alert.setContentText("Ønsker du virkerlig å slette denne komponenten?");
+            alert.showAndWait().ifPresent(response -> {
+                if(response == ButtonType.OK){
+                    Context.getInstance().getRegisterComponent().getComponentsList().remove(tableViewComponents.getSelectionModel().getSelectedItem());
+                }
+            });
+        }else {
+            Dialogs.showErrorDialog("Feil", "Du har ikke valgt en komponent", "Velg en komponent og prøv på nytt");
+        }
     }
 
 
