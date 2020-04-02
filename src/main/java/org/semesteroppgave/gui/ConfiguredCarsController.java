@@ -31,8 +31,20 @@ public class ConfiguredCarsController implements Initializable {
     @FXML
     private TableColumn<Car, String> txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn;
 
+    @FXML
+    private TableColumn<Car, String> txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setTableColum(txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn, txtPriceColumn);
+        tableViewConfigs.setItems(Context.getInstance().getRegisterProduct().getCarList());
+
+        setTableColum(txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy, txtPriceColumnMy);
+        tableViewMyConfig.setItems(Context.getInstance().getRegisterProduct().getMyCarList());
+
+    }
+
+    private void setTableColum(TableColumn<Car, String> txtMotorColumn, TableColumn<Car, String> txtRimColumn, TableColumn<Car, String> txtSeatcoverColumn, TableColumn<Car, String> txtSpoilerColumn, TableColumn<Car, String> txtTireColumn, TableColumn<Car, Double> txtPriceColumn) {
         txtMotorColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("motor"));
         txtRimColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("rim"));
         txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("seatCover"));
@@ -40,8 +52,7 @@ public class ConfiguredCarsController implements Initializable {
         txtTireColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("tires"));
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
 
-        txtPriceColumnMy.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
-        tableViewConfigs.setItems(Context.getInstance().getRegisterProduct().getCarList());
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
     }
 
     @FXML
@@ -55,9 +66,28 @@ public class ConfiguredCarsController implements Initializable {
     }
 
     @FXML
+    void btnAddToConfigs(ActionEvent event) {
+        if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null){
+            Context.getInstance().getRegisterProduct().setCarList(tableViewMyConfig.getSelectionModel().getSelectedItem());
+            Context.getInstance().getRegisterProduct().getMyCarList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
+
+        }else {
+            Dialogs.showErrorDialog("Oups", "Du må markere produktet ditt først!", "Prøv igjen etter å ha valgt din konfigurasjon");
+        }
+    }
+
+    @FXML
     void btnMoreInfo(ActionEvent event) throws IOException {
-        if (tableViewConfigs.getSelectionModel().getSelectedItem() != null){
-            Context.getInstance().getRegisterProduct().setSelectedCar(tableViewConfigs.getSelectionModel().getSelectedItem());
+        chooseTable(tableViewConfigs, tableViewMyConfig);
+    }
+
+    private void chooseTable(TableView<Car> tableViewMyConfig, TableView<Car> tableViewConfigs) {
+        if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null || tableViewConfigs.getSelectionModel().getSelectedItem() != null){
+            if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null && tableViewConfigs.getSelectionModel().getSelectedItem() == null){
+                Context.getInstance().getRegisterProduct().setSelectedCar(tableViewMyConfig.getSelectionModel().getSelectedItem());
+            }else {
+                Context.getInstance().getRegisterProduct().setSelectedCar(tableViewConfigs.getSelectionModel().getSelectedItem());
+            }
             try{
                 Main.setRoot("usercarinfo");
             } catch (IOException e){

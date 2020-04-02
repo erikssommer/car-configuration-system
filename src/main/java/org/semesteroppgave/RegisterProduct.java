@@ -5,7 +5,11 @@ import javafx.collections.ObservableList;
 import org.semesteroppgave.carmodel.Car;
 
 public class RegisterProduct {
+    //Listen carList er alle tidligere konfigurerte biler
+    //Listen myCarList er min konfigurerte bil
+    //Objektet selectedCar er den bilen som skal vises mer informasjon om
     private ObservableList<Car> carList = FXCollections.observableArrayList();
+    private ObservableList<Car> myCarList = FXCollections.observableArrayList();
     private Car selectedCar;
 
     public ObservableList<Car> getCarList(){
@@ -16,7 +20,14 @@ public class RegisterProduct {
         carList.add(car);
     }
 
-    //Finner den bilen som skal vises mer informasjon om
+    public ObservableList<Car> getMyCarList(){
+        return this.myCarList;
+    }
+
+    public void setMyCarList(Car car){
+        myCarList.add(car);
+    }
+
     public Car getSelectedCar(){
         return this.selectedCar;
     }

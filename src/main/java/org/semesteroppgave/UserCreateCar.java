@@ -208,13 +208,13 @@ public class UserCreateCar {
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Bekreft");
-                alert.setHeaderText("Du ønsker å opprette en "+ cbModel.getValue());
+                alert.setHeaderText("Du ønsker å opprette en "+ cbModel.getValue().toLowerCase()+ " bil");
                 alert.setContentText("Er du sikker på dette?");
                 Car finalProduct = product;
                 alert.showAndWait().ifPresent(response -> {
                     if(response == ButtonType.OK){
                         Dialogs.showSuccessDialog("Gjennomført", "Du har nå opprettet din komfigurasjon", "Trykk på 'vis konfig' for å se en oversikt");
-                        Context.getInstance().getRegisterProduct().setCarList(finalProduct);
+                        Context.getInstance().getRegisterProduct().setMyCarList(finalProduct);
                     }
                 });
 

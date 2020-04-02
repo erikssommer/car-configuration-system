@@ -55,8 +55,6 @@ public class UserBuildCarController implements Initializable {
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
-        tableViewComponent.setDisable(true);
-        tableViewVersion.setDisable(true);
     }
 
     @FXML
