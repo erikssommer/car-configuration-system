@@ -192,14 +192,6 @@ public class UserCreateCar {
         txtTotalPrice.setText(String.valueOf(livePrice));
     }
 
-    public double getLivePrice(){
-        return this.livePrice;
-    }
-
-    public void resetLivePrice(){
-        this.livePrice = 0;
-    }
-
     public void finishedCar (){
 
         if (cbModel.getValue() != null){
