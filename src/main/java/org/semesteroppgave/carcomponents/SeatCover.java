@@ -7,10 +7,10 @@ public class SeatCover extends Component {
     private String [] model;
     private String component;
 
-    public SeatCover(String version, double price, String description, String... model) {
+    public SeatCover(String version, double price, String description) {
         super(version, price, description);
         this.component = "Setetrekk";
-        this.model = model;
+        this.model = new String[]{"universial"};
     }
 
     @Override

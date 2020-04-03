@@ -7,10 +7,10 @@ public class Spoiler extends Component {
     private String [] model;
     private String component;
 
-    public Spoiler(String version, double price, String description, String... model) {
+    public Spoiler(String version, double price, String description) {
         super(version, price, description);
         this.component = "Spoiler";
-        this.model = model;
+        this.model = new String[]{"universial"};
     }
 
     @Override

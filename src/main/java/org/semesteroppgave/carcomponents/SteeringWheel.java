@@ -7,10 +7,10 @@ public class SteeringWheel extends Component {
     private String [] model;
     private String component;
 
-    public SteeringWheel(String version, double price, String description, String... model) {
+    public SteeringWheel(String version, double price, String description) {
         super(version, price, description);
         this.component = "Ratt";
-        this.model = model;
+        this.model = new String[]{"universial"};
     }
 
     @Override

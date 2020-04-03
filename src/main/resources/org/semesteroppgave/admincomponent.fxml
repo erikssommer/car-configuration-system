@@ -27,7 +27,7 @@
       </Label>
       <TableView fx:id="tableViewComponents" editable="true" layoutX="53.0" layoutY="220.0" prefHeight="239.0" prefWidth="645.0">
         <columns>
-          <TableColumn onEditCommit="#editModel" prefWidth="204.0" text="Komponent">
+          <TableColumn onEditCommit="#editComponent" prefWidth="204.0" text="Komponent">
              <cellValueFactory>
                 <PropertyValueFactory property="component" />
              </cellValueFactory>

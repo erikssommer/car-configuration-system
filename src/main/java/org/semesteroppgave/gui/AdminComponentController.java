@@ -7,11 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
-import org.semesteroppgave.ComponentSearch;
-import org.semesteroppgave.Context;
+import org.semesteroppgave.*;
 import org.semesteroppgave.carcomponents.*;
-import org.semesteroppgave.Main;
+import org.semesteroppgave.exceptions.InvalidComponentException;
 import org.semesteroppgave.exceptions.InvalidPriceException;
 import org.semesteroppgave.exceptions.InvalidVersionException;
 
@@ -25,6 +25,8 @@ public class AdminComponentController implements Initializable {
     private ObservableList<String> componentChoice = FXCollections.observableArrayList();
     private ObservableList<String> componentFilter = FXCollections.observableArrayList();
     private ComponentSearch newSearch = new ComponentSearch();
+    private InputValidation.DoubleStringConverter doubleStrConverter
+            = new InputValidation.DoubleStringConverter();
 
     @FXML
     private Label lblAdminID;
@@ -48,6 +50,7 @@ public class AdminComponentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
+        txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         newSearch.loadFilter(cbFilter);
         loadChoice();
     }
@@ -103,14 +106,23 @@ public class AdminComponentController implements Initializable {
     }
 
     @FXML
-    void editModel(TableColumn.CellEditEvent<Component, String> event) {
+    void editComponent(TableColumn.CellEditEvent<Component, String> event) {
+        try{
+            event.getRowValue().setComponent(InputValidation.testValidComponent(event.getNewValue()));
+            ComponentConverter.convert(event.getTableView().getSelectionModel().getSelectedItem());
+        }catch (InvalidComponentException e){
+            Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig komponent!", e.getMessage());
+            tableViewComponents.refresh();
+        }
+    }
 
-        //TODO lage en validator til modell
+    @FXML
+    void editVersion(TableColumn.CellEditEvent<Component, String> event) {
 
         try{
-            event.getRowValue().setComponent(event.getNewValue());
+            event.getRowValue().setVersion(InputValidation.testValidVersion(event.getNewValue()));
         }catch (InvalidVersionException e){
-            Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig Modell!", e.getMessage());
+            Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig versjon!", e.getMessage());
             tableViewComponents.refresh();
         }
     }
@@ -118,35 +130,17 @@ public class AdminComponentController implements Initializable {
     @FXML
     void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
 
-        //TODO lage en doubleToString converter klasse som kan støtte denne koden (koden her er ferdig)
-
-        /*
         try {
-            if(doubleStrConverter.wasSuccessful())
+            if(doubleStrConverter.wasSuccessful()){
                 event.getRowValue().setPrice(event.getNewValue());
+            }
         } catch (NumberFormatException e) {
-            Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig pris!","Du må skrive inn et positivt tall.");
+            Dialogs.showErrorDialog("Feil,","Feil i pris", "Du må skrive inn et positivt tall");
         } catch (IllegalArgumentException e) {
-            Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig pris!", e.getMessage());
+            Dialogs.showErrorDialog("Feil","Ugyldig pris: ", e.getMessage());
         }
+        tableViewComponents.refresh();
 
-        tableView.refresh();
-
-         */
-
-    }
-
-    @FXML
-    void editVersion(TableColumn.CellEditEvent<Component, String> event) {
-
-        //TODO lage en validator til versjon
-
-        try{
-            event.getRowValue().setVersion(event.getNewValue());
-        }catch (InvalidVersionException e){
-            Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig versjon!", e.getMessage());
-            tableViewComponents.refresh();
-        }
     }
 
     public void loadChoice(){

@@ -1,7 +1,5 @@
 package org.semesteroppgave.carcomponents;
 
-import javafx.beans.property.SimpleStringProperty;
-
 import java.util.ArrayList;
 
 public abstract class Component {
