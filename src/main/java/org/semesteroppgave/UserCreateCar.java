@@ -35,7 +35,7 @@ public class UserCreateCar {
     private Towbar towbar;
 
     private double livePrice;
-    private double previousPrice;
+    private double [] livePriceList;
 
     public UserCreateCar(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice){
         this.tableViewComponent = tableViewComponent;
@@ -57,6 +57,19 @@ public class UserCreateCar {
                 }
             }
         }
+
+        livePriceList = new double[13];
+
+        if ("Electric".equals(model1)) {
+            livePriceList[0] = 1_200_000;
+        }
+        if ("Diesel".equals(model1)){
+            livePriceList[0] = 400_000;
+        }
+        if ("Hybrid".equals(model1)){
+            livePriceList[0] = 850_000;
+        }
+        updateLivePrice();
         tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getModelComponentsList());
 
         tableViewComponent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -97,94 +110,90 @@ public class UserCreateCar {
         //System.out.println(selectedComponent);
         switch (selectedComponent){
             case "Motor": motor = (Motor) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(motor);
+                livePriceList[1] = motor.getPrice();
                 break;
             case "Felg": rim = (Rim) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(rim);
+                livePriceList[2] = rim.getPrice();
                 break;
             case "Setetrekk": seatCover = (SeatCover) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(seatCover);
+                livePriceList[3] = seatCover.getPrice();
                 break;
             case "Spoiler": spoiler = (Spoiler) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(spoiler);
+                livePriceList[4] = spoiler.getPrice();
                 break;
             case "Dekk": tires = (Tires) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(tires);
+                livePriceList[5] = tires.getPrice();
                 break;
             case "Batteri": battery = (Battery) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(battery);
+                livePriceList[6] = battery.getPrice();
                 break;
             case "Tank": fuelContainer = (FuelContainer) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(fuelContainer);
+                livePriceList[7] = fuelContainer.getPrice();
                 break;
             case "Girboks": gearbox = (Gearbox) tableViewVersion.getSelectionModel().getSelectedItem();
-                addToPrice(gearbox);
+                livePriceList[8] = gearbox.getPrice();
                 break;
             default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
         }
-        updateLivePrice();
+        addToPrice();
         lblMessage.setText("Du har opprettet ny "+selectedComponent.toLowerCase());
     }
-
-    public void addToPrice(Component component){
-        //TODO liveprisen funker ikke helt som den skal. Hvordan skal programmet huske forrige pris?
-        if (!component.getAdded()){
-            previousPrice = component.getPrice();
-            livePrice += component.getPrice();
-            component.setAdded(true);
-        }else {
-            livePrice -= previousPrice;
-            livePrice += component.getPrice();
-        }
-    }
-
 
     public void customization(CheckBox cbAutopilot, CheckBox cbTowbar, CheckBox cbSunroof, CheckBox cbGps){
 
         if (cbAutopilot.isSelected() && autopilot == null){
             System.out.println("Autopilot");
             autopilot = new Autopilot();
-            livePrice += autopilot.getPrice();
+            livePriceList[9] = autopilot.getPrice();
         }
 
         if (!cbAutopilot.isSelected() && autopilot != null){
-            livePrice -= autopilot.getPrice();
+            livePriceList[9] = 0;
             autopilot = null;
         }
 
         if (cbTowbar.isSelected() && towbar == null){
             System.out.println("Towbar");
             towbar = new Towbar();
-            livePrice += towbar.getPrice();
+            livePriceList[10] = towbar.getPrice();
         }
 
         if (!cbTowbar.isSelected() && towbar != null){
-            livePrice -= towbar.getPrice();
+            livePriceList[10] = 0;
             towbar = null;
         }
 
         if (cbSunroof.isSelected() && sunroof == null){
             System.out.println("Sunroof");
             sunroof = new Sunroof();
-            livePrice += sunroof.getPrice();
+            livePriceList[11] = sunroof.getPrice();
         }
 
         if (!cbSunroof.isSelected() && sunroof != null){
-            livePrice -= sunroof.getPrice();
+            livePriceList[11] = 0;
             sunroof = null;
         }
 
         if (cbGps.isSelected() && gps == null){
             System.out.println("Gps");
             gps = new Gps();
-            livePrice += gps.getPrice();
+            livePriceList[12] = gps.getPrice();
         }
 
         if (!cbGps.isSelected() && gps != null){
-            livePrice -= gps.getPrice();
+            livePriceList[12] = 0;
             gps = null;
         }
 
+        addToPrice();
+    }
+
+    public void addToPrice(){
+
+        livePrice = 0;
+        for (double pris : livePriceList){
+            livePrice += pris;
+        }
         updateLivePrice();
     }
 

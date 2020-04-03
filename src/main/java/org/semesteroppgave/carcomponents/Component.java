@@ -9,8 +9,6 @@ public abstract class Component {
     private String version;
     private double price;
     private String description;
-    //Dette er testkode
-    private boolean added = false;
 
     public Component(String version, double price, String desciption) {
         if (version.isEmpty() || desciption.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn versjon eller beskrivelse");
@@ -48,12 +46,4 @@ public abstract class Component {
         this.description = description;
     }
 
-    //Dette er testkode
-    public boolean getAdded(){
-        return added;
-    }
-
-    public void setAdded(boolean added){
-        this.added = added;
-    }
 }
