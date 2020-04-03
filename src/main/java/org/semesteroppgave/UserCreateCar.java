@@ -52,7 +52,7 @@ public class UserCreateCar {
                 if (componentModel.equals(model1) || componentModel.equals(model2)){
                     if (!redundance(model.getComponent())){
                         Context.getInstance().getRegisterComponent().setModelComponentsList(model);
-                        lblMessage.setText("Du kan nå velge komponenter til din \n"+model1+" bil");
+                        setLabelText("Du kan nå velge komponenter til din \n"+model1.toLowerCase()+" bil");
                     }
                 }
             }
@@ -60,7 +60,7 @@ public class UserCreateCar {
 
         livePriceList = new double[13];
 
-        if ("Electric".equals(model1)) {
+        if ("Elektrisk".equals(model1)) {
             livePriceList[0] = 1_200_000;
         }
         if ("Diesel".equals(model1)){
@@ -69,6 +69,7 @@ public class UserCreateCar {
         if ("Hybrid".equals(model1)){
             livePriceList[0] = 850_000;
         }
+
         updateLivePrice();
         tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getModelComponentsList());
 
@@ -106,8 +107,7 @@ public class UserCreateCar {
     }
 
     public void addToCar(String selectedComponent){
-        System.out.println("Teller");
-        //System.out.println(selectedComponent);
+
         switch (selectedComponent){
             case "Motor": motor = (Motor) tableViewVersion.getSelectionModel().getSelectedItem();
                 livePriceList[1] = motor.getPrice();
@@ -136,51 +136,55 @@ public class UserCreateCar {
             default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
         }
         addToPrice();
-        lblMessage.setText("Du har opprettet ny "+selectedComponent.toLowerCase());
+        setLabelText("Du har valgt ny " + selectedComponent.toLowerCase());
     }
 
     public void customization(CheckBox cbAutopilot, CheckBox cbTowbar, CheckBox cbSunroof, CheckBox cbGps){
 
         if (cbAutopilot.isSelected() && autopilot == null){
-            System.out.println("Autopilot");
+            setLabelText("Du har lagt til autopilot");
             autopilot = new Autopilot();
             livePriceList[9] = autopilot.getPrice();
         }
 
         if (!cbAutopilot.isSelected() && autopilot != null){
+            setLabelText("Du har fjernet autopilot");
             livePriceList[9] = 0;
             autopilot = null;
         }
 
         if (cbTowbar.isSelected() && towbar == null){
-            System.out.println("Towbar");
+            setLabelText("Du har lagt til hengerfeste");
             towbar = new Towbar();
             livePriceList[10] = towbar.getPrice();
         }
 
         if (!cbTowbar.isSelected() && towbar != null){
+            setLabelText("Du har fjernet hengerfeste");
             livePriceList[10] = 0;
             towbar = null;
         }
 
         if (cbSunroof.isSelected() && sunroof == null){
-            System.out.println("Sunroof");
+            setLabelText("Du har lagt til soltak");
             sunroof = new Sunroof();
             livePriceList[11] = sunroof.getPrice();
         }
 
         if (!cbSunroof.isSelected() && sunroof != null){
+            setLabelText("Du har fjernet soltak");
             livePriceList[11] = 0;
             sunroof = null;
         }
 
         if (cbGps.isSelected() && gps == null){
-            System.out.println("Gps");
+            setLabelText("Du har lagt til gps-system");
             gps = new Gps();
             livePriceList[12] = gps.getPrice();
         }
 
         if (!cbGps.isSelected() && gps != null){
+            setLabelText("Du har fjernet gps-system");
             livePriceList[12] = 0;
             gps = null;
         }
@@ -199,6 +203,10 @@ public class UserCreateCar {
 
     public void updateLivePrice(){
         txtTotalPrice.setText(String.valueOf(livePrice));
+    }
+
+    public void setLabelText(String message){
+        lblMessage.setText(message);
     }
 
     public void finishedCar (){

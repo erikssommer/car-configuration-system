@@ -98,7 +98,7 @@ public class AdminCreateController implements Initializable {
         Context.getInstance().getRegisterComponent().setComponentsList(gearbox);
         Gearbox gearbox2 = new Gearbox("Automat",5000,"Automat girboks er dyrere enn manuell, men er mer komportabelt","Diesel");
         Context.getInstance().getRegisterComponent().setComponentsList(gearbox2);
-        Battery battery = new Battery("Li-ion",10000,"Li-ion batteri er miljøvennlige og har lang rekkevidde","Hybrid", "Electric");
+        Battery battery = new Battery("Li-ion",10000,"Li-ion batteri er miljøvennlige og har lang rekkevidde","Hybrid", "Elektrisk");
         Context.getInstance().getRegisterComponent().setComponentsList(battery);
         FuelContainer fuelContainer = new FuelContainer("50-liter",5000,"Denne tanken er ikke så stor, men er billig","Diesel", "Hybrid");
         Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer);

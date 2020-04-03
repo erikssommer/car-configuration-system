@@ -52,7 +52,7 @@ public class UserBuildCarController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadChoice();
         newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
     }
@@ -72,24 +72,21 @@ public class UserBuildCarController implements Initializable {
         //TODO dette kan nok skrives på en bedre måte, men det funker
         //Teller som forsikrer at changed metoden bare kjøres én gang for hver event
         final int[] counter = {0};
-        cbModel.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue ov, String previous, String active) {
-                if (counter[0] == 0){
-                    switch (active){
-                        case "Elektrisk": newCar.createNewCar("Electric", "universial");
-                            resetChoiceBox(true);
-                            counter[0]++;
-                            break;
-                        case "Diesel": newCar.createNewCar("Diesel", "universial");
-                            resetChoiceBox(false);
-                            counter[0]++;
-                            break;
-                        case "Hybrid": newCar.createNewCar("Hybrid", "universial");
-                            resetChoiceBox(false);
-                            counter[0]++;
-                            break;
-                    }
+        cbModel.valueProperty().addListener((ov, previous, active) -> {
+            if (counter[0] == 0){
+                switch (active){
+                    case "Elektrisk": newCar.createNewCar("Elektrisk", "universial");
+                        resetChoiceBox(true);
+                        counter[0]++;
+                        break;
+                    case "Diesel": newCar.createNewCar("Diesel", "universial");
+                        resetChoiceBox(false);
+                        counter[0]++;
+                        break;
+                    case "Hybrid": newCar.createNewCar("Hybrid", "universial");
+                        resetChoiceBox(false);
+                        counter[0]++;
+                        break;
                 }
             }
         });
