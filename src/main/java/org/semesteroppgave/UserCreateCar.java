@@ -83,7 +83,9 @@ public class UserCreateCar {
     public boolean redundance(String componentModel){
         boolean redundance = false;
         for (Component component : Context.getInstance().getRegisterComponent().getModelComponentsList()){
-            redundance = componentModel.equals(component.getComponent());
+            if (component.getComponent().equals(componentModel)){
+                redundance = true;
+            }
         }
         return redundance;
     }

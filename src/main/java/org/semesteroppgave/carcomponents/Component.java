@@ -11,7 +11,8 @@ public abstract class Component {
     private String description;
 
     public Component(String version, double price, String desciption) {
-        if (version.isEmpty() || desciption.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn versjon eller beskrivelse");
+        if (version.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn versjonen");
+        if (desciption.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn beskrivelsen");
         this.version = version;
         this.price = price;
         this.description = desciption;
