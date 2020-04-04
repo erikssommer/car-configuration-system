@@ -23,9 +23,7 @@ public class ComponentSearch {
                 break;
             case "Pris" : try {
                 searchResult.addAll(Context.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
-            }catch (Exception e){
-                throw new InvalidPriceException("Det er noe galt med prisen");
-            }
+            }catch (NumberFormatException ignored){}
                 break;
         }
 

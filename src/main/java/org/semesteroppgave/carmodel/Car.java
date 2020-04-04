@@ -6,6 +6,7 @@ import org.semesteroppgave.carcustomization.Towbar;
 import org.semesteroppgave.carcomponents.*;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 public abstract class Car implements Serializable {
     private Motor motor;
@@ -16,7 +17,6 @@ public abstract class Car implements Serializable {
     private Gps gps;
     private Sunroof sunroof;
     private Towbar towbar;
-    private double totalPrice;
 
     public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar) {
         if (motor == null) throw new NullPointerException("Du har glemt å velge en motor");
@@ -33,8 +33,6 @@ public abstract class Car implements Serializable {
         this.sunroof = sunroof;
         this.towbar = towbar;
     }
-
-    public abstract double getPrice();
 
     public Motor getMotor(){
         return this.motor;
@@ -100,20 +98,32 @@ public abstract class Car implements Serializable {
         this.towbar = towbar;
     }
 
-    public double getTotalPrice(){
-        return totalPrice;
+
+    public double getPrice(){
+
+        double price = getMotor().getPrice() + getRim().getPrice() + getSeatCover().getPrice() +
+                getSpoiler().getPrice() + getTires().getPrice();
+        if (getGps() != null){
+            price += getGps().getPrice();
+        }
+        if (getSunroof() != null){
+            price += getSunroof().getPrice();
+        }
+        if (getTowbar() != null){
+            price += getTowbar().getPrice();
+        }
+
+        return price;
     }
 
-    public void setTotalPrice(double totalPrice){
-        this.totalPrice = totalPrice;
-    }
 
     @Override
     public String toString(){
-        return "Motor: "+getMotor().getVersion()+"\nPris: "+ getMotor().getPrice()+"\nBeskrivelse: "+getMotor().getDescription()+"\n\n"+
-                "Felg: "+getRim().getVersion()+"\nPris: "+ getRim().getPrice()+"\nBeskrivelse: "+getRim().getDescription()+"\n\n"+
-                "Setetrekk: "+getSeatCover().getVersion()+"\nPris: "+ getSeatCover().getPrice()+"\nBeskrivelse: "+getSeatCover().getDescription()+"\n\n"+
-                "Spoiler: "+getSpoiler().getVersion()+"\nPris: "+ getSpoiler().getPrice()+"\nBeskrivelse: "+getSpoiler().getDescription()+"\n\n"+
-                "Dekk: "+getTires().getVersion()+"\nPris: "+ getTires().getPrice()+"\nBeskrivelse: "+getTires().getDescription()+"\n\n";
+        DecimalFormat df = new DecimalFormat("###,###,###.###");
+        return "Motor: "+getMotor().getVersion()+"\nPris: "+ df.format(getMotor().getPrice())+"kr\nBeskrivelse: "+getMotor().getDescription()+"\n\n"+
+                "Felg: "+getRim().getVersion()+"\nPris: "+ df.format(getRim().getPrice())+"kr\nBeskrivelse: "+getRim().getDescription()+"\n\n"+
+                "Setetrekk: "+getSeatCover().getVersion()+"\nPris: "+ df.format(getSeatCover().getPrice())+"kr\nBeskrivelse: "+getSeatCover().getDescription()+"\n\n"+
+                "Spoiler: "+getSpoiler().getVersion()+"\nPris: "+ df.format(getSpoiler().getPrice())+"kr\nBeskrivelse: "+getSpoiler().getDescription()+"\n\n"+
+                "Dekk: "+getTires().getVersion()+"\nPris: "+ df.format(getTires().getPrice())+"kr\nBeskrivelse: "+getTires().getDescription()+"\n\n";
     }
 }

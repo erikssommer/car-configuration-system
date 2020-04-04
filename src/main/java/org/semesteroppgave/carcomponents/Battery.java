@@ -10,7 +10,7 @@ public class Battery extends Component {
     public Battery(String version, double price, String description) {
         super(version, price, description);
         this.component = "Batteri";
-        this.model = new String[]{"Elektrisk"};
+        this.model = new String[]{"Elektrisk", "Hybrid"};
     }
 
     @Override

@@ -6,6 +6,8 @@ import org.semesteroppgave.carcustomization.Gps;
 import org.semesteroppgave.carcustomization.Sunroof;
 import org.semesteroppgave.carcustomization.Towbar;
 
+import java.text.DecimalFormat;
+
 public class Electric extends Car {
 
     private Battery battery;
@@ -48,48 +50,40 @@ public class Electric extends Car {
 
     @Override
     public double getPrice() {
-        double price = getModelPrice() + getMotor().getPrice() + getRim().getPrice() + getSeatCover().getPrice() +
-                getSpoiler().getPrice() + getTires().getPrice() + getBattery().getPrice();
+        double price = super.getPrice()+ getModelPrice() + getBattery().getPrice();
+
         if (getAutopilot() != null){
             price += getAutopilot().getPrice();
         }
-        if (getGps() != null){
-            price += getGps().getPrice();
-        }
-        if (getSunroof() != null){
-            price += getSunroof().getPrice();
-        }
-        if (getTowbar() != null){
-            price += getTowbar().getPrice();
-        }
-        setTotalPrice(price);
+
         return price;
     }
 
     @Override
     public String toString(){
+        DecimalFormat df = new DecimalFormat("###,###,###.###");
         String message =
-                "Bilmodell: "+getModel()+"\nModellpris: "+getModelPrice()+"\n\n"+
+                "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+
                 super.toString()+
-                "Batteri : "+getBattery().getVersion()+"\nPris: "+ getBattery().getPrice()+"\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
+                "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
         if (getAutopilot() != null){
-            message += getAutopilot().getCustomProperty()+"\nPris: "+getAutopilot().getPrice()+"\n\n";
+            message += getAutopilot().getCustomProperty()+"\nPris: "+df.format(getAutopilot().getPrice())+"kr\n\n";
         }
         if (getGps() != null){
-            message += getGps().getCustomProperty()+"\nPris: "+getGps().getPrice()+"\n\n";
+            message += getGps().getCustomProperty()+"\nPris: "+df.format(getGps().getPrice())+"kr\n\n";
         }
         if (getSunroof() != null){
-            message += getSunroof().getCustomProperty()+"\nPris: "+getSunroof().getPrice()+"\n\n";
+            message += getSunroof().getCustomProperty()+"\nPris: "+df.format(getSunroof().getPrice())+"kr\n\n";
         }
         if (getTowbar() != null){
-            message += getTowbar().getCustomProperty()+"\nPris: "+getTowbar().getPrice()+"\n\n";
+            message += getTowbar().getCustomProperty()+"\nPris: "+df.format(getTowbar().getPrice())+"kr\n\n";
         }
         if (getAutopilot() == null && getGps() == null && getSunroof() == null && getTowbar() == null){
             message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
         }
 
-        message += "Totalprisen på produktet er: " + getTotalPrice();
+        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
         return message;
     }
 }

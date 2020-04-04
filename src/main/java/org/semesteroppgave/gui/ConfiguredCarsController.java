@@ -45,14 +45,14 @@ public class ConfiguredCarsController implements Initializable {
     }
 
     private void setTableColum(TableColumn<Car, String> txtMotorColumn, TableColumn<Car, String> txtRimColumn, TableColumn<Car, String> txtSeatcoverColumn, TableColumn<Car, String> txtSpoilerColumn, TableColumn<Car, String> txtTireColumn, TableColumn<Car, Double> txtPriceColumn) {
-        txtMotorColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("motor"));
-        txtRimColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("rim"));
-        txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("seatCover"));
-        txtSpoilerColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("spoiler"));
-        txtTireColumn.setCellValueFactory(new PropertyValueFactory<Car, String>("tires"));
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
+        txtMotorColumn.setCellValueFactory(new PropertyValueFactory<>("motor"));
+        txtRimColumn.setCellValueFactory(new PropertyValueFactory<>("rim"));
+        txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<>("seatCover"));
+        txtSpoilerColumn.setCellValueFactory(new PropertyValueFactory<>("spoiler"));
+        txtTireColumn.setCellValueFactory(new PropertyValueFactory<>("tires"));
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Car, Double>("price"));
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
     @FXML
@@ -67,7 +67,9 @@ public class ConfiguredCarsController implements Initializable {
 
     @FXML
     void btnAddToConfigs(ActionEvent event) {
-        if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null){
+        if (tableViewConfigs.getSelectionModel().getSelectedItem() != null){
+            Dialogs.showErrorDialog("Oups", "Markeringi feil liste", "Denne konfigurasjonen ligger allerede i listen");
+        } else if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null){
             Context.getInstance().getRegisterProduct().setCarList(tableViewMyConfig.getSelectionModel().getSelectedItem());
             Context.getInstance().getRegisterProduct().getMyCarList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
 
@@ -77,7 +79,7 @@ public class ConfiguredCarsController implements Initializable {
     }
 
     @FXML
-    void btnMoreInfo(ActionEvent event) throws IOException {
+    void btnMoreInfo(ActionEvent event) {
         chooseTable(tableViewConfigs, tableViewMyConfig);
     }
 

@@ -12,6 +12,8 @@ import org.semesteroppgave.carmodel.Electric;
 import org.semesteroppgave.carmodel.Hybrid;
 import org.semesteroppgave.gui.Dialogs;
 
+import java.text.DecimalFormat;
+
 public class UserCreateCar {
 
     private TableView<Component> tableViewComponent;
@@ -204,7 +206,8 @@ public class UserCreateCar {
     }
 
     public void updateLivePrice(){
-        txtTotalPrice.setText(String.valueOf(livePrice));
+        DecimalFormat df = new DecimalFormat("###,###,###.###");
+        txtTotalPrice.setText(df.format(livePrice)+ "kr");
     }
 
     public void setLabelText(String message){

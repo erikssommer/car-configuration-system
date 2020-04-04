@@ -49,7 +49,7 @@ public class AdminComponentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<Component, Double>("price"));
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         newSearch.loadFilter(cbFilter);
         loadChoice();
@@ -95,13 +95,22 @@ public class AdminComponentController implements Initializable {
         filter();
     }
 
+    @FXML
+    private void filterChoiceChanged() {
+        filter();
+    }
+
     private void filter(){
-        String choiceFilter = cbFilter.getValue();
-        String searchWord = txtSearch.getText();
-        try {
-            newSearch.search(choiceFilter,searchWord,tableViewComponents);
-        }catch (InvalidPriceException e){
-            Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
+        if(txtSearch.getText().isEmpty()) {
+            tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
+        }else {
+            String choiceFilter = cbFilter.getValue();
+            String searchWord = txtSearch.getText();
+            try {
+                newSearch.search(choiceFilter,searchWord,tableViewComponents);
+            }catch (InvalidPriceException e){
+                Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
+            }
         }
     }
 
