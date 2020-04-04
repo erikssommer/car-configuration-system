@@ -56,28 +56,18 @@ public class Hybrid extends Car {
 
     @Override
     public String toString(){
-        DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message =
-                "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+
-                super.toString()+
-                "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
-                "Tank : "+getFuelContainer().getVersion()+"\nPris: "+ df.format(getFuelContainer().getPrice())+"kr\nBeskrivelse: "+getFuelContainer().getDescription()+"\n\n"+
-                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
-        if (getGps() != null){
-            message += getGps().getCustomProperty()+"\nPris: "+df.format(getGps().getPrice())+"kr\n\n";
-        }
-        if (getSunroof() != null){
-            message += getSunroof().getCustomProperty()+"\nPris: "+df.format(getSunroof().getPrice())+"kr\n\n";
-        }
-        if (getTowbar() != null){
-            message += getTowbar().getCustomProperty()+"\nPris: "+df.format(getTowbar().getPrice())+"kr\n\n";
-        }
-        if (getGps() == null && getSunroof() == null && getTowbar() == null){
-            message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
-        }
+        DecimalFormat df = new DecimalFormat("###,###,###.###");
+        String message = "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+ super.toString()+
+        "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
+        "Tank : "+getFuelContainer().getVersion()+"\nPris: "+ df.format(getFuelContainer().getPrice())+"kr\nBeskrivelse: "+getFuelContainer().getDescription()+"\n\n"+
+        "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+
+        message += super.testCustom(df, null);
 
         message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
         return message;
+
+
     }
 }

@@ -24,9 +24,9 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TableView fx:id="tableViewComponents" editable="true" layoutX="53.0" layoutY="220.0" prefHeight="239.0" prefWidth="645.0">
+      <TableView fx:id="tableViewComponents" editable="true" layoutX="53.0" layoutY="220.0" prefHeight="239.0">
         <columns>
-          <TableColumn onEditCommit="#editComponent" prefWidth="204.0" text="Komponent">
+          <TableColumn onEditCommit="#editComponent" prefWidth="204.0" reorderable="false" resizable="false" text="Komponent">
              <cellValueFactory>
                 <PropertyValueFactory property="component" />
              </cellValueFactory>
@@ -34,7 +34,7 @@
                 <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
           </TableColumn>
-          <TableColumn onEditCommit="#editVersion" prefWidth="319.0" text="Versjon">
+          <TableColumn onEditCommit="#editVersion" prefWidth="299.0" reorderable="false" resizable="false" text="Versjon">
              <cellValueFactory>
                 <PropertyValueFactory property="version" />
              </cellValueFactory>
@@ -42,9 +42,12 @@
                 <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
           </TableColumn>
-           <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="121.0" text="Pris (kr)">
+           <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="144.0" reorderable="false" resizable="false" text="Pris (kr)">
            </TableColumn>
         </columns>
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+      </columnResizePolicy>
       </TableView>
       <Label layoutX="522.0" layoutY="175.0" text="Søkeord:">
          <font>
@@ -52,7 +55,7 @@
          </font>
       </Label>
       <TextField fx:id="txtSearch" layoutX="581.0" layoutY="171.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
-      <ComboBox fx:id="cbFilter" layoutX="390.0" layoutY="171.0" prefHeight="27.0" prefWidth="122.0" onAction="#filterChoiceChanged"/>
+      <ComboBox fx:id="cbFilter" layoutX="390.0" layoutY="171.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
       <Label layoutX="322.0" layoutY="176.0" text="Filtrer etter:" />
       <Button layoutX="639.0" layoutY="483.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
       <Button layoutX="53.0" layoutY="483.0" mnemonicParsing="false" onAction="#btnExport" text="Eksporter" />

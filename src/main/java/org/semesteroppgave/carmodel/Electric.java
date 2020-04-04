@@ -61,29 +61,18 @@ public class Electric extends Car {
 
     @Override
     public String toString(){
+
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message =
-                "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+
-                super.toString()+
-                "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
-                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
-        if (getAutopilot() != null){
-            message += getAutopilot().getCustomProperty()+"\nPris: "+df.format(getAutopilot().getPrice())+"kr\n\n";
-        }
-        if (getGps() != null){
-            message += getGps().getCustomProperty()+"\nPris: "+df.format(getGps().getPrice())+"kr\n\n";
-        }
-        if (getSunroof() != null){
-            message += getSunroof().getCustomProperty()+"\nPris: "+df.format(getSunroof().getPrice())+"kr\n\n";
-        }
-        if (getTowbar() != null){
-            message += getTowbar().getCustomProperty()+"\nPris: "+df.format(getTowbar().getPrice())+"kr\n\n";
-        }
-        if (getAutopilot() == null && getGps() == null && getSunroof() == null && getTowbar() == null){
-            message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
-        }
+        String message = "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+ super.toString()+
+        "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: " + getBattery().getDescription()+"\n\n"+
+        "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+
+        message += super.testCustom(df, getAutopilot());
 
         message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
         return message;
+
+
+
     }
 }

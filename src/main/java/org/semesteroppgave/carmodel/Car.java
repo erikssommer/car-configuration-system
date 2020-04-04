@@ -1,5 +1,7 @@
 package org.semesteroppgave.carmodel;
 
+import org.semesteroppgave.Context;
+import org.semesteroppgave.carcustomization.Autopilot;
 import org.semesteroppgave.carcustomization.Gps;
 import org.semesteroppgave.carcustomization.Sunroof;
 import org.semesteroppgave.carcustomization.Towbar;
@@ -116,14 +118,41 @@ public abstract class Car implements Serializable {
         return price;
     }
 
+    //Metode som støtter toString metodene til underklassene til Car
+    //For å unngå duplikat kode
+    public String testCustom(DecimalFormat df, Autopilot autopilot){
+
+        String message = "";
+        if (getGps() != null){
+            message += getGps().getCustomProperty()+"\nPris: "+df.format(getGps().getPrice())+"kr\n\n";
+        }
+        if (getSunroof() != null){
+            message += getSunroof().getCustomProperty()+"\nPris: "+df.format(getSunroof().getPrice())+"kr\n\n";
+        }
+        if (getTowbar() != null){
+            message += getTowbar().getCustomProperty()+"\nPris: "+df.format(getTowbar().getPrice())+"kr\n\n";
+        }
+
+        if (autopilot != null){
+            message += autopilot.getCustomProperty()+"\nPris: "+df.format(autopilot.getPrice())+"kr\n\n";
+        }
+
+        if (getGps() == null && getSunroof() == null && getTowbar() == null && autopilot == null){
+            message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
+        }
+        return message;
+    }
+
 
     @Override
     public String toString(){
+
         DecimalFormat df = new DecimalFormat("###,###,###.###");
         return "Motor: "+getMotor().getVersion()+"\nPris: "+ df.format(getMotor().getPrice())+"kr\nBeskrivelse: "+getMotor().getDescription()+"\n\n"+
-                "Felg: "+getRim().getVersion()+"\nPris: "+ df.format(getRim().getPrice())+"kr\nBeskrivelse: "+getRim().getDescription()+"\n\n"+
-                "Setetrekk: "+getSeatCover().getVersion()+"\nPris: "+ df.format(getSeatCover().getPrice())+"kr\nBeskrivelse: "+getSeatCover().getDescription()+"\n\n"+
-                "Spoiler: "+getSpoiler().getVersion()+"\nPris: "+ df.format(getSpoiler().getPrice())+"kr\nBeskrivelse: "+getSpoiler().getDescription()+"\n\n"+
-                "Dekk: "+getTires().getVersion()+"\nPris: "+ df.format(getTires().getPrice())+"kr\nBeskrivelse: "+getTires().getDescription()+"\n\n";
+        "Felg: "+getRim().getVersion()+"\nPris: "+ df.format(getRim().getPrice())+"kr\nBeskrivelse: "+getRim().getDescription()+"\n\n"+
+        "Setetrekk: "+getSeatCover().getVersion()+"\nPris: "+ df.format(getSeatCover().getPrice())+"kr\nBeskrivelse: "+getSeatCover().getDescription()+"\n\n"+
+        "Spoiler: "+getSpoiler().getVersion()+"\nPris: "+ df.format(getSpoiler().getPrice())+"kr\nBeskrivelse: "+getSpoiler().getDescription()+"\n\n"+
+        "Dekk: "+getTires().getVersion()+"\nPris: "+ df.format(getTires().getPrice())+"kr\nBeskrivelse: "+getTires().getDescription()+"\n\n";
+
     }
 }

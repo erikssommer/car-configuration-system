@@ -67,9 +67,8 @@ public class ConfiguredCarsController implements Initializable {
 
     @FXML
     void btnAddToConfigs(ActionEvent event) {
-        if (tableViewConfigs.getSelectionModel().getSelectedItem() != null){
-            Dialogs.showErrorDialog("Oups", "Markeringi feil liste", "Denne konfigurasjonen ligger allerede i listen");
-        } else if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null){
+
+        if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null){
             Context.getInstance().getRegisterProduct().setCarList(tableViewMyConfig.getSelectionModel().getSelectedItem());
             Context.getInstance().getRegisterProduct().getMyCarList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
 

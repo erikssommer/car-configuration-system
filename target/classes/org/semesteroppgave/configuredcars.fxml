@@ -17,7 +17,7 @@
       </Label>
       <TableView fx:id="tableViewConfigs" layoutX="36.0" layoutY="75.0" prefHeight="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Modell">
+          <TableColumn prefWidth="75.0" text="Modell" reorderable="false">
               <cellValueFactory>
                   <PropertyValueFactory property="model" />
               </cellValueFactory>
@@ -25,17 +25,12 @@
                   <TextFieldTableCell fx:factory="forTableColumn" />
               </cellFactory>
           </TableColumn>
-          <TableColumn fx:id="txtMotorColumn" prefWidth="75.0" text="Motor">
-          </TableColumn>
-            <TableColumn fx:id="txtRimColumn" prefWidth="87.0" text="Felger">
-            </TableColumn>
-            <TableColumn fx:id="txtSeatcoverColumn" prefWidth="112.0" text="Setetrekk">
-            </TableColumn>
-            <TableColumn fx:id="txtSpoilerColumn" prefWidth="105.0" text="Spoiler">
-            </TableColumn>
-            <TableColumn fx:id="txtTireColumn" prefWidth="119.0" text="Dekk">
-            </TableColumn>
-            <TableColumn fx:id="txtPriceColumn" prefWidth="103.0" text="Pris (kr)" />
+          <TableColumn fx:id="txtMotorColumn" prefWidth="75.0" text="Motor" reorderable="false"/>
+            <TableColumn fx:id="txtRimColumn" prefWidth="87.0" text="Felger" reorderable="false"/>
+            <TableColumn fx:id="txtSeatcoverColumn" prefWidth="112.0" text="Setetrekk" reorderable="false"/>
+            <TableColumn fx:id="txtSpoilerColumn" prefWidth="105.0" text="Spoiler" reorderable="false"/>
+            <TableColumn fx:id="txtTireColumn" prefWidth="119.0" text="Dekk" reorderable="false"/>
+            <TableColumn fx:id="txtPriceColumn" prefWidth="103.0" text="Pris (kr)" reorderable="false"/>
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -51,7 +46,7 @@
       <Button layoutX="633.0" layoutY="407.0" mnemonicParsing="false" onAction="#btnMoreInfo" text="Vis mer info" />
       <TableView fx:id="tableViewMyConfig" layoutX="37.0" layoutY="336.0" prefHeight="60.0" prefWidth="678.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Modell">
+            <TableColumn prefWidth="75.0" text="Modell" reorderable="false">
                <cellValueFactory>
                   <PropertyValueFactory property="model" />
                </cellValueFactory>
@@ -59,12 +54,12 @@
                   <TextFieldTableCell fx:factory="forTableColumn" />
                </cellFactory>
             </TableColumn>
-            <TableColumn fx:id="txtMotorColumnMy" prefWidth="75.0" text="Motor" />
-            <TableColumn fx:id="txtRimColumnMy" prefWidth="87.0" text="Felger" />
-            <TableColumn fx:id="txtSeatcoverColumnMy" prefWidth="112.0" text="Setetrekk" />
-            <TableColumn fx:id="txtSpoilerColumnMy" prefWidth="105.0" text="Spoiler" />
-            <TableColumn fx:id="txtTireColumnMy" prefWidth="119.0" text="Dekk" />
-            <TableColumn fx:id="txtPriceColumnMy" prefWidth="103.0" text="Pris (kr)" />
+            <TableColumn fx:id="txtMotorColumnMy" prefWidth="75.0" text="Motor" reorderable="false"/>
+            <TableColumn fx:id="txtRimColumnMy" prefWidth="87.0" text="Felger" reorderable="false"/>
+            <TableColumn fx:id="txtSeatcoverColumnMy" prefWidth="112.0" text="Setetrekk" reorderable="false"/>
+            <TableColumn fx:id="txtSpoilerColumnMy" prefWidth="105.0" text="Spoiler" reorderable="false"/>
+            <TableColumn fx:id="txtTireColumnMy" prefWidth="119.0" text="Dekk" reorderable="false"/>
+            <TableColumn fx:id="txtPriceColumnMy" prefWidth="103.0" text="Pris (kr)" reorderable="false"/>
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

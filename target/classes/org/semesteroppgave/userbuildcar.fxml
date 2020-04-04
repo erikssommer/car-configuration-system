@@ -32,7 +32,7 @@
               <Label text=" " />
           </placeholder>
         <columns>
-          <TableColumn editable="false" prefWidth="140.0" text="Velg komponent">
+          <TableColumn editable="false" prefWidth="140.0" text="Velg komponent" reorderable="false">
              <cellValueFactory>
                 <PropertyValueFactory property="component" />
              </cellValueFactory>
@@ -50,7 +50,7 @@
               <Label text=" " />
           </placeholder>
         <columns>
-          <TableColumn editable="false" prefWidth="160.0" text="Versjon">
+          <TableColumn editable="false" prefWidth="160.0" text="Versjon" reorderable="false">
              <cellValueFactory>
                 <PropertyValueFactory property="version" />
              </cellValueFactory>
@@ -58,7 +58,7 @@
                 <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
           </TableColumn>
-          <TableColumn fx:id="txtPriceColumn" editable="false" prefWidth="86.5" text="Pris (kr)" />
+          <TableColumn fx:id="txtPriceColumn" editable="false" prefWidth="86.5" text="Pris (kr)" reorderable="false"/>
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

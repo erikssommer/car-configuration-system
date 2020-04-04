@@ -93,8 +93,6 @@ public class UserCreateCar {
     }
 
     public void showComponents(String selectedComponent){
-        //Teller som forsikrer at addToCar metoden bare kjøres én gang for hver event
-        final int[] counter = {0};
         Context.getInstance().getRegisterComponent().clearChooseComponentList();
         for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
             if (component.getComponent().equals(selectedComponent)){
@@ -103,9 +101,8 @@ public class UserCreateCar {
         }
         tableViewVersion.setItems(Context.getInstance().getRegisterComponent().getChooseComponentList());
         tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null && counter[0] == 0){
+            if (newSelection != null){
                 addToCar(newSelection.getComponent());
-                counter[0]++;
             }
         });
     }
