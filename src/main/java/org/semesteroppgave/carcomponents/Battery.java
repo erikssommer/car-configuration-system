@@ -1,7 +1,5 @@
 package org.semesteroppgave.carcomponents;
 
-import org.semesteroppgave.carcomponents.Component;
-
 public class Battery extends Component {
 
     private String [] model;

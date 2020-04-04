@@ -1,7 +1,5 @@
 package org.semesteroppgave.carcomponents;
 
-import org.semesteroppgave.carcomponents.Component;
-
 public class SeatCover extends Component {
 
     private String [] model;

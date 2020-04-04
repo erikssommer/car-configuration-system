@@ -85,7 +85,7 @@ public class AdminCreateController implements Initializable {
         Spoiler spoiler = new Spoiler("Høy",1000,"Denne spoileren gir ekstra fart ettersom den er meget høy");
         Context.getInstance().getRegisterComponent().setComponentsList(spoiler);
         //Denne bruker jeg til å teste redundance
-        FuelContainer fuelContainer3 = new FuelContainer("100-liter",2000,"Denne tanken er giga stor og har god kondens");
+        FuelContainer fuelContainer3 = new FuelContainer("200-liter",2000,"Denne tanken er giga stor og har god kondens");
         Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer3);
 
         Spoiler spoiler2 = new Spoiler("Lav",500,"Denne spoileren gir mindre fart men god luftmotstand");

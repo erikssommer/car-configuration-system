@@ -1,6 +1,5 @@
 package org.semesteroppgave;
 
-import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.exceptions.InvalidComponentException;
 import org.semesteroppgave.exceptions.InvalidVersionException;
 import org.semesteroppgave.gui.Dialogs;

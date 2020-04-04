@@ -2,7 +2,6 @@ package org.semesteroppgave;
 
 import org.semesteroppgave.carcomponents.*;
 import org.semesteroppgave.exceptions.InvalidComponentException;
-import org.semesteroppgave.gui.Dialogs;
 
 public class ComponentConverter {
     public static void convert(Component component){

@@ -2,12 +2,9 @@ package org.semesteroppgave;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.carcomponents.Component;
-import org.semesteroppgave.exceptions.InvalidPriceException;
-import org.semesteroppgave.gui.Dialogs;
 
 public class ComponentSearch {
     ObservableList<String> componentFilter = FXCollections.observableArrayList();
