@@ -24,6 +24,8 @@ public class Main extends Application {
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setWidth(800);
+        stage.setHeight(600);
         stage.show();
     }
 
