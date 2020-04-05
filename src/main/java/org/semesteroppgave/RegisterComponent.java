@@ -13,9 +13,12 @@ import java.util.stream.Collectors;
 
 public class RegisterComponent {
 
+    //Dette er hovedlisten
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
+    private ObservableList<Component> searchResult = FXCollections.observableArrayList();
     private ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
     private ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
+    private ObservableList<Component> createComponentList = FXCollections.observableArrayList();
     private String newComponent;
 
     public RegisterComponent(ObservableList<Component> componentsList){
@@ -65,10 +68,6 @@ public class RegisterComponent {
         return this.modelComponentsList;
     }
 
-    public void clearModelComponentsList(){
-        this.modelComponentsList.clear();
-    }
-
     public void setChooseComponentList(Component component){
         chooseComponentList.add(component);
     }
@@ -77,8 +76,20 @@ public class RegisterComponent {
         return this.chooseComponentList;
     }
 
-    public void clearChooseComponentList(){
-        this.chooseComponentList.clear();
+    public void setCreateComponentList(Component component){
+        createComponentList.add(component);
+    }
+
+    public ObservableList<Component> getCreateComponentList(){
+        return this.createComponentList;
+    }
+
+    public void setSearchResult(Component component){
+        searchResult.add(component);
+    }
+
+    public ObservableList<Component> getSearchResult(){
+        return this.searchResult;
     }
 
     //Søkefunksjon med streams

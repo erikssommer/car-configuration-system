@@ -48,7 +48,7 @@ public class UserCreateCar {
     }
 
     public void createNewCar(String model1, String model2){
-        Context.getInstance().getRegisterComponent().clearModelComponentsList();
+        Context.getInstance().getRegisterComponent().getModelComponentsList().clear();
         for (Component model : Context.getInstance().getRegisterComponent().getComponentsList()){
             for (String componentModel : model.getModel()){
                 if (componentModel.equals(model1) || componentModel.equals(model2)){
@@ -93,7 +93,7 @@ public class UserCreateCar {
     }
 
     public void showComponents(String selectedComponent){
-        Context.getInstance().getRegisterComponent().clearChooseComponentList();
+        Context.getInstance().getRegisterComponent().getChooseComponentList().clear();
         for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
             if (component.getComponent().equals(selectedComponent)){
                 Context.getInstance().getRegisterComponent().setChooseComponentList(component);

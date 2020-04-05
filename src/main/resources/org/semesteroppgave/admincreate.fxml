@@ -6,53 +6,64 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminCreateController">
-   <Label layoutX="51.0" layoutY="54.0" text="Opprett ny">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminCreateController">
+   <Label layoutX="51.0" layoutY="54.0" text="Opprett:">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Label fx:id="lblComponent" layoutX="165.0" layoutY="54.0" prefHeight="29.0" prefWidth="126.0">
+   <Label fx:id="lblComponent" layoutX="139.0" layoutY="54.0" prefHeight="29.0" prefWidth="126.0">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
    <Label layoutX="51.0" layoutY="131.0" text="Versjon">
       <font>
-         <Font size="17.0"/>
+         <Font size="17.0" />
       </font>
    </Label>
    <Label layoutX="51.0" layoutY="179.0" text="Pris">
       <font>
-         <Font size="17.0"/>
+         <Font size="17.0" />
       </font>
    </Label>
-   <TextField fx:id="txtVersion" layoutX="139.0" layoutY="129.0"/>
-   <TextField fx:id="txtPrice" layoutX="139.0" layoutY="177.0"/>
+   <TextField fx:id="txtVersion" layoutX="139.0" layoutY="129.0" />
+   <TextField fx:id="txtPrice" layoutX="139.0" layoutY="177.0" />
    <Label layoutX="51.0" layoutY="240.0" text="Beskrivelse">
       <font>
-         <Font size="17.0"/>
+         <Font size="17.0" />
       </font>
    </Label>
-   <TextArea fx:id="txtDescription" layoutX="139.0" layoutY="232.0" prefHeight="114.0" prefWidth="200.0"/>
-   <Button layoutX="281.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnAdd" text="Legg til"/>
-   <Button layoutX="643.0" layoutY="481.0" mnemonicParsing="false" onAction="#btnBack" text="Tilbake"/>
-   <TableView fx:id="tableViewAddedConfig" layoutX="389.0" layoutY="129.0" prefHeight="217.0" prefWidth="277.0">
+   <TextArea fx:id="txtDescription" layoutX="139.0" layoutY="232.0" prefHeight="114.0" prefWidth="200.0" />
+   <Button layoutX="281.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnAdd" text="Legg til" />
+   <Button layoutX="643.0" layoutY="481.0" mnemonicParsing="false" onAction="#btnBack" text="Avbryt" />
+   <TableView fx:id="tableViewAddedConfig" editable="true" layoutX="389.0" layoutY="129.0" prefHeight="217.0">
       <columns>
-         <TableColumn prefWidth="188.0" text="Versjon"/>
-         <TableColumn prefWidth="88.0" text="Pris"/>
+         <TableColumn fx:id="txtVersionColumn" onEditCommit="#editVersion" prefWidth="188.0" text="Versjon" reorderable="false" resizable="false">
+            <cellValueFactory>
+               <PropertyValueFactory property="version" />
+            </cellValueFactory>
+            <cellFactory>
+               <TextFieldTableCell fx:factory="forTableColumn" />
+            </cellFactory>
+         </TableColumn>
+         <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="88.0" text="Pris" reorderable="false" resizable="false"/>
       </columns>
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+      </columnResizePolicy>
    </TableView>
    <Label layoutX="389.0" layoutY="97.0" text="Konfigurasjoner lagt til">
       <font>
-         <Font size="17.0"/>
+         <Font size="17.0" />
       </font>
    </Label>
-   <Button layoutX="611.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør"/>
+   <Button layoutX="617.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør" />
+   <Button layoutX="502.0" layoutY="381.0" mnemonicParsing="false" onAction="#btnDelete" text="Slett rad" />
+   <Label fx:id="lblMessage" layoutX="139.0" layoutY="357.0" prefHeight="17.0" prefWidth="200.0" />
 </AnchorPane>
