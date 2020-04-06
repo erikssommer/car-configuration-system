@@ -60,6 +60,16 @@ public class Electric extends Car {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Electric) {
+            Electric product = (Electric) obj;
+            return super.equals(product) && product.getBattery().equals(battery)
+                    && ((product.getAutopilot() == null && autopilot == null) || product.getAutopilot().equals(autopilot));
+        }
+        return false;
+    }
+
+    @Override
     public String toString(){
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");

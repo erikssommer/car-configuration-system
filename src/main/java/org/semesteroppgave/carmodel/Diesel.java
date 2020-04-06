@@ -54,6 +54,16 @@ public class Diesel extends Car {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Diesel) {
+            Diesel product = (Diesel) obj;
+            return super.equals(product) && product.getFuelContainer().equals(fuelContainer)
+                    && product.getGearbox().equals(gearbox) && product.getPrice() == getPrice();
+        }
+        return false;
+    }
+
+    @Override
     public String toString(){
 
          DecimalFormat df = new DecimalFormat("###,###,###.###");

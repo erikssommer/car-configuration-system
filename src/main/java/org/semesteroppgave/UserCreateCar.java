@@ -10,6 +10,7 @@ import org.semesteroppgave.carmodel.Car;
 import org.semesteroppgave.carmodel.Diesel;
 import org.semesteroppgave.carmodel.Electric;
 import org.semesteroppgave.carmodel.Hybrid;
+import org.semesteroppgave.exceptions.DuplicateException;
 import org.semesteroppgave.gui.Dialogs;
 
 import java.text.DecimalFormat;
@@ -83,13 +84,12 @@ public class UserCreateCar {
     }
 
     public boolean redundance(String componentModel){
-        boolean redundance = false;
         for (Component component : Context.getInstance().getRegisterComponent().getModelComponentsList()){
             if (component.getComponent().equals(componentModel)){
-                redundance = true;
+                return true;
             }
         }
-        return redundance;
+        return false;
     }
 
     public void showComponents(String selectedComponent){
@@ -211,6 +211,14 @@ public class UserCreateCar {
         lblMessage.setText(message);
     }
 
+    public void duplicateProduct(Car product){
+        for (Car car : Context.getInstance().getRegisterProduct().getMyCarList()){
+            if (car.equals(product)){
+                throw new DuplicateException("Produktet er registrert fra før");
+            }
+        }
+    }
+
     public void finishedCar (){
 
         if (cbModel.getValue() != null){
@@ -225,11 +233,12 @@ public class UserCreateCar {
                         break;
                 }
 
+                Car finalProduct = product;
+                duplicateProduct(finalProduct);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Bekreft");
                 alert.setHeaderText("Du ønsker å opprette en "+ cbModel.getValue().toLowerCase()+ " bil");
                 alert.setContentText("Er du sikker på dette?");
-                Car finalProduct = product;
                 alert.showAndWait().ifPresent(response -> {
                     if(response == ButtonType.OK){
                         Dialogs.showSuccessDialog("Gjennomført", "Du har nå opprettet din komfigurasjon", "Trykk på 'vis konfig' for å se en oversikt");
@@ -237,7 +246,7 @@ public class UserCreateCar {
                     }
                 });
 
-            }catch (NullPointerException e){
+            }catch (NullPointerException | DuplicateException e){
                 Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
             }
 

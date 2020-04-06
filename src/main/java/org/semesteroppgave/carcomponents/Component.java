@@ -1,5 +1,7 @@
 package org.semesteroppgave.carcomponents;
 
+import java.util.Arrays;
+
 public abstract class Component {
 
     private String version;
@@ -41,6 +43,22 @@ public abstract class Component {
 
     public void setDescription(String description){
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        //Bestemmer hva som skal til for at to objekter er like
+        //Description kan være lik
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (obj instanceof Component) {
+            Component component = (Component) obj;
+            return (Arrays.equals(component.getModel(), getModel()) && component.getVersion().equals(version)
+                    && component.getPrice() == price);
+        }
+        return false;
     }
 
 }

@@ -55,6 +55,16 @@ public class Hybrid extends Car {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Hybrid) {
+            Hybrid product = (Hybrid) obj;
+            return super.equals(product) && product.getBattery().equals(battery)
+                    && product.getFuelContainer().equals(fuelContainer) && product.getPrice() == getPrice();
+        }
+        return false;
+    }
+
+    @Override
     public String toString(){
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");

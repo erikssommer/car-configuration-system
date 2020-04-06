@@ -143,6 +143,24 @@ public abstract class Car implements Serializable {
         return message;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (obj instanceof Car) {
+            Car product = (Car) obj;
+            return product.getMotor().equals(motor) && product.getRim().equals(rim)
+                    && product.getSeatCover().equals(seatcover)
+                    && product.getSpoiler().equals(spoiler) && product.getTires().equals(tires)
+                    && ((product.getGps() == null && gps == null) || product.getGps().equals(gps))
+                    && ((product.getSunroof() == null && sunroof == null) || product.getSunroof().equals(sunroof))
+                    && ((product.getTowbar() == null && towbar == null) || product.getTowbar().equals(towbar));
+        }
+        return false;
+    }
+
 
     @Override
     public String toString(){

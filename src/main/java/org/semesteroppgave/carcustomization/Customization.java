@@ -1,5 +1,9 @@
 package org.semesteroppgave.carcustomization;
 
+import org.semesteroppgave.carcomponents.Component;
+
+import java.util.Arrays;
+
 public abstract class Customization {
     private String customProperty;
     private double price;
@@ -23,5 +27,18 @@ public abstract class Customization {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (obj == null) {
+            return false;
+        } else if (obj instanceof Customization) {
+            Customization component = (Customization) obj;
+            return (component.getCustomProperty().equals(customProperty) && component.getPrice() == price);
+        }
+        return false;
     }
 }

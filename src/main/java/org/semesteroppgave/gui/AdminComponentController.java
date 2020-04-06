@@ -10,21 +10,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import org.semesteroppgave.*;
-import org.semesteroppgave.carcomponents.*;
-import org.semesteroppgave.exceptions.InvalidComponentException;
-import org.semesteroppgave.exceptions.InvalidPriceException;
-import org.semesteroppgave.exceptions.InvalidVersionException;
+import org.semesteroppgave.carcomponents.Component;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AdminComponentController implements Initializable {
 
-    ObservableList<String> componentChoice = FXCollections.observableArrayList();
+    private ObservableList<String> componentChoice = FXCollections.observableArrayList();
     private InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
-    ComponentSearch newSearch = new ComponentSearch();
+    private ComponentSearch newSearch = new ComponentSearch();
+    private AdminCreateComponent createComponent = new AdminCreateComponent();
 
     @FXML
     private Label lblAdminID;
@@ -61,7 +58,7 @@ public class AdminComponentController implements Initializable {
 
     @FXML
     void btnDeleteComponent(ActionEvent event) {
-        AdminCreateComponent.deleteColumn(tableViewComponents, Context.getInstance().getRegisterComponent().getComponentsList());
+        createComponent.deleteColumn(tableViewComponents, Context.getInstance().getRegisterComponent().getComponentsList());
     }
 
 
@@ -87,17 +84,17 @@ public class AdminComponentController implements Initializable {
 
     @FXML
     void editComponent(TableColumn.CellEditEvent<Component, String> event) {
-        AdminCreateComponent.editComponentColumn(event, tableViewComponents);
+        createComponent.editComponentColumn(event, tableViewComponents);
     }
 
     @FXML
     void editVersion(TableColumn.CellEditEvent<Component, String> event) {
-        AdminCreateComponent.editVersionColumn(event, tableViewComponents);
+        createComponent.editVersionColumn(event, tableViewComponents);
     }
 
     @FXML
     void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
-        AdminCreateComponent.editPriceColumn(event, doubleStrConverter, tableViewComponents);
+        createComponent.editPriceColumn(event, doubleStrConverter, tableViewComponents);
     }
 
     public void loadChoice(){

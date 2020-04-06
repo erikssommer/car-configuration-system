@@ -1,20 +1,18 @@
 package org.semesteroppgave;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import org.semesteroppgave.carcomponents.*;
+import org.semesteroppgave.exceptions.DuplicateException;
 import org.semesteroppgave.exceptions.InvalidComponentException;
-import org.semesteroppgave.exceptions.InvalidPriceException;
 import org.semesteroppgave.exceptions.InvalidVersionException;
 import org.semesteroppgave.gui.Dialogs;
 
 import java.io.IOException;
-import java.util.ConcurrentModificationException;
 
 public class AdminCreateComponent {
 
-    public static void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description){
+    public void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description){
         lblMessage.setText("");
         Component newComponent = null;
         try {
@@ -37,6 +35,9 @@ public class AdminCreateComponent {
                     break;
                 default: Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
             }
+
+            duplicateComponent(newComponent);
+
             if (newComponent != null){
                 Context.getInstance().getRegisterComponent().setCreateComponentList(newComponent);
                 tableViewAddedConfig.setItems(Context.getInstance().getRegisterComponent().getCreateComponentList());
@@ -44,13 +45,36 @@ public class AdminCreateComponent {
                 version.clear();
                 price.clear();
                 description.clear();
+            }else {
+                Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent","Denne komponenten finnes fra før");
             }
-        }catch (NullPointerException | NumberFormatException e){
-            Dialogs.showErrorDialog("Oups!", "Du har glemt noe", e.getMessage());
+        }catch (NullPointerException | NumberFormatException | DuplicateException e){
+            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
         }
     }
 
-    public static void completeComponent(){
+    private void duplicateComponent(Component component){
+
+        for (Component createComponent : Context.getInstance().getRegisterComponent().getCreateComponentList()){
+            if (createComponent.equals(component)){
+                throw new DuplicateException("Komponenten finnes allerede");
+            }
+        }
+
+        for (Component searchComponent : Context.getInstance().getRegisterComponent().getSearchResult()){
+            if (searchComponent.equals(component)){
+                throw new DuplicateException("Komponenten finnes allerede");
+            }
+        }
+
+        for (Component listComponent : Context.getInstance().getRegisterComponent().getComponentsList()){
+            if (listComponent.equals(component)){
+                throw new DuplicateException("Komponenten finnes allerede");
+            }
+        }
+    }
+
+    public void completeComponent(){
         try {
             for (Component component : Context.getInstance().getRegisterComponent().getCreateComponentList()){
                 Context.getInstance().getRegisterComponent().setComponentsList(component);
@@ -96,7 +120,7 @@ public class AdminCreateComponent {
         Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer3);
     }
 
-    public static void convert(Component component){
+    private void convert(Component component){
         Component newComponent;
         switch (component.getComponent()){
             case "Motor": newComponent = new Motor(component.getVersion(), component.getPrice(), component.getDescription());
@@ -123,7 +147,7 @@ public class AdminCreateComponent {
         Context.getInstance().getRegisterComponent().getComponentsList().set(index, newComponent);
     }
 
-    public static void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
+    public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
         try {
             if(doubleStrConverter.wasSuccessful()){
                 event.getRowValue().setPrice(event.getNewValue());
@@ -136,7 +160,7 @@ public class AdminCreateComponent {
         tableViewAddedConfig.refresh();
     }
 
-    public static void editComponentColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents){
+    public void editComponentColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents){
         try{
             event.getRowValue().setComponent(InputValidation.testValidComponent(event.getNewValue()));
             convert(event.getTableView().getSelectionModel().getSelectedItem());
@@ -146,16 +170,17 @@ public class AdminCreateComponent {
         }
     }
 
-    public static void editVersionColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents){
+    public void editVersionColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents){
         try{
             event.getRowValue().setVersion(InputValidation.testValidVersion(event.getNewValue()));
+
         }catch (InvalidVersionException e){
             Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig versjon!", e.getMessage());
             tableViewComponents.refresh();
         }
     }
 
-    public static void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list){
+    public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list){
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Bekreft");

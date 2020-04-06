@@ -10,8 +10,7 @@ import org.semesteroppgave.AdminCreateComponent;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.InputValidation;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.carcomponents.*;
-import org.semesteroppgave.exceptions.InvalidVersionException;
+import org.semesteroppgave.carcomponents.Component;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +19,7 @@ import java.util.ResourceBundle;
 public class AdminCreateController implements Initializable {
 
     private InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
+    private AdminCreateComponent createComponent = new AdminCreateComponent();
 
     @FXML
     private Label lblComponent, lblMessage;
@@ -48,7 +48,7 @@ public class AdminCreateController implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        AdminCreateComponent.addComponent(lblMessage,tableViewAddedConfig,txtVersion,txtPrice,txtDescription);
+        createComponent.addComponent(lblMessage,tableViewAddedConfig,txtVersion,txtPrice,txtDescription);
     }
 
     @FXML
@@ -59,21 +59,21 @@ public class AdminCreateController implements Initializable {
 
     @FXML
     void btnComplete(ActionEvent event) {
-        AdminCreateComponent.completeComponent();
+        createComponent.completeComponent();
     }
 
     @FXML
     void btnDelete(ActionEvent event) {
-        AdminCreateComponent.deleteColumn(tableViewAddedConfig, Context.getInstance().getRegisterComponent().getCreateComponentList());
+        createComponent.deleteColumn(tableViewAddedConfig, Context.getInstance().getRegisterComponent().getCreateComponentList());
     }
 
     @FXML
     void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
-        AdminCreateComponent.editPriceColumn(event, doubleStrConverter, tableViewAddedConfig);
+        createComponent.editPriceColumn(event, doubleStrConverter, tableViewAddedConfig);
     }
 
     @FXML
     void editVersion(TableColumn.CellEditEvent<Component, String> event) {
-        AdminCreateComponent.editVersionColumn(event, tableViewAddedConfig);
+        createComponent.editVersionColumn(event, tableViewAddedConfig);
     }
 }
