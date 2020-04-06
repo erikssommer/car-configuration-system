@@ -1,5 +1,7 @@
 package org.semesteroppgave.carcomponents;
 
+import org.semesteroppgave.InputValidation;
+
 import java.util.Arrays;
 
 public abstract class Component {
@@ -11,6 +13,8 @@ public abstract class Component {
     public Component(String version, double price, String desciption) {
         if (version.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn versjonen");
         if (desciption.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn beskrivelsen");
+        InputValidation.testValidVersion(version);
+        InputValidation.testValidDescription(desciption);
         this.version = version;
         this.price = price;
         this.description = desciption;

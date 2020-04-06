@@ -1,17 +1,23 @@
 package org.semesteroppgave;
 
 import org.semesteroppgave.exceptions.InvalidComponentException;
+import org.semesteroppgave.exceptions.InvalidDescriptionException;
 import org.semesteroppgave.exceptions.InvalidVersionException;
 import org.semesteroppgave.gui.Dialogs;
 
 public class InputValidation {
 
     public static String testValidVersion(String input){
-        //TODO Denne kan nok forbedres, men ok for nå
+        //TODO Denne kan nok forbedres
+        /*
         String[] regex = {
                 "[A-ZÆØÅ][0-9]+",
+                "[A-ZÆØÅ][-][a-zæøå]+",
+                "[A-ZÆØÅ][-][0-9]+",
                 "[A-ZÆØÅ][a-zæøå]+",
+                "[A-ZÆØÅ][-][a-zæøå]+",
                 "[A-ZÆØÅ][a-zæøå][0-9]+",
+                "[A-ZÆØÅ][-][a-zæøå][0-9]+",
         };
 
         for(String str : regex){
@@ -20,6 +26,27 @@ public class InputValidation {
             }
         }
         throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig");
+
+         */
+        return input;
+    }
+
+    public static String testValidDescription(String input){
+        //TODO finne en enkel og grei string regex for beskrivelsen
+        /*
+        String[] regex = {
+                "^[A-ZÆØÅa-zæøå,!-][0-9]++$",
+        };
+
+        for(String str : regex){
+            if(input.matches(str)){
+                return input;
+            }
+        }
+        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig");
+
+         */
+        return input;
     }
 
     public static String testValidComponent(String input){

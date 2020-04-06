@@ -3,9 +3,7 @@ package org.semesteroppgave;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import org.semesteroppgave.carcomponents.*;
-import org.semesteroppgave.exceptions.DuplicateException;
-import org.semesteroppgave.exceptions.InvalidComponentException;
-import org.semesteroppgave.exceptions.InvalidVersionException;
+import org.semesteroppgave.exceptions.*;
 import org.semesteroppgave.gui.Dialogs;
 
 import java.io.IOException;
@@ -16,6 +14,10 @@ public class AdminCreateComponent {
         lblMessage.setText("");
         Component newComponent = null;
         try {
+            //Tester om prisen er tom her fordi det er ikke mulig å teste på double inne i klassen
+            if (price.getText().isEmpty()){
+                throw new NullPointerException("Du har glemt å fylle inn prisen");
+            }
             switch (Context.getInstance().getRegisterComponent().getNewComponent()){
                 case "Motor": newComponent = new Motor(version.getText(), Double.parseDouble(price.getText()), description.getText());
                     break;
@@ -48,7 +50,7 @@ public class AdminCreateComponent {
             }else {
                 Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent","Denne komponenten finnes fra før");
             }
-        }catch (NullPointerException | NumberFormatException | DuplicateException e){
+        }catch (NullPointerException | NumberFormatException | DuplicateException | InvalidVersionException | InvalidDescriptionException e){
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
         }
     }
@@ -180,16 +182,35 @@ public class AdminCreateComponent {
         }
     }
 
-    public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list){
-        if (tableViewComponents.getSelectionModel().getSelectedItem() != null){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Bekreft");
-            alert.setHeaderText("Du har valgt komponenten: " + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
-                    + ", versjon: "+ tableViewComponents.getSelectionModel().getSelectedItem().getVersion());
-            alert.setContentText("Ønsker du virkerlig å slette denne komponenten?");
-            alert.showAndWait().ifPresent(response -> {
-                if(response == ButtonType.OK){
-                    list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
+    public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list, boolean state){
+        try {
+            if (tableViewComponents.getSelectionModel().getSelectedItem() != null){
+                if (state){
+                    //Hvis state er true er det adminComponentController som endres på
+                    //Her finner jeg ut om det er mulig å slette en komponent
+                    //Det må være minst én av hver komponent
+                    int counter = 0;
+                    for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
+                        if (component.getComponent().equals(tableViewComponents.getSelectionModel().getSelectedItem().getComponent())){
+                            counter++;
+                        }
+                    }
+                    //Hvis denne intreffer er det bare én av denne type komponent igjen og vi kaster et avvik
+                    if (counter == 1){
+                        throw new InvalidDeleteException("Kan ikke slette flere av denne komponenten " +
+                                "fordi det må være minst én av denne komponenten. Hvis det manger en komponent nå brukeren" +
+                                " oppretter en bil vil brukeren ikke ha mulighet til å opprette en bil");
+                    }
+                }
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Bekreft");
+                alert.setHeaderText("Du har valgt komponenten: " + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
+                        + ", versjon: "+ tableViewComponents.getSelectionModel().getSelectedItem().getVersion());
+                alert.setContentText("Ønsker du virkerlig å slette denne komponenten?");
+                alert.showAndWait().ifPresent(response -> {
+                    if(response == ButtonType.OK){
+                        list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
                         //Tester om vi finner det samme objektet i søkerListen. Hvis så, sletter vi det også
                         for (Component component : Context.getInstance().getRegisterComponent().getSearchResult()){
                             if (component.equals(tableViewComponents.getSelectionModel().getSelectedItem())){
@@ -197,10 +218,13 @@ public class AdminCreateComponent {
                                 break;
                             }
                         }
-                }
-            });
-        }else {
-            Dialogs.showErrorDialog("Feil", "Du har ikke valgt en komponent", "Velg en komponent og prøv på nytt");
+                    }
+                });
+            }else {
+                Dialogs.showErrorDialog("Feil", "Du har ikke valgt en komponent", "Velg en komponent og prøv på nytt");
+            }
+        } catch (InvalidDeleteException e) {
+            Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
     }
 }

@@ -64,7 +64,7 @@ public class AdminCreateController implements Initializable {
 
     @FXML
     void btnDelete(ActionEvent event) {
-        createComponent.deleteColumn(tableViewAddedConfig, Context.getInstance().getRegisterComponent().getCreateComponentList());
+        createComponent.deleteColumn(tableViewAddedConfig, Context.getInstance().getRegisterComponent().getCreateComponentList(), false);
     }
 
     @FXML
