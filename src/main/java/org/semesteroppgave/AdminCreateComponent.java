@@ -149,7 +149,7 @@ public class AdminCreateComponent {
         int index = Context.getInstance().getRegisterComponent().getComponentsList().indexOf(component);
         Context.getInstance().getRegisterComponent().getComponentsList().remove(component);
         //Her plasserer jeg det nye objektet på den tidligere plassen til det gamle objektet
-        Context.getInstance().getRegisterComponent().getComponentsList().set(index, newComponent);
+        Context.getInstance().getRegisterComponent().getComponentsList().add(index, newComponent);
     }
 
     public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
@@ -167,9 +167,10 @@ public class AdminCreateComponent {
 
     public void editComponentColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents){
         try{
+            InputValidation.testComponentCount(tableViewComponents, "endre");
             event.getRowValue().setComponent(InputValidation.testValidComponent(event.getNewValue()));
             convert(event.getTableView().getSelectionModel().getSelectedItem());
-        }catch (InvalidComponentException e){
+        }catch (InvalidComponentException | InvalidDeleteException e){
             Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig komponent!", e.getMessage());
             tableViewComponents.refresh();
         }
@@ -205,18 +206,7 @@ public class AdminCreateComponent {
                     //Hvis state er true er det adminComponentController som endres på
                     //Her finner jeg ut om det er mulig å slette en komponent
                     //Det må være minst én av hver komponent
-                    int counter = 0;
-                    for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
-                        if (component.getComponent().equals(tableViewComponents.getSelectionModel().getSelectedItem().getComponent())){
-                            counter++;
-                        }
-                    }
-                    //Hvis denne intreffer er det bare én av denne type komponent igjen og vi kaster et avvik
-                    if (counter == 1){
-                        throw new InvalidDeleteException("Kan ikke slette flere av denne komponenten " +
-                                "fordi det må minst være én av denne komponenten. Hvis det manger en komponent nå brukeren" +
-                                " oppretter en bil vil brukeren ikke ha mulighet til å opprette en bil");
-                    }
+                    InputValidation.testComponentCount(tableViewComponents, "slette flere av");
                 }
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

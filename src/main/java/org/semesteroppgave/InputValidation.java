@@ -1,6 +1,9 @@
 package org.semesteroppgave;
 
+import javafx.scene.control.TableView;
+import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.exceptions.InvalidComponentException;
+import org.semesteroppgave.exceptions.InvalidDeleteException;
 import org.semesteroppgave.exceptions.InvalidDescriptionException;
 import org.semesteroppgave.exceptions.InvalidVersionException;
 import org.semesteroppgave.gui.Dialogs;
@@ -50,7 +53,7 @@ public class InputValidation {
     }
 
     public static String testValidComponent(String input){
-        if (!input.equals("Motor") && !input.equals("Felger") && !input.equals("Setetrekk") && !input.equals("Dekk")
+        if (!input.equals("Motor") && !input.equals("Felg") && !input.equals("Setetrekk") && !input.equals("Dekk")
         && !input.equals("Spoiler") && !input.equals("Girboks") && !input.equals("Batteri") && !input.equals("Tank")){
             throw new InvalidComponentException("Det er ikke mulig å opprette en: " + input);
         }
@@ -75,6 +78,21 @@ public class InputValidation {
 
         public boolean wasSuccessful() {
             return conversionSuccessful;
+        }
+    }
+
+    public static void testComponentCount(TableView<Component> tableViewComponents, String input){
+        int counter = 0;
+        for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
+            if (component.getComponent().equals(tableViewComponents.getSelectionModel().getSelectedItem().getComponent())){
+                counter++;
+            }
+        }
+        //Hvis denne intreffer er det bare én av denne type komponent igjen og vi kaster et avvik
+        if (counter == 1){
+            throw new InvalidDeleteException("Kan ikke "+ input + " denne komponenten " +
+                    "fordi det må minst være én av denne komponenten. Hvis det manger en komponent når brukeren" +
+                    " oppretter en bil, vil brukeren ikke ha mulighet til å opprette en bil");
         }
     }
 }
