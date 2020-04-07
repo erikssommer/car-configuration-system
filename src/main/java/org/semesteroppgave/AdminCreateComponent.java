@@ -59,18 +59,21 @@ public class AdminCreateComponent {
 
         for (Component createComponent : Context.getInstance().getRegisterComponent().getCreateComponentList()){
             if (createComponent.equals(component)){
+                System.out.println("1");
                 throw new DuplicateException("Komponenten finnes allerede");
             }
         }
 
         for (Component searchComponent : Context.getInstance().getRegisterComponent().getSearchResult()){
             if (searchComponent.equals(component)){
+                System.out.println("2");
                 throw new DuplicateException("Komponenten finnes allerede");
             }
         }
 
         for (Component listComponent : Context.getInstance().getRegisterComponent().getComponentsList()){
             if (listComponent.equals(component)){
+                System.out.println("3");
                 throw new DuplicateException("Komponenten finnes allerede");
             }
         }
@@ -174,12 +177,25 @@ public class AdminCreateComponent {
 
     public void editVersionColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents){
         try{
-            event.getRowValue().setVersion(InputValidation.testValidVersion(event.getNewValue()));
+            String newValue = event.getNewValue();
+            if(checkUniquenessVersion(InputValidation.testValidVersion(newValue))){
+                event.getRowValue().setVersion(newValue);
+            }else {
+                event.getRowValue().setVersion(event.getOldValue());
+                Dialogs.showErrorDialog("Redigeringsfeil", "Duplisering av komponent", newValue + " finnes fra før");
+            }
+            //JavaFX bug
+            event.getTableColumn().setVisible(false);
+            event.getTableColumn().setVisible(true);
 
-        }catch (InvalidVersionException e){
+        }catch (InvalidVersionException | DuplicateException e){
             Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig versjon!", e.getMessage());
             tableViewComponents.refresh();
         }
+    }
+
+    private boolean checkUniquenessVersion(String value) {
+        return Context.getInstance().getRegisterComponent().getComponentsList().stream().noneMatch(item -> item.getVersion().equals(value));
     }
 
     public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list, boolean state){
@@ -198,7 +214,7 @@ public class AdminCreateComponent {
                     //Hvis denne intreffer er det bare én av denne type komponent igjen og vi kaster et avvik
                     if (counter == 1){
                         throw new InvalidDeleteException("Kan ikke slette flere av denne komponenten " +
-                                "fordi det må være minst én av denne komponenten. Hvis det manger en komponent nå brukeren" +
+                                "fordi det må minst være én av denne komponenten. Hvis det manger en komponent nå brukeren" +
                                 " oppretter en bil vil brukeren ikke ha mulighet til å opprette en bil");
                     }
                 }
