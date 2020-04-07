@@ -100,7 +100,7 @@ public class RegisterComponent {
 
     public ObservableList<Component> searchVersion(String value){
 
-        return componentsList.stream().filter(component -> component.getVersion().toLowerCase().contains(value)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return componentsList.stream().filter(component -> component.getVersion().toLowerCase().contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     public ObservableList<Component> searchPrice(double value){
