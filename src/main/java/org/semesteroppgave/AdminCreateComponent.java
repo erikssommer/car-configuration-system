@@ -170,9 +170,11 @@ public class AdminCreateComponent {
             InputValidation.testComponentCount(tableViewComponents, "endre");
             event.getRowValue().setComponent(InputValidation.testValidComponent(event.getNewValue()));
             convert(event.getTableView().getSelectionModel().getSelectedItem());
-        }catch (InvalidComponentException | InvalidDeleteException e){
+        }catch (InvalidComponentException e){
             Dialogs.showErrorDialog("Redigeringsfeil","Ugyldig komponent!", e.getMessage());
             tableViewComponents.refresh();
+        }catch (InvalidDeleteException e){
+            Dialogs.showErrorDialog("Feil", "Du kan ikke endre komponent!", e.getMessage());
         }
     }
 
@@ -185,7 +187,7 @@ public class AdminCreateComponent {
                 event.getRowValue().setVersion(event.getOldValue());
                 Dialogs.showErrorDialog("Redigeringsfeil", "Duplisering av komponent", newValue + " finnes fra før");
             }
-            //JavaFX bug
+            //JavaFX bug omvei
             event.getTableColumn().setVisible(false);
             event.getTableColumn().setVisible(true);
 
@@ -204,7 +206,7 @@ public class AdminCreateComponent {
             if (tableViewComponents.getSelectionModel().getSelectedItem() != null){
                 if (state){
                     //Hvis state er true er det adminComponentController som endres på
-                    //Her finner jeg ut om det er mulig å slette en komponent
+                    //Her finner vi ut om det er mulig å slette en komponent
                     //Det må være minst én av hver komponent
                     InputValidation.testComponentCount(tableViewComponents, "slette flere av");
                 }
