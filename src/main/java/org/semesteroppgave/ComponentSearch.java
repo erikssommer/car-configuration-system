@@ -46,9 +46,9 @@ public class ComponentSearch {
     public void loadFilter(ComboBox<String> cbFilter) {
         componentFilter.removeAll();
         String choice1 = "Komponent";
-        String choise2 = "Versjon";
-        String choise3 = "Pris";
-        componentFilter.addAll(choice1, choise2, choise3);
+        String choice2 = "Versjon";
+        String choice3 = "Pris";
+        componentFilter.addAll(choice1, choice2, choice3);
         cbFilter.getItems().addAll(componentFilter);
         cbFilter.setValue(choice1);
     }

@@ -10,8 +10,8 @@ import java.text.DecimalFormat;
 public class Hybrid extends Car {
     private Battery battery;
     private FuelContainer fuelContainer;
-    private String model;
-    private double modelPrice;
+    private final String model;
+    private final double modelPrice;
 
     public Hybrid(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, FuelContainer fuelContainer) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);

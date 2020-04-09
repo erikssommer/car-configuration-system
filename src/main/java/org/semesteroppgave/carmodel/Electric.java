@@ -11,9 +11,9 @@ import java.text.DecimalFormat;
 public class Electric extends Car {
 
     private Battery battery;
-    private String model;
     private Autopilot autopilot;
-    private double modelPrice;
+    private final String model;
+    private final double modelPrice;
 
     public Electric(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, Autopilot autopilot) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);

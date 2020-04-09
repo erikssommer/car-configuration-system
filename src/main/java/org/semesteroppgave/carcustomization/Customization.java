@@ -1,9 +1,5 @@
 package org.semesteroppgave.carcustomization;
 
-import org.semesteroppgave.carcomponents.Component;
-
-import java.util.Arrays;
-
 public abstract class Customization {
     private String customProperty;
     private double price;

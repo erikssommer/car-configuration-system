@@ -53,7 +53,7 @@ public class UserCreateCar {
         for (Component model : Context.getInstance().getRegisterComponent().getComponentsList()){
             for (String componentModel : model.getModel()){
                 if (componentModel.equals(model1) || componentModel.equals(model2)){
-                    if (!redundance(model.getComponent())){
+                    if (!redundancy(model.getComponent())){
                         Context.getInstance().getRegisterComponent().setModelComponentsList(model);
                         setLabelText("Du kan nå velge komponenter til din \n"+model1.toLowerCase()+" bil");
                     }
@@ -83,7 +83,7 @@ public class UserCreateCar {
         });
     }
 
-    public boolean redundance(String componentModel){
+    public boolean redundancy(String componentModel){
         for (Component component : Context.getInstance().getRegisterComponent().getModelComponentsList()){
             if (component.getComponent().equals(componentModel)){
                 return true;

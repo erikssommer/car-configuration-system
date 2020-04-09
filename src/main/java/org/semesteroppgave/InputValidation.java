@@ -4,8 +4,6 @@ import javafx.scene.control.TableView;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.exceptions.InvalidComponentException;
 import org.semesteroppgave.exceptions.InvalidDeleteException;
-import org.semesteroppgave.exceptions.InvalidDescriptionException;
-import org.semesteroppgave.exceptions.InvalidVersionException;
 import org.semesteroppgave.gui.Dialogs;
 
 public class InputValidation {

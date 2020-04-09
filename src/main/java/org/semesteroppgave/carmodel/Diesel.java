@@ -11,8 +11,8 @@ public class Diesel extends Car {
 
     private FuelContainer fuelContainer;
     private Gearbox gearbox;
-    private String model;
-    private double modelPrice;
+    private final String model;
+    private final double modelPrice;
 
     public Diesel(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, FuelContainer fuelContainer, Gearbox gearbox) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);

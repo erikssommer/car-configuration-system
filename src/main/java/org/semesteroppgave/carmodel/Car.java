@@ -1,11 +1,10 @@
 package org.semesteroppgave.carmodel;
 
-import org.semesteroppgave.Context;
+import org.semesteroppgave.carcomponents.*;
 import org.semesteroppgave.carcustomization.Autopilot;
 import org.semesteroppgave.carcustomization.Gps;
 import org.semesteroppgave.carcustomization.Sunroof;
 import org.semesteroppgave.carcustomization.Towbar;
-import org.semesteroppgave.carcomponents.*;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
