@@ -92,6 +92,10 @@ public class RegisterComponent {
         return this.searchResult;
     }
 
+    public void removeAll() {
+        componentsList.clear();
+    }
+
     //Søkefunksjon med streams
     public ObservableList<Component> searchComponent(String value){
 
