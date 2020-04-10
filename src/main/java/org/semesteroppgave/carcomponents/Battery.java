@@ -1,9 +1,18 @@
 package org.semesteroppgave.carcomponents;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 public class Battery extends Component {
 
-    private String [] model;
-    private String component;
+    private transient String [] model;
+    private transient String component;
 
     public Battery(String version, double price, String description) {
         super(version, price, description);
@@ -29,6 +38,29 @@ public class Battery extends Component {
     @Override
     public void setComponent(String component) {
         this.component = component;
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        s.writeUTF(getVersion());
+        s.writeDouble(getPrice());
+        s.writeUTF(getDescription());
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        String version = s.readUTF();
+        double price = s.readDouble();
+        String description = s.readUTF();
+
+        this.setVersion();
+        this.setPrice();
+        this.setDescription();
+        this.component = "Batteri";
+        this.model = new String[]{"Elektrisk", "Hybrid"};
+
+        setVersion(version);
+        setPrice(price);
+        setDescription(description);
     }
 
     @Override

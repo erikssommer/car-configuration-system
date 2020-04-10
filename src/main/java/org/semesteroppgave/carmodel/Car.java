@@ -9,7 +9,7 @@ import org.semesteroppgave.carcustomization.Towbar;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public abstract class Car implements Serializable {
+public abstract class Car {
     private Motor motor;
     private Rim rim;
     private SeatCover seatcover;

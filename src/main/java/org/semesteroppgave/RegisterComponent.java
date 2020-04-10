@@ -7,11 +7,14 @@ import org.semesteroppgave.carcomponents.Component;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RegisterComponent {
+public class RegisterComponent implements Serializable {
+
+    private static final long serialVersionUID = 1;
 
     //Dette er hovedlisten
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();

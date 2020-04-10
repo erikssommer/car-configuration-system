@@ -1,23 +1,28 @@
 package org.semesteroppgave.carcomponents;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import org.semesteroppgave.InputValidation;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public abstract class Component {
+public abstract class Component implements Serializable {
 
-    private String version;
-    private double price;
-    private String description;
+    private static final long serialVersionUID = 1;
+
+    private transient SimpleStringProperty version;
+    private transient SimpleDoubleProperty price;
+    private transient SimpleStringProperty description;
 
     public Component(String version, double price, String desciption) {
         if (version.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn versjonen");
         if (desciption.isEmpty()) throw new NullPointerException("Du har glemt å fylle inn beskrivelsen");
         InputValidation.testValidVersion(version);
         InputValidation.testValidDescription(desciption);
-        this.version = version;
-        this.price = price;
-        this.description = desciption;
+        this.version = new SimpleStringProperty(version);
+        this.price = new SimpleDoubleProperty(price);
+        this.description = new SimpleStringProperty(desciption);
     }
 
     public abstract String [] getModel();
@@ -26,27 +31,40 @@ public abstract class Component {
     public abstract void setComponent(String component);
 
     public String getVersion(){
-        return this.version;
+        return version.getValue();
     }
 
     public void setVersion(String version) {
-        this.version = version;
+        InputValidation.testValidVersion(version);
+        this.version.set(version);
+    }
+
+    public void setVersion() {
+        this.version = new SimpleStringProperty();
     }
 
     public double getPrice() {
-        return price;
+        return price.getValue();
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price.set(price);
+    }
+
+    public void setPrice() {
+        this.price = new SimpleDoubleProperty();
     }
 
     public String getDescription(){
-        return this.description;
+        return description.getValue();
     }
 
     public void setDescription(String description){
-        this.description = description;
+        this.description.set(description);
+    }
+
+    public void setDescription(){
+        this.description = new SimpleStringProperty();
     }
 
     @Override
@@ -59,10 +77,9 @@ public abstract class Component {
             return false;
         } else if (obj instanceof Component) {
             Component component = (Component) obj;
-            return (Arrays.equals(component.getModel(), getModel()) && component.getVersion().equals(version)
-                    && component.getPrice() == price);
+            return (Arrays.equals(component.getModel(), getModel()) && component.getVersion().equals(version.getValue())
+                    && component.getPrice() == price.doubleValue());
         }
         return false;
     }
-
 }

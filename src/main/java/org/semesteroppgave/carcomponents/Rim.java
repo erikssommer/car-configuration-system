@@ -1,9 +1,14 @@
 package org.semesteroppgave.carcomponents;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 public class Rim extends Component {
 
-    private String [] model;
-    private String component;
+    private transient String [] model;
+    private transient String component;
 
     public Rim(String version, double price, String description) {
         super(version, price, description);
@@ -29,6 +34,29 @@ public class Rim extends Component {
     @Override
     public void setComponent(String component) {
         this.component = component;
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        s.writeUTF(getVersion());
+        s.writeDouble(getPrice());
+        s.writeUTF(getDescription());
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        String version = s.readUTF();
+        double price = s.readDouble();
+        String description = s.readUTF();
+
+        this.setVersion();
+        this.setPrice();
+        this.setDescription();
+        this.component = "Felg";
+        this.model = new String[]{"universial"};
+
+        setVersion(version);
+        setPrice(price);
+        setDescription(description);
     }
 
     @Override
