@@ -39,7 +39,7 @@ public class ParseUsernamePassword {
                     User newUser = new User(username, password, name, phonenumber, email);
                     userList.add(newUser);
                 }
-                parseSaveToFile();
+                //parseSaveToFile();
             } catch (InvalidUsernameException | InvalidPasswordException | FileNotFoundException e) {
                 Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av brukerfiler", e.getMessage());
             }

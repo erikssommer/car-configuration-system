@@ -1,5 +1,7 @@
 package org.semesteroppgave;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import org.semesteroppgave.carcomponents.*;
 import org.semesteroppgave.carcustomization.Autopilot;
@@ -17,6 +19,8 @@ import java.text.DecimalFormat;
 
 public class UserCreateCar {
 
+    private ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
+    private ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
     private TableView<Component> tableViewComponent;
     private TableView<Component> tableViewVersion;
     private ComboBox<String> cbModel;
@@ -49,12 +53,12 @@ public class UserCreateCar {
     }
 
     public void createNewCar(String model1, String model2){
-        Context.getInstance().getRegisterComponent().getModelComponentsList().clear();
+        modelComponentsList.clear();
         for (Component model : Context.getInstance().getRegisterComponent().getComponentsList()){
             for (String componentModel : model.getModel()){
                 if (componentModel.equals(model1) || componentModel.equals(model2)){
                     if (!redundancy(model.getComponent())){
-                        Context.getInstance().getRegisterComponent().setModelComponentsList(model);
+                        modelComponentsList.add(model);
                         setLabelText("Du kan nå velge komponenter til din \n"+model1.toLowerCase()+" bil");
                     }
                 }
@@ -74,7 +78,7 @@ public class UserCreateCar {
         }
 
         updateLivePrice();
-        tableViewComponent.setItems(Context.getInstance().getRegisterComponent().getModelComponentsList());
+        tableViewComponent.setItems(modelComponentsList);
 
         tableViewComponent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null){
@@ -84,7 +88,7 @@ public class UserCreateCar {
     }
 
     public boolean redundancy(String componentModel){
-        for (Component component : Context.getInstance().getRegisterComponent().getModelComponentsList()){
+        for (Component component : modelComponentsList){
             if (component.getComponent().equals(componentModel)){
                 return true;
             }
@@ -93,13 +97,13 @@ public class UserCreateCar {
     }
 
     public void showComponents(String selectedComponent){
-        Context.getInstance().getRegisterComponent().getChooseComponentList().clear();
+        chooseComponentList.clear();
         for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
             if (component.getComponent().equals(selectedComponent)){
-                Context.getInstance().getRegisterComponent().setChooseComponentList(component);
+                chooseComponentList.add(component);
             }
         }
-        tableViewVersion.setItems(Context.getInstance().getRegisterComponent().getChooseComponentList());
+        tableViewVersion.setItems(chooseComponentList);
         tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null){
                 addToCar(newSelection.getComponent());

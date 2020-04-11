@@ -12,17 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RegisterComponent implements Serializable {
+public class RegisterComponent implements Serializable{
 
     private static final long serialVersionUID = 1;
 
     //Dette er hovedlisten
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
-    private transient ObservableList<Component> searchResult = FXCollections.observableArrayList();
-    private transient ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
-    private transient ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
-    private transient ObservableList<Component> createComponentList = FXCollections.observableArrayList();
-    private transient String newComponent;
 
     public RegisterComponent(ObservableList<Component> componentsList){
         this.componentsList = componentsList;
@@ -42,15 +37,6 @@ public class RegisterComponent implements Serializable {
         componentsList.addAll(newComponentList);
     }
 
-    //Brukes til å finne ut hvilken type komponent som skal opprettet av admin
-    public void setNewComponent(String newComponent){
-        this.newComponent = newComponent;
-    }
-
-    public String getNewComponent(){
-        return this.newComponent;
-    }
-
     public void setComponentsList(ObservableList<Component> componentsList){
         this.componentsList = componentsList;
     }
@@ -61,38 +47,6 @@ public class RegisterComponent implements Serializable {
 
     public ObservableList<Component> getComponentsList(){
         return this.componentsList;
-    }
-
-    public void setModelComponentsList(Component component){
-        modelComponentsList.add(component);
-    }
-
-    public ObservableList<Component> getModelComponentsList(){
-        return this.modelComponentsList;
-    }
-
-    public void setChooseComponentList(Component component){
-        chooseComponentList.add(component);
-    }
-
-    public ObservableList<Component> getChooseComponentList(){
-        return this.chooseComponentList;
-    }
-
-    public void setCreateComponentList(Component component){
-        createComponentList.add(component);
-    }
-
-    public ObservableList<Component> getCreateComponentList(){
-        return this.createComponentList;
-    }
-
-    public void setSearchResult(Component component){
-        searchResult.add(component);
-    }
-
-    public ObservableList<Component> getSearchResult(){
-        return this.searchResult;
     }
 
     public void removeAll() {

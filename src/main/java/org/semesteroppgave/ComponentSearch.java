@@ -11,7 +11,18 @@ import org.semesteroppgave.gui.Dialogs;
 
 public class ComponentSearch {
 
-    ObservableList<String> componentFilter = FXCollections.observableArrayList();
+    private ObservableList<Component> searchResult = FXCollections.observableArrayList();
+    private ObservableList<String> componentFilter = FXCollections.observableArrayList();
+
+    //Singelton design-pattern
+    public static ComponentSearch componentSearch = null;
+
+    public static ComponentSearch getInstance(){
+        if (componentSearch == null){
+            componentSearch = new ComponentSearch();
+        }
+        return componentSearch;
+    }
 
     public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter){
         if(txtSearch.getText().isEmpty()) {
@@ -28,19 +39,19 @@ public class ComponentSearch {
     }
 
     public void search(String choiceFilter, String searchWord, TableView<Component> tableView){
-        Context.getInstance().getRegisterComponent().getSearchResult().clear();
+        searchResult.clear();
 
         switch (choiceFilter){
-            case "Komponent" : Context.getInstance().getRegisterComponent().getSearchResult().addAll(Context.getInstance().getRegisterComponent().searchComponent(searchWord));
+            case "Komponent" : searchResult.addAll(Context.getInstance().getRegisterComponent().searchComponent(searchWord));
                 break;
-            case "Versjon" : Context.getInstance().getRegisterComponent().getSearchResult().addAll(Context.getInstance().getRegisterComponent().searchVersion(searchWord));
+            case "Versjon" : searchResult.addAll(Context.getInstance().getRegisterComponent().searchVersion(searchWord));
                 break;
             case "Pris" : try {
-                Context.getInstance().getRegisterComponent().getSearchResult().addAll(Context.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
+                searchResult.addAll(Context.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
             }catch (NumberFormatException ignored){}
                 break;
         }
-        tableView.setItems(Context.getInstance().getRegisterComponent().getSearchResult());
+        tableView.setItems(searchResult);
     }
 
     public void loadFilter(ComboBox<String> cbFilter) {
@@ -51,5 +62,9 @@ public class ComponentSearch {
         componentFilter.addAll(choice1, choice2, choice3);
         cbFilter.getItems().addAll(componentFilter);
         cbFilter.setValue(choice1);
+    }
+
+    public ObservableList<Component> getSearchResult(){
+        return this.searchResult;
     }
 }

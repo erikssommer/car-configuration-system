@@ -1,5 +1,6 @@
 package org.semesteroppgave;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import org.semesteroppgave.carcomponents.*;
@@ -10,6 +11,21 @@ import java.io.IOException;
 
 public class AdminCreateComponent {
 
+    private ObservableList<Component> createComponentList = FXCollections.observableArrayList();
+    private static String newComponent;
+
+    public ObservableList<Component> getCreateComponentList(){
+        return this.createComponentList;
+    }
+
+    public static String getNewComponent(){
+        return newComponent;
+    }
+
+    public static void setNewComponent(String newComponent){
+        AdminCreateComponent.newComponent = newComponent;
+    }
+
     public void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description){
         lblMessage.setText("");
         Component newComponent = null;
@@ -18,7 +34,7 @@ public class AdminCreateComponent {
             if (price.getText().isEmpty()){
                 throw new NullPointerException("Du har glemt å fylle inn prisen");
             }
-            switch (Context.getInstance().getRegisterComponent().getNewComponent()){
+            switch (AdminCreateComponent.getNewComponent()){
                 case "Motor": newComponent = new Motor(version.getText(), Double.parseDouble(price.getText()), description.getText());
                     break;
                 case "Felg": newComponent = new Rim(version.getText(), Double.parseDouble(price.getText()), description.getText());
@@ -41,8 +57,8 @@ public class AdminCreateComponent {
             duplicateComponent(newComponent);
 
             if (newComponent != null){
-                Context.getInstance().getRegisterComponent().setCreateComponentList(newComponent);
-                tableViewAddedConfig.setItems(Context.getInstance().getRegisterComponent().getCreateComponentList());
+                createComponentList.add(newComponent);
+                tableViewAddedConfig.setItems(createComponentList);
                 lblMessage.setText("Komponenten er lagt til");
                 version.clear();
                 price.clear();
@@ -52,19 +68,20 @@ public class AdminCreateComponent {
             }
         }catch (NullPointerException | NumberFormatException | DuplicateException | InvalidVersionException | InvalidDescriptionException e){
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
+            e.printStackTrace();
         }
     }
 
     private void duplicateComponent(Component component){
 
-        for (Component createComponent : Context.getInstance().getRegisterComponent().getCreateComponentList()){
+        for (Component createComponent : createComponentList){
             if (createComponent.equals(component)){
                 System.out.println("1");
                 throw new DuplicateException("Komponenten finnes allerede");
             }
         }
 
-        for (Component searchComponent : Context.getInstance().getRegisterComponent().getSearchResult()){
+        for (Component searchComponent : ComponentSearch.getInstance().getSearchResult()){
             if (searchComponent.equals(component)){
                 System.out.println("2");
                 throw new DuplicateException("Komponenten finnes allerede");
@@ -81,10 +98,10 @@ public class AdminCreateComponent {
 
     public void completeComponent(){
         try {
-            for (Component component : Context.getInstance().getRegisterComponent().getCreateComponentList()){
+            for (Component component : createComponentList){
                 Context.getInstance().getRegisterComponent().setComponentsList(component);
             }
-            Context.getInstance().getRegisterComponent().getCreateComponentList().clear();
+            createComponentList.clear();
             Main.setRoot("admincomponent");
         } catch (IOException e) {
             e.printStackTrace();
@@ -220,9 +237,9 @@ public class AdminCreateComponent {
                     if(response == ButtonType.OK){
                         list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
                         //Tester om vi finner det samme objektet i søkerListen. Hvis så, sletter vi det også
-                        for (Component component : Context.getInstance().getRegisterComponent().getSearchResult()){
+                        for (Component component : ComponentSearch.getInstance().getSearchResult()){
                             if (component.equals(tableViewComponents.getSelectionModel().getSelectedItem())){
-                                Context.getInstance().getRegisterComponent().getSearchResult().remove(component);
+                                ComponentSearch.getInstance().getSearchResult().remove(component);
                                 break;
                             }
                         }

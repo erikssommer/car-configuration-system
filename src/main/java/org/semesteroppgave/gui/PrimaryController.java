@@ -22,6 +22,5 @@ public class PrimaryController {
     void btnUser(ActionEvent event) throws IOException {
         parse.parseExistingUser();
         Main.setRoot("usersignin");
-        Main.setRoot("usersignin");
     }
 }

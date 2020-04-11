@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class FileSaverJobj implements FileSaver{
 
@@ -17,15 +18,8 @@ public class FileSaverJobj implements FileSaver{
         try (OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream out = new ObjectOutputStream(os))
         {
-            out.writeObject(registerComponent);
-            /*
-            for (Component component : registerComponent.getComponentsList()){
-                out.writeObject(component);
-            }
-            os.close();
-            out.close();
+            out.writeObject(new ArrayList<Component>(Context.getInstance().getRegisterComponent().getComponentsList()));
 
-             */
         }
     }
 }

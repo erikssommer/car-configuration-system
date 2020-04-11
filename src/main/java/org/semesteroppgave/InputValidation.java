@@ -88,6 +88,7 @@ public class InputValidation {
         }
         //Hvis denne intreffer er det bare én av denne type komponent igjen og vi kaster et avvik
         if (counter == 1){
+            tableViewComponents.refresh();
             throw new InvalidDeleteException("Kan ikke "+ input + " denne komponenten " +
                     "fordi det må minst være én av denne komponenten. Hvis det manger en komponent når brukeren" +
                     " oppretter en bil, vil brukeren ikke ha mulighet til å opprette en bil");

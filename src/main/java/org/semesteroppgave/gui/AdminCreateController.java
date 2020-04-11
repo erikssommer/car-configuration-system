@@ -43,7 +43,7 @@ public class AdminCreateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        lblComponent.setText(Context.getInstance().getRegisterComponent().getNewComponent());
+        lblComponent.setText(AdminCreateComponent.getNewComponent());
     }
 
     @FXML
@@ -53,7 +53,7 @@ public class AdminCreateController implements Initializable {
 
     @FXML
     void btnBack(ActionEvent event) throws IOException {
-        Context.getInstance().getRegisterComponent().getCreateComponentList().clear();
+        createComponent.getCreateComponentList().clear();
         Main.setRoot("admincomponent");
     }
 
@@ -64,7 +64,7 @@ public class AdminCreateController implements Initializable {
 
     @FXML
     void btnDelete(ActionEvent event) {
-        createComponent.deleteColumn(tableViewAddedConfig, Context.getInstance().getRegisterComponent().getCreateComponentList(), false);
+        createComponent.deleteColumn(tableViewAddedConfig, createComponent.getCreateComponentList(), false);
     }
 
     @FXML

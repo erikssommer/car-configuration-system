@@ -1,5 +1,6 @@
 package org.semesteroppgave.io;
 
+import org.semesteroppgave.Context;
 import org.semesteroppgave.RegisterComponent;
 import org.semesteroppgave.carcomponents.Component;
 
@@ -8,6 +9,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class FileOpenerJobj implements FileOpener{
 
@@ -16,17 +18,8 @@ public class FileOpenerJobj implements FileOpener{
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
-            /*
-            registerComponent.removeAll();
-            Component register = (Component) oin.readObject();
-            registerComponent.getComponentsList().addAll(register);
-
-             */
-            RegisterComponent register = (RegisterComponent) oin.readObject();
-            registerComponent.removeAll();
-            register.getComponentsList().forEach(registerComponent::setComponentsList);
-
-
+            ArrayList<Component> list = (ArrayList<Component>) oin.readObject();
+            Context.getInstance().getRegisterComponent().getComponentsList().addAll(list);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

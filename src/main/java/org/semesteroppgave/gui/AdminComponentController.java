@@ -20,7 +20,6 @@ public class AdminComponentController implements Initializable {
 
     private ObservableList<String> componentChoice = FXCollections.observableArrayList();
     private InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
-    private ComponentSearch newSearch = new ComponentSearch();
     private AdminCreateComponent createComponent = new AdminCreateComponent();
 
     @FXML
@@ -43,17 +42,17 @@ public class AdminComponentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //FileHandler.openFileJobj(Context.getInstance().getRegisterComponent());
+        FileHandler.openFileJobj(Context.getInstance().getRegisterComponent());
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        newSearch.loadFilter(cbFilter);
+        ComponentSearch.getInstance().loadFilter(cbFilter);
         loadChoice();
     }
 
     @FXML
     void btnCreate(ActionEvent event) throws IOException {
-        Context.getInstance().getRegisterComponent().setNewComponent(cbCreate.getValue());
+        AdminCreateComponent.setNewComponent(cbCreate.getValue());
         Main.setRoot("admincreate");
     }
 
@@ -75,12 +74,12 @@ public class AdminComponentController implements Initializable {
 
     @FXML
     void onKeyTypedSearch(KeyEvent event) {
-        newSearch.filter(txtSearch,tableViewComponents,cbFilter);
+        ComponentSearch.getInstance().filter(txtSearch,tableViewComponents,cbFilter);
     }
 
     @FXML
     private void filterChoiceChanged() {
-        newSearch.filter(txtSearch,tableViewComponents,cbFilter);
+        ComponentSearch.getInstance().filter(txtSearch,tableViewComponents,cbFilter);
     }
 
     @FXML
