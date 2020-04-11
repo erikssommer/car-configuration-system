@@ -6,5 +6,5 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public interface FileOpener {
-    void open(RegisterComponent registerComponent, Path filePath) throws IOException;
+    void open(Path filePath) throws IOException;
 }

@@ -42,7 +42,7 @@ public class AdminComponentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FileHandler.openFileJobj(Context.getInstance().getRegisterComponent());
+        //FileHandler.openFileJobj();
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
@@ -64,7 +64,7 @@ public class AdminComponentController implements Initializable {
 
     @FXML
     void btnExport(ActionEvent event) {
-        FileHandler.saveFileJobj(Context.getInstance().getRegisterComponent());
+        FileHandler.saveFileJobj();
     }
 
     @FXML

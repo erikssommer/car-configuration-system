@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 public class FileOpenerCsv implements FileOpener{
     @Override
-    public void open(RegisterComponent registerComponent, Path filePath) throws IOException {
+    public void open(Path filePath) throws IOException {
 
     }
 }

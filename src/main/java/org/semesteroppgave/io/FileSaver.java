@@ -6,5 +6,5 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public interface FileSaver {
-    void save(RegisterComponent registerComponent, Path filePath) throws IOException;
+    void save(Path filePath) throws IOException;
 }

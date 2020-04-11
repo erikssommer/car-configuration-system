@@ -25,12 +25,12 @@ public class AdminSignInController {
     @FXML
     void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra admin-filen
-        String file = "adminUsernameAndPassword";
-        if(PersonLogin.verifyLogin(txtUsername.getText(), txtPassword.getText(), file)) {
+        //String file = "adminUsernameAndPassword";
+        //if(PersonLogin.verifyLogin(txtUsername.getText(), txtPassword.getText(), file)) {
             Main.setRoot("admincomponent");
-        }else {
-            lblFeedback.setText("Feil brukernavn og/eller passord");
-        }
+        //}else {
+            //lblFeedback.setText("Feil brukernavn og/eller passord");
+        //}
     }
 
     @FXML

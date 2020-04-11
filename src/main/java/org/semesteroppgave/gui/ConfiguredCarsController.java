@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.Context;
+import org.semesteroppgave.FileHandler;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.carmodel.Car;
@@ -62,7 +63,7 @@ public class ConfiguredCarsController implements Initializable {
 
     @FXML
     void btnExport(ActionEvent event) {
-
+        FileHandler.saveFileCvs();
     }
 
     @FXML

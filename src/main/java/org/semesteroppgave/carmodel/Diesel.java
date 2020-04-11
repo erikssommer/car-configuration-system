@@ -48,6 +48,13 @@ public class Diesel extends Car {
         return this.modelPrice;
     }
 
+    public String toFile(){
+
+        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getFuelContainer().toFile()+";"+
+                getGearbox().toFile()+";"+super.customToFile(null)+";"+getPrice();
+
+    }
+
     @Override
     public double getPrice() {
         return super.getPrice() + getModelPrice() + getFuelContainer().getPrice() + getGearbox().getPrice();

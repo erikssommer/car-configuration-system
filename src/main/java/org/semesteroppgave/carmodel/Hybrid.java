@@ -47,6 +47,13 @@ public class Hybrid extends Car {
         return this.modelPrice;
     }
 
+    public String toFile(){
+
+        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";"+
+                getFuelContainer().toFile()+";"+super.customToFile(null)+";"+getPrice();
+
+    }
+
     @Override
     public double getPrice() {
 

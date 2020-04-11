@@ -48,6 +48,13 @@ public class Electric extends Car {
         return this.modelPrice;
     }
 
+    public String toFile(){
+
+        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";"
+                +super.customToFile(autopilot)+";"+getPrice();
+
+    }
+
     @Override
     public double getPrice() {
         double price = super.getPrice()+ getModelPrice() + getBattery().getPrice();

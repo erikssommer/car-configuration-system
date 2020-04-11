@@ -3,6 +3,7 @@ package org.semesteroppgave;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.semesteroppgave.carmodel.Car;
+import org.semesteroppgave.carmodel.Electric;
 
 public class RegisterProduct {
     //Listen carList er alle tidligere konfigurerte biler
@@ -35,4 +36,16 @@ public class RegisterProduct {
     public void setSelectedCar(Car car){
         this.selectedCar = car;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Car car : myCarList) {
+            sb.append(car.toFile());
+            sb.append(System.lineSeparator());
+        }
+
+        return sb.toString();
+    }
+
 }

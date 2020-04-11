@@ -25,6 +25,10 @@ public abstract class Customization {
         this.price = price;
     }
 
+    public String toFile(){
+        return getCustomProperty()+";"+getPrice();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

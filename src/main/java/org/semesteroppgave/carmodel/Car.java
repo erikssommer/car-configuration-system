@@ -142,6 +142,28 @@ public abstract class Car {
         return message;
     }
 
+    public String customToFile(Autopilot autopilot){
+        String message = "";
+        if (getGps() != null){
+            message += getGps().toFile()+";";
+        }
+        if (getSunroof() != null){
+            message += getSunroof().toFile()+";";
+        }
+        if (getTowbar() != null){
+            message += getTowbar().toFile()+";";
+        }
+
+        if (autopilot != null){
+            message += autopilot.toFile()+";";
+        }
+        return message;
+    }
+
+    public String toFile(){
+        return getMotor().toFile()+";"+ getRim().toFile()+";"+getSeatCover().toFile()+";"+getSpoiler().toFile()+";"+getTires().toFile();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

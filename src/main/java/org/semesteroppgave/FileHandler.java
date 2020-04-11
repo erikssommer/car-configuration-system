@@ -13,24 +13,26 @@ public class FileHandler {
     private enum DialogMode {
         Admin,
         User,
+        Save,
+        Open,
     }
-    /*
-    static void openFileCvs(Stage stage, RegisterProduct register) {
-        File selectedFile = getFileFromFileChooser(DialogMode.User, stage);
+
+    public static void openFileCvs(Stage stage, RegisterProduct register) {
+        File selectedFile = getFileFromFileChooser(DialogMode.User);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
             FileOpener opener = null;
 
-            if (".cvs".equals(fileExt)) {
+            if (".csv".equals(fileExt)) {
                 opener = new FileOpenerCsv();
             } else {
-                Dialogs.showErrorDialog("Filbehandling","Feil i åpning av fil","Du kan bare åpne txt eller jobj filer.");
+                Dialogs.showErrorDialog("Filbehandling","Feil i åpning av fil","Du kan bare åpne csv filer.");
             }
 
             if(opener != null) {
                 try {
-                    opener.open(register, selectedFile.toPath());
+                    opener.open(selectedFile.toPath());
                 } catch (IOException e) {
                     Dialogs.showErrorDialog("Filbehandling","Åpning av filen gikk galt","Grunn: " + e.getMessage());
                 }
@@ -38,22 +40,22 @@ public class FileHandler {
         }
     }
 
-    static void saveFileCvs(Stage stage, RegisterProduct register) {
-        File selectedFile = getFileFromFileChooser(DialogMode.User, stage);
+    public static void saveFileCvs() {
+        File selectedFile = getFileFromFileChooser(DialogMode.User);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
             FileSaver saver = null;
 
-            switch (fileExt) {
-                case ".cvs" : saver = new FileSaverCsv(); break;
-                case ".jobj" : saver = new FileSaverJobj(); break;
-                default : Dialogs.showErrorDialog("Lagring til fil","Feil i lagring til fil", "Du kan bare lagre til enten cvs eller jobj filer.");
+            if (".csv".equals(fileExt)) {
+                saver = new FileSaverCsv();
+            } else {
+                Dialogs.showErrorDialog("Lagring til fil", "Feil i lagring til fil", "Du kan bare lagre til csv filer.");
             }
 
             if(saver != null) {
                 try {
-                    saver.save(register, selectedFile.toPath());
+                    saver.save(selectedFile.toPath());
                     Dialogs.showSuccessDialog("Fil","Listen ble korrekt lagret til fil","Registeret ble lagret!");
                 } catch (IOException e) {
                     Dialogs.showErrorDialog("Oups","Lagring til fil gikk galt", "Grunn: " + e.getMessage());
@@ -62,21 +64,19 @@ public class FileHandler {
         }
     }
 
-     */
-
-    public static void openFileJobj(RegisterComponent register) {
+    public static void openFileJobj() {
 
         File loadFile = new File("Files/component.jobj");
         FileOpener opener = new FileOpenerJobj();
 
         try {
-            opener.open(register, loadFile.toPath());
+            opener.open(loadFile.toPath());
         } catch (IOException e) {
                 Dialogs.showErrorDialog("Filbehandling","Åpning av filen gikk galt","Grunn: " + e.getMessage());
         }
     }
 
-    public static void saveFileJobj(RegisterComponent register){
+    public static void saveFileJobj(){
         File selectedFile = getFileFromFileChooser(DialogMode.Admin);
 
         if (selectedFile != null) {
@@ -91,7 +91,7 @@ public class FileHandler {
 
             if(saver != null) {
                 try {
-                    saver.save(register, selectedFile.toPath());
+                    saver.save(selectedFile.toPath());
                     Dialogs.showSuccessDialog("Fil","Listen ble korrekt lagret til jobj-fil","Registeret ble lagret!");
                 } catch (IOException e) {
                     Dialogs.showErrorDialog("Oups","Lagring til fil gikk galt", "Grunn: " + e.getMessage());
@@ -109,7 +109,7 @@ public class FileHandler {
         if(mode == DialogMode.Admin) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
         } else {
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Cvs files", "*.cvs"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
         }
         return fileChooser.showSaveDialog(Main.getScene().getWindow());
     }

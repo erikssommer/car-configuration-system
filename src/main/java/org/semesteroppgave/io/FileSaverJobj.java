@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class FileSaverJobj implements FileSaver{
 
     @Override
-    public void save(RegisterComponent registerComponent, Path filePath) throws IOException {
+    public void save(Path filePath) throws IOException {
         try (OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream out = new ObjectOutputStream(os))
         {

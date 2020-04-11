@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class FileOpenerJobj implements FileOpener{
 
     @Override
-    public void open(RegisterComponent registerComponent, Path filePath) throws IOException {
+    public void open(Path filePath) throws IOException {
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 

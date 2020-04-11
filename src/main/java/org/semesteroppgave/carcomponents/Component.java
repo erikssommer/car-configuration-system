@@ -71,6 +71,10 @@ public abstract class Component implements Serializable {
         this.description = new SimpleStringProperty();
     }
 
+    public String toFile(){
+        return getVersion() + ";"+ getPrice() + ";" + getDescription();
+    }
+
     @Override
     public boolean equals(Object obj) {
         //Bestemmer hva som skal til for at to objekter er like
