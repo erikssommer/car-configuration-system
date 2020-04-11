@@ -43,7 +43,7 @@ public class AdminComponentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FileHandler.openFileJobj(Context.getInstance().getRegisterComponent());
+        //FileHandler.openFileJobj(Context.getInstance().getRegisterComponent());
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));

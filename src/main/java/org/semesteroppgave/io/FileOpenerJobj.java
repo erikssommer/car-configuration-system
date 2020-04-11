@@ -16,9 +16,15 @@ public class FileOpenerJobj implements FileOpener{
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
+            /*
             registerComponent.removeAll();
             Component register = (Component) oin.readObject();
             registerComponent.getComponentsList().addAll(register);
+
+             */
+            RegisterComponent register = (RegisterComponent) oin.readObject();
+            registerComponent.removeAll();
+            register.getComponentsList().forEach(registerComponent::setComponentsList);
 
 
         } catch (ClassNotFoundException e) {

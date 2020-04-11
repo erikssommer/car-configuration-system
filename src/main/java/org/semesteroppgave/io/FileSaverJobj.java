@@ -17,12 +17,15 @@ public class FileSaverJobj implements FileSaver{
         try (OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream out = new ObjectOutputStream(os))
         {
-            //out.writeObject(registerComponent);
+            out.writeObject(registerComponent);
+            /*
             for (Component component : registerComponent.getComponentsList()){
                 out.writeObject(component);
             }
             os.close();
             out.close();
+
+             */
         }
     }
 }

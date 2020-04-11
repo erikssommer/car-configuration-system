@@ -18,11 +18,11 @@ public class RegisterComponent implements Serializable {
 
     //Dette er hovedlisten
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
-    private ObservableList<Component> searchResult = FXCollections.observableArrayList();
-    private ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
-    private ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
-    private ObservableList<Component> createComponentList = FXCollections.observableArrayList();
-    private String newComponent;
+    private transient ObservableList<Component> searchResult = FXCollections.observableArrayList();
+    private transient ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
+    private transient ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
+    private transient ObservableList<Component> createComponentList = FXCollections.observableArrayList();
+    private transient String newComponent;
 
     public RegisterComponent(ObservableList<Component> componentsList){
         this.componentsList = componentsList;
