@@ -146,16 +146,24 @@ public abstract class Car {
         String message = "";
         if (getGps() != null){
             message += getGps().toFile()+";";
+        }else {
+            message += ";;";
         }
         if (getSunroof() != null){
             message += getSunroof().toFile()+";";
+        }else{
+            message += ";;";
         }
         if (getTowbar() != null){
             message += getTowbar().toFile()+";";
+        }else {
+            message += ";;";
         }
 
         if (autopilot != null){
             message += autopilot.toFile()+";";
+        }else {
+            message += ";;";
         }
         return message;
     }

@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class FileSaverCsv implements FileSaver{
 
     @Override
     public void save(Path filePath) throws IOException {
+
         try (PrintWriter writer = new PrintWriter(new File(filePath.toUri()))){
             StringBuilder sb = new StringBuilder();
             writeHeader(sb);
@@ -33,8 +35,7 @@ public class FileSaverCsv implements FileSaver{
         String [] title = new String[]{"Model", "Modelpris", "Motor", "Pris", "Beskrivelse", "Felg", "Pris", "Beskrivelse",
         "Setetrekk", "Pris", "Beskrivelse", "Spoiler", "Pris", "Beskrivelse", "Dekk", "Pris", "Beskrivelse",
         "Batteri", "Pris", "Beskrivelse", "Tank", "Pris", "Beskrivelse", "Girboks", "Pris", "Beskrivelse",
-        "Tilpasning", "Pris", "Beskrivelse", "Tilpasning", "Pris", "Beskrivelse", "Tilpasning", "Pris", "Beskrivelse",
-        "Tilpasning", "Pris", "Beskrivelse", "Totalpris"};
+        "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Totalpris"};
 
         for (String addTitle : title){
             sb.append(addTitle);

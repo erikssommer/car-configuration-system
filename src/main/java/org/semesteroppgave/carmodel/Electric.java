@@ -50,8 +50,8 @@ public class Electric extends Car {
 
     public String toFile(){
 
-        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";"
-                +super.customToFile(autopilot)+";"+getPrice();
+        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";;;;;;;"
+                +super.customToFile(autopilot)+getPrice();
 
     }
 
