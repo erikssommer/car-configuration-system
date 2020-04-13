@@ -39,45 +39,9 @@ public class ParseUsernamePassword {
                     User newUser = new User(username, password, name, phonenumber, email);
                     userList.add(newUser);
                 }
-                //parseSaveToFile();
             } catch (InvalidUsernameException | InvalidPasswordException | FileNotFoundException e) {
                 Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av brukerfiler", e.getMessage());
             }
-    }
-    // Legger inn brukernavn og passord inn i filen igjen
-    public static String parseUnamePwordTxtToFile() {
-        StringBuilder ut = new StringBuilder();
-        for (User newUser : userList) {
-            ut.append(newUser.printTxtUsernamePassword()).append("\n");
-        }
-        return ut.toString();
-    }
-
-    // Legger inn bruker-info inn i filen igjen
-    public static String parseUserInfoTxtToFile() {
-        StringBuilder ut = new StringBuilder();
-        for (User newUser : userList) {
-            ut.append(newUser.printTxtUserInfo()).append("\n");
-        }
-        return ut.toString();
-    }
-
-    // Lagrer bruker-info til de to filene
-    private static void parseSaveToFile(){
-        // Lagrer eksisterenede bruker-info til fil
-        var filepathInfo = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "userInfo");
-        try {
-            Files.write(Paths.get(String.valueOf(filepathInfo)), parseUserInfoTxtToFile().getBytes());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        // Larger eksisterenede brukernavn og passord til fil
-        var filepathUnamePword = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "userUsernameAndPassword");
-        try {
-            Files.write(Paths.get(String.valueOf(filepathUnamePword)), parseUnamePwordTxtToFile().getBytes());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     public void parseExistingAdmins() {
@@ -100,7 +64,6 @@ public class ParseUsernamePassword {
                 Admin newAdmin = new Admin(username, password, empNo);
                 adminList.add(newAdmin);
             }
-            parseSaveToFile();
         } catch (Exception e) {
             e.printStackTrace();
         }

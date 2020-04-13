@@ -25,12 +25,12 @@ public class UserSignInController {
     @FXML
     void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra user-filen
-        //String file = "userUsernameAndPassword";
-        //if(PersonLogin.verifyLogin(txtUsername.getText(), txtPassword.getText(), file)) {
+        String file = "userUsernameAndPassword";
+        if(PersonLogin.verifyLogin(txtUsername.getText(), txtPassword.getText(), file)) {
             Main.setRoot("userbuildcar");
-        //}else {
-            //lblFeedback.setText("Feil brukernavn og/eller passord");
-        //}
+        }else {
+            lblFeedback.setText("Feil brukernavn og/eller passord");
+        }
     }
 
     @FXML
