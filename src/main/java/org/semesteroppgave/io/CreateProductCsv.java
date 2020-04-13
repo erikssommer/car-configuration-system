@@ -34,8 +34,9 @@ public class CreateProductCsv {
         commonCustom(object);
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
 
+        autopilot = null;
         if (object[32].equals("Autopilot")){
-            gps = new Gps();
+            autopilot = new Autopilot();
         }else if (!object[32].isEmpty()){
             throw new InvalidProductException("Tilpasningen: " + object[32] + " støttes ikke");
         }
@@ -71,6 +72,11 @@ public class CreateProductCsv {
     }
 
     private void commonCustom(String[] object) {
+        //Nulstiller tilpasningene ettersom det er mulig at produktet ikke har alle valgt
+        gps = null;
+        towbar = null;
+        sunroof = null;
+        //Tester om produktet skal ha tilpasningen
         if (object[26].equals("GPS-system")){
             gps = new Gps();
         }else if (!object[26].isEmpty()){
