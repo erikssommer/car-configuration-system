@@ -17,26 +17,14 @@ public class FileHandler {
         Open,
     }
 
-    public static void openFileCvs(Stage stage, RegisterProduct register) {
-        File selectedFile = getFileFromFileChooser(DialogMode.User);
+    public static void openFileCvs() {
+        File loadFile = new File("Files/produkter.csv");
+        FileOpener opener = new FileOpenerCsv();
 
-        if (selectedFile != null) {
-            String fileExt = getFileExt(selectedFile);
-            FileOpener opener = null;
-
-            if (".csv".equals(fileExt)) {
-                opener = new FileOpenerCsv();
-            } else {
-                Dialogs.showErrorDialog("Filbehandling","Feil i åpning av fil","Du kan bare åpne csv filer.");
-            }
-
-            if(opener != null) {
-                try {
-                    opener.open(selectedFile.toPath());
-                } catch (IOException e) {
-                    Dialogs.showErrorDialog("Filbehandling","Åpning av filen gikk galt","Grunn: " + e.getMessage());
-                }
-            }
+        try {
+            opener.open(loadFile.toPath());
+        } catch (IOException e) {
+            Dialogs.showErrorDialog("Filbehandling","Åpning av filen gikk galt","Grunn: " + e.getMessage());
         }
     }
 

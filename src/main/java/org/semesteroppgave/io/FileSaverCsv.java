@@ -21,7 +21,6 @@ public class FileSaverCsv implements FileSaver{
             writeHeader(sb);
             sb.append("\n");
             sb.append(Context.getInstance().getRegisterProduct().toString());
-            sb.append("\n");
 
             writer.write(sb.toString());
             System.out.println("Done");
@@ -35,11 +34,12 @@ public class FileSaverCsv implements FileSaver{
         String [] title = new String[]{"Model", "Modelpris", "Motor", "Pris", "Beskrivelse", "Felg", "Pris", "Beskrivelse",
         "Setetrekk", "Pris", "Beskrivelse", "Spoiler", "Pris", "Beskrivelse", "Dekk", "Pris", "Beskrivelse",
         "Batteri", "Pris", "Beskrivelse", "Tank", "Pris", "Beskrivelse", "Girboks", "Pris", "Beskrivelse",
-        "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Totalpris"};
+        "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris"};
 
         for (String addTitle : title){
             sb.append(addTitle);
             sb.append(";");
         }
+        sb.append("Totalpris");
     }
 }

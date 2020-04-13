@@ -42,6 +42,7 @@ public class ConfiguredCarsController implements Initializable {
 
         setTableColum(txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy, txtPriceColumnMy);
         tableViewMyConfig.setItems(Context.getInstance().getRegisterProduct().getMyCarList());
+        FileHandler.openFileCvs();
 
     }
 
