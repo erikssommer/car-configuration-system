@@ -26,8 +26,6 @@ public class CreateProductCsv {
     private Towbar towbar;
     private Autopilot autopilot;
 
-    private double livePrice;
-    private double [] livePriceList;
 
     public Electric createElectric(String[] object){
         commonComponents(object);

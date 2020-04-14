@@ -55,7 +55,7 @@ public class ComponentSearch {
     }
 
     public void loadFilter(ComboBox<String> cbFilter) {
-        componentFilter.removeAll();
+        componentFilter.clear();
         String choice1 = "Komponent";
         String choice2 = "Versjon";
         String choice3 = "Pris";
