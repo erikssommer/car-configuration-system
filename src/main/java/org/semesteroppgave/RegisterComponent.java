@@ -49,10 +49,6 @@ public class RegisterComponent implements Serializable{
         return this.componentsList;
     }
 
-    public void removeAll() {
-        componentsList.clear();
-    }
-
     //Søkefunksjon med streams
     public ObservableList<Component> searchComponent(String value){
 

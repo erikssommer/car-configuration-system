@@ -1,10 +1,16 @@
 package org.semesteroppgave;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import org.semesteroppgave.gui.Dialogs;
+import org.semesteroppgave.gui.PrimaryController;
 
 import java.io.IOException;
 
@@ -21,7 +27,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //Lagring av data ved avslutting av programmet
+        onProgramExit(stage);
         scene = new Scene(loadFXML("primary"));
+        stage.setTitle("Bilregistrering");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setWidth(800);
@@ -42,4 +51,28 @@ public class Main extends Application {
         launch();
     }
 
+    private void onProgramExit(Stage stage){
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                if (!Context.getInstance().getRegisterProduct().getMyCarList().isEmpty() ||
+                        !Context.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Lukking av programmet");
+                    alert.setHeaderText("Lagre før lukking");
+                    alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
+                    alert.showAndWait().ifPresent(response -> {
+                        if(response == ButtonType.OK){
+                            if (!Context.getInstance().getRegisterProduct().getMyCarList().isEmpty()){
+                                FileHandler.saveFileCvs();
+                            }
+                            if (!Context.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
+                                FileHandler.saveFileJobj();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
 }
