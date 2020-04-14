@@ -22,8 +22,7 @@ public class OpenWithThread extends Task<Void> {
             Thread.sleep(1000);
             progressBar.setProgress(1);
         } catch (InterruptedException e) {
-            // gjør ikke noe her, men hvis hvis du er i en løkke
-            // burde løkken stoppes med break hvis isCancelled() er true...
+            // gjør ikke noe her
         }
         FileHandler.openFileJobj();
         return null;
