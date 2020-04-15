@@ -15,7 +15,9 @@ public class ComponentSearch {
     private ObservableList<String> componentFilter = FXCollections.observableArrayList();
 
     //Singelton design-pattern
-    public static ComponentSearch componentSearch = null;
+    private static ComponentSearch componentSearch = null;
+
+    private ComponentSearch(){}
 
     public static ComponentSearch getInstance(){
         if (componentSearch == null){
