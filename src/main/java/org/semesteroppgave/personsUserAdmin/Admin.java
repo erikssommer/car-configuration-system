@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Admin extends Person {
 
     public static ArrayList<Admin> adminList = new ArrayList<>();
+    public static String activeAdminId;
     private String employeeId;
 
     public Admin(String username, String password, String employeeId) {

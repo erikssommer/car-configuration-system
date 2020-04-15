@@ -68,35 +68,24 @@ public class UserBuildCarController implements Initializable {
     @FXML
     void choiseMade(Event event) {
         //TODO dette kan nok skrives på en bedre måte, men det funker
-        //Teller som forsikrer at changed metoden bare kjøres én gang for hver event
-        final int[] counter = {0};
         cbModel.valueProperty().addListener((ov, previous, active) -> {
-            if (counter[0] == 0){
-                switch (active){
-                    case "Elektrisk": newCar.createNewCar("Elektrisk", "universial");
-                        resetChoiceBox(true);
-                        counter[0]++;
-                        break;
-                    case "Diesel": newCar.createNewCar("Diesel", "universial");
-                        resetChoiceBox(false);
-                        counter[0]++;
-                        break;
-                    case "Hybrid": newCar.createNewCar("Hybrid", "universial");
-                        resetChoiceBox(false);
-                        counter[0]++;
-                        break;
-                }
+            switch (active){
+                case "Elektrisk": newCar.createNewCar("Elektrisk", "universial");
+                resetChoiceBox(true);
+                break;
+                case "Diesel": newCar.createNewCar("Diesel", "universial");
+                resetChoiceBox(false);
+                break;
+                case "Hybrid": newCar.createNewCar("Hybrid", "universial");
+                resetChoiceBox(false);
+                break;
             }
         });
     }
 
     public void resetChoiceBox(boolean state){
 
-        if (state){
-            cbAutopilot.setVisible(true);
-        }else {
-            cbAutopilot.setVisible(false);
-        }
+        cbAutopilot.setVisible(state);
 
         gridPaneCustom.setDisable(false);
         tableViewComponent.setDisable(false);
