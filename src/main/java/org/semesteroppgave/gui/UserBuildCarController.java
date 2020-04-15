@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import org.semesteroppgave.FileHandler;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.UserCreateCar;
 import org.semesteroppgave.carcomponents.Component;

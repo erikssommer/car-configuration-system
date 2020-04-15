@@ -3,7 +3,6 @@ package org.semesteroppgave;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.semesteroppgave.carmodel.Car;
-import org.semesteroppgave.carmodel.Electric;
 
 public class RegisterProduct {
     //Listen carList er alle tidligere konfigurerte biler

@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.semesteroppgave.AdminCreateComponent;
-import org.semesteroppgave.Context;
 import org.semesteroppgave.InputValidation;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.carcomponents.Component;

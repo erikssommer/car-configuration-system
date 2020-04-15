@@ -1,7 +1,6 @@
 package org.semesteroppgave.io;
 
 import org.semesteroppgave.Context;
-import org.semesteroppgave.RegisterComponent;
 import org.semesteroppgave.carcomponents.Component;
 
 import java.io.IOException;

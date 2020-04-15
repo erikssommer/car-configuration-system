@@ -9,8 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.semesteroppgave.gui.Dialogs;
-import org.semesteroppgave.gui.PrimaryController;
 
 import java.io.IOException;
 

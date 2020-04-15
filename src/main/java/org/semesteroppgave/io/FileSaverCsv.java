@@ -1,15 +1,12 @@
 package org.semesteroppgave.io;
 
 import org.semesteroppgave.Context;
-import org.semesteroppgave.RegisterComponent;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
 public class FileSaverCsv implements FileSaver{
 

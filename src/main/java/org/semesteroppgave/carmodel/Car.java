@@ -8,6 +8,7 @@ import org.semesteroppgave.carcustomization.Towbar;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public abstract class Car {
     private Motor motor;
@@ -183,9 +184,9 @@ public abstract class Car {
             return product.getMotor().equals(motor) && product.getRim().equals(rim)
                     && product.getSeatCover().equals(seatcover)
                     && product.getSpoiler().equals(spoiler) && product.getTires().equals(tires)
-                    && ((product.getGps() == null && gps == null) || product.getGps().equals(gps))
-                    && ((product.getSunroof() == null && sunroof == null) || product.getSunroof().equals(sunroof))
-                    && ((product.getTowbar() == null && towbar == null) || product.getTowbar().equals(towbar));
+                    && ((product.getGps() == null && gps == null) || Objects.equals(product.getGps(), gps))
+                    && ((product.getSunroof() == null && sunroof == null) || Objects.equals(product.getSunroof(), sunroof))
+                    && ((product.getTowbar() == null && towbar == null) || Objects.equals(product.getTowbar(), towbar));
         }
         return false;
     }

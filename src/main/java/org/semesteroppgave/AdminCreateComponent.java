@@ -68,7 +68,6 @@ public class AdminCreateComponent {
             }
         }catch (NullPointerException | NumberFormatException | DuplicateException | InvalidVersionException | InvalidDescriptionException e){
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -107,39 +106,6 @@ public class AdminCreateComponent {
             e.printStackTrace();
         }
 
-        //Dette er for å teste
-        Motor motor = new Motor("V12",12300,"Denne V12 motoren er slitesterk og har en veldig høy ytelse");
-        Context.getInstance().getRegisterComponent().setComponentsList(motor);
-        Motor motor2 = new Motor("V8",1230, "Denne V8 motoren er lett å vedlikeholde og lager lite lyd");
-        Context.getInstance().getRegisterComponent().setComponentsList(motor2);
-        Rim rim = new Rim("Feit",3900,"Disse felgene er laget av aluminium som gir en fin glans i solen");
-        Context.getInstance().getRegisterComponent().setComponentsList(rim);
-        SeatCover seatCover = new SeatCover("Mykt",123,"Dette setetrekket er veldig komfortabelt under lange kjøreturer");
-        Context.getInstance().getRegisterComponent().setComponentsList(seatCover);
-        SeatCover seatCover2 = new SeatCover("Sport",12300,"Dette setetrekket er for deg som er ute etter fart. Mindre behagelig over tid");
-        Context.getInstance().getRegisterComponent().setComponentsList(seatCover2);
-        Spoiler spoiler = new Spoiler("Høy",1000,"Denne spoileren gir ekstra fart ettersom den er meget høy");
-        Context.getInstance().getRegisterComponent().setComponentsList(spoiler);
-        Spoiler spoiler2 = new Spoiler("Lav",500,"Denne spoileren gir mindre fart men god luftmotstand");
-        Context.getInstance().getRegisterComponent().setComponentsList(spoiler2);
-        Tires tires = new Tires("Vinter",1000,"Disse vinterdekkene er gode på alle typer snø og is");
-        Context.getInstance().getRegisterComponent().setComponentsList(tires);
-        Tires tires2 = new Tires("Sommer",1500,"Disse sommerdekkene er veldig slitesterke");
-        Context.getInstance().getRegisterComponent().setComponentsList(tires2);
-        Tires tires3 = new Tires("Alround",2000,"Disse dekkene kan du bruke både sommer og vinter");
-        Context.getInstance().getRegisterComponent().setComponentsList(tires3);
-        Gearbox gearbox = new Gearbox("Manuell",3000,"Manuell girboks er billigere enn automat, og gir deg mer kontroll");
-        Context.getInstance().getRegisterComponent().setComponentsList(gearbox);
-        Gearbox gearbox2 = new Gearbox("Automat",5000,"Automat girboks er dyrere enn manuell, men er mer komportabelt");
-        Context.getInstance().getRegisterComponent().setComponentsList(gearbox2);
-        Battery battery = new Battery("Li-ion",10000,"Li-ion batteri er miljøvennlige og har lang rekkevidde");
-        Context.getInstance().getRegisterComponent().setComponentsList(battery);
-        FuelContainer fuelContainer = new FuelContainer("50-liter",5000,"Denne tanken er ikke så stor, men er billig");
-        Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer);
-        FuelContainer fuelContainer2 = new FuelContainer("100-liter",10000,"Denne tanken er stor og har god kondens");
-        Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer2);
-        FuelContainer fuelContainer3 = new FuelContainer("200-liter",2000,"Denne tanken er giga stor og har god kondens");
-        Context.getInstance().getRegisterComponent().setComponentsList(fuelContainer3);
     }
 
     private void convert(Component component){

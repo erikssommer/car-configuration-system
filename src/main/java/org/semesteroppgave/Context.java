@@ -1,6 +1,7 @@
 package org.semesteroppgave;
 
 public class Context {
+
     private final static Context context = new Context();
 
     public static Context getInstance(){
@@ -17,7 +18,6 @@ public class Context {
     public RegisterProduct getRegisterProduct(){
         return this.registerProduct;
     }
-
 
     //Her kan vi fortsette å legge til globale objekter
 }

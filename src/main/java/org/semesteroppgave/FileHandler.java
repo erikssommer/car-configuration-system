@@ -1,7 +1,6 @@
 package org.semesteroppgave;
 
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.semesteroppgave.gui.Dialogs;
 import org.semesteroppgave.io.*;
 

@@ -9,7 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.FileHandler;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.carmodel.Car;
 
 import java.io.IOException;

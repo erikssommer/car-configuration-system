@@ -1,16 +1,7 @@
 package org.semesteroppgave.io;
 
 import org.semesteroppgave.Context;
-import org.semesteroppgave.RegisterComponent;
-import org.semesteroppgave.carcomponents.*;
-import org.semesteroppgave.carcustomization.Autopilot;
-import org.semesteroppgave.carcustomization.Gps;
-import org.semesteroppgave.carcustomization.Sunroof;
-import org.semesteroppgave.carcustomization.Towbar;
 import org.semesteroppgave.carmodel.Car;
-import org.semesteroppgave.carmodel.Diesel;
-import org.semesteroppgave.carmodel.Electric;
-import org.semesteroppgave.carmodel.Hybrid;
 import org.semesteroppgave.exceptions.*;
 import org.semesteroppgave.gui.Dialogs;
 
@@ -18,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
 public class FileOpenerCsv implements FileOpener{
 

@@ -252,7 +252,6 @@ public class UserCreateCar {
 
             }catch (NullPointerException | DuplicateException e){
                 Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
-                e.printStackTrace();
             }
 
         }else {
