@@ -1,4 +1,4 @@
-package org.semesteroppgave.personsUserAdmin;
+package org.semesteroppgave.signin;
 
 import org.semesteroppgave.exceptions.InvalidEmailException;
 import org.semesteroppgave.exceptions.InvalidNameException;
@@ -77,7 +77,7 @@ public class User extends Person {
     }
     // Lagrer brukers brukernavn og passord til fil
     public static void saveToFileUsernamePassword(){
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "userUsernameAndPassword");
+        var filepath = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "userUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
         }catch (Exception e){
@@ -86,7 +86,7 @@ public class User extends Person {
     }
     // Lagrer brukers info til fil
     public static void saveToFileUserInfo(){
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "userInfo");
+        var filepath = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "userInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
         }catch (Exception e){

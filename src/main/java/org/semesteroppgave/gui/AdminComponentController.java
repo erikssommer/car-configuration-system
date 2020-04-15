@@ -11,7 +11,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import org.semesteroppgave.*;
 import org.semesteroppgave.carcomponents.Component;
-import org.semesteroppgave.personsUserAdmin.Admin;
+import org.semesteroppgave.signin.Admin;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +43,6 @@ public class AdminComponentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //FileHandler.openFileJobj();
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));

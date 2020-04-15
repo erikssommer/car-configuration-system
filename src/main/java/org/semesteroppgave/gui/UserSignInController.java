@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.PersonLogin;
+import org.semesteroppgave.signin.PersonLogin;
 
 public class UserSignInController {
 

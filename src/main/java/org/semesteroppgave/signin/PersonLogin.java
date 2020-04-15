@@ -1,4 +1,4 @@
-package org.semesteroppgave;
+package org.semesteroppgave.signin;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -8,7 +8,7 @@ public class PersonLogin {
 
     public static boolean verifyLogin(String username, String password, String usernameAndPasswordfile){
 
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/loginFiles", usernameAndPasswordfile);
+        var filepath = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", usernameAndPasswordfile);
 
         try{
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -34,7 +34,7 @@ public class PersonLogin {
     public static boolean checkIfExisting(String username, String usernameAndPasswordfile){
         boolean existing = false;
 
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/loginFiles", usernameAndPasswordfile);
+        var filepath = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", usernameAndPasswordfile);
 
 
         try{

@@ -1,4 +1,4 @@
-package org.semesteroppgave.personsUserAdmin;
+package org.semesteroppgave.signin;
 
 import org.semesteroppgave.gui.Dialogs;
 import org.semesteroppgave.exceptions.InvalidPasswordException;
@@ -6,12 +6,11 @@ import org.semesteroppgave.exceptions.InvalidUsernameException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-import static org.semesteroppgave.personsUserAdmin.Admin.adminList;
-import static org.semesteroppgave.personsUserAdmin.User.userList;
+import static org.semesteroppgave.signin.Admin.adminList;
+import static org.semesteroppgave.signin.User.userList;
 
 public class ParseUsernamePassword {
 
@@ -19,8 +18,8 @@ public class ParseUsernamePassword {
     public void parseExistingUser() {
         userList.clear();
             // Tar inn info fra bruker-filer
-            var filepathUnamePword = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "userUsernameAndPassword");
-            var filepathUInfo = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "userInfo");
+            var filepathUnamePword = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "userUsernameAndPassword");
+            var filepathUInfo = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "userInfo");
 
             try {
                 Scanner s = new Scanner(new File(String.valueOf(filepathUInfo)));
@@ -46,8 +45,8 @@ public class ParseUsernamePassword {
 
     public void parseExistingAdmins() {
         adminList.clear();
-        var filepathAInfo = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "adminInfo");
-        var filepathAUnamePword = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "adminUsernameAndPassword");
+        var filepathAInfo = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "adminInfo");
+        var filepathAUnamePword = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "adminUsernameAndPassword");
 
         try {
             Scanner info = new Scanner(new File(String.valueOf(filepathAInfo)));

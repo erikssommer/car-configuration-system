@@ -1,4 +1,4 @@
-package org.semesteroppgave.personsUserAdmin;
+package org.semesteroppgave.signin;
 
 import org.semesteroppgave.exceptions.*;
 
@@ -109,7 +109,6 @@ public class PersonValidator {
     public static boolean testValidEmpNo(String empNo){
         for (String admin : availableEmpNos) {
             if (admin.matches(empNo)){
-                availableEmpNos.remove(admin);
                 return true;
             }
         }

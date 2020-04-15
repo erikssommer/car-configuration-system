@@ -9,8 +9,8 @@ import javafx.scene.control.ProgressBar;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.OpenWithThread;
-import org.semesteroppgave.personsUserAdmin.ParseUsernamePassword;
-import org.semesteroppgave.personsUserAdmin.PersonValidator;
+import org.semesteroppgave.signin.ParseUsernamePassword;
+import org.semesteroppgave.signin.PersonValidator;
 
 import java.io.IOException;
 

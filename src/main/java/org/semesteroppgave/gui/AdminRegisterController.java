@@ -5,14 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.PersonLogin;
+import org.semesteroppgave.signin.PersonLogin;
 import org.semesteroppgave.exceptions.*;
-import org.semesteroppgave.personsUserAdmin.Admin;
-import org.semesteroppgave.personsUserAdmin.PersonValidator;
+import org.semesteroppgave.signin.Admin;
+import org.semesteroppgave.signin.PersonValidator;
 
 import java.io.IOException;
 
-import static org.semesteroppgave.personsUserAdmin.Admin.adminList;
+import static org.semesteroppgave.signin.Admin.adminList;
 
 public class AdminRegisterController {
 
@@ -41,16 +41,11 @@ public class AdminRegisterController {
                     Admin.registerAdmin(newAdmin);
                     //PersonValidator.removeCurrentEmpNo(newAdmin.getEmployeeId());
                     lblFeedback.setText("Ny superbruker registrert på ansattnr: " + txtEmployeenumber.getText() + "\nBrukernavn: " + txtUsername.getText() + "\nPassord: " + txtPassword.getText());
-                    Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Gå tilbake til start og logg inn med brukernavn og passord");
-
-                    clearInput();
-
-                    System.out.println("Admins:");
-                    for (Admin admin : adminList) {
-                        System.out.println("-->\t"+admin.getUsername()+"\t"+admin.getPassword()+"\t"+admin.getEmployeeId());
-                    }
+                    Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
                     Admin.saveToFileUsernamePassword();
                     Admin.saveToFileAdminInfo();
+                    PersonValidator.availableEmpNos.remove(txtEmployeenumber.getText());
+                    Main.setRoot("adminsignin");
                 }else {
                     lblFeedback.setText("Ansattnummeret er opptatt eller finnes ikke!\nPrøv et annet.");
                 }
@@ -62,10 +57,5 @@ public class AdminRegisterController {
         } else {
             lblFeedback.setText("Brukeren finnes fra før\n velg et annet brukernavn");
         }
-    }
-    private void clearInput(){
-        txtEmployeenumber.clear();
-        txtUsername.clear();
-        txtPassword.clear();
     }
 }

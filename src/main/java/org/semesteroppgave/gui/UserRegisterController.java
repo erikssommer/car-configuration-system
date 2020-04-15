@@ -5,13 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.PersonLogin;
+import org.semesteroppgave.signin.PersonLogin;
 import org.semesteroppgave.exceptions.*;
-import org.semesteroppgave.personsUserAdmin.User;
+import org.semesteroppgave.signin.User;
 
 import java.io.IOException;
 
-import static org.semesteroppgave.personsUserAdmin.User.userList;
+import static org.semesteroppgave.signin.User.userList;
 
 public class UserRegisterController {
 
@@ -32,15 +32,10 @@ public class UserRegisterController {
                 User newUser = new User(txtUsername.getText(), txtPassword.getText(), txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
                 User.registerUser(newUser);
                 lblFeedback.setText("Ny bruker registrert!\nBrukernavn: " + newUser.getUsername() + "\nPassord: " + newUser.getPassword());
-                Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Gå tilbake til start og logg inn med brukernavn og passord");
-                clearInput();
-
-                System.out.println("Users:");
-                for (User user : userList) {
-                    System.out.println("-->\t"+user.getUsername()+" "+user.getPassword()+"\t"+user.getName()+" "+user.getEmail());
-                }
+                Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
                 User.saveToFileUsernamePassword();
                 User.saveToFileUserInfo();
+                Main.setRoot("usersignin");
 
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | IOException e) {
                 lblFeedback.setText(e.getMessage());
@@ -56,12 +51,5 @@ public class UserRegisterController {
     @FXML
     void btnCancel(ActionEvent event) throws IOException {
         Main.setRoot("usersignin");
-    }
-    private void clearInput(){
-        txtName.clear();
-        txtEmail.clear();
-        txtPhonenumber.clear();
-        txtUsername.clear();
-        txtPassword.clear();
     }
 }

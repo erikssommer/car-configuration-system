@@ -1,4 +1,4 @@
-package org.semesteroppgave.personsUserAdmin;
+package org.semesteroppgave.signin;
 
 import org.semesteroppgave.exceptions.InvalidEmployeeNoException;
 
@@ -48,7 +48,7 @@ public class Admin extends Person {
     }
     // Lagrer admins brukernavn og passord til fil
     public static void saveToFileUsernamePassword(){
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "adminUsernameAndPassword");
+        var filepath = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "adminUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminUsernamePassword().getBytes());
         }catch (Exception e){
@@ -57,7 +57,7 @@ public class Admin extends Person {
     }
     // Lagrer admins info til fil
     public static void saveToFileAdminInfo(){
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/loginFiles", "adminInfo");
+        var filepath = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "adminInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminInfo().getBytes());
         }catch (Exception e){

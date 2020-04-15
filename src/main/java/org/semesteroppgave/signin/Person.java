@@ -1,4 +1,4 @@
-package org.semesteroppgave.personsUserAdmin;
+package org.semesteroppgave.signin;
 
 import org.semesteroppgave.exceptions.InvalidUsernameException;
 
