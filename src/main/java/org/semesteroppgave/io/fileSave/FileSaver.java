@@ -1,4 +1,4 @@
-package org.semesteroppgave.io;
+package org.semesteroppgave.io.fileSave;
 
 import java.io.IOException;
 import java.nio.file.Path;

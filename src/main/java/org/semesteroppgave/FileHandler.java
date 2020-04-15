@@ -2,7 +2,12 @@ package org.semesteroppgave;
 
 import javafx.stage.FileChooser;
 import org.semesteroppgave.gui.Dialogs;
-import org.semesteroppgave.io.*;
+import org.semesteroppgave.io.fileOpen.FileOpener;
+import org.semesteroppgave.io.fileOpen.FileOpenerCsv;
+import org.semesteroppgave.io.fileOpen.FileOpenerJobj;
+import org.semesteroppgave.io.fileSave.FileSaver;
+import org.semesteroppgave.io.fileSave.FileSaverCsv;
+import org.semesteroppgave.io.fileSave.FileSaverJobj;
 
 import java.io.File;
 import java.io.IOException;

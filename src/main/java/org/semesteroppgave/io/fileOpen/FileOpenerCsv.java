@@ -1,16 +1,18 @@
-package org.semesteroppgave.io;
+package org.semesteroppgave.io.fileOpen;
 
 import org.semesteroppgave.Context;
 import org.semesteroppgave.carmodel.Car;
 import org.semesteroppgave.exceptions.*;
 import org.semesteroppgave.gui.Dialogs;
+import org.semesteroppgave.io.CreateProductCsv;
+import org.semesteroppgave.io.fileOpen.FileOpener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class FileOpenerCsv implements FileOpener{
+public class FileOpenerCsv implements FileOpener {
 
     CreateProductCsv create = new CreateProductCsv();
 

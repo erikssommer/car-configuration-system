@@ -12,8 +12,6 @@ import org.semesteroppgave.signin.PersonValidator;
 
 import java.io.IOException;
 
-import static org.semesteroppgave.signin.Admin.adminList;
-
 public class AdminRegisterController {
 
     @FXML
@@ -32,26 +30,23 @@ public class AdminRegisterController {
         lblFeedback.setText("");
 
         // Sjekker om admin-brukernavnet finnes fra før
-        if (!PersonLogin.checkIfExisting(txtUsername.getText(), "adminUsernameAndPassword")) {
+        if (PersonLogin.checkIfNotExisting(txtUsername.getText(), "adminUsernameAndPassword")) {
 
             // Prøver å opprette ny admin
             try {
                 if(PersonValidator.testValidEmpNo(txtEmployeenumber.getText())){
                     Admin newAdmin = new Admin(txtUsername.getText(), txtPassword.getText(), txtEmployeenumber.getText());
-                    Admin.registerAdmin(newAdmin);
-                    //PersonValidator.removeCurrentEmpNo(newAdmin.getEmployeeId());
-                    lblFeedback.setText("Ny superbruker registrert på ansattnr: " + txtEmployeenumber.getText() + "\nBrukernavn: " + txtUsername.getText() + "\nPassord: " + txtPassword.getText());
+                    PersonLogin.setAdminList(newAdmin);
                     Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
-                    Admin.saveToFileUsernamePassword();
-                    Admin.saveToFileAdminInfo();
-                    PersonValidator.availableEmpNos.remove(txtEmployeenumber.getText());
+                    PersonLogin.saveToFileUsernamePassword("adminUsernameAndPassword");
+                    PersonLogin.saveToFileInfo("adminInfo");
+                    PersonValidator.getAvailableEmpNos().remove(txtEmployeenumber.getText());
                     Main.setRoot("adminsignin");
                 }else {
                     lblFeedback.setText("Ansattnummeret er opptatt eller finnes ikke!\nPrøv et annet.");
                 }
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | InvalidEmployeeNoException e) {
                 lblFeedback.setText(e.getMessage());
-                System.out.print(e.getMessage());
             }
 
         } else {

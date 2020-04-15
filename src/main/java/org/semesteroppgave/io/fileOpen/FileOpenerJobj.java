@@ -1,7 +1,8 @@
-package org.semesteroppgave.io;
+package org.semesteroppgave.io.fileOpen;
 
 import org.semesteroppgave.Context;
 import org.semesteroppgave.carcomponents.Component;
+import org.semesteroppgave.io.fileOpen.FileOpener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class FileOpenerJobj implements FileOpener{
+public class FileOpenerJobj implements FileOpener {
 
     @Override
     public void open(Path filePath) throws IOException {

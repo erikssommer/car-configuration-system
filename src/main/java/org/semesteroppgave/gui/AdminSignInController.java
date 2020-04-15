@@ -29,9 +29,9 @@ public class AdminSignInController {
         String file = "adminUsernameAndPassword";
         if(PersonLogin.verifyLogin(txtUsername.getText(), txtPassword.getText(), file)) {
             //Setter aktiv admin
-            for (Admin enDamin : Admin.adminList){
-                if (enDamin.getPassword().equals(txtPassword.getText())){
-                    Admin.activeAdminId = enDamin.getEmployeeId();
+            for (Admin admin : PersonLogin.getAdminList()){
+                if (admin.getPassword().equals(txtPassword.getText())){
+                    PersonLogin.setActiveAdminId(admin.getEmployeeId());
                 }
             }
             Main.setRoot("admincomponent");

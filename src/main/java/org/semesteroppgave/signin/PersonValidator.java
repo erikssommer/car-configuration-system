@@ -88,7 +88,11 @@ public class PersonValidator {
     }
 
     // Oppretter liste med gyldige og ledige ansattnummer
-    public static ArrayList<String> availableEmpNos = new ArrayList<>();
+    private static ArrayList<String> availableEmpNos = new ArrayList<>();
+
+    public static ArrayList<String> getAvailableEmpNos(){
+        return availableEmpNos;
+    }
 
     public static void initializeEmpNos(){
         availableEmpNos.clear();
@@ -104,53 +108,13 @@ public class PersonValidator {
         availableEmpNos.add("A9012");
     }
 
-    // Sjekker om ansattnummer er gyldig. Hvis gyldig slettes ansattnummeret fra lista,
-    // slik at det ikke er mulig å lage flere brukere pr ansattnummer
-    public static boolean testValidEmpNo(String empNo){
+    // Sjekker om ansattnummer er gyldig
+    public static boolean testValidEmpNo(String empNo) {
         for (String admin : availableEmpNos) {
-            if (admin.matches(empNo)){
+            if (admin.matches(empNo)) {
                 return true;
             }
         }
         return false;
-        /* try {
-            Scanner empNos = new Scanner(new File(String.valueOf(availableEmpNoPath)));
-            empNos.useDelimiter("[\n]");
-
-            while (empNos.hasNext()) {
-                String empNoFromList = empNos.next();
-
-                // legger gyldige og ledige ansattnummer i lista
-                availableEmpNos.add(empNoFromList);
-            }
-            throw new InvalidUserParseException("Ingen ledige ansattnummer");
-
-        } catch (FileNotFoundException | InvalidUserParseException e) {
-            e.getMessage();
-        }
-
-        */
     }
-    /*
-    public static void removeCurrentEmpNo(String empNo){
-        for (String admin : availableEmpNos) {
-            if (admin.matches(empNo)){
-                availableEmpNos.remove(admin);
-                break;
-            }
-        }
-    }
-
-     */
-/*
-    // Legger inn bruker-info inn i filen igjen
-    public static String empNoTxtToFile() {
-        StringBuilder ut = new StringBuilder();
-        for (String empNo : availableEmpNos) {
-            ut.append(empNo).append("\n");
-        }
-        return ut.toString();
-    }
-
- */
 }

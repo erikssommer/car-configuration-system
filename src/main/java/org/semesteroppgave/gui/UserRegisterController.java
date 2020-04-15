@@ -11,8 +11,6 @@ import org.semesteroppgave.signin.User;
 
 import java.io.IOException;
 
-import static org.semesteroppgave.signin.User.userList;
-
 public class UserRegisterController {
 
     @FXML
@@ -25,16 +23,15 @@ public class UserRegisterController {
     void btnRegister(ActionEvent event) {
         lblFeedback.setText("");
         // Sjekker at brukeren ikke finnes fra før
-        if(!PersonLogin.checkIfExisting(txtUsername.getText(), "userUsernameAndPassword")){
+        if(PersonLogin.checkIfNotExisting(txtUsername.getText(), "userUsernameAndPassword")){
 
             // Prøver å opprette ny bruker hvis feltene er fylt inn
             try {
                 User newUser = new User(txtUsername.getText(), txtPassword.getText(), txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
-                User.registerUser(newUser);
-                lblFeedback.setText("Ny bruker registrert!\nBrukernavn: " + newUser.getUsername() + "\nPassord: " + newUser.getPassword());
+                PersonLogin.setUserList(newUser);
                 Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
-                User.saveToFileUsernamePassword();
-                User.saveToFileUserInfo();
+                PersonLogin.saveToFileUsernamePassword("userUsernameAndPassword");
+                PersonLogin.saveToFileInfo("userInfo");
                 Main.setRoot("usersignin");
 
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | IOException e) {
@@ -44,7 +41,7 @@ public class UserRegisterController {
 
         else{
             // Feilmelding hvis brukernavn er opptatt
-            lblFeedback.setText("Brukeren finnes fra før\nvelg et annet brukernavn");
+            lblFeedback.setText("Brukeren finnes fra før\nVelg et annet brukernavn");
         }
     }
 

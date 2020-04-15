@@ -40,8 +40,8 @@ public class PrimaryController {
 
     @FXML
     void btnAdmin(ActionEvent event) throws IOException {
-        parse.parseExistingAdmins();
         PersonValidator.initializeEmpNos();
+        parse.parseExistingAdmins();
         Main.setRoot("adminsignin");
     }
 

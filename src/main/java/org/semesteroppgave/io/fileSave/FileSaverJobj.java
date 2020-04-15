@@ -1,7 +1,8 @@
-package org.semesteroppgave.io;
+package org.semesteroppgave.io.fileSave;
 
 import org.semesteroppgave.Context;
 import org.semesteroppgave.carcomponents.Component;
+import org.semesteroppgave.io.fileSave.FileSaver;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -10,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class FileSaverJobj implements FileSaver{
+public class FileSaverJobj implements FileSaver {
 
     @Override
     public void save(Path filePath) throws IOException {

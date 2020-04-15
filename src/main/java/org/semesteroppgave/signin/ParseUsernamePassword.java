@@ -9,14 +9,12 @@ import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-import static org.semesteroppgave.signin.Admin.adminList;
-import static org.semesteroppgave.signin.User.userList;
 
 public class ParseUsernamePassword {
 
     // Leser inn eksisterende brukere fra bruker-filene og legger de i en ArrayList.
     public void parseExistingUser() {
-        userList.clear();
+        PersonLogin.getUserList().clear();
             // Tar inn info fra bruker-filer
             var filepathUnamePword = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "userUsernameAndPassword");
             var filepathUInfo = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "userInfo");
@@ -36,7 +34,7 @@ public class ParseUsernamePassword {
                     String password = g.next();
                     // Oppretter bruker fra fil og legger i userList
                     User newUser = new User(username, password, name, phonenumber, email);
-                    userList.add(newUser);
+                    PersonLogin.setUserList(newUser);
                 }
             } catch (InvalidUsernameException | InvalidPasswordException | FileNotFoundException e) {
                 Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av brukerfiler", e.getMessage());
@@ -44,7 +42,7 @@ public class ParseUsernamePassword {
     }
 
     public void parseExistingAdmins() {
-        adminList.clear();
+        PersonLogin.getAdminList().clear();
         var filepathAInfo = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "adminInfo");
         var filepathAUnamePword = Paths.get("src/main/java/org/semesteroppgave/signin/loginFiles", "adminUsernameAndPassword");
 
@@ -61,7 +59,8 @@ public class ParseUsernamePassword {
                 String password = unamePword.next();
                 // Oppretter admin fra fil og legger i userList
                 Admin newAdmin = new Admin(username, password, empNo);
-                adminList.add(newAdmin);
+                PersonLogin.getAdminList().add(newAdmin);
+                PersonValidator.getAvailableEmpNos().remove(empNo);
             }
         } catch (Exception e) {
             e.printStackTrace();

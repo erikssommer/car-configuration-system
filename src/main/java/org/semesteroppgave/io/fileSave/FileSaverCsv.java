@@ -1,6 +1,7 @@
-package org.semesteroppgave.io;
+package org.semesteroppgave.io.fileSave;
 
 import org.semesteroppgave.Context;
+import org.semesteroppgave.io.fileSave.FileSaver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 
-public class FileSaverCsv implements FileSaver{
+public class FileSaverCsv implements FileSaver {
 
     @Override
     public void save(Path filePath) throws IOException {

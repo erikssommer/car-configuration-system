@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import org.semesteroppgave.*;
 import org.semesteroppgave.carcomponents.Component;
 import org.semesteroppgave.signin.Admin;
+import org.semesteroppgave.signin.PersonLogin;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,7 +47,7 @@ public class AdminComponentController implements Initializable {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        lblAdminID.setText(Admin.activeAdminId);
+        lblAdminID.setText(PersonLogin.getActiveAdminId());
         ComponentSearch.getInstance().loadFilter(cbFilter);
         loadChoice();
     }
