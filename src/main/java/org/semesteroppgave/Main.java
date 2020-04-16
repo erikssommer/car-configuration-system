@@ -27,7 +27,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         //Lagring av data ved avslutting av programmet
         onProgramExit(stage);
-        scene = new Scene(loadFXML("primary"));
+        scene = new Scene(loadFXML("usersignin"));
         stage.setTitle("Bilregistrering");
         stage.setScene(scene);
         stage.setResizable(false);
