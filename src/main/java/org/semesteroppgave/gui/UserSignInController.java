@@ -4,13 +4,13 @@ import java.io.IOException;
 
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.OpenWithThread;
 import org.semesteroppgave.exceptions.*;
-import org.semesteroppgave.signin.PersonValidator;
 import org.semesteroppgave.signin.User;
 import org.semesteroppgave.signin.UserSignIn;
 
@@ -18,7 +18,7 @@ public class UserSignInController {
 
     UserSignIn userSignIn = new UserSignIn();
 
-    private OpenWithThread thread;
+    private OpenWithThread openWithThread;
 
     @FXML
     private Tab tabRegister;
@@ -92,16 +92,22 @@ public class UserSignInController {
         }
     }
 
+    @FXML
+    void tabRegisterSelected(Event event) {
+        progressbar.setVisible(false);
+        lblThreadMessage.setVisible(false);
+    }
+
     public void startThread(){
 
         lblThreadMessage.setText("Laster inn fil...");
-        thread = new OpenWithThread(progressbar);
-        thread.setOnSucceeded(this::fileOpened);
-        thread.setOnFailed(this::fileOpeningFailed);
-        Thread th = new Thread(thread);
-        th.setDaemon(true);
+        openWithThread = new OpenWithThread(progressbar);
+        openWithThread.setOnSucceeded(this::fileOpened);
+        openWithThread.setOnFailed(this::fileOpeningFailed);
+        Thread thread = new Thread(openWithThread);
+        thread.setDaemon(true);
         disableGUI();
-        th.start();
+        thread.start();
     }
 
     private void fileOpened(WorkerStateEvent e) {
