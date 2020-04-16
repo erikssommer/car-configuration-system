@@ -86,35 +86,4 @@ public class PersonValidator {
         }
         throw new InvalidUsernameException("Skriv inn gyldig passord.\nMå være minst 4 tegn og inneholde\nminst en bokstav og et tall");
     }
-
-    // Oppretter liste med gyldige og ledige ansattnummer
-    private static ArrayList<String> availableEmpNos = new ArrayList<>();
-
-    public static ArrayList<String> getAvailableEmpNos(){
-        return availableEmpNos;
-    }
-
-    public static void initializeEmpNos(){
-        availableEmpNos.clear();
-        availableEmpNos.add("A0123");
-        availableEmpNos.add("A1234");
-        availableEmpNos.add("A2345");
-        availableEmpNos.add("A3456");
-        availableEmpNos.add("A4567");
-        availableEmpNos.add("A5678");
-        availableEmpNos.add("A6789");
-        availableEmpNos.add("A7890");
-        availableEmpNos.add("A8901");
-        availableEmpNos.add("A9012");
-    }
-
-    // Sjekker om ansattnummer er gyldig
-    public static boolean testValidEmpNo(String empNo) {
-        for (String admin : availableEmpNos) {
-            if (admin.matches(empNo)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

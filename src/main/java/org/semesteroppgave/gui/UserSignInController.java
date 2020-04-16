@@ -10,14 +10,13 @@ import org.semesteroppgave.Context;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.OpenWithThread;
 import org.semesteroppgave.exceptions.*;
-import org.semesteroppgave.signin.ParseUsernamePassword;
-import org.semesteroppgave.signin.PersonLogin;
 import org.semesteroppgave.signin.PersonValidator;
 import org.semesteroppgave.signin.User;
+import org.semesteroppgave.signin.UserSignIn;
 
 public class UserSignInController {
 
-    ParseUsernamePassword parse = new ParseUsernamePassword();
+    UserSignIn userSignIn = new UserSignIn();
 
     private OpenWithThread thread;
 
@@ -43,7 +42,7 @@ public class UserSignInController {
     private ProgressBar progressbar;
 
     public void initialize(){
-        parse.parseExistingUser();
+        userSignIn.parseExistingUser();
         if (Context.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
             progressbar.setVisible(true);
             startThread();
@@ -54,8 +53,6 @@ public class UserSignInController {
 
     @FXML
     void btnAdmin(ActionEvent event) throws IOException {
-        PersonValidator.initializeEmpNos();
-        parse.parseExistingAdmins();
         Main.setRoot("adminsignin");
     }
 
@@ -63,15 +60,15 @@ public class UserSignInController {
     void btnRegister(ActionEvent event) {
         lblRegister.setText("");
         // Sjekker at brukeren ikke finnes fra før
-        if(PersonLogin.checkIfNotExisting(txtUsernameRegister.getText(), "userUsernameAndPassword")){
+        if(userSignIn.checkIfNotExisting(txtUsernameRegister.getText())){
 
             // Prøver å opprette ny bruker hvis feltene er fylt inn
             try {
                 User newUser = new User(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
-                PersonLogin.setUserList(newUser);
+                userSignIn.setUserList(newUser);
                 Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
-                PersonLogin.saveToFileUsernamePassword("userUsernameAndPassword");
-                PersonLogin.saveToFileInfo("userInfo");
+                userSignIn.saveToFileUsernamePassword();
+                userSignIn.saveToFileInfo();
                 Main.setRoot("usersignin");
 
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | IOException e) {
@@ -88,8 +85,7 @@ public class UserSignInController {
     @FXML
     void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra user-filen
-        String file = "userUsernameAndPassword";
-        if(PersonLogin.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText(), file)) {
+        if(userSignIn.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText())) {
             Main.setRoot("userbuildcar");
         }else {
             lblSignin.setText("Feil brukernavn og/eller passord");

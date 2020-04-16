@@ -6,13 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.exceptions.*;
-import org.semesteroppgave.signin.PersonLogin;
 import org.semesteroppgave.signin.Admin;
+import org.semesteroppgave.signin.AdminSignin;
 import org.semesteroppgave.signin.PersonValidator;
 
 import java.io.IOException;
 
 public class AdminSignInController {
+
+    AdminSignin adminSignin = new AdminSignin();
 
     @FXML
     private TextField txtUsernameSignin;
@@ -35,6 +37,11 @@ public class AdminSignInController {
     @FXML
     private Label lblRegister;
 
+    public void initialize(){
+        adminSignin.initializeEmpNos();
+        adminSignin.parseExistingAdmins();
+    }
+
     @FXML
     void btnCancel(ActionEvent event) throws IOException {
         Main.setRoot("usersignin");
@@ -45,17 +52,17 @@ public class AdminSignInController {
         lblRegister.setText("");
 
         // Sjekker om admin-brukernavnet finnes fra før
-        if (PersonLogin.checkIfNotExisting(txtUsernameRegister.getText(), "adminUsernameAndPassword")) {
+        if (adminSignin.checkIfNotExisting(txtUsernameRegister.getText())) {
 
             // Prøver å opprette ny admin
             try {
-                if(PersonValidator.testValidEmpNo(txtEmpNo.getText())){
+                if(adminSignin.testValidEmpNo(txtEmpNo.getText())){
                     Admin newAdmin = new Admin(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
-                    PersonLogin.setAdminList(newAdmin);
+                    adminSignin.setAdminList(newAdmin);
                     Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
-                    PersonLogin.saveToFileUsernamePassword("adminUsernameAndPassword");
-                    PersonLogin.saveToFileInfo("adminInfo");
-                    PersonValidator.getAvailableEmpNos().remove(txtEmpNo.getText());
+                    adminSignin.saveToFileUsernamePassword();
+                    adminSignin.saveToFileInfo();
+                    adminSignin.getAvailableEmpNos().remove(txtEmpNo.getText());
                     Main.setRoot("adminsignin");
                 }else {
                     lblRegister.setText("Ansattnummeret er opptatt eller finnes ikke!\nPrøv et annet.");
@@ -73,11 +80,11 @@ public class AdminSignInController {
     void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra admin-filen
         String file = "adminUsernameAndPassword";
-        if(PersonLogin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText(), file)) {
+        if(adminSignin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText())) {
             //Setter aktiv admin
-            for (Admin admin : PersonLogin.getAdminList()){
+            for (Admin admin : adminSignin.getAdminList()){
                 if (admin.getPassword().equals(txtPasswordSignin.getText())){
-                    PersonLogin.setActiveAdminId(admin.getEmployeeId());
+                    AdminSignin.setActiveAdminId(admin.getEmployeeId());
                 }
             }
             Main.setRoot("admincomponent");

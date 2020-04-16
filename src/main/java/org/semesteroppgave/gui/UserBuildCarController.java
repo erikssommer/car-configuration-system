@@ -67,7 +67,7 @@ public class UserBuildCarController implements Initializable {
 
     @FXML
     void choiseMade(Event event) {
-        //TODO dette kan nok skrives på en bedre måte, men det funker
+
         cbModel.valueProperty().addListener((ov, previous, active) -> {
             switch (active){
                 case "Elektrisk": newCar.createNewCar("Elektrisk", "universial");
