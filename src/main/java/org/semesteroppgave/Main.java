@@ -31,8 +31,8 @@ public class Main extends Application {
         stage.setTitle("Bilregistrering");
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setWidth(750);
+        stage.setHeight(550);
         stage.show();
     }
 
