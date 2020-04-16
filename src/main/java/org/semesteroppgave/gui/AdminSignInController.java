@@ -79,7 +79,6 @@ public class AdminSignInController {
     @FXML
     void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra admin-filen
-        String file = "adminUsernameAndPassword";
         if(adminSignin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText())) {
             //Setter aktiv admin
             for (Admin admin : adminSignin.getAdminList()){
