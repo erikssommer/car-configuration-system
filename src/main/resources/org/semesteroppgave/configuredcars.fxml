@@ -2,6 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
@@ -42,7 +45,6 @@
          </font>
       </Label>
       <Button layoutX="633.0" layoutY="492.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="82.0" text="Tilbake" />
-      <Button layoutX="36.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnExport" text="Eksporter liste" />
       <Button layoutX="633.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnMoreInfo" text="Vis mer info" />
       <TableView fx:id="tableViewMyConfig" layoutX="36.0" layoutY="287.0" prefHeight="152.0">
          <columns>
@@ -66,4 +68,14 @@
          </columnResizePolicy>
       </TableView>
       <Button layoutX="521.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnAddToConfigs" prefHeight="27.0" prefWidth="101.0" text="Legg til i konfig" />
+   <MenuBar prefHeight="29.0" prefWidth="750.0">
+     <menus>
+       <Menu mnemonicParsing="false" text="Fil">
+         <items>
+           <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne" />
+               <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre" />
+         </items>
+       </Menu>
+     </menus>
+   </MenuBar>
 </AnchorPane>

@@ -17,23 +17,44 @@ public class FileHandler {
     private enum DialogMode {
         Admin,
         User,
-        Save,
-        Open,
     }
 
-    public static void openFileCvs() {
+    public static void openFileCsv(){
+        File selectedFile = getFileFromFileChooserOpen(DialogMode.User);
+
+        if (selectedFile != null) {
+            String fileExt = getFileExt(selectedFile);
+            FileOpener opener = null;
+
+            if (".csv".equals(fileExt)) {
+                opener = new FileOpenerCsv();
+            } else {
+                Dialogs.showErrorDialog("Fil","Feil ved åpning av fil", "Du kan bare åpne csv filer som bruker");
+            }
+
+            if(opener != null) {
+                try {
+                    opener.open(selectedFile.toPath());
+                } catch (IOException e) {
+                    Dialogs.showErrorDialog("Fil", "Feil i åpneing av fil", "Åpning av filen feilet. Grunn: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    public static void openFileCvsLaunch() {
         File loadFile = new File("Files/produkter.csv");
         FileOpener opener = new FileOpenerCsv();
 
         try {
             opener.open(loadFile.toPath());
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Filbehandling","Åpning av filen gikk galt","Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("Fil","Åpning av filen gikk galt","Grunn: " + e.getMessage());
         }
     }
 
-    public static void saveFileCvs() {
-        File selectedFile = getFileFromFileChooser(DialogMode.User);
+    public static void saveFileCsv() {
+        File selectedFile = getFileFromFileChooserSave(DialogMode.User);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -56,7 +77,30 @@ public class FileHandler {
         }
     }
 
-    public static void openFileJobj() {
+    public static void openFileJobj(){
+        File selectedFile = getFileFromFileChooserOpen(DialogMode.Admin);
+
+        if (selectedFile != null) {
+            String fileExt = getFileExt(selectedFile);
+            FileOpener opener = null;
+
+            if (".jobj".equals(fileExt)) {
+                opener = new FileOpenerJobj();
+            } else {
+                Dialogs.showErrorDialog("Fil","Feil ved åpning av fil", "Du kan bare åpne jobj filer som admin");
+            }
+
+            if(opener != null) {
+                try {
+                    opener.open(selectedFile.toPath());
+                } catch (IOException e) {
+                    Dialogs.showErrorDialog("Fil", "Feil i åpneing av fil", "Åpning av filen feilet. Grunn: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    public static void openFileJobjThread() {
 
         File loadFile = new File("Files/komponenter.jobj");
         FileOpener opener = new FileOpenerJobj();
@@ -64,12 +108,12 @@ public class FileHandler {
         try {
             opener.open(loadFile.toPath());
         } catch (IOException e) {
-                Dialogs.showErrorDialog("Filbehandling","Åpning av filen gikk galt","Grunn: " + e.getMessage());
+                Dialogs.showErrorDialog("Fil","Åpning av filen gikk galt","Grunn: " + e.getMessage());
         }
     }
 
     public static void saveFileJobj(){
-        File selectedFile = getFileFromFileChooser(DialogMode.Admin);
+        File selectedFile = getFileFromFileChooserSave(DialogMode.Admin);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -78,7 +122,7 @@ public class FileHandler {
             if (".jobj".equals(fileExt)) {
                 saver = new FileSaverJobj();
             } else {
-                Dialogs.showErrorDialog("Lagring til fil", "Feil i lagring til fil", "Du kan bare lagre til jobj filer.");
+                Dialogs.showErrorDialog("Fil", "Feil i lagring til fil", "Du kan bare lagre til jobj filer.");
             }
 
             if(saver != null) {
@@ -94,7 +138,7 @@ public class FileHandler {
 
     }
 
-    private static File getFileFromFileChooser(DialogMode mode) {
+    private static File getFileFromFileChooserSave(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
 
@@ -104,6 +148,18 @@ public class FileHandler {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
         }
         return fileChooser.showSaveDialog(Main.getScene().getWindow());
+    }
+
+    private static File getFileFromFileChooserOpen(DialogMode mode) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Velg fil");
+
+        if(mode == DialogMode.Admin) {
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
+        } else {
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
+        }
+        return fileChooser.showOpenDialog(Main.getScene().getWindow());
     }
 
     private static String getFileExt(File file) {

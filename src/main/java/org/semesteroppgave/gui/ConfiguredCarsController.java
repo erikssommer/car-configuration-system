@@ -41,8 +41,6 @@ public class ConfiguredCarsController implements Initializable {
 
         setTableColum(txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy, txtPriceColumnMy);
         tableViewMyConfig.setItems(Context.getInstance().getRegisterProduct().getMyCarList());
-        FileHandler.openFileCvs();
-
     }
 
     private void setTableColum(TableColumn<Car, String> txtMotorColumn, TableColumn<Car, String> txtRimColumn, TableColumn<Car, String> txtSeatcoverColumn, TableColumn<Car, String> txtSpoilerColumn, TableColumn<Car, String> txtTireColumn, TableColumn<Car, Double> txtPriceColumn) {
@@ -63,7 +61,7 @@ public class ConfiguredCarsController implements Initializable {
 
     @FXML
     void btnExport(ActionEvent event) {
-        FileHandler.saveFileCvs();
+        FileHandler.saveFileCsv();
     }
 
     @FXML
@@ -98,5 +96,15 @@ public class ConfiguredCarsController implements Initializable {
         }else {
             Dialogs.showErrorDialog("Oups", "Du må velge en bil først!", "Prøv igjen etter å ha valgt et produkt");
         }
+    }
+
+    @FXML
+    void openFileMenuClicked(ActionEvent event) {
+        FileHandler.openFileCsv();
+    }
+
+    @FXML
+    void saveFileMenuClicked(ActionEvent event) {
+        FileHandler.saveFileCsv();
     }
 }

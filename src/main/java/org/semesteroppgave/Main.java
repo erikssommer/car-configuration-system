@@ -27,6 +27,8 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         //Lagring av data ved avslutting av programmet
         onProgramExit(stage);
+        //Laster inn ferdiglagde podukter
+        loadConfiguredProducts();
         scene = new Scene(loadFXML("usersignin"));
         stage.setTitle("Bilregistrering");
         stage.setScene(scene);
@@ -49,6 +51,10 @@ public class Main extends Application {
         launch();
     }
 
+    private void loadConfiguredProducts(){
+        FileHandler.openFileCvsLaunch();
+    }
+
     private void onProgramExit(Stage stage){
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -61,12 +67,8 @@ public class Main extends Application {
                     alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
                     alert.showAndWait().ifPresent(response -> {
                         if(response == ButtonType.OK){
-                            if (!Context.getInstance().getRegisterProduct().getMyCarList().isEmpty()){
-                                FileHandler.saveFileCvs();
-                            }
-                            if (!Context.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
-                                FileHandler.saveFileJobj();
-                            }
+                            FileHandler.saveFileCsv();
+                            FileHandler.saveFileJobj();
                         }
                     });
                 }

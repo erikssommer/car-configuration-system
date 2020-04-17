@@ -24,7 +24,7 @@ public class OpenWithThread extends Task<Void> {
         } catch (InterruptedException e) {
             // gjør ikke noe her
         }
-        FileHandler.openFileJobj();
+        FileHandler.openFileJobjThread();
         return null;
     }
 }

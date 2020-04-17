@@ -1,22 +1,18 @@
 package org.semesteroppgave.gui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import org.semesteroppgave.*;
 import org.semesteroppgave.carcomponents.Component;
-import org.semesteroppgave.signin.Admin;
 import org.semesteroppgave.signin.AdminSignin;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class AdminComponentController {
 
@@ -41,6 +37,9 @@ public class AdminComponentController {
 
     @FXML
     private Label lblAdminID, lblMessageCreate;
+
+    @FXML
+    private MenuBar menuBar = new MenuBar();
 
     public void initialize() {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
@@ -71,11 +70,6 @@ public class AdminComponentController {
     @FXML
     void btnDeleteCreate(ActionEvent event) {
         createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
-    }
-
-    @FXML
-    void btnExport(ActionEvent event) {
-        FileHandler.saveFileJobj();
     }
 
     @FXML
@@ -116,5 +110,25 @@ public class AdminComponentController {
     @FXML
     void onKeyTypedSearch(KeyEvent event) {
         componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
+    }
+
+    @FXML
+    void tabComponent(Event event) {
+        menuBar.setVisible(true);
+    }
+
+    @FXML
+    void tabCreate(Event event) {
+        menuBar.setVisible(false);
+    }
+
+    @FXML
+    void openFileMenuClicked(ActionEvent event) {
+        FileHandler.openFileJobj();
+    }
+
+    @FXML
+    void saveFileMenuClicked(ActionEvent event) {
+        FileHandler.saveFileJobj();
     }
 }

@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserBuildCarController implements Initializable {
+public class UserBuildCarController {
 
     private ObservableList<String> modelChoice = FXCollections.observableArrayList();
     private UserCreateCar newCar;
@@ -46,8 +46,7 @@ public class UserBuildCarController implements Initializable {
     @FXML
     private Label lblMessage;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
         loadChoice();
         newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -101,9 +100,7 @@ public class UserBuildCarController implements Initializable {
 
     @FXML
     void cbClicked(ActionEvent event) {
-
         newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
-
     }
 
     @FXML

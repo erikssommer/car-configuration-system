@@ -19,6 +19,7 @@ public class FileOpenerJobj implements FileOpener {
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
             ArrayList<Component> list = (ArrayList<Component>) oin.readObject();
+            Context.getInstance().getRegisterComponent().getComponentsList().clear();
             Context.getInstance().getRegisterComponent().getComponentsList().addAll(list);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

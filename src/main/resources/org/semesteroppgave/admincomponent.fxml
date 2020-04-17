@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,7 +20,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.gui.AdminComponentController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
-        <Tab text="Komponenter">
+        <Tab onSelectionChanged="#tabComponent" text="Komponenter">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                 <Label layoutX="35.0" layoutY="25.0" text="Registrerte komponenter">
                     <font>
@@ -25,7 +29,7 @@
                 </Label>
                 <Label layoutX="584.0" layoutY="19.0" text="Admin ID:" />
                 <Label fx:id="lblAdminID" layoutX="644.0" layoutY="19.0" prefHeight="17.0" prefWidth="40.0" />
-                <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" prefHeight="292.0" prefWidth="649.0">
+                <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" prefHeight="292.0">
                     <columns>
                         <TableColumn onEditCommit="#editComponent" prefWidth="204.0" reorderable="false" resizable="false" text="Komponent">
                             <cellValueFactory>
@@ -43,86 +47,92 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="195.0" reorderable="false" resizable="false" text="Pris (kr)" />
+                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="228.0" reorderable="false" resizable="false" text="Pris (kr)" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-                <Label layoutX="496.0" layoutY="83.0" text="Søkeord:">
+                <Label layoutX="531.0" layoutY="84.0" text="Søkeord:">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txtSearch" layoutX="566.0" layoutY="78.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
-                <ComboBox fx:id="cbFilter" layoutX="353.0" layoutY="78.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
-                <Label layoutX="275.0" layoutY="84.0" text="Filtrer etter:" />
+                <TextField fx:id="txtSearch" layoutX="597.0" layoutY="79.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
+                <ComboBox fx:id="cbFilter" layoutX="396.0" layoutY="79.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
+                <Label layoutX="329.0" layoutY="84.0" text="Filtrer etter:" />
                 <Button layoutX="624.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
-                <Button layoutX="35.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnExport" text="Eksporter" />
                 <Button layoutX="306.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent" />
             </AnchorPane>
         </Tab>
-        <Tab text="Opprett ny">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                    <children>
-                         <Label layoutX="30.0" layoutY="27.0" text="Opprett nye komponenter">
-                             <font>
-                                 <Font size="24.0" />
-                             </font>
-                         </Label>
-                         <Label layoutX="30.0" layoutY="85.0" text="Komponent:">
-                             <font>
-                                 <Font size="17.0" />
-                             </font>
-                         </Label>
-                         <ComboBox fx:id="cbCreate" layoutX="128.0" layoutY="83.0" prefWidth="150.0" />
-                        <Label layoutX="29.0" layoutY="134.0" text="Versjon">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="30.0" layoutY="183.0" text="Pris">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="29.0" layoutY="237.0" text="Beskrivelse">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtVersion" layoutX="128.0" layoutY="132.0" prefHeight="27.0" prefWidth="150.0" />
-                        <TextField fx:id="txtPrice" layoutX="129.0" layoutY="180.0" prefHeight="27.0" prefWidth="148.0" />
-                        <TextArea fx:id="txtDescription" layoutX="128.0" layoutY="229.0" prefHeight="140.0" prefWidth="200.0" wrapText="true" />
-                        <Button layoutX="270.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnAdd" text="Legg til" />
-                        <Label layoutX="410.0" layoutY="85.0" text="Komponenter opprettet">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Label>
-                        <TableView fx:id="tableViewCreate" editable="true" layoutX="410.0" layoutY="129.0" prefHeight="239.0">
-                            <columns>
-                                <TableColumn onEditCommit="#editVersionCreate" prefWidth="204.0" resizable="false" text="Versjon">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="version" />
-                                    </cellValueFactory>
-                                    <cellFactory>
-                                        <TextFieldTableCell fx:factory="forTableColumn" />
-                                    </cellFactory>
-                                </TableColumn>
-                                <TableColumn fx:id="txtPriceColumnCreate" onEditCommit="#editPriceCreate" prefWidth="93.0" resizable="false" text="Pris" />
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
-                        <Button layoutX="527.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad" />
-                        <Button layoutX="656.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør" />
-                        <Label fx:id="lblMessageCreate" layoutX="129.0" layoutY="376.0" prefHeight="17.0" prefWidth="198.0" />
-                    </children>
-                </AnchorPane>
-            </content>
+        <Tab onSelectionChanged="#tabCreate" text="Opprett ny">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Label layoutX="30.0" layoutY="27.0" text="Opprett nye komponenter">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="30.0" layoutY="85.0" text="Komponent:">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="cbCreate" layoutX="128.0" layoutY="83.0" prefWidth="150.0" />
+                <Label layoutX="29.0" layoutY="134.0" text="Versjon">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <Label layoutX="30.0" layoutY="183.0" text="Pris">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <Label layoutX="29.0" layoutY="237.0" text="Beskrivelse">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtVersion" layoutX="128.0" layoutY="132.0" prefHeight="27.0" prefWidth="150.0" />
+                <TextField fx:id="txtPrice" layoutX="129.0" layoutY="180.0" prefHeight="27.0" prefWidth="148.0" />
+                <TextArea fx:id="txtDescription" layoutX="128.0" layoutY="229.0" prefHeight="140.0" prefWidth="200.0" wrapText="true" />
+                <Button layoutX="270.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnAdd" text="Legg til" />
+                <Label layoutX="410.0" layoutY="85.0" text="Komponenter opprettet">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="tableViewCreate" editable="true" layoutX="410.0" layoutY="129.0" prefHeight="239.0">
+                    <columns>
+                        <TableColumn onEditCommit="#editVersionCreate" prefWidth="204.0" resizable="false" text="Versjon">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="version" />
+                            </cellValueFactory>
+                            <cellFactory>
+                                <TextFieldTableCell fx:factory="forTableColumn" />
+                            </cellFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="txtPriceColumnCreate" onEditCommit="#editPriceCreate" prefWidth="93.0" resizable="false" text="Pris" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <Button layoutX="527.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad" />
+                <Button layoutX="656.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør" />
+                <Label fx:id="lblMessageCreate" layoutX="129.0" layoutY="376.0" prefHeight="17.0" prefWidth="198.0" />
+            </AnchorPane>
         </Tab>
     </TabPane>
+    <AnchorPane layoutX="677.0" prefHeight="33.0" prefWidth="73.0">
+        <MenuBar fx:id="menuBar" prefHeight="33.0" prefWidth="73.0">
+            <Menu text="Fil">
+                <MenuItem onAction="#openFileMenuClicked" text="Åpne" />
+                <MenuItem onAction="#saveFileMenuClicked" text="Lagre" />
+            </Menu>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+        </MenuBar>
+    </AnchorPane>
 </AnchorPane>
