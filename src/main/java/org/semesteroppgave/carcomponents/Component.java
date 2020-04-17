@@ -18,11 +18,9 @@ public abstract class Component implements Serializable {
     public Component(String version, double price, String desciption) {
         if (version.isBlank()) throw new NullPointerException("Du har glemt å fylle inn versjonen");
         if (desciption.isBlank()) throw new NullPointerException("Du har glemt å fylle inn beskrivelsen");
-        InputValidation.testValidVersion(version);
-        InputValidation.testValidDescription(desciption);
-        this.version = new SimpleStringProperty(version);
+        this.version = new SimpleStringProperty(InputValidation.testValidVersion(version));
+        this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
         this.price = new SimpleDoubleProperty(price);
-        this.description = new SimpleStringProperty(desciption);
     }
 
     public abstract String [] getModel();

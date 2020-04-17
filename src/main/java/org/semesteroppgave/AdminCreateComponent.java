@@ -10,23 +10,21 @@ import org.semesteroppgave.gui.Dialogs;
 import java.io.IOException;
 
 public class AdminCreateComponent {
-
+    //Liste over alle komponentene
     private ObservableList<Component> createComponentList = FXCollections.observableArrayList();
-    private static String newComponent;
+    //Liste over komponenter i comboboksen
+    private ObservableList<String> componentChoice = FXCollections.observableArrayList();
+    private ComponentSearch componentSearch;
+
+    public AdminCreateComponent(ComponentSearch componentSearch){
+        this.componentSearch = componentSearch;
+    }
 
     public ObservableList<Component> getCreateComponentList(){
         return this.createComponentList;
     }
 
-    public static String getNewComponent(){
-        return newComponent;
-    }
-
-    public static void setNewComponent(String newComponent){
-        AdminCreateComponent.newComponent = newComponent;
-    }
-
-    public void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description){
+    public void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description, ComboBox<String> cbCreate){
         lblMessage.setText("");
         Component newComponent = null;
         try {
@@ -34,7 +32,7 @@ public class AdminCreateComponent {
             if (price.getText().isEmpty()){
                 throw new NullPointerException("Du har glemt å fylle inn prisen");
             }
-            switch (AdminCreateComponent.getNewComponent()){
+            switch (cbCreate.getValue()){
                 case "Motor": newComponent = new Motor(version.getText(), Double.parseDouble(price.getText()), description.getText());
                     break;
                 case "Felg": newComponent = new Rim(version.getText(), Double.parseDouble(price.getText()), description.getText());
@@ -75,22 +73,19 @@ public class AdminCreateComponent {
 
         for (Component createComponent : createComponentList){
             if (createComponent.equals(component)){
-                System.out.println("1");
-                throw new DuplicateException("Komponenten finnes allerede");
+                throw new DuplicateException("Komponenten finnes allerede is opprettele av komponent listen");
             }
         }
 
-        for (Component searchComponent : ComponentSearch.getInstance().getSearchResult()){
+        for (Component searchComponent : componentSearch.getSearchResult()){
             if (searchComponent.equals(component)){
-                System.out.println("2");
-                throw new DuplicateException("Komponenten finnes allerede");
+                throw new DuplicateException("Komponenten finnes allerede i søkelisten");
             }
         }
 
         for (Component listComponent : Context.getInstance().getRegisterComponent().getComponentsList()){
             if (listComponent.equals(component)){
-                System.out.println("3");
-                throw new DuplicateException("Komponenten finnes allerede");
+                throw new DuplicateException("Komponenten finnes allerede i komponentlisten");
             }
         }
     }
@@ -203,9 +198,9 @@ public class AdminCreateComponent {
                     if(response == ButtonType.OK){
                         list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
                         //Tester om vi finner det samme objektet i søkerListen. Hvis så, sletter vi det også
-                        for (Component component : ComponentSearch.getInstance().getSearchResult()){
+                        for (Component component : componentSearch.getSearchResult()){
                             if (component.equals(tableViewComponents.getSelectionModel().getSelectedItem())){
-                                ComponentSearch.getInstance().getSearchResult().remove(component);
+                                componentSearch.getSearchResult().remove(component);
                                 break;
                             }
                         }
@@ -217,5 +212,13 @@ public class AdminCreateComponent {
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
+    }
+
+    public void loadChoice(ComboBox<String> cbCreate){
+        componentChoice.removeAll();
+        componentChoice.addAll("Motor","Felg","Setetrekk","Spoiler","Dekk","Batteri","Tank","Girboks");
+        cbCreate.getItems().addAll(componentChoice);
+        cbCreate.setValue(componentChoice.get(0));
+
     }
 }

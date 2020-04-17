@@ -14,18 +14,6 @@ public class ComponentSearch {
     private ObservableList<Component> searchResult = FXCollections.observableArrayList();
     private ObservableList<String> componentFilter = FXCollections.observableArrayList();
 
-    //Singelton design-pattern
-    private static ComponentSearch componentSearch = null;
-
-    private ComponentSearch(){}
-
-    public static ComponentSearch getInstance(){
-        if (componentSearch == null){
-            componentSearch = new ComponentSearch();
-        }
-        return componentSearch;
-    }
-
     public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter){
         if(txtSearch.getText().isEmpty()) {
             tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());

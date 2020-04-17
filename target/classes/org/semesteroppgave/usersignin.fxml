@@ -42,7 +42,7 @@
                </AnchorPane>
          </content>
        </Tab>
-       <Tab fx:id="tabRegister" text="Registrer ny">
+       <Tab fx:id="tabRegister" onSelectionChanged="#tabRegisterSelected" text="Registrer ny">
          <content>
            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>

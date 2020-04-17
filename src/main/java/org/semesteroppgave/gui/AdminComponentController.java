@@ -18,44 +18,49 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminComponentController implements Initializable {
+public class AdminComponentController {
 
-    private ObservableList<String> componentChoice = FXCollections.observableArrayList();
     private InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
-    private AdminCreateComponent createComponent = new AdminCreateComponent();
+    private ComponentSearch componentSearch = new ComponentSearch();
+    private AdminCreateComponent createComponent = new AdminCreateComponent(componentSearch);
 
     @FXML
-    private Label lblAdminID;
+    private TableView<Component> tableViewComponents, tableViewCreate;
 
     @FXML
-    private TextField txtSearch;
+    private TableColumn<Component, Double> txtPriceColumn, txtPriceColumnCreate;
 
     @FXML
-    private TableView<Component> tableViewComponents;
+    private ComboBox<String> cbFilter, cbCreate;
 
     @FXML
-    private TableColumn<Component, Double> txtPriceColumn;
+    private TextField txtSearch, txtVersion, txtPrice;
 
     @FXML
-    private ComboBox<String> cbFilter;
+    private TextArea txtDescription;
 
     @FXML
-    private ComboBox<String> cbCreate;
+    private Label lblAdminID, lblMessageCreate;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        txtPriceColumnCreate.setCellValueFactory(new PropertyValueFactory<>("price"));
+        txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
+        componentSearch.loadFilter(cbFilter);
+        createComponent.loadChoice(cbCreate);
         lblAdminID.setText(AdminSignin.getActiveAdminId());
-        ComponentSearch.getInstance().loadFilter(cbFilter);
-        loadChoice();
     }
 
     @FXML
-    void btnCreate(ActionEvent event) throws IOException {
-        AdminCreateComponent.setNewComponent(cbCreate.getValue());
-        Main.setRoot("admincreate");
+    void btnAdd(ActionEvent event) {
+        createComponent.addComponent(lblMessageCreate,tableViewCreate,txtVersion,txtPrice,txtDescription,cbCreate);
+    }
+
+    @FXML
+    void btnComplete(ActionEvent event) {
+        createComponent.completeComponent();
     }
 
     @FXML
@@ -63,6 +68,10 @@ public class AdminComponentController implements Initializable {
         createComponent.deleteColumn(tableViewComponents, Context.getInstance().getRegisterComponent().getComponentsList(), true);
     }
 
+    @FXML
+    void btnDeleteCreate(ActionEvent event) {
+        createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
+    }
 
     @FXML
     void btnExport(ActionEvent event) {
@@ -75,18 +84,18 @@ public class AdminComponentController implements Initializable {
     }
 
     @FXML
-    void onKeyTypedSearch(KeyEvent event) {
-        ComponentSearch.getInstance().filter(txtSearch,tableViewComponents,cbFilter);
-    }
-
-    @FXML
-    private void filterChoiceChanged() {
-        ComponentSearch.getInstance().filter(txtSearch,tableViewComponents,cbFilter);
-    }
-
-    @FXML
     void editComponent(TableColumn.CellEditEvent<Component, String> event) {
         createComponent.editComponentColumn(event, tableViewComponents);
+    }
+
+    @FXML
+    void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
+        createComponent.editPriceColumn(event, doubleStrConverter, tableViewComponents);
+    }
+
+    @FXML
+    void editPriceCreate(TableColumn.CellEditEvent<Component, Double> event) {
+        createComponent.editPriceColumn(event, doubleStrConverter, tableViewCreate);
     }
 
     @FXML
@@ -95,15 +104,17 @@ public class AdminComponentController implements Initializable {
     }
 
     @FXML
-    void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
-        createComponent.editPriceColumn(event, doubleStrConverter, tableViewComponents);
+    void editVersionCreate(TableColumn.CellEditEvent<Component, String> event) {
+        createComponent.editVersionColumn(event, tableViewCreate);
     }
 
-    public void loadChoice(){
-        componentChoice.removeAll();
-        componentChoice.addAll("Motor","Felg","Setetrekk","Spoiler","Dekk","Batteri","Tank","Girboks");
-        cbCreate.getItems().addAll(componentChoice);
-        cbCreate.setValue(componentChoice.get(0));
+    @FXML
+    void filterChoiceChanged(ActionEvent event) {
+        componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
+    }
 
+    @FXML
+    void onKeyTypedSearch(KeyEvent event) {
+        componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
     }
 }

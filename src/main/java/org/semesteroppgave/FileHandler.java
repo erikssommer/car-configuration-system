@@ -58,7 +58,7 @@ public class FileHandler {
 
     public static void openFileJobj() {
 
-        File loadFile = new File("Files/components.jobj");
+        File loadFile = new File("Files/komponenter.jobj");
         FileOpener opener = new FileOpenerJobj();
 
         try {

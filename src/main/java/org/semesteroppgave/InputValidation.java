@@ -27,7 +27,7 @@ public class InputValidation {
     public static String testValidDescription(String input){
 
         String[] regex = {
-                "^[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){5,50}$",
+                "[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){5,100}$",
         };
 
         for(String str : regex){
@@ -35,7 +35,8 @@ public class InputValidation {
                 return input;
             }
         }
-        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig");
+
+        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig.\nDen må være mellom 5 og 100 tegn.");
 
     }
 
