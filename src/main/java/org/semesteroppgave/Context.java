@@ -1,8 +1,15 @@
 package org.semesteroppgave;
 
+import org.semesteroppgave.models.data.RegisterComponent;
+import org.semesteroppgave.models.data.RegisterProduct;
+
+//Globale objekt som både bruker og admin må ha tilgang til
+
 public class Context {
 
     private final static Context context = new Context();
+
+    private Context(){}
 
     public static Context getInstance(){
         return context;

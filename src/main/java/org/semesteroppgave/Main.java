@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.semesteroppgave.models.filehandlers.FileHandler;
 
 import java.io.IOException;
 
