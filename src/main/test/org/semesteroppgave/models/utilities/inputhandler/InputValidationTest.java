@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.models.exceptions.InvalidComponentException;
 import org.semesteroppgave.models.exceptions.InvalidDeleteException;
+import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
 import org.semesteroppgave.models.exceptions.InvalidVersionException;
 
 class InputValidationTest {
@@ -48,13 +49,13 @@ class InputValidationTest {
 
     @Test
     void testInvalidDescription() {
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription(" "));
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription("B"));
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription("b"));
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription("beskrivelse"));
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription("00000"));
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription("Beskrivelse på over 100 tegn er en del å skrive, men dette skal begyne å nærme seg noe, bare litt til"));
-        Assertions.assertThrows(InvalidDeleteException.class, () -> InputValidation.testValidDescription("%/?+&#"));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription(" "));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("B"));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("b"));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("beskrivelse"));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("00000"));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("Beskrivelse på over 100 tegn er en del å skrive, men dette skal begyne å nærme seg noe, bare litt til"));
+        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("%/?+&#"));
     }
 
     @Test
