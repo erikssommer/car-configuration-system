@@ -90,5 +90,4 @@ public class AdminSignInController {
             lblSignin.setText("Feil brukernavn og/eller passord");
         }
     }
-
 }

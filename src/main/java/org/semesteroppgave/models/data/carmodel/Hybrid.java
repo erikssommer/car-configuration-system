@@ -2,6 +2,7 @@ package org.semesteroppgave.models.data.carmodel;
 
 import org.semesteroppgave.models.data.carcustomization.*;
 import org.semesteroppgave.models.data.carcomponents.*;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
@@ -13,8 +14,8 @@ public class Hybrid extends Car {
 
     public Hybrid(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, FuelContainer fuelContainer) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (fuelContainer == null) throw new NullPointerException("Du har glemt å velge en tank");
-        if (battery == null) throw new NullPointerException("Du har glemt å velge et batteri");
+        if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
+        if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
         this.battery = battery;
         this.fuelContainer = fuelContainer;
         this.model = "Hybrid";

@@ -85,8 +85,6 @@ public class UserSignIn {
             s.useDelimiter("[,\n]");
             while (s.hasNext()){
                 String checkUsername = s.next();
-                String checkPassword = s.next();
-
 
                 if(checkUsername.trim().equals(username.trim())){
                     System.out.println("\nUsername "+username.trim()+" already exists in file userUsernameAndPassword");

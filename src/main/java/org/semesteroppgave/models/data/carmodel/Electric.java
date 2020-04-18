@@ -2,6 +2,7 @@ package org.semesteroppgave.models.data.carmodel;
 
 import org.semesteroppgave.models.data.carcomponents.*;
 import org.semesteroppgave.models.data.carcustomization.*;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
@@ -14,7 +15,7 @@ public class Electric extends Car {
 
     public Electric(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, Autopilot autopilot) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (battery == null) throw new NullPointerException("Du har glemt å velge et batteri");
+        if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
         this.battery = battery;
         this.autopilot = autopilot;
         this.model = "Elektrisk";

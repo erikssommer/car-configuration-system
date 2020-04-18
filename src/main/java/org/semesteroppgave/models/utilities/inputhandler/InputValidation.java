@@ -3,10 +3,7 @@ package org.semesteroppgave.models.utilities.inputhandler;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.Context;
 import org.semesteroppgave.models.data.carcomponents.Component;
-import org.semesteroppgave.models.exceptions.InvalidComponentException;
-import org.semesteroppgave.models.exceptions.InvalidDeleteException;
-import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
-import org.semesteroppgave.models.exceptions.InvalidVersionException;
+import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 public class InputValidation {
@@ -49,6 +46,15 @@ public class InputValidation {
         return input;
     }
 
+    public static double testValidPrice(double input) {
+        DoubleStringConverter doubleStrConverter = new DoubleStringConverter();
+        doubleStrConverter.fromString(String.valueOf(input));
+        if (doubleStrConverter.wasSuccessful()){
+            return input;
+        }
+        throw new InvalidPriceException("Prisen er ugyldig");
+    }
+
     public static class DoubleStringConverter extends javafx.util.converter.DoubleStringConverter {
         private boolean conversionSuccessful;
 
@@ -56,10 +62,21 @@ public class InputValidation {
         public Double fromString(String s) {
             try {
                 Double result = super.fromString(s);
+                if (result < 0.0){
+                    throw new InvalidPriceException("Prisen kan ikke være negativ");
+                }
                 conversionSuccessful = true;
                 return result;
             } catch(NumberFormatException e) {
                 Dialogs.showErrorDialog("Feil","Feil i pris","Du må skrive inn et gyldig tall");
+                conversionSuccessful = false;
+                return 0.0;
+            } catch (NullPointerException e){
+                Dialogs.showErrorDialog("Feil","Feil i pris", "Du må fylle inn prisen");
+                conversionSuccessful = false;
+                return 0.0;
+            } catch (InvalidPriceException e){
+                Dialogs.showErrorDialog("Feil","Feil i pris",e.getMessage());
                 conversionSuccessful = false;
                 return 0.0;
             }

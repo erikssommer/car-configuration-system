@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class FileSaverCsv implements FileSaver {
 
     @Override
-    public void save(Path filePath) throws IOException {
+    public void save(Path filePath) {
 
         try (PrintWriter writer = new PrintWriter(new File(filePath.toUri()))){
             StringBuilder sb = new StringBuilder();

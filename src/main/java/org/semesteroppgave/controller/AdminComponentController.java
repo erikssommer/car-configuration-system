@@ -11,8 +11,10 @@ import org.semesteroppgave.*;
 import org.semesteroppgave.models.data.AdminCreateComponent;
 import org.semesteroppgave.models.data.ComponentSearch;
 import org.semesteroppgave.models.data.carcomponents.Component;
+import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.*;
+import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
@@ -57,22 +59,38 @@ public class AdminComponentController {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        createComponent.addComponent(lblMessageCreate,tableViewCreate,txtVersion,txtPrice,txtDescription,cbCreate);
+        try {
+            createComponent.addComponent(lblMessageCreate,tableViewCreate,txtVersion,txtPrice,txtDescription,cbCreate);
+        }catch (EmptyComponentException | NumberFormatException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e){
+            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
+        }
     }
 
     @FXML
     void btnComplete(ActionEvent event) {
-        createComponent.completeComponent();
+        try {
+            createComponent.completeComponent();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnDeleteComponent(ActionEvent event) {
-        createComponent.deleteColumn(tableViewComponents, Context.getInstance().getRegisterComponent().getComponentsList(), true);
+        try {
+            createComponent.deleteColumn(tableViewComponents, Context.getInstance().getRegisterComponent().getComponentsList(), true);
+        } catch (InvalidDeleteException e) {
+            Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
+        }
     }
 
     @FXML
     void btnDeleteCreate(ActionEvent event) {
-        createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
+        try {
+            createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
+        } catch (InvalidDeleteException e) {
+            Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
+        }
     }
 
     @FXML

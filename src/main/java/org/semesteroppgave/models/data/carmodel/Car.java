@@ -2,6 +2,7 @@ package org.semesteroppgave.models.data.carmodel;
 
 import org.semesteroppgave.models.data.carcomponents.*;
 import org.semesteroppgave.models.data.carcustomization.*;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 import java.util.Objects;
@@ -17,11 +18,11 @@ public abstract class Car {
     private Towbar towbar;
 
     public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar) {
-        if (motor == null) throw new NullPointerException("Du har glemt å velge en motor");
-        if (rim == null) throw new NullPointerException("Du har glemt å velge felger");
-        if (seatcover == null) throw new NullPointerException("Du har glemt å velge setetrekk");
-        if (spoiler == null) throw new NullPointerException("Du har glemt å velge en spoiler");
-        if (tires == null) throw new NullPointerException("Du har glemt å velge dekk");
+        if (motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
+        if (rim == null) throw new EmptyComponentException("Du har glemt å velge felger");
+        if (seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
+        if (spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
+        if (tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
         this.motor = motor;
         this.rim = rim;
         this.seatcover = seatcover;

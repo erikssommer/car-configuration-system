@@ -1,6 +1,5 @@
 package org.semesteroppgave.models.signin;
 
-import org.semesteroppgave.models.signin.*;
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
 
 abstract class Person {

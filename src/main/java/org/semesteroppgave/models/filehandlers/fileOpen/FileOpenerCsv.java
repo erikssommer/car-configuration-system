@@ -5,7 +5,6 @@ import org.semesteroppgave.Context;
 import org.semesteroppgave.models.data.carmodel.*;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.CreateProductCsv;
-import org.semesteroppgave.models.filehandlers.fileOpen.FileOpener;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.BufferedReader;

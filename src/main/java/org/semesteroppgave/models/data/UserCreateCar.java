@@ -85,7 +85,7 @@ public class UserCreateCar {
         });
     }
 
-    public boolean redundancy(String componentModel){
+    private boolean redundancy(String componentModel){
         for (Component component : modelComponentsList){
             if (component.getComponent().equals(componentModel)){
                 return true;
@@ -94,7 +94,7 @@ public class UserCreateCar {
         return false;
     }
 
-    public void showComponents(String selectedComponent){
+    private void showComponents(String selectedComponent){
         chooseComponentList.clear();
         for (Component component : Context.getInstance().getRegisterComponent().getComponentsList()){
             if (component.getComponent().equals(selectedComponent)){
@@ -109,7 +109,7 @@ public class UserCreateCar {
         });
     }
 
-    public void addToCar(String selectedComponent){
+    private void addToCar(String selectedComponent){
 
         switch (selectedComponent){
             case "Motor": motor = (Motor) tableViewVersion.getSelectionModel().getSelectedItem();
@@ -195,7 +195,7 @@ public class UserCreateCar {
         addToPrice();
     }
 
-    public void addToPrice(){
+    private void addToPrice(){
 
         livePrice = 0;
         for (double pris : livePriceList){
@@ -209,11 +209,11 @@ public class UserCreateCar {
         txtTotalPrice.setText(df.format(livePrice)+ "kr");
     }
 
-    public void setLabelText(String message){
+    private void setLabelText(String message){
         lblMessage.setText(message);
     }
 
-    public void duplicateProduct(Car product){
+    private void duplicateProduct(Car product){
         for (Car car : Context.getInstance().getRegisterProduct().getMyCarList()){
             if (car.equals(product)){
                 throw new DuplicateException("Produktet er registrert fra før");
@@ -221,37 +221,31 @@ public class UserCreateCar {
         }
     }
 
-    public void finishedCar (){
+    public void finishedCar() throws NullPointerException, IllegalArgumentException{
 
         if (cbModel.getValue() != null){
-            try {
-                Car product = null;
-                switch (cbModel.getValue()){
-                    case "Elektrisk": product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
-                        break;
-                    case "Diesel": product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
-                        break;
-                    case "Hybrid": product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
-                        break;
-                }
-
-                Car finalProduct = product;
-                duplicateProduct(finalProduct);
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Bekreft");
-                alert.setHeaderText("Du ønsker å opprette en "+ cbModel.getValue().toLowerCase()+ " bil");
-                alert.setContentText("Er du sikker på dette?");
-                alert.showAndWait().ifPresent(response -> {
-                    if(response == ButtonType.OK){
-                        Dialogs.showSuccessDialog("Gjennomført", "Du har nå opprettet din komfigurasjon", "Trykk på 'vis konfig' for å se en oversikt");
-                        Context.getInstance().getRegisterProduct().setMyCarList(finalProduct);
-                    }
-                });
-
-            }catch (NullPointerException | DuplicateException e){
-                Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
+            Car product = null;
+            switch (cbModel.getValue()){
+                case "Elektrisk": product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
+                    break;
+                case "Diesel": product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
+                    break;
+                case "Hybrid": product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
+                    break;
             }
 
+            Car finalProduct = product;
+            duplicateProduct(finalProduct);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Bekreft");
+            alert.setHeaderText("Du ønsker å opprette en "+ cbModel.getValue().toLowerCase()+ " bil");
+            alert.setContentText("Er du sikker på dette?");
+            alert.showAndWait().ifPresent(response -> {
+                if(response == ButtonType.OK){
+                    Dialogs.showSuccessDialog("Gjennomført", "Du har nå opprettet din komfigurasjon", "Trykk på 'vis konfig' for å se en oversikt");
+                    Context.getInstance().getRegisterProduct().setMyCarList(finalProduct);
+                }
+            });
         }else {
             Dialogs.showErrorDialog("Oups!", "Du må velge modell", "Deretter velge komponenter til bilen");
         }

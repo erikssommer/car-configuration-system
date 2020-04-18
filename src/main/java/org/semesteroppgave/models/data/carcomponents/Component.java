@@ -2,6 +2,7 @@ package org.semesteroppgave.models.data.carcomponents;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.Serializable;
@@ -16,11 +17,11 @@ public abstract class Component implements Serializable {
     private transient SimpleStringProperty description;
 
     public Component(String version, double price, String desciption) {
-        if (version.isBlank()) throw new NullPointerException("Du har glemt å fylle inn versjonen");
-        if (desciption.isBlank()) throw new NullPointerException("Du har glemt å fylle inn beskrivelsen");
+        if (version.isBlank()) throw new EmptyComponentException("Du har glemt å fylle inn versjonen");
+        if (desciption.isBlank()) throw new EmptyComponentException("Du har glemt å fylle inn beskrivelsen");
         this.version = new SimpleStringProperty(InputValidation.testValidVersion(version));
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
-        this.price = new SimpleDoubleProperty(price);
+        this.price = new SimpleDoubleProperty(InputValidation.testValidPrice(price));
     }
 
     public abstract String [] getModel();

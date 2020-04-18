@@ -2,21 +2,18 @@ package org.semesteroppgave.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.Context;
-import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.carmodel.Car;
+import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class ConfiguredCarsController implements Initializable {
+public class ConfiguredCarsController {
     @FXML
     private TableView<Car> tableViewConfigs;
 
@@ -35,8 +32,7 @@ public class ConfiguredCarsController implements Initializable {
     @FXML
     private TableColumn<Car, String> txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
         setTableColum(txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn, txtPriceColumn);
         tableViewConfigs.setItems(Context.getInstance().getRegisterProduct().getCarList());
 

@@ -4,6 +4,7 @@ import org.semesteroppgave.models.data.carcustomization.Gps;
 import org.semesteroppgave.models.data.carcustomization.Sunroof;
 import org.semesteroppgave.models.data.carcustomization.Towbar;
 import org.semesteroppgave.models.data.carcomponents.*;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
@@ -16,8 +17,8 @@ public class Diesel extends Car {
 
     public Diesel(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, FuelContainer fuelContainer, Gearbox gearbox) {
         super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (fuelContainer == null) throw new NullPointerException("Du har glemt å velge en tank");
-        if (gearbox == null) throw new NullPointerException("Du har glemt å velge en girboks");
+        if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
+        if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
         this.fuelContainer = fuelContainer;
         this.gearbox = gearbox;
         this.model = "Diesel";

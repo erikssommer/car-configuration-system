@@ -12,7 +12,7 @@ public class OpenWithThread extends Task<Void> {
     }
 
     @Override
-    protected Void call() throws Exception {
+    protected Void call() {
         try {
             Thread.sleep(1000);
             progressBar.setProgress(0.25);
@@ -23,7 +23,7 @@ public class OpenWithThread extends Task<Void> {
             Thread.sleep(1000);
             progressBar.setProgress(1);
         } catch (InterruptedException e) {
-            // gjør ikke noe her
+            //Gjør ikke noe her
         }
         FileHandler.openFileJobjThread();
         return null;
