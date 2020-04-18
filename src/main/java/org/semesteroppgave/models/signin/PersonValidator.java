@@ -1,9 +1,6 @@
 package org.semesteroppgave.models.signin;
 
-import org.semesteroppgave.models.exceptions.InvalidEmailException;
-import org.semesteroppgave.models.exceptions.InvalidNameException;
-import org.semesteroppgave.models.exceptions.InvalidPhonenumberException;
-import org.semesteroppgave.models.exceptions.InvalidUsernameException;
+import org.semesteroppgave.models.exceptions.*;
 
 public class PersonValidator {
 
@@ -70,7 +67,7 @@ public class PersonValidator {
         throw new InvalidEmailException("Skriv inn gyldig epost\n");
     }
 
-    public static String testValidUsername(String username) throws InvalidPhonenumberException {
+    public static String testValidUsername(String username) throws InvalidUsernameException {
         String regex ="(?!^[0-9]*$)(?!^[a-zæøåA-ZÆØÅ]*$)^([a-zæøåA-ZÆØÅ0-9]{6,})$";
 
             if(username.matches(regex)){
@@ -79,12 +76,12 @@ public class PersonValidator {
         throw new InvalidUsernameException("Skriv inn gyldig brukernavn.\nMå være minst 6 tegn og inneholde\nminst en bokstav og et tall");
     }
 
-    public static String testValidPassword(String password) throws InvalidPhonenumberException {
+    public static String testValidPassword(String password) throws InvalidPasswordException {
         String regex ="^(?=.*[A-ZÆØÅa-zæøå])(?=.*\\d)[A-ZÆØÅa-zæøå\\d]{4,}$";
 
         if(password.matches(regex)){
             return password;
         }
-        throw new InvalidUsernameException("Skriv inn gyldig passord.\nMå være minst 4 tegn og inneholde\nminst en bokstav og et tall");
+        throw new InvalidPasswordException("Skriv inn gyldig passord.\nMå være minst 4 tegn og inneholde\nminst en bokstav og et tall");
     }
 }
