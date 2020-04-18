@@ -61,8 +61,10 @@ public class AdminComponentController {
     void btnAdd(ActionEvent event) {
         try {
             createComponent.addComponent(lblMessageCreate,tableViewCreate,txtVersion,txtPrice,txtDescription,cbCreate);
-        }catch (EmptyComponentException | NumberFormatException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e){
+        }catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e){
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
+        }catch (NumberFormatException e){
+            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", "Du må skrive inn et gyldig tall");
         }
     }
 
