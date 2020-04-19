@@ -10,11 +10,16 @@ public class InputValidation {
 
     public static String testValidVersion(String input){
 
-        String regex = "^[A-ZÆØÅ0-9]+([A-ZÆØÅa-zæøå0-9()[-],. ]){1,25}$";
+        String[] regex = {
+                "^[A-ZÆØÅ0-9]+([A-ZÆØÅa-zæøå0-9()[-],. ]){1,25}$",
+                "\\D+"
+        };
 
 
-        if(input.matches(regex)){
-            return input;
+        for(String str : regex){
+            if(input.matches(str)){
+                return input;
+            }
         }
 
         throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig");
