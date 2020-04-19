@@ -3,7 +3,6 @@ package org.semesteroppgave.models.utilities.inputhandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.models.exceptions.InvalidComponentException;
-import org.semesteroppgave.models.exceptions.InvalidDeleteException;
 import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
 import org.semesteroppgave.models.exceptions.InvalidVersionException;
 
@@ -21,7 +20,7 @@ class InputValidationTest {
         InputValidation.testValidVersion("Goodyear Sommer Sport");
         InputValidation.testValidVersion("20-tommer (aluminium)");
         InputValidation.testValidVersion("Goodyear Vinter Piggfri");
-        InputValidation.testValidVersion("Tank (10L),- med kork.");
+        InputValidation.testValidVersion("Tank (10L),- med lokk.");
     }
 
     @Test
