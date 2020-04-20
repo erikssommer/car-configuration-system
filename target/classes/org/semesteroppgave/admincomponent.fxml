@@ -47,7 +47,11 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="228.0" reorderable="false" resizable="false" text="Pris (kr)" />
+                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="228.0" reorderable="false" resizable="false" text="Pris (kr)">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="price" />
+                            </cellValueFactory>
+                        </TableColumn>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

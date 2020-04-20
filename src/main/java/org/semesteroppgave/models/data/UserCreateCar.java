@@ -213,7 +213,7 @@ public class UserCreateCar {
         lblMessage.setText(message);
     }
 
-    private void duplicateProduct(Car product){
+    private void duplicateProduct(Car product) throws DuplicateException {
         for (Car car : Context.getInstance().getRegisterProduct().getMyCarList()){
             if (car.equals(product)){
                 throw new DuplicateException("Produktet er registrert fra før");

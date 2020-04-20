@@ -134,7 +134,6 @@ public class FileHandler {
                 }
             }
         }
-
     }
 
     private static File getFileFromFileChooserSave(DialogMode mode) {

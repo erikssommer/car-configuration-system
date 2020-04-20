@@ -48,7 +48,6 @@ public class AdminComponentController {
 
     public void initialize() {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         txtPriceColumnCreate.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
@@ -127,12 +126,20 @@ public class AdminComponentController {
 
     @FXML
     void filterChoiceChanged(ActionEvent event) {
-        componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
+        try {
+            componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
+        }catch (InvalidPriceException e){
+            Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
+        }
     }
 
     @FXML
     void onKeyTypedSearch(KeyEvent event) {
-        componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
+        try {
+            componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
+        }catch (InvalidPriceException e){
+            Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
+        }
     }
 
     @FXML

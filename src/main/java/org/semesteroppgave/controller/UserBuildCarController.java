@@ -12,6 +12,7 @@ import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.UserCreateCar;
 import org.semesteroppgave.models.data.carcomponents.Component;
 import org.semesteroppgave.models.exceptions.DuplicateException;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
@@ -106,9 +107,7 @@ public class UserBuildCarController {
     void btnDone(ActionEvent event) {
         try {
             newCar.finishedCar();
-        }catch (NullPointerException | DuplicateException e){
-            //TODO Endre til en egendefinert exeption
-            //Fnger her nullpoinerexception fordi det kastes fra component klassen hvis komponent ikke er valgt
+        }catch (EmptyComponentException | DuplicateException e){
             Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
         }
     }

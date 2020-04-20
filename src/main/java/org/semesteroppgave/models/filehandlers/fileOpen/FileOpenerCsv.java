@@ -33,7 +33,7 @@ public class FileOpenerCsv implements FileOpener {
         }
     }
 
-    private Car parseProduct(String line){
+    private Car parseProduct(String line) throws IllegalArgumentException{
         Car carRead = null;
         String[] split = line.split(";");
 

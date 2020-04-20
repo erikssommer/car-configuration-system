@@ -15,17 +15,13 @@ public class ComponentSearch {
     private ObservableList<Component> searchResult = FXCollections.observableArrayList();
     private ObservableList<String> componentFilter = FXCollections.observableArrayList();
 
-    public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter){
+    public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter) throws IllegalArgumentException{
         if(txtSearch.getText().isEmpty()) {
             tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         }else {
             String choiceFilter = cbFilter.getValue();
             String searchWord = txtSearch.getText();
-            try {
-                search(choiceFilter,searchWord,tableViewComponents);
-            }catch (InvalidPriceException e){
-                Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
-            }
+            search(choiceFilter,searchWord,tableViewComponents);
         }
     }
 

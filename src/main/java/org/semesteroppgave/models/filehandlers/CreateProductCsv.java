@@ -3,6 +3,7 @@ package org.semesteroppgave.models.filehandlers;
 import org.semesteroppgave.models.data.carcustomization.*;
 import org.semesteroppgave.models.data.carcomponents.*;
 import org.semesteroppgave.models.data.carmodel.*;
+import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.exceptions.InvalidProductException;
 
 public class CreateProductCsv {
@@ -22,7 +23,7 @@ public class CreateProductCsv {
     private Autopilot autopilot;
 
 
-    public Electric createElectric(String[] object){
+    public Electric createElectric(String[] object) throws IllegalArgumentException{
         commonComponents(object);
         commonCustom(object);
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
@@ -38,7 +39,7 @@ public class CreateProductCsv {
 
     }
 
-    public Diesel createDiesel(String[] object){
+    public Diesel createDiesel(String[] object) throws IllegalArgumentException {
         commonComponents(object);
         commonCustom(object);
         fuelContainer = new FuelContainer(object[20], Double.parseDouble(object[21]), object[22]);
@@ -47,7 +48,7 @@ public class CreateProductCsv {
         return new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
     }
 
-    public Hybrid createHybrid(String[] object){
+    public Hybrid createHybrid(String[] object) throws IllegalArgumentException{
         commonComponents(object);
         commonCustom(object);
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
@@ -56,7 +57,7 @@ public class CreateProductCsv {
         return new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
     }
 
-    private void commonComponents(String[] object) {
+    private void commonComponents(String[] object) throws EmptyComponentException{
         motor = new Motor(object[2], Double.parseDouble(object[3]), object[4]);
         rim = new Rim(object[5], Double.parseDouble(object[6]), object[7]);
         seatCover = new SeatCover(object[8], Double.parseDouble(object[9]), object[10]);
@@ -64,7 +65,7 @@ public class CreateProductCsv {
         tires = new Tires(object[14], Double.parseDouble(object[15]), object[16]);
     }
 
-    private void commonCustom(String[] object) {
+    private void commonCustom(String[] object) throws InvalidProductException{
         //Nulstiller tilpasningene ettersom det er mulig at produktet ikke har alle valgt
         gps = null;
         towbar = null;
