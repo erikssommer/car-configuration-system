@@ -15,29 +15,6 @@ public class Battery extends Component {
         this.model = new String[]{"Elektrisk", "Hybrid"};
     }
 
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        s.writeUTF(getVersion());
-        s.writeDouble(getPrice());
-        s.writeUTF(getDescription());
-    }
-
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        String version = s.readUTF();
-        double price = s.readDouble();
-        String description = s.readUTF();
-
-        this.setVersion();
-        this.setPrice();
-        this.setDescription();
-        this.component = "Batteri";
-        this.model = new String[]{"Elektrisk", "Hybrid"};
-
-        setVersion(version);
-        setPrice(price);
-        setDescription(description);
-    }
-
     @Override
     public String [] getModel() {
         return this.model;
@@ -61,6 +38,17 @@ public class Battery extends Component {
     @Override
     public String toString(){
         return super.getVersion();
+    }
+
+    public void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        super.writeObject(s);
+    }
+
+    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        super.readObject(s);
+        this.component = "Batteri";
+        this.model = new String[]{"Elektrisk", "Hybrid"};
     }
 
 }
