@@ -17,7 +17,7 @@ public class FileSaverJobj implements FileSaver {
         try (OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream out = new ObjectOutputStream(os))
         {
-            out.writeObject(new ArrayList<Component>(Context.getInstance().getRegisterComponent().getComponentsList()));
+            out.writeObject(Context.getInstance().getRegisterComponent());
 
         }
     }

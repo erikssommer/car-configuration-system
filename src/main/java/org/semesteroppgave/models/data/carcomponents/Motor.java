@@ -33,31 +33,17 @@ public class Motor extends Component {
         this.component = component;
     }
 
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        s.writeUTF(getVersion());
-        s.writeDouble(getPrice());
-        s.writeUTF(getDescription());
-    }
-
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        String version = s.readUTF();
-        double price = s.readDouble();
-        String description = s.readUTF();
-
-        this.setVersion();
-        this.setPrice();
-        this.setDescription();
-        this.component = "Motor";
-        this.model = new String[]{"universial"};
-
-        setVersion(version);
-        setPrice(price);
-        setDescription(description);
-    }
-
     @Override
     public String toString(){
         return super.getVersion();
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        this.component = "Motor";
+        this.model = new String[]{"universial"};
     }
 }

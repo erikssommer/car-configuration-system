@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -20,8 +23,8 @@ public abstract class Component implements Serializable {
         if (version.isBlank()) throw new EmptyComponentException("Du har glemt å fylle inn versjonen");
         if (desciption.isBlank()) throw new EmptyComponentException("Du har glemt å fylle inn beskrivelsen");
         this.version = new SimpleStringProperty(InputValidation.testValidVersion(version));
-        this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
         this.price = new SimpleDoubleProperty(InputValidation.testValidPrice(price));
+        this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
     }
 
     public abstract String [] getModel();
@@ -84,5 +87,26 @@ public abstract class Component implements Serializable {
                     && component.getPrice() == price.doubleValue());
         }
         return false;
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        s.writeUTF(getVersion());
+        s.writeDouble(getPrice());
+        s.writeUTF(getDescription());
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        String version = s.readUTF();
+        double price = s.readDouble();
+        String description = s.readUTF();
+
+        this.setVersion();
+        this.setPrice();
+        this.setDescription();
+
+        setVersion(version);
+        setPrice(price);
+        setDescription(description);
     }
 }
