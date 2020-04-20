@@ -23,18 +23,18 @@ public class InputValidation {
             }
         }
 
-        throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig");
+        throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig\nDen må være mellom 2 og 25 tegn\nog starte med stor bokstav.");
     }
 
     public static String testValidDescription(String input){
 
-        String regex = "[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){5,100}$";
+        String regex = "[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){4,100}$";
 
         if(input.matches(regex)){
             return input;
         }
 
-        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig.\nDen må være mellom 5 og 100 tegn.");
+        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig.\nDen må være mellom 5 og 100 tegn\nog starte med stor bokstav.");
 
     }
 
