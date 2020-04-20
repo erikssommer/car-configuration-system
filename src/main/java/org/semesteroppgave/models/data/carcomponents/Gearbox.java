@@ -35,31 +35,19 @@ public class Gearbox extends Component {
         this.component = component;
     }
 
-    private void writeObject(ObjectOutputStream s) throws IOException {
-        s.defaultWriteObject();
-        s.writeUTF(getVersion());
-        s.writeDouble(getPrice());
-        s.writeUTF(getDescription());
-    }
-
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        String version = s.readUTF();
-        double price = s.readDouble();
-        String description = s.readUTF();
-
-        this.setVersion();
-        this.setPrice();
-        this.setDescription();
-        this.component = "Girboks";
-        this.model = new String[]{"Diesel"};
-
-        setVersion(version);
-        setPrice(price);
-        setDescription(description);
-    }
-
     @Override
     public String toString(){
         return super.getVersion();
+    }
+
+    public void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        super.writeObject(s);
+    }
+
+    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        super.readObject(s);
+        this.component = "Girboks";
+        this.model = new String[]{"Diesel"};
     }
 }

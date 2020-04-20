@@ -1,6 +1,7 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.semesteroppgave.Context;
+import org.semesteroppgave.models.data.RegisterComponent;
 import org.semesteroppgave.models.data.carcomponents.Component;
 
 import java.io.IOException;
@@ -17,9 +18,9 @@ public class FileOpenerJobj implements FileOpener {
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
-            ArrayList<Component> list = (ArrayList<Component>) oin.readObject();
+            RegisterComponent register = (RegisterComponent) oin.readObject();
             Context.getInstance().getRegisterComponent().getComponentsList().clear();
-            Context.getInstance().getRegisterComponent().getComponentsList().addAll(list);
+            register.getComponentsList().forEach(Context.getInstance().getRegisterComponent()::setComponentsList);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

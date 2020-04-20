@@ -89,14 +89,14 @@ public abstract class Component implements Serializable {
         return false;
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
+    private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
         s.writeUTF(getVersion());
         s.writeDouble(getPrice());
         s.writeUTF(getDescription());
     }
 
-    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         String version = s.readUTF();
         double price = s.readDouble();
         String description = s.readUTF();

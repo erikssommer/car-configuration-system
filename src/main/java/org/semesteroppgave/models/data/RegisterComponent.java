@@ -25,13 +25,12 @@ public class RegisterComponent implements Serializable{
 
     public RegisterComponent(){}
 
-    public void writeObject(ObjectOutputStream s) throws IOException, ClassNotFoundException{
+    private void writeObject(ObjectOutputStream s) throws IOException, ClassNotFoundException{
         s.defaultWriteObject();
         s.writeObject(new ArrayList<>(componentsList));
     }
 
-    @SuppressWarnings("unchecked")
-    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException{
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException{
         List<Component> newComponentList = (List<Component>) s.readObject();
         componentsList = FXCollections.observableArrayList();
         componentsList.addAll(newComponentList);
