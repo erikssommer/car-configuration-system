@@ -41,7 +41,7 @@ public class FuelContainer extends Component {
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
-
+        s.defaultWriteObject();
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {

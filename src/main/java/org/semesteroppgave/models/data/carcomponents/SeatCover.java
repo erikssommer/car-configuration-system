@@ -40,13 +40,11 @@ public class SeatCover extends Component {
         return super.getVersion();
     }
 
-    public void writeObject(ObjectOutputStream s) throws IOException {
+    private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        super.writeObject(s);
     }
 
-    public void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        super.readObject(s);
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.component = "Setetrekk";
         this.model = new String[]{"universial"};
     }
