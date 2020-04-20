@@ -11,8 +11,8 @@ public class InputValidation {
     public static String testValidVersion(String input){
 
         String[] regex = {
-                "^[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){2,25}$",
-                "^[0-9]+[[-]a-zæøå A-ZÆØÅ().,]{2,25}$"
+                "^[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){1,25}$",
+                "^[0-9]+[[-]a-zæøå A-ZÆØÅ().,]{1,25}$"
         };
 
         // ^[A-ZÆØÅ0-9]+([A-ZÆØÅa-zæøå0-9()[-],. ]){1,25}$

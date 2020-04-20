@@ -10,8 +10,8 @@ class InputValidationTest {
 
     @Test
     void testValidVersion() {
-        //InputValidation.testValidVersion("100hk");
-        //InputValidation.testValidVersion("16-tommer");
+        InputValidation.testValidVersion("100hk");
+        InputValidation.testValidVersion("16-tommer");
         InputValidation.testValidVersion("Komfort stoff");
         InputValidation.testValidVersion("Høy og bred");
         InputValidation.testValidVersion("Sportsautomat");
