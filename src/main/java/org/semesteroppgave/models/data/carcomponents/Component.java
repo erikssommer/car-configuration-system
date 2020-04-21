@@ -37,12 +37,7 @@ public abstract class Component implements Serializable {
     }
 
     public void setVersion(String version) {
-        InputValidation.testValidVersion(version);
-        this.version.set(version);
-    }
-
-    public void setVersion() {
-        this.version = new SimpleStringProperty();
+        this.version.set(InputValidation.testValidVersion(version));
     }
 
     public double getPrice() {
@@ -50,11 +45,7 @@ public abstract class Component implements Serializable {
     }
 
     public void setPrice(double price) {
-        this.price.set(price);
-    }
-
-    public void setPrice() {
-        this.price = new SimpleDoubleProperty();
+        this.price.set(InputValidation.testValidPrice(price));
     }
 
     public String getDescription(){
@@ -62,11 +53,7 @@ public abstract class Component implements Serializable {
     }
 
     public void setDescription(String description){
-        this.description.set(description);
-    }
-
-    public void setDescription(){
-        this.description = new SimpleStringProperty();
+        this.description.set(InputValidation.testValidDescription(description));
     }
 
     public String toFile(){
@@ -101,10 +88,10 @@ public abstract class Component implements Serializable {
         double price = s.readDouble();
         String description = s.readUTF();
 
-        this.setVersion();
-        this.setPrice();
-        this.setDescription();
-
+        this.version = new SimpleStringProperty();
+        this.price = new SimpleDoubleProperty();
+        this.description = new SimpleStringProperty();
+        //Tester på input fra fil
         setVersion(version);
         setPrice(price);
         setDescription(description);

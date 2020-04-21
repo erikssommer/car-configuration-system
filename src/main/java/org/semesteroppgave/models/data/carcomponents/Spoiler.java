@@ -6,8 +6,8 @@ import java.io.ObjectOutputStream;
 
 public class Spoiler extends Component {
 
-    private transient String [] model;
     private transient String component;
+    private transient String [] model;
 
     public Spoiler(String version, double price, String description) {
         super(version, price, description);
