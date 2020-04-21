@@ -17,10 +17,11 @@ public class FileOpenerJobj implements FileOpener {
     public void open(Path filePath) throws IOException {
         try (InputStream fin = Files.newInputStream(filePath);
              ObjectInputStream oin = new ObjectInputStream(fin)) {
-
+            
             RegisterComponent register = (RegisterComponent) oin.readObject();
             Context.getInstance().getRegisterComponent().getComponentsList().clear();
             register.getComponentsList().forEach(Context.getInstance().getRegisterComponent()::setComponentsList);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

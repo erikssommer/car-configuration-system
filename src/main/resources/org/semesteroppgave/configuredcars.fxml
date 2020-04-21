@@ -68,14 +68,10 @@
          </columnResizePolicy>
       </TableView>
       <Button layoutX="521.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnAddToConfigs" prefHeight="27.0" prefWidth="101.0" text="Legg til i konfig" />
-   <MenuBar prefHeight="29.0" prefWidth="750.0">
-     <menus>
-       <Menu mnemonicParsing="false" text="Fil">
-         <items>
-           <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne" />
-               <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre" />
-         </items>
-       </Menu>
-     </menus>
-   </MenuBar>
+    <MenuBar prefHeight="29.0" prefWidth="750.0">
+        <Menu mnemonicParsing="false" text="Fil">
+            <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne"/>
+            <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre"/>
+        </Menu>
+    </MenuBar>
 </AnchorPane>

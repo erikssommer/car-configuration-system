@@ -15,22 +15,18 @@ public class Battery extends Component {
         this.model = new String[]{"Elektrisk", "Hybrid"};
     }
 
-    @Override
     public String [] getModel() {
         return this.model;
     }
 
-    @Override
     public void setModel(String [] model) {
         this.model = model;
     }
 
-    @Override
     public String getComponent() {
         return component;
     }
 
-    @Override
     public void setComponent(String component) {
         this.component = component;
     }

@@ -1,11 +1,13 @@
 package org.semesteroppgave.models.signin;
 
+import org.semesteroppgave.Main;
 import org.semesteroppgave.models.exceptions.InvalidPasswordException;
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,6 +22,15 @@ public class UserSignIn {
 
     public void setUserList(User user){
         userList.add(user);
+    }
+
+    public void register(String username, String password, String name, String phonenumber, String eMail) throws IOException {
+        User newUser = new User(username, password, name, phonenumber, eMail);
+        setUserList(newUser);
+        Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
+        saveToFileUsernamePassword();
+        saveToFileInfo();
+        Main.setRoot("usersignin");
     }
 
     // Leser inn eksisterende brukere fra bruker-filene og legger de i en ArrayList.
@@ -99,7 +110,7 @@ public class UserSignIn {
     }
 
     // Lagrer admins brukernavn og passord til fil
-    public void saveToFileUsernamePassword(){
+    private void saveToFileUsernamePassword(){
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
@@ -108,7 +119,7 @@ public class UserSignIn {
         }
     }
     // Lagrer admins info til fil
-    public void saveToFileInfo(){
+    private void saveToFileInfo(){
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
@@ -118,7 +129,7 @@ public class UserSignIn {
     }
 
     // Skriver brukers brukernavn og passord til fil
-    public String txtToFileUsernamePassword() {
+    private String txtToFileUsernamePassword() {
         StringBuilder ut = new StringBuilder();
         for (User newUser : userList) {
             ut.append(newUser.printTxtUsernamePassword()).append("\n");
@@ -126,7 +137,7 @@ public class UserSignIn {
         return ut.toString();
     }
     // Skriver brukers info til fil
-    public String txtToFileUserInfo() {
+    private String txtToFileUserInfo() {
         StringBuilder ut = new StringBuilder();
         for (User newUser : userList) {
             ut.append(newUser.printTxtUserInfo()).append("\n");

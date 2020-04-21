@@ -15,12 +15,10 @@ public class Motor extends Component {
         this.model = new String[]{"universial"};
     }
 
-    @Override
     public String [] getModel() {
         return model;
     }
 
-    @Override
     public void setModel(String [] model) {
         this.model = model;
     }

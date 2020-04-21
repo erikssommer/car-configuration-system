@@ -65,12 +65,7 @@ public class UserSignInController {
 
             // Prøver å opprette ny bruker hvis feltene er fylt inn
             try {
-                User newUser = new User(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
-                userSignIn.setUserList(newUser);
-                Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
-                userSignIn.saveToFileUsernamePassword();
-                userSignIn.saveToFileInfo();
-                Main.setRoot("usersignin");
+                userSignIn.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
 
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | IOException e) {
                 lblRegister.setText(e.getMessage());

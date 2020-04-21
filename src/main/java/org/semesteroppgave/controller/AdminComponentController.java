@@ -49,7 +49,6 @@ public class AdminComponentController {
     public void initialize() {
         tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
-        txtPriceColumnCreate.setCellValueFactory(new PropertyValueFactory<>("price"));
         txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         componentSearch.loadFilter(cbFilter);
         createComponent.loadChoice(cbCreate);

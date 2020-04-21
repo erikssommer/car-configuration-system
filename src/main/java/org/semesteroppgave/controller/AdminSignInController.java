@@ -56,13 +56,7 @@ public class AdminSignInController {
             // Prøver å opprette ny admin
             try {
                 if(adminSignin.testValidEmpNo(txtEmpNo.getText())){
-                    Admin newAdmin = new Admin(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
-                    adminSignin.setAdminList(newAdmin);
-                    Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
-                    adminSignin.saveToFileUsernamePassword();
-                    adminSignin.saveToFileInfo();
-                    adminSignin.getAvailableEmpNos().remove(txtEmpNo.getText());
-                    Main.setRoot("adminsignin");
+                    adminSignin.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
                 }else {
                     lblRegister.setText("Ansattnummeret er opptatt eller finnes ikke!\nPrøv et annet.");
                 }

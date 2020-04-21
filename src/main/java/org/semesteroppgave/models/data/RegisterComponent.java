@@ -16,7 +16,7 @@ public class RegisterComponent implements Serializable{
 
     private static final long serialVersionUID = 1;
 
-    //Dette er hovedlisten
+    //Dette er hovedlisten av komponenter
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
 
     public RegisterComponent(ObservableList<Component> componentsList){
@@ -51,16 +51,19 @@ public class RegisterComponent implements Serializable{
     //Søkefunksjon med streams
     public ObservableList<Component> searchComponent(String value){
 
-        return componentsList.stream().filter(component -> component.getComponent().toLowerCase().contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return componentsList.stream().filter(component -> component.getComponent().toLowerCase()
+                .contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     public ObservableList<Component> searchVersion(String value){
 
-        return componentsList.stream().filter(component -> component.getVersion().toLowerCase().contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return componentsList.stream().filter(component -> component.getVersion().toLowerCase()
+                .contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     public ObservableList<Component> searchPrice(double value){
 
-        return componentsList.stream().filter(component -> component.getPrice()==(value)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        return componentsList.stream().filter(component -> component.getPrice()==(value))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 }

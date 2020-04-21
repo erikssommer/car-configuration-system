@@ -46,6 +46,7 @@ public class Electric extends Car {
         return this.modelPrice;
     }
 
+    @Override
     public String toFile(){
 
         return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";;;;;;;"

@@ -1,6 +1,10 @@
 package org.semesteroppgave.models.signin;
 
+import org.semesteroppgave.Main;
+import org.semesteroppgave.models.utilities.alerts.Dialogs;
+
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -32,6 +36,16 @@ public class AdminSignin {
 
     public ArrayList<String> getAvailableEmpNos(){
         return availableEmpNos;
+    }
+
+    public void register(String username, String password, String empNo) throws IOException {
+        Admin newAdmin = new Admin(username, password, empNo);
+        setAdminList(newAdmin);
+        Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
+        saveToFileUsernamePassword();
+        saveToFileInfo();
+        getAvailableEmpNos().remove(empNo);
+        Main.setRoot("adminsignin");
     }
 
     public void initializeEmpNos(){
@@ -132,7 +146,7 @@ public class AdminSignin {
     }
 
     // Lagrer admins brukernavn og passord til fil
-    public void saveToFileUsernamePassword(){
+    private void saveToFileUsernamePassword(){
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminUsernamePassword().getBytes());
@@ -141,7 +155,7 @@ public class AdminSignin {
         }
     }
     // Lagrer admins info til fil
-    public void saveToFileInfo(){
+    private void saveToFileInfo(){
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminInfo().getBytes());
@@ -152,7 +166,7 @@ public class AdminSignin {
 
 
     // Skriver admins brukernavn og passord til fil
-    public String txtToFileAdminUsernamePassword() {
+    private String txtToFileAdminUsernamePassword() {
         StringBuilder ut = new StringBuilder();
         for (Admin newAdmin : adminList) {
             ut.append(newAdmin.printTxtAdminUnamePword()).append("\n");
@@ -161,7 +175,7 @@ public class AdminSignin {
     }
 
     // Skriver admins ansattnummer til fil
-    public String txtToFileAdminInfo() {
+    private String txtToFileAdminInfo() {
         StringBuilder ut = new StringBuilder();
         for (Admin newAdmin : adminList) {
             ut.append(newAdmin.getEmployeeId()).append("\n");

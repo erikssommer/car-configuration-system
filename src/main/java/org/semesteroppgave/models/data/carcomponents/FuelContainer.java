@@ -15,22 +15,18 @@ public class FuelContainer extends Component {
         this.model = new String[]{"Diesel", "Hybrid"};
     }
 
-    @Override
     public String [] getModel() {
         return model;
     }
 
-    @Override
     public void setModel(String [] model) {
         this.model = model;
     }
 
-    @Override
     public String getComponent() {
         return component;
     }
 
-    @Override
     public void setComponent(String component) {
         this.component = component;
     }
