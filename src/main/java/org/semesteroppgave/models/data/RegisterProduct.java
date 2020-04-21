@@ -8,38 +8,38 @@ public class RegisterProduct {
     //Listen carList er alle tidligere konfigurerte biler
     //Listen myCarList er min konfigurerte bil
     //Objektet selectedCar er den bilen som skal vises mer informasjon om
-    private ObservableList<Car> carList = FXCollections.observableArrayList();
-    private ObservableList<Car> myCarList = FXCollections.observableArrayList();
+    private final ObservableList<Car> carList = FXCollections.observableArrayList();
+    private final ObservableList<Car> myCarList = FXCollections.observableArrayList();
     private Car selectedCar;
 
-    public ObservableList<Car> getCarList(){
+    public ObservableList<Car> getCarList() {
         return this.carList;
     }
 
-    public void setCarList(Car car){
+    public void setCarList(Car car) {
         carList.add(car);
     }
 
-    public ObservableList<Car> getMyCarList(){
+    public ObservableList<Car> getMyCarList() {
         return this.myCarList;
     }
 
-    public void setMyCarList(Car car){
+    public void setMyCarList(Car car) {
         myCarList.add(car);
     }
 
-    public Car getSelectedCar(){
+    public Car getSelectedCar() {
         return this.selectedCar;
     }
 
-    public void setSelectedCar(Car car){
+    public void setSelectedCar(Car car) {
         this.selectedCar = car;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(Car car : myCarList) {
+        for (Car car : myCarList) {
             sb.append(car.toFile());
             sb.append(System.lineSeparator());
         }

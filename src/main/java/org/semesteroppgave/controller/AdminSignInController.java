@@ -6,8 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.exceptions.*;
-import org.semesteroppgave.models.signin.*;
-import org.semesteroppgave.models.utilities.alerts.Dialogs;
+import org.semesteroppgave.models.signin.Admin;
+import org.semesteroppgave.models.signin.AdminSignin;
 
 import java.io.IOException;
 
@@ -36,18 +36,18 @@ public class AdminSignInController {
     @FXML
     private Label lblRegister;
 
-    public void initialize(){
+    public void initialize() {
         adminSignin.initializeEmpNos();
         adminSignin.parseExistingAdmins();
     }
 
     @FXML
-    void btnCancel(ActionEvent event) throws IOException {
+    private void btnCancel(ActionEvent event) throws IOException {
         Main.setRoot("usersignin");
     }
 
     @FXML
-    void btnRegister(ActionEvent event) {
+    private void btnRegister(ActionEvent event) {
         lblRegister.setText("");
 
         // Sjekker om admin-brukernavnet finnes fra før
@@ -55,9 +55,9 @@ public class AdminSignInController {
 
             // Prøver å opprette ny admin
             try {
-                if(adminSignin.testValidEmpNo(txtEmpNo.getText())){
+                if (adminSignin.testValidEmpNo(txtEmpNo.getText())) {
                     adminSignin.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
-                }else {
+                } else {
                     lblRegister.setText("Ansattnummeret er opptatt eller finnes ikke!\nPrøv et annet.");
                 }
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | InvalidEmployeeNoException | IOException e) {
@@ -70,17 +70,17 @@ public class AdminSignInController {
     }
 
     @FXML
-    void btnSignin(ActionEvent event) throws IOException {
+    private void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra admin-filen
-        if(adminSignin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText())) {
+        if (adminSignin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText())) {
             //Setter aktiv admin
-            for (Admin admin : adminSignin.getAdminList()){
-                if (admin.getPassword().equals(txtPasswordSignin.getText())){
+            for (Admin admin : adminSignin.getAdminList()) {
+                if (admin.getPassword().equals(txtPasswordSignin.getText())) {
                     AdminSignin.setActiveAdminId(admin.getEmployeeId());
                 }
             }
             Main.setRoot("admincomponent");
-        }else {
+        } else {
             lblSignin.setText("Feil brukernavn og/eller passord");
         }
     }

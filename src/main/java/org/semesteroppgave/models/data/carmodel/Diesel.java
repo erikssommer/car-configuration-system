@@ -42,18 +42,19 @@ public class Diesel extends Car {
         this.gearbox = gearbox;
     }
 
-    public String getModel(){
+    public String getModel() {
         return this.model;
     }
-    public double getModelPrice(){
+
+    public double getModelPrice() {
         return this.modelPrice;
     }
 
     @Override
-    public String toFile(){
+    public String toFile() {
 
-        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";;;;"+ getFuelContainer().toFile()+";"+
-                getGearbox().toFile()+";"+super.customToFile(null)+getPrice();
+        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";;;;" + getFuelContainer().toFile() + ";" +
+                getGearbox().toFile() + ";" + super.customToFile(null) + getPrice();
 
     }
 
@@ -73,18 +74,18 @@ public class Diesel extends Car {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
-         DecimalFormat df = new DecimalFormat("###,###,###.###");
-         String message = "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+ super.toString()+
-                 "Tank: "+getFuelContainer().getVersion()+"\nPris: "+ df.format(getFuelContainer().getPrice())+"kr\nBeskrivelse: "+getFuelContainer().getDescription()+"\n\n"+
-                 "Girboks: "+getGearbox().getVersion()+"\nPris: "+ df.format(getGearbox().getPrice())+"kr\nBeskrivelse: "+getGearbox().getDescription()+"\n\n"+
-                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+        DecimalFormat df = new DecimalFormat("###,###,###.###");
+        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+                "Tank: " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
+                "Girboks: " + getGearbox().getVersion() + "\nPris: " + df.format(getGearbox().getPrice()) + "kr\nBeskrivelse: " + getGearbox().getDescription() + "\n\n" +
+                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
-         message += super.testCustom(df, null);
+        message += super.testCustom(df, null);
 
-         message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
-         return message;
+        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
+        return message;
 
     }
 }

@@ -55,34 +55,37 @@ public class UserBuildCarController {
     }
 
     @FXML
-    void btnShowConfig(ActionEvent event) throws IOException {
+    private void btnShowConfig(ActionEvent event) throws IOException {
         Main.setRoot("configuredcars");
     }
 
     @FXML
-    void btnSignout(ActionEvent event) throws IOException {
+    private void btnSignout(ActionEvent event) throws IOException {
         Main.setRoot("usersignin");
     }
 
     @FXML
-    void choiseMade(Event event) {
+    private void choiseMade(Event event) {
 
         cbModel.valueProperty().addListener((ov, previous, active) -> {
-            switch (active){
-                case "Elektrisk": newCar.createNewCar("Elektrisk", "universial");
-                resetChoiceBox(true);
-                break;
-                case "Diesel": newCar.createNewCar("Diesel", "universial");
-                resetChoiceBox(false);
-                break;
-                case "Hybrid": newCar.createNewCar("Hybrid", "universial");
-                resetChoiceBox(false);
-                break;
+            switch (active) {
+                case "Elektrisk":
+                    newCar.createNewCar("Elektrisk", "universial");
+                    resetChoiceBox(true);
+                    break;
+                case "Diesel":
+                    newCar.createNewCar("Diesel", "universial");
+                    resetChoiceBox(false);
+                    break;
+                case "Hybrid":
+                    newCar.createNewCar("Hybrid", "universial");
+                    resetChoiceBox(false);
+                    break;
             }
         });
     }
 
-    public void resetChoiceBox(boolean state){
+    private void resetChoiceBox(boolean state) {
 
         cbAutopilot.setVisible(state);
 
@@ -93,26 +96,26 @@ public class UserBuildCarController {
         cbGps.setSelected(false);
         cbSunroof.setSelected(false);
         cbTowbar.setSelected(false);
-        newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
+        newCar.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
         newCar.updateLivePrice();
     }
 
 
     @FXML
-    void cbClicked(ActionEvent event) {
-        newCar.customization(cbAutopilot,cbTowbar,cbSunroof,cbGps);
+    private void cbClicked(ActionEvent event) {
+        newCar.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
     }
 
     @FXML
-    void btnDone(ActionEvent event) {
+    private void btnDone(ActionEvent event) {
         try {
             newCar.finishedCar();
-        }catch (EmptyComponentException | DuplicateException e){
+        } catch (EmptyComponentException | DuplicateException e) {
             Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
         }
     }
 
-    public void loadChoice(){
+    private void loadChoice() {
         modelChoice.removeAll();
         modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
         cbModel.getItems().addAll(modelChoice);

@@ -4,7 +4,7 @@ public abstract class Customization {
     private String customProperty;
     private double price;
 
-    public Customization(String customProperty, double price){
+    public Customization(String customProperty, double price) {
         this.customProperty = customProperty;
         this.price = price;
     }
@@ -25,8 +25,8 @@ public abstract class Customization {
         this.price = price;
     }
 
-    public String toFile(){
-        return getCustomProperty()+";"+getPrice();
+    public String toFile() {
+        return getCustomProperty() + ";" + getPrice();
     }
 
     @Override

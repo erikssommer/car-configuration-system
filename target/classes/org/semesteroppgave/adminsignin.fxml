@@ -9,69 +9,65 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminSignInController">
-   <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
-     <tabs>
-       <Tab text="Logg inn">
-         <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                  <children>
-                     <Label layoutX="39.0" layoutY="32.0" text="Logg inn admin">
+    <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Logg inn">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <children>
+                    <Label layoutX="39.0" layoutY="32.0" text="Logg inn admin">
                         <font>
-                           <Font size="27.0" />
+                            <Font size="27.0"/>
                         </font>
-                     </Label>
-                     <Label layoutX="41.0" layoutY="156.0" text="Brukernavn">
+                    </Label>
+                    <Label layoutX="41.0" layoutY="156.0" text="Brukernavn">
                         <font>
-                           <Font size="17.0" />
+                            <Font size="17.0"/>
                         </font>
-                     </Label>
-                     <Label layoutX="41.0" layoutY="226.0" text="Passord">
+                    </Label>
+                    <Label layoutX="41.0" layoutY="226.0" text="Passord">
                         <font>
-                           <Font size="17.0" />
+                            <Font size="17.0"/>
                         </font>
-                     </Label>
-                     <TextField fx:id="txtUsernameSignin" layoutX="148.0" layoutY="153.0" />
-                     <TextField fx:id="txtPasswordSignin" layoutX="148.0" layoutY="223.0" />
-                     <Button layoutX="243.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn" />
-                     <Button layoutX="635.0" layoutY="454.0" mnemonicParsing="false" onAction="#btnCancel" text="Avbryt" />
-                     <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="323.0" layoutY="180.0" prefHeight="67.0" prefWidth="347.0" />
-                  </children>
-               </AnchorPane>
-         </content>
-       </Tab>
-       <Tab text="Registrer ny">
-         <content>
-           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                  <children>
-                     <Label layoutX="43.0" layoutY="36.0" text="Registrer ny admin">
-                        <font>
-                           <Font size="27.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="43.0" layoutY="96.0" text="Ansattnummer">
-                        <font>
-                           <Font size="17.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="43.0" layoutY="146.0" text="Brukernavn">
-                        <font>
-                           <Font size="17.0" />
-                        </font>
-                     </Label>
-                     <Label layoutX="43.0" layoutY="200.0" text="Passord">
-                        <font>
-                           <Font size="17.0" />
-                        </font>
-                     </Label>
-                     <TextField fx:id="txtEmpNo" layoutX="162.0" layoutY="94.0" />
-                     <TextField fx:id="txtUsernameRegister" layoutX="162.0" layoutY="144.0" />
-                     <TextField fx:id="txtPasswordRegister" layoutX="162.0" layoutY="198.0" />
-                     <Button layoutX="253.0" layoutY="259.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer" />
-                     <Label fx:id="lblRegister" layoutX="345.0" layoutY="195.0" prefHeight="67.0" prefWidth="322.0" />
-                  </children>
-               </AnchorPane>
-         </content>
-       </Tab>
-     </tabs>
-   </TabPane>
+                    </Label>
+                    <TextField fx:id="txtUsernameSignin" layoutX="148.0" layoutY="153.0"/>
+                    <TextField fx:id="txtPasswordSignin" layoutX="148.0" layoutY="223.0"/>
+                    <Button layoutX="243.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnSignin"
+                            text="Logg inn"/>
+                    <Button layoutX="635.0" layoutY="454.0" mnemonicParsing="false" onAction="#btnCancel"
+                            text="Avbryt"/>
+                    <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="323.0" layoutY="180.0"
+                           prefHeight="67.0" prefWidth="347.0"/>
+                </children>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Registrer ny">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Label layoutX="43.0" layoutY="36.0" text="Registrer ny admin">
+                    <font>
+                        <Font size="27.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="43.0" layoutY="96.0" text="Ansattnummer">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="43.0" layoutY="146.0" text="Brukernavn">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="43.0" layoutY="200.0" text="Passord">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="txtEmpNo" layoutX="162.0" layoutY="94.0"/>
+                <TextField fx:id="txtUsernameRegister" layoutX="162.0" layoutY="144.0"/>
+                <TextField fx:id="txtPasswordRegister" layoutX="162.0" layoutY="198.0"/>
+                <Button layoutX="253.0" layoutY="259.0" mnemonicParsing="false" onAction="#btnRegister"
+                        text="Registrer"/>
+                <Label fx:id="lblRegister" layoutX="345.0" layoutY="195.0" prefHeight="67.0" prefWidth="322.0"/>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
 </AnchorPane>

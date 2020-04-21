@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 public class Battery extends Component {
 
     private transient String component;
-    private transient String [] model;
+    private transient String[] model;
 
     public Battery(String version, double price, String description) {
         super(version, price, description);
@@ -15,11 +15,11 @@ public class Battery extends Component {
         this.model = new String[]{"Elektrisk", "Hybrid"};
     }
 
-    public String [] getModel() {
+    public String[] getModel() {
         return this.model;
     }
 
-    public void setModel(String [] model) {
+    public void setModel(String[] model) {
         this.model = model;
     }
 
@@ -32,7 +32,7 @@ public class Battery extends Component {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return super.getVersion();
     }
 

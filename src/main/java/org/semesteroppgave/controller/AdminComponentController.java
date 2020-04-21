@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import org.semesteroppgave.*;
@@ -47,7 +46,7 @@ public class AdminComponentController {
     private MenuBar menuBar = new MenuBar();
 
     public void initialize() {
-        tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
+        tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentsList());
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         componentSearch.loadFilter(cbFilter);
@@ -56,18 +55,18 @@ public class AdminComponentController {
     }
 
     @FXML
-    void btnAdd(ActionEvent event) {
+    private void btnAdd(ActionEvent event) {
         try {
-            createComponent.addComponent(lblMessageCreate,tableViewCreate,txtVersion,txtPrice,txtDescription,cbCreate);
-        }catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e){
+            createComponent.addComponent(lblMessageCreate, tableViewCreate, txtVersion, txtPrice, txtDescription, cbCreate);
+        } catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e) {
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", "Du må skrive inn et gyldig tall");
         }
     }
 
     @FXML
-    void btnComplete(ActionEvent event) {
+    private void btnComplete(ActionEvent event) {
         try {
             createComponent.completeComponent();
         } catch (IOException e) {
@@ -76,16 +75,16 @@ public class AdminComponentController {
     }
 
     @FXML
-    void btnDeleteComponent(ActionEvent event) {
+    private void btnDeleteComponent(ActionEvent event) {
         try {
-            createComponent.deleteColumn(tableViewComponents, Context.getInstance().getRegisterComponent().getComponentsList(), true);
+            createComponent.deleteColumn(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentsList(), true);
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
     }
 
     @FXML
-    void btnDeleteCreate(ActionEvent event) {
+    private void btnDeleteCreate(ActionEvent event) {
         try {
             createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
         } catch (InvalidDeleteException e) {
@@ -94,70 +93,70 @@ public class AdminComponentController {
     }
 
     @FXML
-    void btnSignout(ActionEvent event) throws IOException {
+    private void btnSignout(ActionEvent event) throws IOException {
         Main.setRoot("adminsignin");
     }
 
     @FXML
-    void editComponent(TableColumn.CellEditEvent<Component, String> event) {
+    private void editComponent(TableColumn.CellEditEvent<Component, String> event) {
         createComponent.editComponentColumn(event, tableViewComponents);
     }
 
     @FXML
-    void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
+    private void editPrice(TableColumn.CellEditEvent<Component, Double> event) {
         createComponent.editPriceColumn(event, doubleStrConverter, tableViewComponents);
     }
 
     @FXML
-    void editPriceCreate(TableColumn.CellEditEvent<Component, Double> event) {
+    private void editPriceCreate(TableColumn.CellEditEvent<Component, Double> event) {
         createComponent.editPriceColumn(event, doubleStrConverter, tableViewCreate);
     }
 
     @FXML
-    void editVersion(TableColumn.CellEditEvent<Component, String> event) {
+    private void editVersion(TableColumn.CellEditEvent<Component, String> event) {
         createComponent.editVersionColumn(event, tableViewComponents);
     }
 
     @FXML
-    void editVersionCreate(TableColumn.CellEditEvent<Component, String> event) {
+    private void editVersionCreate(TableColumn.CellEditEvent<Component, String> event) {
         createComponent.editVersionColumn(event, tableViewCreate);
     }
 
     @FXML
-    void filterChoiceChanged(ActionEvent event) {
+    private void filterChoiceChanged(ActionEvent event) {
         try {
-            componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
-        }catch (InvalidPriceException e){
+            componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
+        } catch (InvalidPriceException e) {
             Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
         }
     }
 
     @FXML
-    void onKeyTypedSearch(KeyEvent event) {
+    private void onKeyTypedSearch(KeyEvent event) {
         try {
-            componentSearch.filter(txtSearch,tableViewComponents,cbFilter);
-        }catch (InvalidPriceException e){
+            componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
+        } catch (InvalidPriceException e) {
             Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
         }
     }
 
     @FXML
-    void tabComponent(Event event) {
+    private void tabComponent(Event event) {
         menuBar.setVisible(true);
     }
 
     @FXML
-    void tabCreate(Event event) {
+    private void tabCreate(Event event) {
         menuBar.setVisible(false);
     }
 
     @FXML
-    void openFileMenuClicked(ActionEvent event) {
+    private void openFileMenuClicked(ActionEvent event) {
         FileHandler.openFileJobj();
     }
 
     @FXML
-    void saveFileMenuClicked(ActionEvent event) {
+    private void saveFileMenuClicked(ActionEvent event) {
         FileHandler.saveFileJobj();
     }
 }

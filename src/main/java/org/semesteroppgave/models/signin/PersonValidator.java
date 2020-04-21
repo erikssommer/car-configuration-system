@@ -4,7 +4,7 @@ import org.semesteroppgave.models.exceptions.*;
 
 public class PersonValidator {
 
-    public static String testValidName(String name){
+    public static String testValidName(String name) {
         //Støtter navn som består av én til fire ord.
         //De to første navnene kan ha bindestrek mellom navnene. eks: Markus-Johannes Pedersen
         String[] regex = {
@@ -16,8 +16,8 @@ public class PersonValidator {
                 "[A-ZÆØÅ][a-zæøå]+[-][A-ZÆØÅ][a-zæøå]+ [A-ZÆØÅ][a-zæøå]+ [A-ZÆØÅ][a-zæøå]+"
         };
 
-        for(String str : regex){
-            if(name.matches(str)){
+        for (String str : regex) {
+            if (name.matches(str)) {
                 return name;
             }
         }
@@ -45,8 +45,8 @@ public class PersonValidator {
                 "^[\\\\(]{0,1}([0-9]){3}[\\\\)]{0,1}[ ]?([^0-1]){1}([0-9]){2}[ ]?[-]?[ ]?([0-9]){4}[ ]*((x){0,1}([0-9]){1,5}){0,1}$"
         };
 
-        for(String str : regex){
-            if(phonenumber.matches(str)){
+        for (String str : regex) {
+            if (phonenumber.matches(str)) {
                 return phonenumber;
             }
         }
@@ -59,8 +59,8 @@ public class PersonValidator {
                 "[a-zæøåA-ZÆØÅ0-9.]+[@][a-z]+[.][a-z]+[.][a-z]+"
         };
 
-        for(String str : regex){
-            if(ePost.matches(str)){
+        for (String str : regex) {
+            if (ePost.matches(str)) {
                 return ePost;
             }
         }
@@ -68,18 +68,18 @@ public class PersonValidator {
     }
 
     public static String testValidUsername(String username) throws InvalidUsernameException {
-        String regex ="(?!^[0-9]*$)(?!^[a-zæøåA-ZÆØÅ]*$)^([a-zæøåA-ZÆØÅ0-9]{6,})$";
+        String regex = "(?!^[0-9]*$)(?!^[a-zæøåA-ZÆØÅ]*$)^([a-zæøåA-ZÆØÅ0-9]{6,})$";
 
-            if(username.matches(regex)){
-                return username;
-            }
+        if (username.matches(regex)) {
+            return username;
+        }
         throw new InvalidUsernameException("Skriv inn gyldig brukernavn.\nMå være minst 6 tegn og inneholde\nminst en bokstav og et tall");
     }
 
     public static String testValidPassword(String password) throws InvalidPasswordException {
-        String regex ="^(?=.*[A-ZÆØÅa-zæøå])(?=.*\\d)[A-ZÆØÅa-zæøå\\d]{4,}$";
+        String regex = "^(?=.*[A-ZÆØÅa-zæøå])(?=.*\\d)[A-ZÆØÅa-zæøå\\d]{4,}$";
 
-        if(password.matches(regex)){
+        if (password.matches(regex)) {
             return password;
         }
         throw new InvalidPasswordException("Skriv inn gyldig passord.\nMå være minst 4 tegn og inneholde\nminst en bokstav og et tall");

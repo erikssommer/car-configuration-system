@@ -33,7 +33,7 @@ public abstract class Car {
         this.towbar = towbar;
     }
 
-    public Motor getMotor(){
+    public Motor getMotor() {
         return this.motor;
     }
 
@@ -98,17 +98,17 @@ public abstract class Car {
     }
 
 
-    public double getPrice(){
+    public double getPrice() {
 
         double price = getMotor().getPrice() + getRim().getPrice() + getSeatCover().getPrice() +
                 getSpoiler().getPrice() + getTires().getPrice();
-        if (getGps() != null){
+        if (getGps() != null) {
             price += getGps().getPrice();
         }
-        if (getSunroof() != null){
+        if (getSunroof() != null) {
             price += getSunroof().getPrice();
         }
-        if (getTowbar() != null){
+        if (getTowbar() != null) {
             price += getTowbar().getPrice();
         }
 
@@ -117,57 +117,57 @@ public abstract class Car {
 
     //Metode som støtter toString metodene til underklassene til Car
     //For å unngå duplikat kode
-    public String testCustom(DecimalFormat df, Autopilot autopilot){
+    public String testCustom(DecimalFormat df, Autopilot autopilot) {
 
         String message = "";
-        if (getGps() != null){
-            message += getGps().getCustomProperty()+"\nPris: "+df.format(getGps().getPrice())+"kr\n\n";
+        if (getGps() != null) {
+            message += getGps().getCustomProperty() + "\nPris: " + df.format(getGps().getPrice()) + "kr\n\n";
         }
-        if (getSunroof() != null){
-            message += getSunroof().getCustomProperty()+"\nPris: "+df.format(getSunroof().getPrice())+"kr\n\n";
+        if (getSunroof() != null) {
+            message += getSunroof().getCustomProperty() + "\nPris: " + df.format(getSunroof().getPrice()) + "kr\n\n";
         }
-        if (getTowbar() != null){
-            message += getTowbar().getCustomProperty()+"\nPris: "+df.format(getTowbar().getPrice())+"kr\n\n";
-        }
-
-        if (autopilot != null){
-            message += autopilot.getCustomProperty()+"\nPris: "+df.format(autopilot.getPrice())+"kr\n\n";
+        if (getTowbar() != null) {
+            message += getTowbar().getCustomProperty() + "\nPris: " + df.format(getTowbar().getPrice()) + "kr\n\n";
         }
 
-        if (getGps() == null && getSunroof() == null && getTowbar() == null && autopilot == null){
+        if (autopilot != null) {
+            message += autopilot.getCustomProperty() + "\nPris: " + df.format(autopilot.getPrice()) + "kr\n\n";
+        }
+
+        if (getGps() == null && getSunroof() == null && getTowbar() == null && autopilot == null) {
             message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
         }
         return message;
     }
 
-    public String customToFile(Autopilot autopilot){
+    public String customToFile(Autopilot autopilot) {
         String message = "";
-        if (getGps() != null){
-            message += getGps().toFile()+";";
-        }else {
+        if (getGps() != null) {
+            message += getGps().toFile() + ";";
+        } else {
             message += ";;";
         }
-        if (getSunroof() != null){
-            message += getSunroof().toFile()+";";
-        }else{
+        if (getSunroof() != null) {
+            message += getSunroof().toFile() + ";";
+        } else {
             message += ";;";
         }
-        if (getTowbar() != null){
-            message += getTowbar().toFile()+";";
-        }else {
+        if (getTowbar() != null) {
+            message += getTowbar().toFile() + ";";
+        } else {
             message += ";;";
         }
 
-        if (autopilot != null){
-            message += autopilot.toFile()+";";
-        }else {
+        if (autopilot != null) {
+            message += autopilot.toFile() + ";";
+        } else {
             message += ";;";
         }
         return message;
     }
 
-    public String toFile(){
-        return getMotor().toFile()+";"+ getRim().toFile()+";"+getSeatCover().toFile()+";"+getSpoiler().toFile()+";"+getTires().toFile();
+    public String toFile() {
+        return getMotor().toFile() + ";" + getRim().toFile() + ";" + getSeatCover().toFile() + ";" + getSpoiler().toFile() + ";" + getTires().toFile();
     }
 
     @Override
@@ -190,14 +190,14 @@ public abstract class Car {
 
 
     @Override
-    public String toString(){
+    public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        return "Motor: "+getMotor().getVersion()+"\nPris: "+ df.format(getMotor().getPrice())+"kr\nBeskrivelse: "+getMotor().getDescription()+"\n\n"+
-        "Felg: "+getRim().getVersion()+"\nPris: "+ df.format(getRim().getPrice())+"kr\nBeskrivelse: "+getRim().getDescription()+"\n\n"+
-        "Setetrekk: "+getSeatCover().getVersion()+"\nPris: "+ df.format(getSeatCover().getPrice())+"kr\nBeskrivelse: "+getSeatCover().getDescription()+"\n\n"+
-        "Spoiler: "+getSpoiler().getVersion()+"\nPris: "+ df.format(getSpoiler().getPrice())+"kr\nBeskrivelse: "+getSpoiler().getDescription()+"\n\n"+
-        "Dekk: "+getTires().getVersion()+"\nPris: "+ df.format(getTires().getPrice())+"kr\nBeskrivelse: "+getTires().getDescription()+"\n\n";
+        return "Motor: " + getMotor().getVersion() + "\nPris: " + df.format(getMotor().getPrice()) + "kr\nBeskrivelse: " + getMotor().getDescription() + "\n\n" +
+                "Felg: " + getRim().getVersion() + "\nPris: " + df.format(getRim().getPrice()) + "kr\nBeskrivelse: " + getRim().getDescription() + "\n\n" +
+                "Setetrekk: " + getSeatCover().getVersion() + "\nPris: " + df.format(getSeatCover().getPrice()) + "kr\nBeskrivelse: " + getSeatCover().getDescription() + "\n\n" +
+                "Spoiler: " + getSpoiler().getVersion() + "\nPris: " + df.format(getSpoiler().getPrice()) + "kr\nBeskrivelse: " + getSpoiler().getDescription() + "\n\n" +
+                "Dekk: " + getTires().getVersion() + "\nPris: " + df.format(getTires().getPrice()) + "kr\nBeskrivelse: " + getTires().getDescription() + "\n\n";
 
     }
 }

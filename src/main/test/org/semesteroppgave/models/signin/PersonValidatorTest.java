@@ -18,7 +18,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void testInvalidNavn(){
+    void testInvalidNavn() {
         assertThrows(InvalidNameException.class, () -> PersonValidator.testValidName("ola"));
         assertThrows(InvalidNameException.class, () -> PersonValidator.testValidName("Ola-Normann"));
         assertThrows(InvalidNameException.class, () -> PersonValidator.testValidName("17"));
@@ -52,7 +52,7 @@ class PersonValidatorTest {
     }
 
     @Test
-    void testInvalidTelefonnr(){
+    void testInvalidTelefonnr() {
         assertThrows(InvalidPhonenumberException.class, () -> PersonValidator.testValidPhone(""));
         assertThrows(InvalidPhonenumberException.class, () -> PersonValidator.testValidPhone("7654321"));
         assertThrows(InvalidPhonenumberException.class, () -> PersonValidator.testValidPhone("NaN"));

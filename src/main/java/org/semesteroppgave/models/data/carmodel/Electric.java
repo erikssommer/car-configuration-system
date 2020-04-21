@@ -30,7 +30,7 @@ public class Electric extends Car {
         this.battery = battery;
     }
 
-    public String getModel(){
+    public String getModel() {
         return this.model;
     }
 
@@ -42,23 +42,23 @@ public class Electric extends Car {
         this.autopilot = autopilot;
     }
 
-    public double getModelPrice(){
+    public double getModelPrice() {
         return this.modelPrice;
     }
 
     @Override
-    public String toFile(){
+    public String toFile() {
 
-        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";;;;;;;"
-                +super.customToFile(autopilot)+getPrice();
+        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";" + getBattery().toFile() + ";;;;;;;"
+                + super.customToFile(autopilot) + getPrice();
 
     }
 
     @Override
     public double getPrice() {
-        double price = super.getPrice()+ getModelPrice() + getBattery().getPrice();
+        double price = super.getPrice() + getModelPrice() + getBattery().getPrice();
 
-        if (getAutopilot() != null){
+        if (getAutopilot() != null) {
             price += getAutopilot().getPrice();
         }
 
@@ -76,18 +76,17 @@ public class Electric extends Car {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+ super.toString()+
-        "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: " + getBattery().getDescription()+"\n\n"+
-        "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+                "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
+                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, getAutopilot());
 
         message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
         return message;
-
 
 
     }

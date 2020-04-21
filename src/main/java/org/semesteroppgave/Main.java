@@ -20,7 +20,7 @@ public class Main extends Application {
 
     private static Scene scene;
 
-    public static Scene getScene(){
+    public static Scene getScene() {
         return scene;
     }
 
@@ -52,22 +52,22 @@ public class Main extends Application {
         launch();
     }
 
-    private void loadConfiguredProducts(){
+    private void loadConfiguredProducts() {
         FileHandler.openFileCvsLaunch();
     }
 
-    private void onProgramExit(Stage stage){
+    private void onProgramExit(Stage stage) {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
-                if (!Context.getInstance().getRegisterProduct().getMyCarList().isEmpty() ||
-                        !Context.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
+                if (!ApplicationData.getInstance().getRegisterProduct().getMyCarList().isEmpty() ||
+                        !ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Lukking av programmet");
                     alert.setHeaderText("Lagre før lukking");
                     alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
                     alert.showAndWait().ifPresent(response -> {
-                        if(response == ButtonType.OK){
+                        if (response == ButtonType.OK) {
                             FileHandler.saveFileCsv();
                             FileHandler.saveFileJobj();
                         }

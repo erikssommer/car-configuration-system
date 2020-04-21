@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserSignIn {
-    private ArrayList<User> userList = new ArrayList<>();
+    private final ArrayList<User> userList = new ArrayList<>();
 
-    public ArrayList<User> getUserList(){
+    public ArrayList<User> getUserList() {
         return this.userList;
     }
 
-    public void setUserList(User user){
+    public void setUserList(User user) {
         userList.add(user);
     }
 
@@ -62,68 +62,69 @@ public class UserSignIn {
         }
     }
 
-    public boolean verifyLogin(String username, String password){
+    public boolean verifyLogin(String username, String password) {
 
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
 
-        try{
+        try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
 
             s.useDelimiter("[,\n]");
-            while (s.hasNext()){
+            while (s.hasNext()) {
                 String checkUsername = s.next();
                 String checkPassword = s.next();
 
-                if(checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())){
-                    System.out.println("\nSuccessful match with username "+username.trim()+" in file userUsernameAndPassword");
+                if (checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())) {
+                    System.out.println("\nSuccessful match with username " + username.trim() + " in file userUsernameAndPassword");
                     return true;
                 }
             }
-        }catch (Exception e){
-            System.out.print("No match with username "+username.trim()+" in file userUsernameAndPassword");
-            System.out.print("Error :"+e.getMessage());
+        } catch (Exception e) {
+            System.out.print("No match with username " + username.trim() + " in file userUsernameAndPassword");
+            System.out.print("Error :" + e.getMessage());
         }
         return false;
     }
 
-    public boolean checkIfNotExisting(String username){
+    public boolean checkIfNotExisting(String username) {
 
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
 
-        try{
+        try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
 
             s.useDelimiter("[,\n]");
-            while (s.hasNext()){
+            while (s.hasNext()) {
                 String checkUsername = s.next();
 
-                if(checkUsername.trim().equals(username.trim())){
-                    System.out.println("\nUsername "+username.trim()+" already exists in file userUsernameAndPassword");
+                if (checkUsername.trim().equals(username.trim())) {
+                    System.out.println("\nUsername " + username.trim() + " already exists in file userUsernameAndPassword");
                     return false;
                 }
             }
-        }catch (Exception e){
-            System.out.print("No match with username "+username.trim()+" in file userUsernameAndPassword");
-            System.out.print("Error :"+e.getMessage());
+        } catch (Exception e) {
+            System.out.print("No match with username " + username.trim() + " in file userUsernameAndPassword");
+            System.out.print("Error :" + e.getMessage());
         }
         return true;
     }
 
     // Lagrer admins brukernavn og passord til fil
-    private void saveToFileUsernamePassword(){
+    private void saveToFileUsernamePassword() {
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     // Lagrer admins info til fil
-    private void saveToFileInfo(){
+    private void saveToFileInfo() {
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -136,6 +137,7 @@ public class UserSignIn {
         }
         return ut.toString();
     }
+
     // Skriver brukers info til fil
     private String txtToFileUserInfo() {
         StringBuilder ut = new StringBuilder();

@@ -15,23 +15,21 @@ public class CreateProductCsv {
     private Tires tires;
     private Battery battery;
     private FuelContainer fuelContainer;
-    private Gearbox gearbox;
 
     private Gps gps;
     private Sunroof sunroof;
     private Towbar towbar;
-    private Autopilot autopilot;
 
 
-    public Electric createElectric(String[] object) throws IllegalArgumentException{
+    public Electric createElectric(String[] object) throws IllegalArgumentException {
         commonComponents(object);
         commonCustom(object);
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
 
-        autopilot = null;
-        if (object[32].equals("Autopilot")){
+        Autopilot autopilot = null;
+        if (object[32].equals("Autopilot")) {
             autopilot = new Autopilot();
-        }else if (!object[32].isEmpty()){
+        } else if (!object[32].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[32] + " støttes ikke");
         }
 
@@ -43,12 +41,12 @@ public class CreateProductCsv {
         commonComponents(object);
         commonCustom(object);
         fuelContainer = new FuelContainer(object[20], Double.parseDouble(object[21]), object[22]);
-        gearbox = new Gearbox(object[23], Double.parseDouble(object[24]), object[25]);
+        Gearbox gearbox = new Gearbox(object[23], Double.parseDouble(object[24]), object[25]);
 
         return new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
     }
 
-    public Hybrid createHybrid(String[] object) throws IllegalArgumentException{
+    public Hybrid createHybrid(String[] object) throws IllegalArgumentException {
         commonComponents(object);
         commonCustom(object);
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
@@ -57,7 +55,7 @@ public class CreateProductCsv {
         return new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
     }
 
-    private void commonComponents(String[] object) throws EmptyComponentException{
+    private void commonComponents(String[] object) throws EmptyComponentException {
         motor = new Motor(object[2], Double.parseDouble(object[3]), object[4]);
         rim = new Rim(object[5], Double.parseDouble(object[6]), object[7]);
         seatCover = new SeatCover(object[8], Double.parseDouble(object[9]), object[10]);
@@ -65,27 +63,27 @@ public class CreateProductCsv {
         tires = new Tires(object[14], Double.parseDouble(object[15]), object[16]);
     }
 
-    private void commonCustom(String[] object) throws InvalidProductException{
+    private void commonCustom(String[] object) throws InvalidProductException {
         //Nulstiller tilpasningene ettersom det er mulig at produktet ikke har alle valgt
         gps = null;
         towbar = null;
         sunroof = null;
         //Tester om produktet skal ha tilpasningen
-        if (object[26].equals("GPS-system")){
+        if (object[26].equals("GPS-system")) {
             gps = new Gps();
-        }else if (!object[26].isEmpty()){
+        } else if (!object[26].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[26] + " støttes ikke");
         }
 
-        if (object[28].equals("Soltak")){
+        if (object[28].equals("Soltak")) {
             sunroof = new Sunroof();
-        }else if (!object[28].isEmpty()){
+        } else if (!object[28].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[28] + " støttes ikke");
         }
 
-        if (object[30].equals("Tillhengerfeste")){
+        if (object[30].equals("Tillhengerfeste")) {
             towbar = new Towbar();
-        }else if (!object[30].isEmpty()){
+        } else if (!object[30].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[30] + " støttes ikke");
         }
     }

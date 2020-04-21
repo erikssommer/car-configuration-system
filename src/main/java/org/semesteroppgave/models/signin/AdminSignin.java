@@ -12,29 +12,29 @@ import java.util.Scanner;
 
 public class AdminSignin {
 
-    private ArrayList<Admin> adminList = new ArrayList<>();
+    private final ArrayList<Admin> adminList = new ArrayList<>();
     // Oppretter liste med gyldige og ledige ansattnummer
-    private ArrayList<String> availableEmpNos = new ArrayList<>();
+    private final ArrayList<String> availableEmpNos = new ArrayList<>();
     //Aktiv admin inlogg
     private static String activeAdminId;
 
-    public ArrayList<Admin> getAdminList(){
+    public ArrayList<Admin> getAdminList() {
         return this.adminList;
     }
 
-    public void setAdminList(Admin admin){
+    public void setAdminList(Admin admin) {
         adminList.add(admin);
     }
 
-    public static String getActiveAdminId(){
+    public static String getActiveAdminId() {
         return activeAdminId;
     }
 
-    public static void setActiveAdminId(String adminId){
+    public static void setActiveAdminId(String adminId) {
         activeAdminId = adminId;
     }
 
-    public ArrayList<String> getAvailableEmpNos(){
+    public ArrayList<String> getAvailableEmpNos() {
         return availableEmpNos;
     }
 
@@ -48,7 +48,7 @@ public class AdminSignin {
         Main.setRoot("adminsignin");
     }
 
-    public void initializeEmpNos(){
+    public void initializeEmpNos() {
         availableEmpNos.clear();
         availableEmpNos.add("A0123");
         availableEmpNos.add("A1234");
@@ -98,68 +98,69 @@ public class AdminSignin {
         }
     }
 
-    public boolean verifyLogin(String username, String password){
+    public boolean verifyLogin(String username, String password) {
 
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminUsernameAndPassword");
 
-        try{
+        try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
 
             s.useDelimiter("[,\n]");
-            while (s.hasNext()){
+            while (s.hasNext()) {
                 String checkUsername = s.next();
                 String checkPassword = s.next();
 
-                if(checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())){
-                    System.out.println("\nSuccessful match with username "+username.trim()+" in file adminUsernameAndPassword");
+                if (checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())) {
+                    System.out.println("\nSuccessful match with username " + username.trim() + " in file adminUsernameAndPassword");
                     return true;
                 }
             }
-        }catch (Exception e){
-            System.out.print("No match with username "+username.trim()+" in file adminUsernameAndPassword");
-            System.out.print("Error :"+e.getMessage());
+        } catch (Exception e) {
+            System.out.print("No match with username " + username.trim() + " in file adminUsernameAndPassword");
+            System.out.print("Error :" + e.getMessage());
         }
         return false;
     }
 
-    public boolean checkIfNotExisting(String username){
+    public boolean checkIfNotExisting(String username) {
 
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminUsernameAndPassword");
 
-        try{
+        try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
 
             s.useDelimiter("[,\n]");
-            while (s.hasNext()){
+            while (s.hasNext()) {
                 String checkUsername = s.next();
 
-                if(checkUsername.trim().equals(username.trim())){
-                    System.out.println("\nUsername "+username.trim()+" already exists in file adminUsernameAndPassword");
+                if (checkUsername.trim().equals(username.trim())) {
+                    System.out.println("\nUsername " + username.trim() + " already exists in file adminUsernameAndPassword");
                     return false;
                 }
             }
-        }catch (Exception e){
-            System.out.print("No match with username "+username.trim()+" in file adminUsernameAndPassword");
-            System.out.print("Error :"+e.getMessage());
+        } catch (Exception e) {
+            System.out.print("No match with username " + username.trim() + " in file adminUsernameAndPassword");
+            System.out.print("Error :" + e.getMessage());
         }
         return true;
     }
 
     // Lagrer admins brukernavn og passord til fil
-    private void saveToFileUsernamePassword(){
+    private void saveToFileUsernamePassword() {
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminUsernamePassword().getBytes());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     // Lagrer admins info til fil
-    private void saveToFileInfo(){
+    private void saveToFileInfo() {
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminInfo().getBytes());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

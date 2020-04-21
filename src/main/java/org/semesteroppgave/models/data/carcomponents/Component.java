@@ -27,12 +27,15 @@ public abstract class Component implements Serializable {
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
     }
 
-    public abstract String [] getModel();
-    public abstract void setModel(String [] model);
+    public abstract String[] getModel();
+
+    public abstract void setModel(String[] model);
+
     public abstract String getComponent();
+
     public abstract void setComponent(String component);
 
-    public String getVersion(){
+    public String getVersion() {
         return version.getValue();
     }
 
@@ -48,16 +51,16 @@ public abstract class Component implements Serializable {
         this.price.set(InputValidation.testValidPrice(price));
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description.getValue();
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description.set(InputValidation.testValidDescription(description));
     }
 
-    public String toFile(){
-        return getVersion() + ";"+ getPrice() + ";" + getDescription();
+    public String toFile() {
+        return getVersion() + ";" + getPrice() + ";" + getDescription();
     }
 
     @Override

@@ -7,13 +7,11 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.semesteroppgave.Context;
+import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
 import org.semesteroppgave.models.exceptions.*;
-import org.semesteroppgave.models.signin.*;
 import org.semesteroppgave.models.signin.UserSignIn;
-import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 public class UserSignInController {
 
@@ -42,26 +40,26 @@ public class UserSignInController {
     @FXML
     private ProgressBar progressbar;
 
-    public void initialize(){
+    public void initialize() {
         userSignIn.parseExistingUser();
-        if (Context.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
+        if (ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
             progressbar.setVisible(true);
             startThread();
-        }else {
+        } else {
             progressbar.setVisible(false);
         }
     }
 
     @FXML
-    void btnAdmin(ActionEvent event) throws IOException {
+    private void btnAdmin(ActionEvent event) throws IOException {
         Main.setRoot("adminsignin");
     }
 
     @FXML
-    void btnRegister(ActionEvent event) {
+    private void btnRegister(ActionEvent event) {
         lblRegister.setText("");
         // Sjekker at brukeren ikke finnes fra før
-        if(userSignIn.checkIfNotExisting(txtUsernameRegister.getText())){
+        if (userSignIn.checkIfNotExisting(txtUsernameRegister.getText())) {
 
             // Prøver å opprette ny bruker hvis feltene er fylt inn
             try {
@@ -70,31 +68,29 @@ public class UserSignInController {
             } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | IOException e) {
                 lblRegister.setText(e.getMessage());
             }
-        }
-
-        else{
+        } else {
             // Feilmelding hvis brukernavn er opptatt
             lblRegister.setText("Brukeren finnes fra før\nVelg et annet brukernavn");
         }
     }
 
     @FXML
-    void btnSignin(ActionEvent event) throws IOException {
+    private void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra user-filen
-        if(userSignIn.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText())) {
+        if (userSignIn.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText())) {
             Main.setRoot("userbuildcar");
-        }else {
+        } else {
             lblSignin.setText("Feil brukernavn og/eller passord");
         }
     }
 
     @FXML
-    void tabRegisterSelected(Event event) {
+    private void tabRegisterSelected(Event event) {
         progressbar.setVisible(false);
         lblThreadMessage.setVisible(false);
     }
 
-    public void startThread(){
+    private void startThread() {
 
         lblThreadMessage.setText("Laster inn fil...");
         openWithThread = new OpenWithThread(progressbar);
@@ -116,7 +112,7 @@ public class UserSignInController {
         enableGUI();
     }
 
-    private void disableGUI(){
+    private void disableGUI() {
         tabRegister.setDisable(true);
         txtPasswordLogin.setDisable(true);
         txtUsernameLogin.setDisable(true);
@@ -124,7 +120,7 @@ public class UserSignInController {
         btnAdmin.setDisable(true);
     }
 
-    private void enableGUI(){
+    private void enableGUI() {
         tabRegister.setDisable(false);
         txtPasswordLogin.setDisable(false);
         txtUsernameLogin.setDisable(false);

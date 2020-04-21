@@ -24,7 +24,7 @@ public class User extends Person {
         return name;
     }
 
-    public void setName(String name) throws InvalidNameException{
+    public void setName(String name) throws InvalidNameException {
         this.name = PersonValidator.testValidName(name);
     }
 
@@ -32,7 +32,7 @@ public class User extends Person {
         return phonenumber;
     }
 
-    public void setPhonenumber(String phonenumber) throws InvalidPhonenumberException{
+    public void setPhonenumber(String phonenumber) throws InvalidPhonenumberException {
         this.phonenumber = PersonValidator.testValidPhone(phonenumber);
     }
 
@@ -43,13 +43,15 @@ public class User extends Person {
     public void setEmail(String email) throws InvalidEmailException {
         this.email = PersonValidator.testValidEmail(email);
     }
+
     //Format til fil
     public String printTxtUsernamePassword() {
         return getUsername() + "," + getPassword();
     }
+
     //Format til fil
     public String printTxtUserInfo() {
-        return getName() + "," + getPhonenumber()+ "," +getEmail();
+        return getName() + "," + getPhonenumber() + "," + getEmail();
     }
 
 }

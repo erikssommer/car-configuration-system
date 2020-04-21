@@ -5,37 +5,39 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import org.semesteroppgave.Context;
+import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.models.data.carcomponents.Component;
-import org.semesteroppgave.models.exceptions.InvalidPriceException;
-import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 public class ComponentSearch {
 
-    private ObservableList<Component> searchResult = FXCollections.observableArrayList();
-    private ObservableList<String> componentFilter = FXCollections.observableArrayList();
+    private final ObservableList<Component> searchResult = FXCollections.observableArrayList();
+    private final ObservableList<String> componentFilter = FXCollections.observableArrayList();
 
-    public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter) throws IllegalArgumentException{
-        if(txtSearch.getText().isEmpty()) {
-            tableViewComponents.setItems(Context.getInstance().getRegisterComponent().getComponentsList());
-        }else {
+    public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter) throws IllegalArgumentException {
+        if (txtSearch.getText().isEmpty()) {
+            tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentsList());
+        } else {
             String choiceFilter = cbFilter.getValue();
             String searchWord = txtSearch.getText();
-            search(choiceFilter,searchWord,tableViewComponents);
+            search(choiceFilter, searchWord, tableViewComponents);
         }
     }
 
-    public void search(String choiceFilter, String searchWord, TableView<Component> tableView){
+    public void search(String choiceFilter, String searchWord, TableView<Component> tableView) {
         searchResult.clear();
 
-        switch (choiceFilter){
-            case "Komponent" : searchResult.addAll(Context.getInstance().getRegisterComponent().searchComponent(searchWord));
+        switch (choiceFilter) {
+            case "Komponent":
+                searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchComponent(searchWord));
                 break;
-            case "Versjon" : searchResult.addAll(Context.getInstance().getRegisterComponent().searchVersion(searchWord));
+            case "Versjon":
+                searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchVersion(searchWord));
                 break;
-            case "Pris" : try {
-                searchResult.addAll(Context.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
-            }catch (NumberFormatException ignored){}
+            case "Pris":
+                try {
+                    searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
+                } catch (NumberFormatException ignored) {
+                }
                 break;
         }
         tableView.setItems(searchResult);
@@ -51,7 +53,7 @@ public class ComponentSearch {
         cbFilter.setValue(choice1);
     }
 
-    public ObservableList<Component> getSearchResult(){
+    public ObservableList<Component> getSearchResult() {
         return this.searchResult;
     }
 }

@@ -38,19 +38,19 @@ public class Hybrid extends Car {
         this.fuelContainer = fuelContainer;
     }
 
-    public String getModel(){
+    public String getModel() {
         return this.model;
     }
 
-    public double getModelPrice(){
+    public double getModelPrice() {
         return this.modelPrice;
     }
 
     @Override
-    public String toFile(){
+    public String toFile() {
 
-        return getModel() +";"+getModelPrice()+";"+ super.toFile()+";"+ getBattery().toFile()+";"+
-                getFuelContainer().toFile()+";;;;"+super.customToFile(null)+getPrice();
+        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";" + getBattery().toFile() + ";" +
+                getFuelContainer().toFile() + ";;;;" + super.customToFile(null) + getPrice();
 
     }
 
@@ -72,13 +72,13 @@ public class Hybrid extends Car {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: "+getModel()+"\nModellpris: "+df.format(getModelPrice())+"kr\n\n"+ super.toString()+
-        "Batteri : "+getBattery().getVersion()+"\nPris: "+ df.format(getBattery().getPrice())+"kr\nBeskrivelse: "+getBattery().getDescription()+"\n\n"+
-        "Tank : "+getFuelContainer().getVersion()+"\nPris: "+ df.format(getFuelContainer().getPrice())+"kr\nBeskrivelse: "+getFuelContainer().getDescription()+"\n\n"+
-        "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+                "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
+                "Tank : " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
+                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, null);
 

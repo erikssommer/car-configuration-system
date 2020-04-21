@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 public class SeatCover extends Component {
 
     private transient String component;
-    private transient String [] model;
+    private transient String[] model;
 
     public SeatCover(String version, double price, String description) {
         super(version, price, description);
@@ -15,11 +15,11 @@ public class SeatCover extends Component {
         this.model = new String[]{"universial"};
     }
 
-    public String [] getModel() {
+    public String[] getModel() {
         return model;
     }
 
-    public void setModel(String [] model) {
+    public void setModel(String[] model) {
         this.model = model;
     }
 
@@ -32,7 +32,7 @@ public class SeatCover extends Component {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return super.getVersion();
     }
 
