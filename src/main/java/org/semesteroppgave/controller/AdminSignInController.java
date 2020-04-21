@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class AdminSignInController {
 
-    AdminSignin adminSignin = new AdminSignin();
+    private final AdminSignin adminSignin = new AdminSignin();
 
     @FXML
     private TextField txtUsernameSignin;
