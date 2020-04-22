@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -65,11 +66,13 @@
                 <TextField fx:id="txtSearch" layoutX="597.0" layoutY="79.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
                 <ComboBox fx:id="cbFilter" layoutX="396.0" layoutY="79.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
                 <Label layoutX="329.0" layoutY="84.0" text="Filtrer etter:" />
-                <Button layoutX="624.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
-                <Button layoutX="306.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent" />
+                <Button fx:id="btnSignOut" layoutX="654.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
+                <Button fx:id="btnDeleteComponent" layoutX="321.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent" />
+            <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="460.0" prefHeight="17.0" prefWidth="250.0" />
+            <ProgressBar fx:id="progressBar" layoutX="36.0" layoutY="483.0" prefHeight="20.0" prefWidth="679.0" progress="0.0" />
             </AnchorPane>
         </Tab>
-        <Tab onSelectionChanged="#tabCreate" text="Opprett ny">
+        <Tab fx:id="tabCreate" onSelectionChanged="#tabCreate" text="Opprett ny">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                 <Label layoutX="30.0" layoutY="27.0" text="Opprett nye komponenter">
                     <font>

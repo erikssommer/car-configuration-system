@@ -1,28 +1,37 @@
 package org.semesteroppgave.controller;
 
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
-import org.semesteroppgave.*;
+import org.semesteroppgave.ApplicationData;
+import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.AdminCreateComponent;
 import org.semesteroppgave.models.data.ComponentSearch;
 import org.semesteroppgave.models.data.carcomponents.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
-import org.semesteroppgave.models.signin.*;
+import org.semesteroppgave.models.signin.AdminSignin;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
+import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
 
 public class AdminComponentController {
 
-    private InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
-    private ComponentSearch componentSearch = new ComponentSearch();
-    private AdminCreateComponent createComponent = new AdminCreateComponent(componentSearch);
+    private final InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
+    private final ComponentSearch componentSearch = new ComponentSearch();
+    private final AdminCreateComponent createComponent = new AdminCreateComponent(componentSearch);
+
+    @FXML
+    private Tab tabCreate;
+
+    @FXML
+    private Button btnSignOut, btnDeleteComponent;
 
     @FXML
     private TableView<Component> tableViewComponents, tableViewCreate;
@@ -40,7 +49,10 @@ public class AdminComponentController {
     private TextArea txtDescription;
 
     @FXML
-    private Label lblAdminID, lblMessageCreate;
+    private Label lblAdminID, lblMessageCreate, lblThreadMessage;
+
+    @FXML
+    private ProgressBar progressBar;
 
     @FXML
     private MenuBar menuBar = new MenuBar();
@@ -52,6 +64,8 @@ public class AdminComponentController {
         componentSearch.loadFilter(cbFilter);
         createComponent.loadChoice(cbCreate);
         lblAdminID.setText(AdminSignin.getActiveAdminId());
+        progressBar.setVisible(false);
+        lblThreadMessage.setVisible(false);
     }
 
     @FXML
@@ -152,11 +166,58 @@ public class AdminComponentController {
 
     @FXML
     private void openFileMenuClicked(ActionEvent event) {
-        FileHandler.openFileJobj();
+        String filePath = FileHandler.getOpenFileJobj();
+        if (!filePath.equals("null")){
+            startThread(filePath);
+        }
     }
 
     @FXML
     private void saveFileMenuClicked(ActionEvent event) {
         FileHandler.saveFileJobj();
+    }
+
+    private void startThread(String filePath){
+        progressBar.setVisible(true);
+        lblThreadMessage.setVisible(true);
+        lblThreadMessage.setText("Laster inn fil...");
+        OpenWithThread openWithThread = new OpenWithThread(progressBar, filePath);
+        openWithThread.setOnSucceeded(this::fileOpened);
+        openWithThread.setOnFailed(this::fileOpeningFailed);
+        Thread thread = new Thread(openWithThread);
+        thread.setDaemon(true);
+        disableGUI();
+        thread.start();
+    }
+
+    private void fileOpened(WorkerStateEvent e) {
+        enableGUI();
+    }
+
+    private void fileOpeningFailed(WorkerStateEvent e) {
+        Dialogs.showErrorDialog("Fil", "Feil i åpning av fil", e.getSource().getException().getMessage());
+        enableGUI();
+    }
+
+    private void disableGUI() {
+        tabCreate.setDisable(true);
+        txtSearch.setDisable(true);
+        cbFilter.setDisable(true);
+        btnDeleteComponent.setDisable(true);
+        btnSignOut.setDisable(true);
+        menuBar.setDisable(true);
+        tableViewComponents.setDisable(true);
+    }
+
+    private void enableGUI() {
+        tabCreate.setDisable(false);
+        txtSearch.setDisable(false);
+        cbFilter.setDisable(false);
+        btnDeleteComponent.setDisable(false);
+        btnSignOut.setDisable(false);
+        menuBar.setDisable(false);
+        tableViewComponents.setDisable(false);
+        progressBar.setVisible(false);
+        lblThreadMessage.setVisible(false);
     }
 }

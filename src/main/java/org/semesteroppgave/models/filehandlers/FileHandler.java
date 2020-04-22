@@ -76,32 +76,13 @@ public class FileHandler {
         }
     }
 
-    public static void openFileJobj() {
-        File selectedFile = getFileFromFileChooserOpen(DialogMode.Admin);
-
-        if (selectedFile != null) {
-            String fileExt = getFileExt(selectedFile);
-            FileOpener opener = null;
-
-            if (".jobj".equals(fileExt)) {
-                opener = new FileOpenerJobj();
-            } else {
-                Dialogs.showErrorDialog("Fil", "Feil ved åpning av fil", "Du kan bare åpne jobj filer som admin");
-            }
-
-            if (opener != null) {
-                try {
-                    opener.open(selectedFile.toPath());
-                } catch (IOException e) {
-                    Dialogs.showErrorDialog("Fil", "Feil i åpneing av fil", "Åpning av filen feilet. Grunn: " + e.getMessage());
-                }
-            }
-        }
+    public static String getOpenFileJobj(){
+        return String.valueOf(getFileFromFileChooserOpen(DialogMode.Admin));
     }
 
-    public static void openFileJobjThread() {
+    public static void openFileJobjThread(String filepath) {
 
-        File loadFile = new File("files/komponenter.jobj");
+        File loadFile = new File(filepath);
         FileOpener opener = new FileOpenerJobj();
 
         try {

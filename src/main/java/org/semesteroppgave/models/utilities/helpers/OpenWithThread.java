@@ -5,15 +5,19 @@ import javafx.scene.control.ProgressBar;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 
 public class OpenWithThread extends Task<Void> {
-    private final ProgressBar progressBar;
 
-    public OpenWithThread(ProgressBar progressBar) {
+    private final ProgressBar progressBar;
+    private final String filepath;
+
+    public OpenWithThread(ProgressBar progressBar, String filepath) {
         this.progressBar = progressBar;
+        this.filepath = filepath;
     }
 
     @Override
     protected Void call() {
         try {
+            progressBar.setProgress(0.00);
             Thread.sleep(1000);
             progressBar.setProgress(0.25);
             Thread.sleep(1000);
@@ -25,7 +29,9 @@ public class OpenWithThread extends Task<Void> {
         } catch (InterruptedException e) {
             //Gjør ikke noe her
         }
-        FileHandler.openFileJobjThread();
+
+        FileHandler.openFileJobjThread(filepath);
+
         return null;
     }
 }

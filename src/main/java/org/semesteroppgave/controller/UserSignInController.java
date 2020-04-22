@@ -91,7 +91,7 @@ public class UserSignInController {
     private void startThread() {
 
         lblThreadMessage.setText("Laster inn fil...");
-        OpenWithThread openWithThread = new OpenWithThread(progressbar);
+        OpenWithThread openWithThread = new OpenWithThread(progressbar, "files/komponenter.jobj");
         openWithThread.setOnSucceeded(this::fileOpened);
         openWithThread.setOnFailed(this::fileOpeningFailed);
         Thread thread = new Thread(openWithThread);
