@@ -236,13 +236,46 @@ public class UserCreateCar {
             Car product = null;
             switch (cbModel.getValue()) {
                 case "Elektrisk":
-                    product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
+                    product = new Electric.Builder("Elektrisk", 1_200_000)
+                            .selectedMotor(motor)
+                            .selectedRim(rim)
+                            .selectedSeatcover(seatCover)
+                            .selectedSpoiler(spoiler)
+                            .selectedTires(tires)
+                            .selectedBattery(battery)
+                            .withGps(gps)
+                            .withSunroof(sunroof)
+                            .withTowbar(towbar)
+                            .withAutopilot(autopilot)
+                            .build();
                     break;
                 case "Diesel":
-                    product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
+                    product = new Diesel.Builder("Diesel", 400_000)
+                            .selectedMotor(motor)
+                            .selectedRim(rim)
+                            .selectedSeatcover(seatCover)
+                            .selectedSpoiler(spoiler)
+                            .selectedTires(tires)
+                            .selectedFuelContainer(fuelContainer)
+                            .selectedGearbox(gearbox)
+                            .withGps(gps)
+                            .withSunroof(sunroof)
+                            .withTowbar(towbar)
+                            .build();
                     break;
                 case "Hybrid":
-                    product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
+                    product = new Hybrid.Builder("Hybrid", 850_000)
+                            .selectedMotor(motor)
+                            .selectedRim(rim)
+                            .selectedSeatcover(seatCover)
+                            .selectedSpoiler(spoiler)
+                            .selectedTires(tires)
+                            .selectedBattery(battery)
+                            .selectedFuelContainer(fuelContainer)
+                            .withGps(gps)
+                            .withSunroof(sunroof)
+                            .withTowbar(towbar)
+                            .build();
                     break;
             }
 

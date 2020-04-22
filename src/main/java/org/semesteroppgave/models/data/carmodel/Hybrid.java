@@ -7,43 +7,55 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import java.text.DecimalFormat;
 
 public class Hybrid extends Car {
-    private Battery battery;
-    private FuelContainer fuelContainer;
-    private final String model;
-    private final double modelPrice;
+    private final Battery battery;
+    private final FuelContainer fuelContainer;
 
-    public Hybrid(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, FuelContainer fuelContainer) {
-        super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
-        if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
-        this.battery = battery;
-        this.fuelContainer = fuelContainer;
-        this.model = "Hybrid";
-        this.modelPrice = 850_000;
+    protected Hybrid(Builder builder) {
+        super(builder);
+        this.battery = builder.battery;
+        this.fuelContainer = builder.fuelContainer;
     }
 
+    public static class Builder extends Car.Builder<Builder> {
+        private Battery battery;
+        private FuelContainer fuelContainer;
+
+        public Builder(String model, double modelPrice) {
+            super(model, modelPrice);
+        }
+
+        public Builder selectedBattery(Battery battery){
+            this.battery = battery;
+
+            return this;
+        }
+
+        public Builder selectedFuelContainer(FuelContainer fuelContainer) {
+            this.fuelContainer = fuelContainer;
+
+            return this;
+        }
+
+        public Hybrid build(){
+            Hybrid hybrid = new Hybrid(this);
+            validateCarObject(hybrid);
+            return hybrid;
+        }
+
+        private void validateCarObject(Car car){
+            //Tester om det er noen nullpekere på i pårevde komponenter
+            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
+            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
+        }
+    }
+
+    // Alle getter og INGEN setter for å gi uforanderlighet
     public Battery getBattery() {
         return battery;
     }
 
-    public void setBattery(Battery battery) {
-        this.battery = battery;
-    }
-
     public FuelContainer getFuelContainer() {
         return fuelContainer;
-    }
-
-    public void setFuelContainer(FuelContainer fuelContainer) {
-        this.fuelContainer = fuelContainer;
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-
-    public double getModelPrice() {
-        return this.modelPrice;
     }
 
     @Override

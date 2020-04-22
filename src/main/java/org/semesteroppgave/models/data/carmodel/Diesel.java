@@ -10,44 +10,55 @@ import java.text.DecimalFormat;
 
 public class Diesel extends Car {
 
-    private FuelContainer fuelContainer;
-    private Gearbox gearbox;
-    private final String model;
-    private final double modelPrice;
+    private final FuelContainer fuelContainer;
+    private final Gearbox gearbox;
 
-    public Diesel(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, FuelContainer fuelContainer, Gearbox gearbox) {
-        super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
-        if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
-        this.fuelContainer = fuelContainer;
-        this.gearbox = gearbox;
-        this.model = "Diesel";
-        this.modelPrice = 400_000;
+    protected Diesel(Builder builder) {
+        super(builder);
+        this.fuelContainer = builder.fuelContainer;
+        this.gearbox = builder.gearbox;
     }
 
+    public static class Builder extends Car.Builder<Builder> {
+        private FuelContainer fuelContainer;
+        private Gearbox gearbox;
 
+        public Builder(String model, double modelPrice) {
+            super(model, modelPrice);
+        }
+
+        public Builder selectedFuelContainer(FuelContainer fuelContainer) {
+            this.fuelContainer = fuelContainer;
+
+            return this;
+        }
+
+        public Builder selectedGearbox(Gearbox gearbox){
+            this.gearbox = gearbox;
+
+            return this;
+        }
+
+        public Diesel build(){
+            Diesel diesel = new Diesel(this);
+            validateCarObject(diesel);
+            return diesel;
+        }
+
+        private void validateCarObject(Car car){
+            //Tester om det er noen nullpekere på i pårevde komponenter
+            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
+            if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
+        }
+    }
+
+    // Alle getter og INGEN setter for å gi uforanderlighet
     public FuelContainer getFuelContainer() {
         return fuelContainer;
     }
 
-    public void setFuelContainer(FuelContainer fuelContainer) {
-        this.fuelContainer = fuelContainer;
-    }
-
     public Gearbox getGearbox() {
         return gearbox;
-    }
-
-    public void setGearbox(Gearbox gearbox) {
-        this.gearbox = gearbox;
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-
-    public double getModelPrice() {
-        return this.modelPrice;
     }
 
     @Override

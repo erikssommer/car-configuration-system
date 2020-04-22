@@ -33,7 +33,18 @@ public class CreateProductCsv {
             throw new InvalidProductException("Tilpasningen: " + object[32] + " støttes ikke");
         }
 
-        return new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
+        return new Electric.Builder("Elektrisk", 1_200_000)
+                .selectedMotor(motor)
+                .selectedRim(rim)
+                .selectedSeatcover(seatCover)
+                .selectedSpoiler(spoiler)
+                .selectedTires(tires)
+                .selectedBattery(battery)
+                .withGps(gps)
+                .withSunroof(sunroof)
+                .withTowbar(towbar)
+                .withAutopilot(autopilot)
+                .build();
 
     }
 
@@ -43,7 +54,18 @@ public class CreateProductCsv {
         fuelContainer = new FuelContainer(object[20], Double.parseDouble(object[21]), object[22]);
         Gearbox gearbox = new Gearbox(object[23], Double.parseDouble(object[24]), object[25]);
 
-        return new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
+        return new Diesel.Builder("Diesel", 400_000)
+                .selectedMotor(motor)
+                .selectedRim(rim)
+                .selectedSeatcover(seatCover)
+                .selectedSpoiler(spoiler)
+                .selectedTires(tires)
+                .selectedFuelContainer(fuelContainer)
+                .selectedGearbox(gearbox)
+                .withGps(gps)
+                .withSunroof(sunroof)
+                .withTowbar(towbar)
+                .build();
     }
 
     public Hybrid createHybrid(String[] object) throws IllegalArgumentException {
@@ -52,7 +74,18 @@ public class CreateProductCsv {
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
         fuelContainer = new FuelContainer(object[20], Double.parseDouble(object[21]), object[22]);
 
-        return new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
+        return new Hybrid.Builder("Hybrid", 850_000)
+                .selectedMotor(motor)
+                .selectedRim(rim)
+                .selectedSeatcover(seatCover)
+                .selectedSpoiler(spoiler)
+                .selectedTires(tires)
+                .selectedBattery(battery)
+                .selectedFuelContainer(fuelContainer)
+                .withGps(gps)
+                .withSunroof(sunroof)
+                .withTowbar(towbar)
+                .build();
     }
 
     private void commonComponents(String[] object) throws EmptyComponentException {

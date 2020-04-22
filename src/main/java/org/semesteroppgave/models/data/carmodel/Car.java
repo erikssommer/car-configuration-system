@@ -7,94 +7,153 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
-public abstract class Car {
-    private Motor motor;
-    private Rim rim;
-    private SeatCover seatcover;
-    private Spoiler spoiler;
-    private Tires tires;
-    private Gps gps;
-    private Sunroof sunroof;
-    private Towbar towbar;
+public class Car {
+    private final String model; //Påkreves
+    private final double modelPrice;
+    private final Motor motor; //Påkreves
+    private final Rim rim; //Påkreves
+    private final SeatCover seatcover; //Påkreves
+    private final Spoiler spoiler; //Påkreves
+    private final Tires tires; //Påkreves
+    private final Gps gps; //Valgfri
+    private final Sunroof sunroof; //Valgfri
+    private final Towbar towbar; //Valgfri
 
-    public Car(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar) {
-        if (motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
-        if (rim == null) throw new EmptyComponentException("Du har glemt å velge felger");
-        if (seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
-        if (spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
-        if (tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
-        this.motor = motor;
-        this.rim = rim;
-        this.seatcover = seatcover;
-        this.spoiler = spoiler;
-        this.tires = tires;
-        this.gps = gps;
-        this.sunroof = sunroof;
-        this.towbar = towbar;
+    protected Car(Builder<?> builder) {
+        this.model = builder.model;
+        this.modelPrice = builder.modelPrice;
+        this.motor = builder.motor;
+        this.rim = builder.rim;
+        this.seatcover = builder.seatcover;
+        this.spoiler = builder.spoiler;
+        this.tires = builder.tires;
+        this.gps = builder.gps;
+        this.sunroof = builder.sunroof;
+        this.towbar = builder.towbar;
+    }
+
+    public static class Builder <T extends Builder<T>> {
+        private final String model; //Denne er viktig, så den legger vi i konstruktøren
+        private final double modelPrice; //Denne er viktig, så den legger vi i konstruktøren
+        private Motor motor;
+        private Rim rim;
+        private SeatCover seatcover;
+        private Spoiler spoiler;
+        private Tires tires;
+        private Gps gps;
+        private Sunroof sunroof;
+        private Towbar towbar;
+
+        public Builder(String model, double modelPrice){
+            this.model = model;
+            this.modelPrice = modelPrice;
+        }
+
+        public T selectedMotor(Motor motor){
+            this.motor = motor;
+
+            return (T) this;
+        }
+
+        public T selectedRim(Rim rim){
+            this.rim = rim;
+
+            return (T) this;
+        }
+
+        public T selectedSeatcover(SeatCover seatCover){
+            this.seatcover = seatCover;
+
+            return (T) this;
+        }
+
+        public T selectedSpoiler(Spoiler spoiler){
+            this.spoiler = spoiler;
+
+            return (T) this;
+        }
+
+        public T selectedTires(Tires tires){
+            this.tires = tires;
+
+            return (T) this;
+        }
+
+        public T withGps(Gps gps){
+            this.gps = gps;
+
+            return (T) this;
+        }
+
+        public T withSunroof(Sunroof sunroof){
+            this.sunroof = sunroof;
+
+            return (T) this;
+        }
+
+        public T withTowbar(Towbar towbar){
+            this.towbar = towbar;
+
+            return (T) this;
+        }
+
+        //Returnerer er ferdig konstruert Car objekt
+        public Car build(){
+            Car car = new Car(this);
+            validateCarObject(car);
+            return car;
+        }
+
+        private void validateCarObject(Car car){
+            //Tester om det er noen nullpekere på i pårevde komponenter
+            if (car.motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
+            if (car.rim == null) throw new EmptyComponentException("Du har glemt å velge dekk");
+            if (car.seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
+            if (car.spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
+            if (car.tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
+        }
+
+    }
+
+    // Alle getter og INGEN setter for å gi uforanderlighet
+    public String getModel(){
+        return this.model;
+    }
+
+    public double getModelPrice(){
+        return this.modelPrice;
     }
 
     public Motor getMotor() {
         return this.motor;
     }
 
-    public void setMotor(Motor motor) {
-        this.motor = motor;
-    }
-
     public Rim getRim() {
         return rim;
-    }
-
-    public void setRim(Rim rim) {
-        this.rim = rim;
     }
 
     public SeatCover getSeatCover() {
         return seatcover;
     }
 
-    public void setSeatCover(SeatCover seatcover) {
-        this.seatcover = seatcover;
-    }
-
     public Spoiler getSpoiler() {
         return spoiler;
-    }
-
-    public void setSpoiler(Spoiler spoiler) {
-        this.spoiler = spoiler;
     }
 
     public Tires getTires() {
         return tires;
     }
 
-    public void setTires(Tires tires) {
-        this.tires = tires;
-    }
-
     public Gps getGps() {
         return this.gps;
-    }
-
-    public void setGps(Gps gps) {
-        this.gps = gps;
     }
 
     public Sunroof getSunroof() {
         return this.sunroof;
     }
 
-    public void setSunroof(Sunroof sunroof) {
-        this.sunroof = sunroof;
-    }
-
     public Towbar getTowbar() {
         return this.towbar;
-    }
-
-    public void setTowbar(Towbar towbar) {
-        this.towbar = towbar;
     }
 
 
