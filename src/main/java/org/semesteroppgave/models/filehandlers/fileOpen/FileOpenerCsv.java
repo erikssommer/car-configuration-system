@@ -18,14 +18,14 @@ public class FileOpenerCsv implements FileOpener {
 
     @Override
     public void open(Path filePath) throws IOException {
-        ApplicationData.getInstance().getRegisterProduct().getCarList().clear();
+        ApplicationData.getInstance().getRegisterProduct().getProductList().clear();
         // try-with-resources lukker automatisk filen
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
             //Hopper over menylinjen
             bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
-                ApplicationData.getInstance().getRegisterProduct().setCarList(parseProduct(line));
+                ApplicationData.getInstance().getRegisterProduct().setProductList(parseProduct(line));
             }
         } catch (NullPointerException | NumberFormatException | InvalidProductException | InvalidComponentException | InvalidDescriptionException | InvalidPriceException | InvalidVersionException e) {
             Dialogs.showErrorDialog("Oups", "Feil i innlasting fra cvs-fil", e.getMessage());
@@ -33,8 +33,8 @@ public class FileOpenerCsv implements FileOpener {
         }
     }
 
-    private Car parseProduct(String line) throws IllegalArgumentException {
-        Car carRead = null;
+    private Product parseProduct(String line) throws IllegalArgumentException {
+        Product productRead = null;
         String[] split = line.split(";");
 
         if (split.length != 35) {
@@ -43,18 +43,18 @@ public class FileOpenerCsv implements FileOpener {
 
         switch (split[0]) {
             case "Elektrisk":
-                carRead = create.createElectric(split);
+                productRead = create.createElectric(split);
                 break;
             case "Diesel":
-                carRead = create.createDiesel(split);
+                productRead = create.createDiesel(split);
                 break;
             case "Hybrid":
-                carRead = create.createHybrid(split);
+                productRead = create.createHybrid(split);
                 break;
             default:
                 throw new InvalidProductException("Modellen " + split[0] + " finnes ikke");
         }
 
-        return carRead;
+        return productRead;
     }
 }

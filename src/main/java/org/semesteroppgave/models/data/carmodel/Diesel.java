@@ -1,14 +1,11 @@
 package org.semesteroppgave.models.data.carmodel;
 
-import org.semesteroppgave.models.data.carcustomization.Gps;
-import org.semesteroppgave.models.data.carcustomization.Sunroof;
-import org.semesteroppgave.models.data.carcustomization.Towbar;
 import org.semesteroppgave.models.data.carcomponents.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
-public class Diesel extends Car {
+public class Diesel extends Product {
 
     private final FuelContainer fuelContainer;
     private final Gearbox gearbox;
@@ -19,7 +16,7 @@ public class Diesel extends Car {
         this.gearbox = builder.gearbox;
     }
 
-    public static class Builder extends Car.Builder<Builder> {
+    public static class Builder extends Product.Builder<Builder> {
         private FuelContainer fuelContainer;
         private Gearbox gearbox;
 
@@ -45,7 +42,7 @@ public class Diesel extends Car {
             return diesel;
         }
 
-        private void validateCarObject(Car car){
+        private void validateCarObject(Product product){
             //Tester om det er noen nullpekere på i pårevde komponenter
             if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
             if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");

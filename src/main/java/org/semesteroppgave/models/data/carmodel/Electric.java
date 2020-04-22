@@ -6,7 +6,7 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
-public class Electric extends Car {
+public class Electric extends Product {
 
     private final Battery battery;
     private final Autopilot autopilot;
@@ -17,7 +17,7 @@ public class Electric extends Car {
         this.autopilot = builder.autopilot;
     }
 
-    public static class Builder extends Car.Builder<Builder> {
+    public static class Builder extends Product.Builder<Builder> {
         private Battery battery;
         private Autopilot autopilot;
 
@@ -43,7 +43,7 @@ public class Electric extends Car {
             return electric;
         }
 
-        private void validateCarObject(Car car){
+        private void validateCarObject(Product product){
             //Tester om det er noen nullpekere på i pårevde komponenter
             if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
         }

@@ -2,45 +2,45 @@ package org.semesteroppgave.models.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.semesteroppgave.models.data.carmodel.Car;
+import org.semesteroppgave.models.data.carmodel.Product;
 
 public class RegisterProduct {
     //Listen carList er alle tidligere konfigurerte biler
     //Listen myCarList er min konfigurerte bil
     //Objektet selectedCar er den bilen som skal vises mer informasjon om
-    private final ObservableList<Car> carList = FXCollections.observableArrayList();
-    private final ObservableList<Car> myCarList = FXCollections.observableArrayList();
-    private Car selectedCar;
+    private final ObservableList<Product> productList = FXCollections.observableArrayList();
+    private final ObservableList<Product> myProductList = FXCollections.observableArrayList();
+    private Product selectedProduct;
 
-    public ObservableList<Car> getCarList() {
-        return this.carList;
+    public ObservableList<Product> getProductList() {
+        return this.productList;
     }
 
-    public void setCarList(Car car) {
-        carList.add(car);
+    public void setProductList(Product product) {
+        productList.add(product);
     }
 
-    public ObservableList<Car> getMyCarList() {
-        return this.myCarList;
+    public ObservableList<Product> getMyProductList() {
+        return this.myProductList;
     }
 
-    public void setMyCarList(Car car) {
-        myCarList.add(car);
+    public void setMyProductList(Product product) {
+        myProductList.add(product);
     }
 
-    public Car getSelectedCar() {
-        return this.selectedCar;
+    public Product getSelectedProduct() {
+        return this.selectedProduct;
     }
 
-    public void setSelectedCar(Car car) {
-        this.selectedCar = car;
+    public void setSelectedProduct(Product product) {
+        this.selectedProduct = product;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Car car : myCarList) {
-            sb.append(car.toFile());
+        for (Product product : myProductList) {
+            sb.append(product.toFile());
             sb.append(System.lineSeparator());
         }
 

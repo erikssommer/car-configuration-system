@@ -7,7 +7,7 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
-public class Car {
+public class Product {
     private final String model; //Påkreves
     private final double modelPrice;
     private final Motor motor; //Påkreves
@@ -19,7 +19,7 @@ public class Car {
     private final Sunroof sunroof; //Valgfri
     private final Towbar towbar; //Valgfri
 
-    protected Car(Builder<?> builder) {
+    protected Product(Builder<?> builder) {
         this.model = builder.model;
         this.modelPrice = builder.modelPrice;
         this.motor = builder.motor;
@@ -98,19 +98,19 @@ public class Car {
         }
 
         //Returnerer er ferdig konstruert Car objekt
-        public Car build(){
-            Car car = new Car(this);
-            validateCarObject(car);
-            return car;
+        public Product build(){
+            Product product = new Product(this);
+            validateCarObject(product);
+            return product;
         }
 
-        private void validateCarObject(Car car){
+        private void validateCarObject(Product product){
             //Tester om det er noen nullpekere på i pårevde komponenter
-            if (car.motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
-            if (car.rim == null) throw new EmptyComponentException("Du har glemt å velge dekk");
-            if (car.seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
-            if (car.spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
-            if (car.tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
+            if (product.motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
+            if (product.rim == null) throw new EmptyComponentException("Du har glemt å velge dekk");
+            if (product.seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
+            if (product.spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
+            if (product.tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
         }
 
     }
@@ -235,8 +235,8 @@ public class Car {
             return true;
         } else if (obj == null) {
             return false;
-        } else if (obj instanceof Car) {
-            Car product = (Car) obj;
+        } else if (obj instanceof Product) {
+            Product product = (Product) obj;
             return product.getMotor().equals(motor) && product.getRim().equals(rim)
                     && product.getSeatCover().equals(seatcover)
                     && product.getSpoiler().equals(spoiler) && product.getTires().equals(tires)

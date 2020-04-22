@@ -60,7 +60,7 @@ public class Main extends Application {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent windowEvent) {
-                if (!ApplicationData.getInstance().getRegisterProduct().getMyCarList().isEmpty() ||
+                if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty() ||
                         !ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Lukking av programmet");

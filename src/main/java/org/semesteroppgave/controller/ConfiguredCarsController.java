@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.carmodel.Car;
+import org.semesteroppgave.models.data.carmodel.Product;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
@@ -15,32 +15,32 @@ import java.io.IOException;
 
 public class ConfiguredCarsController {
     @FXML
-    private TableView<Car> tableViewConfigs;
+    private TableView<Product> tableViewConfigs;
 
     @FXML
-    private TableView<Car> tableViewMyConfig;
+    private TableView<Product> tableViewMyConfig;
 
     @FXML
-    private TableColumn<Car, Double> txtPriceColumn;
+    private TableColumn<Product, Double> txtPriceColumn;
 
     @FXML
-    private TableColumn<Car, Double> txtPriceColumnMy;
+    private TableColumn<Product, Double> txtPriceColumnMy;
 
     @FXML
-    private TableColumn<Car, String> txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn;
+    private TableColumn<Product, String> txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn;
 
     @FXML
-    private TableColumn<Car, String> txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy;
+    private TableColumn<Product, String> txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy;
 
     public void initialize() {
         setTableColum(txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn, txtPriceColumn);
-        tableViewConfigs.setItems(ApplicationData.getInstance().getRegisterProduct().getCarList());
+        tableViewConfigs.setItems(ApplicationData.getInstance().getRegisterProduct().getProductList());
 
         setTableColum(txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy, txtPriceColumnMy);
-        tableViewMyConfig.setItems(ApplicationData.getInstance().getRegisterProduct().getMyCarList());
+        tableViewMyConfig.setItems(ApplicationData.getInstance().getRegisterProduct().getMyProductList());
     }
 
-    private void setTableColum(TableColumn<Car, String> txtMotorColumn, TableColumn<Car, String> txtRimColumn, TableColumn<Car, String> txtSeatcoverColumn, TableColumn<Car, String> txtSpoilerColumn, TableColumn<Car, String> txtTireColumn, TableColumn<Car, Double> txtPriceColumn) {
+    private void setTableColum(TableColumn<Product, String> txtMotorColumn, TableColumn<Product, String> txtRimColumn, TableColumn<Product, String> txtSeatcoverColumn, TableColumn<Product, String> txtSpoilerColumn, TableColumn<Product, String> txtTireColumn, TableColumn<Product, Double> txtPriceColumn) {
         txtMotorColumn.setCellValueFactory(new PropertyValueFactory<>("motor"));
         txtRimColumn.setCellValueFactory(new PropertyValueFactory<>("rim"));
         txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<>("seatCover"));
@@ -65,8 +65,8 @@ public class ConfiguredCarsController {
     private void btnAddToConfigs(ActionEvent event) {
 
         if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null) {
-            ApplicationData.getInstance().getRegisterProduct().setCarList(tableViewMyConfig.getSelectionModel().getSelectedItem());
-            ApplicationData.getInstance().getRegisterProduct().getMyCarList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
+            ApplicationData.getInstance().getRegisterProduct().setProductList(tableViewMyConfig.getSelectionModel().getSelectedItem());
+            ApplicationData.getInstance().getRegisterProduct().getMyProductList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
 
         } else {
             Dialogs.showErrorDialog("Oups", "Du må markere produktet ditt først!", "Prøv igjen etter å ha valgt din konfigurasjon");
@@ -78,12 +78,12 @@ public class ConfiguredCarsController {
         chooseTable(tableViewConfigs, tableViewMyConfig);
     }
 
-    private void chooseTable(TableView<Car> tableViewMyConfig, TableView<Car> tableViewConfigs) {
+    private void chooseTable(TableView<Product> tableViewMyConfig, TableView<Product> tableViewConfigs) {
         if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null || tableViewConfigs.getSelectionModel().getSelectedItem() != null) {
             if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null && tableViewConfigs.getSelectionModel().getSelectedItem() == null) {
-                ApplicationData.getInstance().getRegisterProduct().setSelectedCar(tableViewMyConfig.getSelectionModel().getSelectedItem());
+                ApplicationData.getInstance().getRegisterProduct().setSelectedProduct(tableViewMyConfig.getSelectionModel().getSelectedItem());
             } else {
-                ApplicationData.getInstance().getRegisterProduct().setSelectedCar(tableViewConfigs.getSelectionModel().getSelectedItem());
+                ApplicationData.getInstance().getRegisterProduct().setSelectedProduct(tableViewConfigs.getSelectionModel().getSelectedItem());
             }
             try {
                 Main.setRoot("usercarinfo");

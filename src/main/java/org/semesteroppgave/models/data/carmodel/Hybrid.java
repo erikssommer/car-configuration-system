@@ -1,12 +1,11 @@
 package org.semesteroppgave.models.data.carmodel;
 
-import org.semesteroppgave.models.data.carcustomization.*;
 import org.semesteroppgave.models.data.carcomponents.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
-public class Hybrid extends Car {
+public class Hybrid extends Product {
     private final Battery battery;
     private final FuelContainer fuelContainer;
 
@@ -16,7 +15,7 @@ public class Hybrid extends Car {
         this.fuelContainer = builder.fuelContainer;
     }
 
-    public static class Builder extends Car.Builder<Builder> {
+    public static class Builder extends Product.Builder<Builder> {
         private Battery battery;
         private FuelContainer fuelContainer;
 
@@ -42,7 +41,7 @@ public class Hybrid extends Car {
             return hybrid;
         }
 
-        private void validateCarObject(Car car){
+        private void validateCarObject(Product product){
             //Tester om det er noen nullpekere på i pårevde komponenter
             if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
             if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
