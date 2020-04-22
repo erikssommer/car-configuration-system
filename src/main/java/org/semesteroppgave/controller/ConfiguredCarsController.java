@@ -46,7 +46,7 @@ public class ConfiguredCarsController {
         txtSeatcoverColumn.setCellValueFactory(new PropertyValueFactory<>("seatCover"));
         txtSpoilerColumn.setCellValueFactory(new PropertyValueFactory<>("spoiler"));
         txtTireColumn.setCellValueFactory(new PropertyValueFactory<>("tires"));
-        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("modelPrice"));
+        txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
     }
 
     @FXML
