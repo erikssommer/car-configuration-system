@@ -7,8 +7,8 @@ import java.text.DecimalFormat;
 
 public class Diesel extends Product {
 
-    private final FuelContainer fuelContainer;
-    private final Gearbox gearbox;
+    private final FuelContainer fuelContainer; //Påkreves
+    private final Gearbox gearbox; //Påkreves
 
     protected Diesel(Builder builder) {
         super(builder);
@@ -59,16 +59,16 @@ public class Diesel extends Product {
     }
 
     @Override
-    public String toFile() {
+    public String toFileCsv() {
 
-        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";;;;" + getFuelContainer().toFile() + ";" +
-                getGearbox().toFile() + ";" + super.customToFile(null) + getPrice();
+        return super.toFileCsv() + ";;;;" + getFuelContainer().toFile() + ";" +
+                getGearbox().toFile() + ";" + super.customToFile(null) + getTotalPrice();
 
     }
 
     @Override
-    public double getPrice() {
-        return super.getPrice() + getModelPrice() + getFuelContainer().getPrice() + getGearbox().getPrice();
+    public double getTotalPrice() {
+        return super.getTotalPrice() + getFuelContainer().getPrice() + getGearbox().getPrice();
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Diesel extends Product {
         if (obj instanceof Diesel) {
             Diesel product = (Diesel) obj;
             return super.equals(product) && product.getFuelContainer().equals(fuelContainer)
-                    && product.getGearbox().equals(gearbox) && product.getPrice() == getPrice();
+                    && product.getGearbox().equals(gearbox) && product.getTotalPrice() == getTotalPrice();
         }
         return false;
     }
@@ -85,14 +85,14 @@ public class Diesel extends Product {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+        String message = super.toString() +
                 "Tank: " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
                 "Girboks: " + getGearbox().getVersion() + "\nPris: " + df.format(getGearbox().getPrice()) + "kr\nBeskrivelse: " + getGearbox().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, null);
 
-        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
+        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
 
     }

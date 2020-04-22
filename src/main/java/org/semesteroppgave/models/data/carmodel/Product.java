@@ -7,9 +7,16 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
+/**
+ * Product er superklassen som Electric, Hybrid og Diesel arver fra
+ * For å forhindre alt for mange innparametere har vi brukt builder-pattern
+ * For å støtte arvede klasser av Product har vi brukt Curiously 'Recurring Generic Pattern'
+ */
+
 public class Product {
+
     private final String model; //Påkreves
-    private final double modelPrice;
+    private final double modelPrice; //Påkreves
     private final Motor motor; //Påkreves
     private final Rim rim; //Påkreves
     private final SeatCover seatcover; //Påkreves
@@ -32,7 +39,7 @@ public class Product {
         this.towbar = builder.towbar;
     }
 
-    public static class Builder <T extends Builder<T>> {
+    public static class Builder<T extends Builder<T>> {
         private final String model; //Denne er viktig, så den legger vi i konstruktøren
         private final double modelPrice; //Denne er viktig, så den legger vi i konstruktøren
         private Motor motor;
@@ -44,67 +51,67 @@ public class Product {
         private Sunroof sunroof;
         private Towbar towbar;
 
-        public Builder(String model, double modelPrice){
+        public Builder(String model, double modelPrice) {
             this.model = model;
             this.modelPrice = modelPrice;
         }
 
-        public T selectedMotor(Motor motor){
+        public T selectedMotor(Motor motor) {
             this.motor = motor;
 
             return (T) this;
         }
 
-        public T selectedRim(Rim rim){
+        public T selectedRim(Rim rim) {
             this.rim = rim;
 
             return (T) this;
         }
 
-        public T selectedSeatcover(SeatCover seatCover){
+        public T selectedSeatcover(SeatCover seatCover) {
             this.seatcover = seatCover;
 
             return (T) this;
         }
 
-        public T selectedSpoiler(Spoiler spoiler){
+        public T selectedSpoiler(Spoiler spoiler) {
             this.spoiler = spoiler;
 
             return (T) this;
         }
 
-        public T selectedTires(Tires tires){
+        public T selectedTires(Tires tires) {
             this.tires = tires;
 
             return (T) this;
         }
 
-        public T withGps(Gps gps){
+        public T withGps(Gps gps) {
             this.gps = gps;
 
             return (T) this;
         }
 
-        public T withSunroof(Sunroof sunroof){
+        public T withSunroof(Sunroof sunroof) {
             this.sunroof = sunroof;
 
             return (T) this;
         }
 
-        public T withTowbar(Towbar towbar){
+        public T withTowbar(Towbar towbar) {
             this.towbar = towbar;
 
             return (T) this;
         }
 
-        //Returnerer er ferdig konstruert Car objekt
-        public Product build(){
+        //Returnerer er ferdig konstruert Product objekt
+        public Product build() {
             Product product = new Product(this);
             validateCarObject(product);
             return product;
         }
 
-        private void validateCarObject(Product product){
+        private void validateCarObject(Product product) {
             //Tester om det er noen nullpekere på i pårevde komponenter
             if (product.motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
             if (product.rim == null) throw new EmptyComponentException("Du har glemt å velge dekk");
@@ -116,11 +123,11 @@ public class Product {
     }
 
     // Alle getter og INGEN setter for å gi uforanderlighet
-    public String getModel(){
+    public String getModel() {
         return this.model;
     }
 
-    public double getModelPrice(){
+    public double getModelPrice() {
         return this.modelPrice;
     }
 
@@ -157,9 +164,9 @@ public class Product {
     }
 
 
-    public double getPrice() {
+    public double getTotalPrice() {
 
-        double price = getMotor().getPrice() + getRim().getPrice() + getSeatCover().getPrice() +
+        double price = getModelPrice() + getMotor().getPrice() + getRim().getPrice() + getSeatCover().getPrice() +
                 getSpoiler().getPrice() + getTires().getPrice();
         if (getGps() != null) {
             price += getGps().getPrice();
@@ -225,8 +232,9 @@ public class Product {
         return message;
     }
 
-    public String toFile() {
-        return getMotor().toFile() + ";" + getRim().toFile() + ";" + getSeatCover().toFile() + ";" + getSpoiler().toFile() + ";" + getTires().toFile();
+    public String toFileCsv() {
+        return getModel() + ";" + getModelPrice() + ";" + getMotor().toFile() + ";" + getRim().toFile() + ";" +
+                getSeatCover().toFile() + ";" + getSpoiler().toFile() + ";" + getTires().toFile();
     }
 
     @Override
@@ -252,7 +260,8 @@ public class Product {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        return "Motor: " + getMotor().getVersion() + "\nPris: " + df.format(getMotor().getPrice()) + "kr\nBeskrivelse: " + getMotor().getDescription() + "\n\n" +
+        return "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" +
+                "Motor: " + getMotor().getVersion() + "\nPris: " + df.format(getMotor().getPrice()) + "kr\nBeskrivelse: " + getMotor().getDescription() + "\n\n" +
                 "Felg: " + getRim().getVersion() + "\nPris: " + df.format(getRim().getPrice()) + "kr\nBeskrivelse: " + getRim().getDescription() + "\n\n" +
                 "Setetrekk: " + getSeatCover().getVersion() + "\nPris: " + df.format(getSeatCover().getPrice()) + "kr\nBeskrivelse: " + getSeatCover().getDescription() + "\n\n" +
                 "Spoiler: " + getSpoiler().getVersion() + "\nPris: " + df.format(getSpoiler().getPrice()) + "kr\nBeskrivelse: " + getSpoiler().getDescription() + "\n\n" +

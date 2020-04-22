@@ -40,7 +40,7 @@ public class RegisterProduct {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Product product : myProductList) {
-            sb.append(product.toFile());
+            sb.append(product.toFileCsv());
             sb.append(System.lineSeparator());
         }
 

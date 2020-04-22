@@ -6,8 +6,8 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import java.text.DecimalFormat;
 
 public class Hybrid extends Product {
-    private final Battery battery;
-    private final FuelContainer fuelContainer;
+    private final Battery battery; //Påkreves
+    private final FuelContainer fuelContainer; //Påkreves
 
     protected Hybrid(Builder builder) {
         super(builder);
@@ -58,17 +58,17 @@ public class Hybrid extends Product {
     }
 
     @Override
-    public String toFile() {
+    public String toFileCsv() {
 
-        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";" + getBattery().toFile() + ";" +
-                getFuelContainer().toFile() + ";;;;" + super.customToFile(null) + getPrice();
+        return super.toFileCsv() + ";" + getBattery().toFile() + ";" +
+                getFuelContainer().toFile() + ";;;;" + super.customToFile(null) + getTotalPrice();
 
     }
 
     @Override
-    public double getPrice() {
+    public double getTotalPrice() {
 
-        return super.getPrice() + getModelPrice() + getBattery().getPrice() + getFuelContainer().getPrice();
+        return super.getTotalPrice() + getBattery().getPrice() + getFuelContainer().getPrice();
 
     }
 
@@ -77,7 +77,7 @@ public class Hybrid extends Product {
         if (obj instanceof Hybrid) {
             Hybrid product = (Hybrid) obj;
             return super.equals(product) && product.getBattery().equals(battery)
-                    && product.getFuelContainer().equals(fuelContainer) && product.getPrice() == getPrice();
+                    && product.getFuelContainer().equals(fuelContainer) && product.getTotalPrice() == getTotalPrice();
         }
         return false;
     }
@@ -86,14 +86,14 @@ public class Hybrid extends Product {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+        String message = super.toString() +
                 "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
                 "Tank : " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, null);
 
-        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
+        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
 
 

@@ -8,8 +8,8 @@ import java.text.DecimalFormat;
 
 public class Electric extends Product {
 
-    private final Battery battery;
-    private final Autopilot autopilot;
+    private final Battery battery; //Påkreves
+    private final Autopilot autopilot; //Valgfri
 
     public Electric(Builder builder) {
         super(builder);
@@ -59,16 +59,16 @@ public class Electric extends Product {
     }
 
     @Override
-    public String toFile() {
+    public String toFileCsv() {
 
-        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";" + getBattery().toFile() + ";;;;;;;"
-                + super.customToFile(autopilot) + getPrice();
+        return super.toFileCsv() + ";" + getBattery().toFile() + ";;;;;;;"
+                + super.customToFile(autopilot) + getTotalPrice();
 
     }
 
     @Override
-    public double getPrice() {
-        double price = super.getPrice() + getModelPrice() + getBattery().getPrice();
+    public double getTotalPrice() {
+        double price = super.getTotalPrice() + getBattery().getPrice();
 
         if (getAutopilot() != null) {
             price += getAutopilot().getPrice();
@@ -91,13 +91,13 @@ public class Electric extends Product {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+        String message = super.toString() +
                 "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, getAutopilot());
 
-        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
+        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
 
 
