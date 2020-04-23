@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tester for opprettelse av produkt
  */
 
-class UserCreateCarTest {
+class UserCreateProductTest {
 
     @Test
     void testValidFinishedCar() {

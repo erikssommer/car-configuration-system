@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserCarInfoController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserProductInfoController">
    <Label layoutX="53.0" layoutY="42.0" text="Informasjon om valgt bil">
       <font>
          <Font size="23.0"/>

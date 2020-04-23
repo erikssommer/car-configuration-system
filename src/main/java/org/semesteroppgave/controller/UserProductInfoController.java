@@ -8,7 +8,7 @@ import org.semesteroppgave.Main;
 
 import java.io.IOException;
 
-public class UserCarInfoController {
+public class UserProductInfoController {
 
     @FXML
     private TextArea txtInfo;

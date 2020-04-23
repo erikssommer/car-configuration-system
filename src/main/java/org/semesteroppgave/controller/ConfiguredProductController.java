@@ -15,7 +15,7 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
-public class ConfiguredCarsController {
+public class ConfiguredProductController {
     @FXML
     private Label lblUsername;
     @FXML

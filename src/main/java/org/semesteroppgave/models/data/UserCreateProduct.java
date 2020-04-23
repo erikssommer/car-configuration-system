@@ -18,7 +18,7 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.text.DecimalFormat;
 
-public class UserCreateCar {
+public class UserCreateProduct {
 
     private final ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
     private final ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
@@ -45,7 +45,7 @@ public class UserCreateCar {
     private double livePrice;
     private double[] livePriceList;
 
-    public UserCreateCar(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
+    public UserCreateProduct(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
         this.tableViewComponent = tableViewComponent;
         this.tableViewVersion = tableViewVersion;
         this.cbModel = cbModel;

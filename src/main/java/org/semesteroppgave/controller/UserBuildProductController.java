@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.UserCreateCar;
+import org.semesteroppgave.models.data.UserCreateProduct;
 import org.semesteroppgave.models.data.carcomponents.Component;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
@@ -18,10 +18,10 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
-public class UserBuildCarController {
+public class UserBuildProductController {
 
     private ObservableList<String> modelChoice = FXCollections.observableArrayList();
-    private UserCreateCar newCar;
+    private UserCreateProduct newCar;
 
     @FXML
     private ComboBox<String> cbModel;
@@ -49,7 +49,7 @@ public class UserBuildCarController {
 
     public void initialize() {
         loadChoice();
-        newCar = new UserCreateCar(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
+        newCar = new UserCreateProduct(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
