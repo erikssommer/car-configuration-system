@@ -85,7 +85,7 @@ public class UserSignInController {
                     UserSignIn.setActiveUsername(user.getUsername());
                 }
             }
-            Main.setRoot("userbuildcar");
+            Main.setRoot("userbuildproduct");
         } else {
             lblSignin.setText("Feil brukernavn og/eller passord");
         }

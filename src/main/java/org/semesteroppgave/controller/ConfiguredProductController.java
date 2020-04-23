@@ -57,7 +57,7 @@ public class ConfiguredProductController {
 
     @FXML
     private void btnBack(ActionEvent event) throws IOException {
-        Main.setRoot("userbuildcar");
+        Main.setRoot("userbuildproduct");
     }
 
     @FXML
@@ -90,7 +90,7 @@ public class ConfiguredProductController {
                 ApplicationData.getInstance().getRegisterProduct().setSelectedProduct(tableViewConfigs.getSelectionModel().getSelectedItem());
             }
             try {
-                Main.setRoot("usercarinfo");
+                Main.setRoot("userproductinfo");
             } catch (IOException e) {
                 Dialogs.showErrorDialog("Oups", "Det har skjedd en feil i åpning av nytt vindu", e.getMessage());
             }

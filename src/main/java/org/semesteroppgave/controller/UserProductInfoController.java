@@ -19,7 +19,7 @@ public class UserProductInfoController {
 
     @FXML
     private void btnBack(ActionEvent event) throws IOException {
-        Main.setRoot("configuredcars");
+        Main.setRoot("configuredproduct");
     }
 
 }

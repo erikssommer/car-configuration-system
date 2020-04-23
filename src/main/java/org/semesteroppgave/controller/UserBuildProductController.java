@@ -58,7 +58,7 @@ public class UserBuildProductController {
 
     @FXML
     private void btnShowConfig(ActionEvent event) throws IOException {
-        Main.setRoot("configuredcars");
+        Main.setRoot("configuredproduct");
     }
 
     @FXML
