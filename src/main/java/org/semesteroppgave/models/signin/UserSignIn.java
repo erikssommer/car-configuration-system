@@ -20,8 +20,18 @@ public class UserSignIn {
         return this.userList;
     }
 
+    private static String activeUsername;
+
     public void setUserList(User user) {
         userList.add(user);
+    }
+
+    public static String getActiveUsername() {
+        return activeUsername;
+    }
+
+    public static void setActiveUsername(String activeUsername) {
+        UserSignIn.activeUsername = activeUsername;
     }
 
     public void register(String username, String password, String name, String phonenumber, String eMail) throws IOException {

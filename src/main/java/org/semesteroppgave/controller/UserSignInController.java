@@ -9,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.models.signin.Admin;
+import org.semesteroppgave.models.signin.AdminSignin;
+import org.semesteroppgave.models.signin.User;
 import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.signin.UserSignIn;
@@ -76,6 +79,12 @@ public class UserSignInController {
     private void btnSignin(ActionEvent event) throws IOException {
         // Henter login-info fra user-filen
         if (userSignIn.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText())) {
+            //Setter aktivt brukernavn
+            for (User user : userSignIn.getUserList()) {
+                if (user.getPassword().equals(txtPasswordLogin.getText())) {
+                    UserSignIn.setActiveUsername(user.getUsername());
+                }
+            }
             Main.setRoot("userbuildcar");
         } else {
             lblSignin.setText("Feil brukernavn og/eller passord");

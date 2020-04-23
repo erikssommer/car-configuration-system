@@ -13,6 +13,7 @@ import org.semesteroppgave.models.data.UserCreateCar;
 import org.semesteroppgave.models.data.carcomponents.Component;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
+import org.semesteroppgave.models.signin.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class UserBuildCarController {
     private TextField txtTotalPrice;
 
     @FXML
-    private Label lblMessage;
+    private Label lblMessage, lblUsername;
 
     public void initialize() {
         loadChoice();
@@ -52,6 +53,7 @@ public class UserBuildCarController {
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
+        lblUsername.setText(UserSignIn.getActiveUsername());
     }
 
     @FXML
