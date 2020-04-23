@@ -15,12 +15,11 @@ import java.util.Scanner;
 
 public class UserSignIn {
     private final ArrayList<User> userList = new ArrayList<>();
+    private static String activeUsername;
 
     public ArrayList<User> getUserList() {
         return this.userList;
     }
-
-    private static String activeUsername;
 
     public void setUserList(User user) {
         userList.add(user);
