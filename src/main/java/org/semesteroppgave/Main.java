@@ -14,7 +14,7 @@ import org.semesteroppgave.models.filehandlers.FileHandler;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * JavaFX Main
  */
 public class Main extends Application {
 
@@ -35,7 +35,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setWidth(750);
-        stage.setHeight(550);
+        stage.setHeight(575);
         stage.show();
     }
 
@@ -57,22 +57,19 @@ public class Main extends Application {
     }
 
     private void onProgramExit(Stage stage) {
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty() ||
-                        !ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Lukking av programmet");
-                    alert.setHeaderText("Lagre før lukking");
-                    alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
-                    alert.showAndWait().ifPresent(response -> {
-                        if (response == ButtonType.OK) {
-                            FileHandler.saveFileCsv();
-                            FileHandler.saveFileJobj();
-                        }
-                    });
-                }
+        stage.setOnCloseRequest(windowEvent -> {
+            if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty() ||
+                    !ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Lukking av programmet");
+                alert.setHeaderText("Lagre før lukking");
+                alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        FileHandler.saveFileCsv();
+                        FileHandler.saveFileJobj();
+                    }
+                });
             }
         });
     }
