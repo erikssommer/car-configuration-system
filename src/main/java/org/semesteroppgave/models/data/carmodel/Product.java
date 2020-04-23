@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Product er superklassen som Electric, Hybrid og Diesel arver fra
  * For å forhindre alt for mange innparametere har vi brukt builder-pattern
- * For å støtte arvede klasser av Product har vi brukt Curiously 'Recurring Generic Pattern'
+ * For å støtte arvede klasser av Product har vi brukt 'Curiously Recurring Generic Pattern'
  */
 
 public abstract class Product {
