@@ -19,7 +19,6 @@ public class FileSaverCsv implements FileSaver {
             sb.append(ApplicationData.getInstance().getRegisterProduct().toString());
 
             writer.write(sb.toString());
-            System.out.println("Done");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

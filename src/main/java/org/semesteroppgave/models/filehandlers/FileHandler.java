@@ -14,12 +14,12 @@ import java.io.IOException;
 public class FileHandler {
 
     private enum DialogMode {
-        Admin,
-        User,
+        Jobj,
+        Csv,
     }
 
     public static void openFileCsv() {
-        File selectedFile = getFileFromFileChooserOpen(DialogMode.User);
+        File selectedFile = getFileFromFileChooserOpen(DialogMode.Csv);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -53,7 +53,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsvOnProgramExit(){
-        File savefile = new File("files/savedProducts.csv");
+        File savefile = new File("files/lagredeProdukter.csv");
         FileSaver saver = new FileSaverCsv();
 
         try {
@@ -65,7 +65,7 @@ public class FileHandler {
     }
 
     public static void saveFileJobjOnProgramExit(){
-        File savefile = new File("files/savedComponents.jobj");
+        File savefile = new File("files/lagredeKomponenter.jobj");
         FileSaver saver = new FileSaverJobj();
 
         try {
@@ -77,7 +77,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsv() {
-        File selectedFile = getFileFromFileChooserSave(DialogMode.User);
+        File selectedFile = getFileFromFileChooserSave(DialogMode.Csv);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -101,7 +101,7 @@ public class FileHandler {
     }
 
     public static String getOpenFileJobj(){
-        return String.valueOf(getFileFromFileChooserOpen(DialogMode.Admin));
+        return String.valueOf(getFileFromFileChooserOpen(DialogMode.Jobj));
     }
 
     public static void openFileJobjThread(String filepath) {
@@ -117,7 +117,7 @@ public class FileHandler {
     }
 
     public static void saveFileJobj() {
-        File selectedFile = getFileFromFileChooserSave(DialogMode.Admin);
+        File selectedFile = getFileFromFileChooserSave(DialogMode.Jobj);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -145,7 +145,7 @@ public class FileHandler {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
 
-        if (mode == DialogMode.Admin) {
+        if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
         } else {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
@@ -157,7 +157,7 @@ public class FileHandler {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
 
-        if (mode == DialogMode.Admin) {
+        if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
         } else {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
