@@ -222,8 +222,8 @@ public class UserCreateCar {
         lblMessage.setText(message);
     }
 
-    private void duplicateProduct(Car product) throws DuplicateException {
-        for (Car car : ApplicationData.getInstance().getRegisterProduct().getMyCarList()) {
+    private void duplicateProduct(Product product) throws DuplicateException {
+        for (Product car : ApplicationData.getInstance().getRegisterProduct().getMyProductList()) {
             if (car.equals(product)) {
                 throw new DuplicateException("Produktet er registrert fra før");
             }
@@ -233,20 +233,53 @@ public class UserCreateCar {
     public void finishedCar() throws NullPointerException, IllegalArgumentException {
 
         if (cbModel.getValue() != null) {
-            Car product = null;
+            Product product = null;
             switch (cbModel.getValue()) {
                 case "Elektrisk":
-                    product = new Electric(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, autopilot);
+                    product = new Electric.Builder("Elektrisk", 1_200_000)
+                            .selectedMotor(motor)
+                            .selectedRim(rim)
+                            .selectedSeatcover(seatCover)
+                            .selectedSpoiler(spoiler)
+                            .selectedTires(tires)
+                            .selectedBattery(battery)
+                            .withGps(gps)
+                            .withSunroof(sunroof)
+                            .withTowbar(towbar)
+                            .withAutopilot(autopilot)
+                            .build();
                     break;
                 case "Diesel":
-                    product = new Diesel(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, fuelContainer, gearbox);
+                    product = new Diesel.Builder("Diesel", 400_000)
+                            .selectedMotor(motor)
+                            .selectedRim(rim)
+                            .selectedSeatcover(seatCover)
+                            .selectedSpoiler(spoiler)
+                            .selectedTires(tires)
+                            .selectedFuelContainer(fuelContainer)
+                            .selectedGearbox(gearbox)
+                            .withGps(gps)
+                            .withSunroof(sunroof)
+                            .withTowbar(towbar)
+                            .build();
                     break;
                 case "Hybrid":
-                    product = new Hybrid(motor, rim, seatCover, spoiler, tires, gps, sunroof, towbar, battery, fuelContainer);
+                    product = new Hybrid.Builder("Hybrid", 850_000)
+                            .selectedMotor(motor)
+                            .selectedRim(rim)
+                            .selectedSeatcover(seatCover)
+                            .selectedSpoiler(spoiler)
+                            .selectedTires(tires)
+                            .selectedBattery(battery)
+                            .selectedFuelContainer(fuelContainer)
+                            .withGps(gps)
+                            .withSunroof(sunroof)
+                            .withTowbar(towbar)
+                            .build();
                     break;
             }
 
-            Car finalProduct = product;
+            Product finalProduct = product;
             duplicateProduct(finalProduct);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Bekreft");
@@ -255,7 +288,7 @@ public class UserCreateCar {
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     Dialogs.showSuccessDialog("Gjennomført", "Du har nå opprettet din komfigurasjon", "Trykk på 'vis konfig' for å se en oversikt");
-                    ApplicationData.getInstance().getRegisterProduct().setMyCarList(finalProduct);
+                    ApplicationData.getInstance().getRegisterProduct().setMyProductList(finalProduct);
                 }
             });
         } else {

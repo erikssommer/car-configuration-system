@@ -1,63 +1,74 @@
 package org.semesteroppgave.models.data.carmodel;
 
-import org.semesteroppgave.models.data.carcustomization.*;
 import org.semesteroppgave.models.data.carcomponents.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
-public class Hybrid extends Car {
-    private Battery battery;
-    private FuelContainer fuelContainer;
-    private final String model;
-    private final double modelPrice;
+public class Hybrid extends Product {
+    private final Battery battery; //Påkreves
+    private final FuelContainer fuelContainer; //Påkreves
 
-    public Hybrid(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, FuelContainer fuelContainer) {
-        super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
-        if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
-        this.battery = battery;
-        this.fuelContainer = fuelContainer;
-        this.model = "Hybrid";
-        this.modelPrice = 850_000;
+    protected Hybrid(Builder builder) {
+        super(builder);
+        this.battery = builder.battery;
+        this.fuelContainer = builder.fuelContainer;
     }
 
+    public static class Builder extends Product.Builder<Builder> {
+        private Battery battery;
+        private FuelContainer fuelContainer;
+
+        public Builder(String model, double modelPrice) {
+            super(model, modelPrice);
+        }
+
+        public Builder selectedBattery(Battery battery){
+            this.battery = battery;
+
+            return this;
+        }
+
+        public Builder selectedFuelContainer(FuelContainer fuelContainer) {
+            this.fuelContainer = fuelContainer;
+
+            return this;
+        }
+
+        public Hybrid build(){
+            Hybrid hybrid = new Hybrid(this);
+            validateCarObject(hybrid);
+            return hybrid;
+        }
+
+        private void validateCarObject(Product product){
+            //Tester om det er noen nullpekere på i pårevde komponenter
+            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
+            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
+        }
+    }
+
+    // Alle getter og INGEN setter for å gi uforanderlighet
     public Battery getBattery() {
         return battery;
-    }
-
-    public void setBattery(Battery battery) {
-        this.battery = battery;
     }
 
     public FuelContainer getFuelContainer() {
         return fuelContainer;
     }
 
-    public void setFuelContainer(FuelContainer fuelContainer) {
-        this.fuelContainer = fuelContainer;
-    }
-
-    public String getModel() {
-        return this.model;
-    }
-
-    public double getModelPrice() {
-        return this.modelPrice;
-    }
-
     @Override
-    public String toFile() {
+    public String toFileCsv() {
 
-        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";" + getBattery().toFile() + ";" +
-                getFuelContainer().toFile() + ";;;;" + super.customToFile(null) + getPrice();
+        return super.toFileCsv() + ";" + getBattery().toFile() + ";" +
+                getFuelContainer().toFile() + ";;;;" + super.customToFile(null) + getTotalPrice();
 
     }
 
     @Override
-    public double getPrice() {
+    public double getTotalPrice() {
 
-        return super.getPrice() + getModelPrice() + getBattery().getPrice() + getFuelContainer().getPrice();
+        return super.getTotalPrice() + getBattery().getPrice() + getFuelContainer().getPrice();
 
     }
 
@@ -66,7 +77,7 @@ public class Hybrid extends Car {
         if (obj instanceof Hybrid) {
             Hybrid product = (Hybrid) obj;
             return super.equals(product) && product.getBattery().equals(battery)
-                    && product.getFuelContainer().equals(fuelContainer) && product.getPrice() == getPrice();
+                    && product.getFuelContainer().equals(fuelContainer) && product.getTotalPrice() == getTotalPrice();
         }
         return false;
     }
@@ -75,14 +86,14 @@ public class Hybrid extends Car {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+        String message = super.toString() +
                 "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
                 "Tank : " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, null);
 
-        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
+        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
 
 

@@ -6,57 +6,69 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
 
-public class Electric extends Car {
+public class Electric extends Product {
 
-    private Battery battery;
-    private Autopilot autopilot;
-    private final String model;
-    private final double modelPrice;
+    private final Battery battery; //Påkreves
+    private final Autopilot autopilot; //Valgfri
 
-    public Electric(Motor motor, Rim rim, SeatCover seatcover, Spoiler spoiler, Tires tires, Gps gps, Sunroof sunroof, Towbar towbar, Battery battery, Autopilot autopilot) {
-        super(motor, rim, seatcover, spoiler, tires, gps, sunroof, towbar);
-        if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
-        this.battery = battery;
-        this.autopilot = autopilot;
-        this.model = "Elektrisk";
-        this.modelPrice = 1_200_000;
+    public Electric(Builder builder) {
+        super(builder);
+        this.battery = builder.battery;
+        this.autopilot = builder.autopilot;
     }
 
+    public static class Builder extends Product.Builder<Builder> {
+        private Battery battery;
+        private Autopilot autopilot;
+
+        public Builder(String model, double modelPrice) {
+            super(model, modelPrice);
+        }
+
+        public Builder selectedBattery(Battery battery){
+            this.battery = battery;
+
+            return this;
+        }
+
+        public Builder withAutopilot(Autopilot autopilot) {
+            this.autopilot = autopilot;
+
+            return this;
+        }
+
+        public Electric build(){
+            Electric electric = new Electric(this);
+            validateCarObject(electric);
+            return electric;
+        }
+
+        private void validateCarObject(Product product){
+            //Tester om det er noen nullpekere på i pårevde komponenter
+            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
+        }
+    }
+
+    // Alle getter og INGEN setter for å gi uforanderlighet
     public Battery getBattery() {
         return battery;
-    }
-
-    public void setBattery(Battery battery) {
-        this.battery = battery;
-    }
-
-    public String getModel() {
-        return this.model;
     }
 
     public Autopilot getAutopilot() {
         return autopilot;
     }
 
-    public void setAutopilot(Autopilot autopilot) {
-        this.autopilot = autopilot;
-    }
-
-    public double getModelPrice() {
-        return this.modelPrice;
-    }
-
     @Override
-    public String toFile() {
+    public String toFileCsv() {
 
-        return getModel() + ";" + getModelPrice() + ";" + super.toFile() + ";" + getBattery().toFile() + ";;;;;;;"
-                + super.customToFile(autopilot) + getPrice();
+        return super.toFileCsv() + ";" + getBattery().toFile() + ";;;;;;;"
+                + super.customToFile(autopilot) + getTotalPrice();
 
     }
 
     @Override
-    public double getPrice() {
-        double price = super.getPrice() + getModelPrice() + getBattery().getPrice();
+    public double getTotalPrice() {
+        double price = super.getTotalPrice() + getBattery().getPrice();
 
         if (getAutopilot() != null) {
             price += getAutopilot().getPrice();
@@ -79,13 +91,13 @@ public class Electric extends Car {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        String message = "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" + super.toString() +
+        String message = super.toString() +
                 "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
         message += super.testCustom(df, getAutopilot());
 
-        message += "Totalprisen på produktet er: " + df.format(getPrice()) + "kr";
+        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
 
 

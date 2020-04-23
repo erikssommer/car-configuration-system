@@ -14,7 +14,7 @@ public class UserCarInfoController {
     private TextArea txtInfo;
 
     public void initialize() {
-        txtInfo.setText(ApplicationData.getInstance().getRegisterProduct().getSelectedCar().toString());
+        txtInfo.setText(ApplicationData.getInstance().getRegisterProduct().getSelectedProduct().toString());
     }
 
     @FXML
