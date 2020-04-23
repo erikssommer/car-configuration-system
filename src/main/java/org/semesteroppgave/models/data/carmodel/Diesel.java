@@ -25,27 +25,21 @@ public class Diesel extends Product {
         }
 
         public Builder selectedFuelContainer(FuelContainer fuelContainer) {
+            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
             this.fuelContainer = fuelContainer;
 
             return this;
         }
 
         public Builder selectedGearbox(Gearbox gearbox){
+            if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
             this.gearbox = gearbox;
 
             return this;
         }
 
         public Diesel build(){
-            Diesel diesel = new Diesel(this);
-            validateCarObject(diesel);
-            return diesel;
-        }
-
-        private void validateCarObject(Product product){
-            //Tester om det er noen nullpekere på i pårevde komponenter
-            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
-            if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
+            return new Diesel(this);
         }
     }
 

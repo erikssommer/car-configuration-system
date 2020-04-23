@@ -26,6 +26,7 @@ public class Electric extends Product {
         }
 
         public Builder selectedBattery(Battery battery){
+            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
             this.battery = battery;
 
             return this;
@@ -38,14 +39,7 @@ public class Electric extends Product {
         }
 
         public Electric build(){
-            Electric electric = new Electric(this);
-            validateCarObject(electric);
-            return electric;
-        }
-
-        private void validateCarObject(Product product){
-            //Tester om det er noen nullpekere på i pårevde komponenter
-            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
+            return new Electric(this);
         }
     }
 

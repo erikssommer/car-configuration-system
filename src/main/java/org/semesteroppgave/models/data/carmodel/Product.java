@@ -13,7 +13,7 @@ import java.util.Objects;
  * For å støtte arvede klasser av Product har vi brukt Curiously 'Recurring Generic Pattern'
  */
 
-public class Product {
+public abstract class Product {
 
     private final String model; //Påkreves
     private final double modelPrice; //Påkreves
@@ -57,30 +57,35 @@ public class Product {
         }
 
         public T selectedMotor(Motor motor) {
+            if (motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
             this.motor = motor;
 
             return (T) this;
         }
 
         public T selectedRim(Rim rim) {
+            if (rim == null) throw new EmptyComponentException("Du har glemt å velge felger");
             this.rim = rim;
 
             return (T) this;
         }
 
-        public T selectedSeatcover(SeatCover seatCover) {
-            this.seatcover = seatCover;
+        public T selectedSeatcover(SeatCover seatcover) {
+            if (seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
+            this.seatcover = seatcover;
 
             return (T) this;
         }
 
         public T selectedSpoiler(Spoiler spoiler) {
+            if (spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
             this.spoiler = spoiler;
 
             return (T) this;
         }
 
         public T selectedTires(Tires tires) {
+            if (tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
             this.tires = tires;
 
             return (T) this;
@@ -102,22 +107,6 @@ public class Product {
             this.towbar = towbar;
 
             return (T) this;
-        }
-
-        //Returnerer er ferdig konstruert Product objekt
-        public Product build() {
-            Product product = new Product(this);
-            validateCarObject(product);
-            return product;
-        }
-
-        private void validateCarObject(Product product) {
-            //Tester om det er noen nullpekere på i pårevde komponenter
-            if (product.motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
-            if (product.rim == null) throw new EmptyComponentException("Du har glemt å velge dekk");
-            if (product.seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
-            if (product.spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
-            if (product.tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
         }
 
     }

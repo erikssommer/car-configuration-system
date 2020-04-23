@@ -24,27 +24,21 @@ public class Hybrid extends Product {
         }
 
         public Builder selectedBattery(Battery battery){
+            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
             this.battery = battery;
 
             return this;
         }
 
         public Builder selectedFuelContainer(FuelContainer fuelContainer) {
+            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
             this.fuelContainer = fuelContainer;
 
             return this;
         }
 
         public Hybrid build(){
-            Hybrid hybrid = new Hybrid(this);
-            validateCarObject(hybrid);
-            return hybrid;
-        }
-
-        private void validateCarObject(Product product){
-            //Tester om det er noen nullpekere på i pårevde komponenter
-            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
-            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
+            return new Hybrid(this);
         }
     }
 
