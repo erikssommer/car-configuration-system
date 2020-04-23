@@ -70,8 +70,10 @@
       <Button layoutX="521.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnAddToConfigs" prefHeight="27.0" prefWidth="101.0" text="Legg til i konfig" />
     <MenuBar prefHeight="29.0" prefWidth="750.0">
         <Menu mnemonicParsing="false" text="Fil">
-            <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne"/>
-            <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre"/>
+            <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne" />
+            <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre" />
         </Menu>
     </MenuBar>
+   <Label layoutX="572.0" layoutY="41.0" text="Bruker:" />
+   <Label fx:id="lblUsername" layoutX="613.0" layoutY="41.0" prefHeight="17.0" prefWidth="129.0" />
 </AnchorPane>

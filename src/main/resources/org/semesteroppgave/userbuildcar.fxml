@@ -90,4 +90,6 @@
             <CheckBox fx:id="cbSunroof" mnemonicParsing="false" onAction="#cbClicked" text="Soltak" GridPane.columnIndex="1" />
             <CheckBox fx:id="cbAutopilot" mnemonicParsing="false" onAction="#cbClicked" text="Autopilot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </GridPane>
+   <Label fx:id="lblUsername" layoutX="618.0" layoutY="35.0" prefHeight="17.0" prefWidth="127.0" />
+   <Label layoutX="575.0" layoutY="35.0" text="Bruker:" />
 </AnchorPane>

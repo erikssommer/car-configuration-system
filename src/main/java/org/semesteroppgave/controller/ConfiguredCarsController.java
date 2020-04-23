@@ -2,6 +2,7 @@ package org.semesteroppgave.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -9,11 +10,14 @@ import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.carmodel.Product;
 import org.semesteroppgave.models.filehandlers.FileHandler;
+import org.semesteroppgave.models.signin.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
 public class ConfiguredCarsController {
+    @FXML
+    private Label lblUsername;
     @FXML
     private TableView<Product> tableViewConfigs;
 
@@ -38,6 +42,8 @@ public class ConfiguredCarsController {
 
         setTableColum(txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy, txtPriceColumnMy);
         tableViewMyConfig.setItems(ApplicationData.getInstance().getRegisterProduct().getMyProductList());
+
+        lblUsername.setText(UserSignIn.getActiveUsername());
     }
 
     private void setTableColum(TableColumn<Product, String> txtMotorColumn, TableColumn<Product, String> txtRimColumn, TableColumn<Product, String> txtSeatcoverColumn, TableColumn<Product, String> txtSpoilerColumn, TableColumn<Product, String> txtTireColumn, TableColumn<Product, Double> txtPriceColumn) {
