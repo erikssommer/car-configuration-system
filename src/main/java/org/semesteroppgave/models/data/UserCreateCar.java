@@ -9,8 +9,11 @@ import org.semesteroppgave.models.data.carcustomization.Autopilot;
 import org.semesteroppgave.models.data.carcustomization.Gps;
 import org.semesteroppgave.models.data.carcustomization.Sunroof;
 import org.semesteroppgave.models.data.carcustomization.Towbar;
-import org.semesteroppgave.models.data.carmodel.*;
-import org.semesteroppgave.models.exceptions.*;
+import org.semesteroppgave.models.data.carmodel.Diesel;
+import org.semesteroppgave.models.data.carmodel.Electric;
+import org.semesteroppgave.models.data.carmodel.Hybrid;
+import org.semesteroppgave.models.data.carmodel.Product;
+import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.text.DecimalFormat;
