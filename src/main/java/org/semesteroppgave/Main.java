@@ -56,6 +56,7 @@ public class Main extends Application {
         FileHandler.openFileCvsLaunch();
     }
 
+    //Lagrer til fil når programmet avsluttes hvis listene ikke er tomme
     private void onProgramExit(Stage stage) {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty() ||
@@ -66,8 +67,12 @@ public class Main extends Application {
                 alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
                 alert.showAndWait().ifPresent(response -> {
                     if (response == ButtonType.OK) {
-                        FileHandler.saveFileCsv();
-                        FileHandler.saveFileJobj();
+                        if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty()){
+                            FileHandler.saveFileCsvOnProgramExit();
+                        }
+                        if (!ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
+                            FileHandler.saveFileJobjOnProgramExit();
+                        }
                     }
                 });
             }

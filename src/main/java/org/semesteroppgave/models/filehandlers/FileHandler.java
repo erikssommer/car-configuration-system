@@ -52,6 +52,30 @@ public class FileHandler {
         }
     }
 
+    public static void saveFileCsvOnProgramExit(){
+        File savefile = new File("files/savedProducts.csv");
+        FileSaver saver = new FileSaverCsv();
+
+        try {
+            saver.save(savefile.toPath());
+            System.out.println("Produktene ble lagret til fil");
+        } catch (IOException e) {
+            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
+        }
+    }
+
+    public static void saveFileJobjOnProgramExit(){
+        File savefile = new File("files/savedComponents.jobj");
+        FileSaver saver = new FileSaverJobj();
+
+        try {
+            saver.save(savefile.toPath());
+            System.out.println("Komponentene ble lagret til fil");
+        } catch (IOException e) {
+            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
+        }
+    }
+
     public static void saveFileCsv() {
         File selectedFile = getFileFromFileChooserSave(DialogMode.User);
 
