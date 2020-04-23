@@ -11,6 +11,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
+/**
+ * Abstrakt klasse for alle komponenter
+ * JavaFX klasser støtter ikke serialisering. Vi må da selv implementere serialiseringen av de datafeltene
+ * som er deklarert med JavaFX klasser, som SimpleStringProperty
+ * Skriver verdien til objektet istedenfor å skrive hele property-objektet
+ * Implementerer writeObject og readObject metodene, slik at Java bruker disse istedenfor standard-metodene
+ */
+
 public abstract class Component implements Serializable {
 
     private static final long serialVersionUID = 1;

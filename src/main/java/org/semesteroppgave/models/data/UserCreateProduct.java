@@ -18,6 +18,11 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.text.DecimalFormat;
 
+/**
+ * Modellen for opprettelse av produkt på brukeren sin side.
+ * Er koblet til UserBuildProductController
+ */
+
 public class UserCreateProduct {
 
     private final ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();

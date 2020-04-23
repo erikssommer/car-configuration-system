@@ -1,5 +1,9 @@
 package org.semesteroppgave.models.data.carcustomization;
 
+/**
+ * Abstrakt klasse for alle tilpasninger
+ */
+
 public abstract class Customization {
     private String customProperty;
     private double price;

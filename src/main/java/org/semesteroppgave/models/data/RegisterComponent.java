@@ -12,11 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Global klasse (hentes fra ApplicationData) som holder på componentlisten
+ * Klassen er serialisert slik at det globale objektet av klassen, funnet i ApplicationData, skal kunne
+ * skrives til serialisert jobj-fil
+ * Klassen inneholder også søkefunksjon med streams
+ */
+
 public class RegisterComponent implements Serializable {
 
     private static final long serialVersionUID = 1;
 
-    //Dette er hovedlisten av komponenter
     private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
 
     public RegisterComponent(ObservableList<Component> componentsList) {

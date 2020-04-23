@@ -2,6 +2,10 @@ package org.semesteroppgave.models.signin;
 
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
 
+/**
+ * Abstrakt klasse for alle personer (admin og bruker)
+ */
+
 abstract class Person {
 
     private String username;

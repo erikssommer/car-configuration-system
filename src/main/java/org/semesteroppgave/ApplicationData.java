@@ -3,7 +3,11 @@ package org.semesteroppgave;
 import org.semesteroppgave.models.data.RegisterComponent;
 import org.semesteroppgave.models.data.RegisterProduct;
 
-//Globale objekt som både bruker og admin må ha tilgang til
+/**
+ * Globale objekt som både bruker og admin må ha tilgang til
+ * Singelton-designmønster for å garantere at bare et objekt klassen blir opprettet
+ * Gir global aksess
+ */
 
 public class ApplicationData {
 

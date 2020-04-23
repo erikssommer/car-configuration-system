@@ -4,10 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.semesteroppgave.models.data.carmodel.Product;
 
+/**
+ * Global klasse (hentes fra ApplicationData) som holder på produktlister
+ * Listen productList er alle tidligere konfigurerte biler
+ * Listen myProdyctList er min konfigurerte bil
+ * Objektet selectedProduct er den bilen som skal vises mer informasjon om
+ */
+
 public class RegisterProduct {
-    //Listen carList er alle tidligere konfigurerte biler
-    //Listen myCarList er min konfigurerte bil
-    //Objektet selectedCar er den bilen som skal vises mer informasjon om
+
     private final ObservableList<Product> productList = FXCollections.observableArrayList();
     private final ObservableList<Product> myProductList = FXCollections.observableArrayList();
     private Product selectedProduct;

@@ -2,6 +2,10 @@ package org.semesteroppgave.models.signin;
 
 import org.semesteroppgave.models.exceptions.*;
 
+/**
+ * Klasse for validering av nye registrerte brukere og admin
+ */
+
 public class PersonValidator {
 
     public static String testValidName(String name) {
