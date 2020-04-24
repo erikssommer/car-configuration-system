@@ -226,6 +226,7 @@ public class UserCreateProduct {
     private void duplicateProduct(Product product) throws DuplicateException {
         for (Product car : ApplicationData.getInstance().getRegisterProduct().getMyProductList()) {
             if (car.equals(product)) {
+                lblMessage.setText("");
                 throw new DuplicateException("Produktet er registrert fra før");
             }
         }
@@ -288,8 +289,8 @@ public class UserCreateProduct {
             alert.setContentText("Er du sikker på dette?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    Dialogs.showSuccessDialog("Gjennomført", "Du har nå opprettet din komfigurasjon", "Trykk på 'vis konfig' for å se en oversikt");
                     ApplicationData.getInstance().getRegisterProduct().setMyProductList(finalProduct);
+                    lblMessage.setText("Produktet er opprettet\nTrykk på 'konfgurerte biler' for oversikt");
                 }
             });
         } else {
