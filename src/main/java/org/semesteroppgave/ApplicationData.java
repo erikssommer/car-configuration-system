@@ -11,7 +11,7 @@ import org.semesteroppgave.models.data.RegisterProduct;
 
 public class ApplicationData {
 
-    private final static ApplicationData APPLICATION_DATA = new ApplicationData();
+    private static final ApplicationData APPLICATION_DATA = new ApplicationData();
 
     private ApplicationData() {
     }
