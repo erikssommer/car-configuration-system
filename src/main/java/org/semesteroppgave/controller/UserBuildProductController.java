@@ -1,5 +1,6 @@
 package org.semesteroppgave.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +21,7 @@ import java.io.IOException;
 
 public class UserBuildProductController {
 
-    private ObservableList<String> modelChoice = FXCollections.observableArrayList();
+    private final ObservableList<String> modelChoice = FXCollections.observableArrayList();
     private UserCreateProduct newCar;
 
     @FXML
@@ -30,13 +31,16 @@ public class UserBuildProductController {
     private CheckBox cbAutopilot, cbTowbar, cbSunroof, cbGps;
 
     @FXML
-    private TableView<Component> tableViewComponent;
+    private TableView<String> tableViewComponent;
 
     @FXML
     private TableView<Component> tableViewVersion;
 
     @FXML
     private TableColumn<Component, Double> txtPriceColumn;
+
+    @FXML
+    private TableColumn<String, String> columnComponent;
 
     @FXML
     private GridPane gridPaneCustom;
@@ -51,6 +55,7 @@ public class UserBuildProductController {
         loadChoice();
         newCar = new UserCreateProduct(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        columnComponent.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
         lblUsername.setText(UserSignIn.getActiveUsername());

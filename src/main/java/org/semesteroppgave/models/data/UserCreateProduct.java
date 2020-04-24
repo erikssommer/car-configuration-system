@@ -17,6 +17,8 @@ import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * Modellen for opprettelse av produkt på brukeren sin side.
@@ -24,10 +26,9 @@ import java.text.DecimalFormat;
  */
 
 public class UserCreateProduct {
-
-    private final ObservableList<Component> modelComponentsList = FXCollections.observableArrayList();
-    private final ObservableList<Component> chooseComponentList = FXCollections.observableArrayList();
-    private final TableView<Component> tableViewComponent;
+    private final ObservableList<String> modelComponentsList = FXCollections.observableArrayList(); //Liste for komponentnavn
+    private final ObservableList<Component> chooseComponentList = FXCollections.observableArrayList(); //Liste for valg av komponent
+    private final TableView<String> tableViewComponent;
     private final TableView<Component> tableViewVersion;
     private final ComboBox<String> cbModel;
     private final Label lblMessage;
@@ -50,7 +51,7 @@ public class UserCreateProduct {
     private double livePrice;
     private double[] livePriceList;
 
-    public UserCreateProduct(TableView<Component> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
+    public UserCreateProduct(TableView<String> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
         this.tableViewComponent = tableViewComponent;
         this.tableViewVersion = tableViewVersion;
         this.cbModel = cbModel;
@@ -60,13 +61,12 @@ public class UserCreateProduct {
 
     public void createNewCar(String model1, String model2) {
         modelComponentsList.clear();
+
         for (Component model : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
             for (String componentModel : model.getModel()) {
                 if (componentModel.equals(model1) || componentModel.equals(model2)) {
-                    if (!redundancy(model.getComponent())) {
-                        modelComponentsList.add(model);
-                        setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
-                    }
+                    modelComponentsList.add(model.getComponent());
+                    setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
                 }
             }
         }
@@ -84,22 +84,15 @@ public class UserCreateProduct {
         }
 
         updateLivePrice();
-        tableViewComponent.setItems(modelComponentsList);
+        //Bruker streams med .distinct() for å fjerne duplikater og legger de til listen for valg av komponenttype
+        tableViewComponent.setItems(modelComponentsList.stream().distinct()
+                .collect(Collectors.toCollection(FXCollections::observableArrayList)));
 
         tableViewComponent.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                showComponents(tableViewComponent.getSelectionModel().getSelectedItem().getComponent());
+                showComponents(tableViewComponent.getSelectionModel().getSelectedItem());
             }
         });
-    }
-
-    private boolean redundancy(String componentModel) {
-        for (Component component : modelComponentsList) {
-            if (component.getComponent().equals(componentModel)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void showComponents(String selectedComponent) {
