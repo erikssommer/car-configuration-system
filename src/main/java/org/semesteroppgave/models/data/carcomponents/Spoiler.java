@@ -5,16 +5,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * Atributtene blir ikke serialisert fordi de er alltid de samme ved obbrettelse av nytt objekt
+ */
+
 public class Spoiler extends Component {
 
-    private transient String component;
     private transient ArrayList<String> model;
+    private transient String component;
 
     public Spoiler(String version, double price, String description) {
         super(version, price, description);
-        this.component = "Spoiler";
         this.model = new ArrayList<>();
         this.model.add("universial");
+        this.component = "Spoiler";
     }
 
     public ArrayList<String> getModel() {
@@ -39,8 +43,8 @@ public class Spoiler extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.component = "Spoiler";
         this.model = new ArrayList<>();
         this.model.add("universial");
+        this.component = "Spoiler";
     }
 }
