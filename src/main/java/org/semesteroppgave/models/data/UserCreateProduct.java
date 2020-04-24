@@ -17,7 +17,6 @@ import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
@@ -63,11 +62,13 @@ public class UserCreateProduct {
         modelComponentsList.clear();
 
         ApplicationData.getInstance().getRegisterComponent().getComponentsList()
-                .forEach(model -> Arrays.stream(model.getModel())
-                        .filter(componentModel -> componentModel.equals(model1) || componentModel.equals(model2)).forEach(componentModel -> {
-                            modelComponentsList.add(model.getComponent());
-                            setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
-                        }));
+                .forEach(model -> model.getModel()
+                .stream()
+                .filter(componentModel -> componentModel.equals(model1) || componentModel.equals(model2))
+                .forEach(componentModel -> {
+                    modelComponentsList.add(model.getComponent());
+                    setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
+        }));
 
         livePriceList = new double[13];
 

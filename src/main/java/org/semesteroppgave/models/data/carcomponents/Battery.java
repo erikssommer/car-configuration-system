@@ -3,24 +3,22 @@ package org.semesteroppgave.models.data.carcomponents;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class Battery extends Component {
 
     private transient String component;
-    private transient String[] model;
+    private final transient ArrayList<String> model = new ArrayList<>();
 
     public Battery(String version, double price, String description) {
         super(version, price, description);
         this.component = "Batteri";
-        this.model = new String[]{"Elektrisk", "Hybrid"};
+        this.model.add("Electric");
+        this.model.add("Hybrid");
     }
 
-    public String[] getModel() {
+    public ArrayList<String> getModel() {
         return this.model;
-    }
-
-    public void setModel(String[] model) {
-        this.model = model;
     }
 
     public String getComponent() {
@@ -42,7 +40,8 @@ public class Battery extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.component = "Batteri";
-        this.model = new String[]{"Elektrisk", "Hybrid"};
+        this.model.add("Hybrid");
+        this.model.add("Electric");
     }
 
 }

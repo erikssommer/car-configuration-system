@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -35,9 +36,7 @@ public abstract class Component implements Serializable {
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
     }
 
-    public abstract String[] getModel();
-
-    public abstract void setModel(String[] model);
+    public abstract ArrayList<String> getModel();
 
     public abstract String getComponent();
 
@@ -81,7 +80,7 @@ public abstract class Component implements Serializable {
             return false;
         } else if (obj instanceof Component) {
             Component component = (Component) obj;
-            return (Arrays.equals(component.getModel(), getModel()) && component.getVersion().equals(version.getValue())
+            return (component.getModel().equals(getModel()) && component.getVersion().equals(version.getValue())
                     && component.getPrice() == price.doubleValue());
         }
         return false;

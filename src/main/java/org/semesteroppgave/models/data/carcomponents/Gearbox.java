@@ -3,24 +3,22 @@ package org.semesteroppgave.models.data.carcomponents;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class Gearbox extends Component {
 
     private transient String component;
-    private transient String[] model;
+    private final transient ArrayList<String> model = new ArrayList<>();
 
     public Gearbox(String version, double price, String description) {
         super(version, price, description);
         this.component = "Girboks";
-        this.model = new String[]{"Diesel"};
+        this.model.add("Diesel");
+        this.model.add("Hybrid");
     }
 
-    public String[] getModel() {
+    public ArrayList<String> getModel() {
         return model;
-    }
-
-    public void setModel(String[] model) {
-        this.model = model;
     }
 
     public String getComponent() {
@@ -42,6 +40,7 @@ public class Gearbox extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.component = "Girboks";
-        this.model = new String[]{"Diesel"};
+        this.model.add("Diesel");
+        this.model.add("Hybrid");
     }
 }
