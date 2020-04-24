@@ -8,11 +8,12 @@ import java.util.ArrayList;
 public class Spoiler extends Component {
 
     private transient String component;
-    private final transient ArrayList<String> model = new ArrayList<>();
+    private transient ArrayList<String> model;
 
     public Spoiler(String version, double price, String description) {
         super(version, price, description);
         this.component = "Spoiler";
+        this.model = new ArrayList<>();
         this.model.add("universial");
     }
 
@@ -39,6 +40,7 @@ public class Spoiler extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.component = "Spoiler";
+        this.model = new ArrayList<>();
         this.model.add("universial");
     }
 }

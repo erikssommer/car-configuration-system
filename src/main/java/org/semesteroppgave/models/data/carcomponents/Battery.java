@@ -8,11 +8,12 @@ import java.util.ArrayList;
 public class Battery extends Component {
 
     private transient String component;
-    private transient ArrayList<String> model = new ArrayList<>();
+    private transient ArrayList<String> model;
 
     public Battery(String version, double price, String description) {
         super(version, price, description);
         this.component = "Batteri";
+        this.model = new ArrayList<>();
         this.model.add("Elektrisk");
         this.model.add("Hybrid");
     }
@@ -40,6 +41,7 @@ public class Battery extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.component = "Batteri";
+        this.model = new ArrayList<>();
         this.model.add("Elektrisk");
         this.model.add("Hybrid");
     }

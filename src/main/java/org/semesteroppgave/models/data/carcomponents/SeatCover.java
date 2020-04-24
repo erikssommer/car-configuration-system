@@ -8,10 +8,11 @@ import java.util.ArrayList;
 public class SeatCover extends Component {
 
     private transient String component;
-    private final transient ArrayList<String> model = new ArrayList<>();
+    private transient ArrayList<String> model;
 
     public SeatCover(String version, double price, String description) {
         super(version, price, description);
+        this.model = new ArrayList<>();
         this.component = "Setetrekk";
         this.model.add("universial");
     }
@@ -39,6 +40,7 @@ public class SeatCover extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.component = "Setetrekk";
+        this.model = new ArrayList<>();
         this.model.add("universial");
     }
 }
