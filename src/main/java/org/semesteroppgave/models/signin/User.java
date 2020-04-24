@@ -1,14 +1,12 @@
 package org.semesteroppgave.models.signin;
 
-import org.semesteroppgave.models.exceptions.InvalidEmailException;
 import org.semesteroppgave.models.exceptions.InvalidNameException;
-import org.semesteroppgave.models.exceptions.InvalidPhonenumberException;
 
 public class User extends Person {
 
-    private String name;
-    private String phonenumber;
-    private String email;
+    private final String name;
+    private final String phonenumber;
+    private final String email;
 
     public User(String username, String password, String name, String phonenumber, String email) {
         super(username, password);
@@ -24,24 +22,12 @@ public class User extends Person {
         return name;
     }
 
-    public void setName(String name) throws InvalidNameException {
-        this.name = PersonValidator.testValidName(name);
-    }
-
     public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(String phonenumber) throws InvalidPhonenumberException {
-        this.phonenumber = PersonValidator.testValidPhone(phonenumber);
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) throws InvalidEmailException {
-        this.email = PersonValidator.testValidEmail(email);
     }
 
     //Format til fil

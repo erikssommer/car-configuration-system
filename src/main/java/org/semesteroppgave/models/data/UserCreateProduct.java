@@ -62,14 +62,12 @@ public class UserCreateProduct {
     public void createNewCar(String model1, String model2) {
         modelComponentsList.clear();
 
-        for (Component model : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
-            for (String componentModel : model.getModel()) {
-                if (componentModel.equals(model1) || componentModel.equals(model2)) {
-                    modelComponentsList.add(model.getComponent());
-                    setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
-                }
-            }
-        }
+        ApplicationData.getInstance().getRegisterComponent().getComponentsList()
+                .forEach(model -> Arrays.stream(model.getModel())
+                        .filter(componentModel -> componentModel.equals(model1) || componentModel.equals(model2)).forEach(componentModel -> {
+                            modelComponentsList.add(model.getComponent());
+                            setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
+                        }));
 
         livePriceList = new double[13];
 
@@ -97,12 +95,14 @@ public class UserCreateProduct {
 
     private void showComponents(String selectedComponent) {
         chooseComponentList.clear();
-        for (Component component : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
-            if (component.getComponent().equals(selectedComponent)) {
-                chooseComponentList.add(component);
-            }
-        }
+
+        ApplicationData.getInstance().getRegisterComponent().getComponentsList()
+                .stream()
+                .filter(component -> component.getComponent().equals(selectedComponent))
+                .forEachOrdered(chooseComponentList::add);
+
         tableViewVersion.setItems(chooseComponentList);
+
         tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 addToCar(newSelection.getComponent());

@@ -55,7 +55,7 @@ public class AdminComponentController {
     private ProgressBar progressBar;
 
     @FXML
-    private MenuBar menuBar = new MenuBar();
+    private final MenuBar menuBar = new MenuBar();
 
     public void initialize() {
         tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentsList());

@@ -34,7 +34,7 @@ public class FileOpenerCsv implements FileOpener {
     }
 
     private Product parseProduct(String line) throws IllegalArgumentException {
-        Product productRead = null;
+        Product productRead;
         String[] split = line.split(";");
 
         if (split.length != 35) {

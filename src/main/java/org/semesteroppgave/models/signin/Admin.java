@@ -4,7 +4,7 @@ import org.semesteroppgave.models.exceptions.InvalidEmployeeNoException;
 
 public class Admin extends Person {
 
-    private String employeeId;
+    private final String employeeId;
 
     public Admin(String username, String password, String employeeId) {
         super(username, password);
@@ -14,10 +14,6 @@ public class Admin extends Person {
 
     public String getEmployeeId() {
         return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) throws InvalidEmployeeNoException {
-        this.employeeId = employeeId;
     }
 
     //Format til fil
