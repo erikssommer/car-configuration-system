@@ -61,7 +61,7 @@ public class UserCreateProduct {
     public void createNewProduct(String model) {
         modelComponentsList.clear();
 
-        for (Component modelList : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
+        for (Component modelList : ApplicationData.getInstance().getRegisterComponent().getComponentList()) {
             for (String componentModel : modelList.getModel()) {
                 if (componentModel.equals(model)) {
                     modelComponentsList.add(modelList.getComponent());
@@ -98,7 +98,7 @@ public class UserCreateProduct {
     private void showComponents(String selectedComponent) {
         chooseComponentList.clear();
 
-        ApplicationData.getInstance().getRegisterComponent().getComponentsList()
+        ApplicationData.getInstance().getRegisterComponent().getComponentList()
                 .stream()
                 .filter(component -> component.getComponent().equals(selectedComponent))
                 .forEachOrdered(chooseComponentList::add);

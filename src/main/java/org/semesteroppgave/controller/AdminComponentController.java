@@ -55,7 +55,7 @@ public class AdminComponentController {
     private final MenuBar menuBar = new MenuBar();
 
     public void initialize() {
-        tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentsList());
+        tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentList());
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         componentSearch.loadFilter(cbFilter);
@@ -88,7 +88,7 @@ public class AdminComponentController {
     @FXML
     private void btnDeleteComponent() {
         try {
-            createComponent.deleteColumn(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentsList(), true);
+            createComponent.deleteColumn(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentList(), true);
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
@@ -172,7 +172,7 @@ public class AdminComponentController {
     @FXML
     private void saveFileMenuClicked() {
         if (!tableViewComponents.getItems().isEmpty()){
-            FileHandler.saveFileJobj();
+            FileHandler.saveFileJobj(componentSearch);
         }else {
             Dialogs.showErrorDialog("Fil", "Feil i lagring av liste", "Du kan ikke lagre en tom liste");
         }

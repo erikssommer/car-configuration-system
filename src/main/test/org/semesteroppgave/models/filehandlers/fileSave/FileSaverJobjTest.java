@@ -11,7 +11,7 @@ class FileSaverJobjTest {
 
     @Test
     void save() {
-        ApplicationData.getInstance().getRegisterComponent().setComponentsList(
+        ApplicationData.getInstance().getRegisterComponent().setComponentList(
                 new Motor("V12", 12300.0, "Denne V12 motoren er slitesterk og har en veldig høy ytelse")
         );
 

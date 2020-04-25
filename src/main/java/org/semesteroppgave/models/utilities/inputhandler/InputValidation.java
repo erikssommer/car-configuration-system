@@ -89,7 +89,7 @@ public class InputValidation {
 
     public static void testComponentCount(TableView<Component> tableViewComponents, String input) {
         int counter = 0;
-        for (Component component : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
+        for (Component component : ApplicationData.getInstance().getRegisterComponent().getComponentList()) {
             if (component.getComponent().equals(tableViewComponents.getSelectionModel().getSelectedItem().getComponent())) {
                 counter++;
             }

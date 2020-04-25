@@ -20,7 +20,7 @@ public class ComponentSearch {
 
     public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter) throws IllegalArgumentException {
         if (txtSearch.getText().isEmpty()) {
-            tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentsList());
+            tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentList());
         } else {
             String choiceFilter = cbFilter.getValue();
             String searchWord = txtSearch.getText();

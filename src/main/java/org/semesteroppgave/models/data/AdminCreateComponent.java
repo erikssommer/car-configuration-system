@@ -87,7 +87,7 @@ public class AdminCreateComponent {
             }
         }
 
-        for (Component listComponent : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
+        for (Component listComponent : ApplicationData.getInstance().getRegisterComponent().getComponentList()) {
             if (listComponent.equals(component)) {
                 throw new DuplicateException("Komponenten finnes allerede i komponentlisten");
             }
@@ -97,7 +97,7 @@ public class AdminCreateComponent {
     public void completeComponent() throws IOException {
 
         for (Component component : createComponentList) {
-            ApplicationData.getInstance().getRegisterComponent().setComponentsList(component);
+            ApplicationData.getInstance().getRegisterComponent().setComponentList(component);
         }
         createComponentList.clear();
         Main.setRoot("admincomponent");
@@ -133,10 +133,10 @@ public class AdminCreateComponent {
             default:
                 throw new InvalidComponentException("Fant ikke komponenten");
         }
-        int index = ApplicationData.getInstance().getRegisterComponent().getComponentsList().indexOf(component);
-        ApplicationData.getInstance().getRegisterComponent().getComponentsList().remove(component);
+        int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
+        ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
         //Her plasserer jeg det nye objektet på den tidligere plassen til det gamle objektet
-        ApplicationData.getInstance().getRegisterComponent().getComponentsList().add(index, newComponent);
+        ApplicationData.getInstance().getRegisterComponent().getComponentList().add(index, newComponent);
     }
 
     public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
@@ -185,7 +185,7 @@ public class AdminCreateComponent {
     }
 
     private boolean checkUniquenessVersion(String value) {
-        return ApplicationData.getInstance().getRegisterComponent().getComponentsList().stream().noneMatch(item -> item.getVersion().equals(value));
+        return ApplicationData.getInstance().getRegisterComponent().getComponentList().stream().noneMatch(item -> item.getVersion().equals(value));
     }
 
     public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list, boolean state) throws IllegalArgumentException {

@@ -1,7 +1,13 @@
 package org.semesteroppgave.models.filehandlers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
+import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.models.data.ComponentSearch;
+import org.semesteroppgave.models.data.RegisterComponent;
+import org.semesteroppgave.models.data.productcomponents.Component;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpener;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerCsv;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerJobj;
@@ -104,8 +110,17 @@ public class FileHandler {
         }
     }
 
-    public static void saveFileJobj() {
+    public static void saveFileJobj(ComponentSearch componentSearch) {
+        //Liste som lagrer orginallisten i tilfelle admin lagrer et søk
+        ObservableList<Component> originalList = FXCollections.observableArrayList();
+
+        originalList.addAll(ApplicationData.getInstance().getRegisterComponent().getComponentList());
         File selectedFile = getFileFromFileChooserSave(DialogMode.Jobj);
+
+        //Hvis admin lagrer etter et søk, så blir søkelisten lagret
+        if (!componentSearch.getSearchResult().isEmpty()){
+            ApplicationData.getInstance().getRegisterComponent().setComponentList(componentSearch.getSearchResult());
+        }
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -126,6 +141,8 @@ public class FileHandler {
                     e.printStackTrace();
                 }
             }
+            //Gjennoppretter orginallisten
+            ApplicationData.getInstance().getRegisterComponent().setComponentList(originalList);
         }
     }
 

@@ -23,54 +23,47 @@ public class RegisterComponent implements Serializable {
 
     private static final long serialVersionUID = 1;
 
-    private transient ObservableList<Component> componentsList = FXCollections.observableArrayList();
-
-    public RegisterComponent(ObservableList<Component> componentsList) {
-        this.componentsList = componentsList;
-    }
-
-    public RegisterComponent() {
-    }
+    private transient ObservableList<Component> componentList = FXCollections.observableArrayList();
 
     private void writeObject(ObjectOutputStream s) throws IOException, ClassNotFoundException {
         s.defaultWriteObject();
-        s.writeObject(new ArrayList<>(componentsList));
+        s.writeObject(new ArrayList<>(componentList));
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         List<Component> newComponentList = (List<Component>) s.readObject();
-        componentsList = FXCollections.observableArrayList();
-        componentsList.addAll(newComponentList);
+        componentList = FXCollections.observableArrayList();
+        componentList.addAll(newComponentList);
     }
 
-    public void setComponentsList(ObservableList<Component> componentsList) {
-        this.componentsList = componentsList;
+    public void setComponentList(ObservableList<Component> componentList) {
+        this.componentList = componentList;
     }
 
-    public void setComponentsList(Component component) {
-        componentsList.add(component);
+    public void setComponentList(Component component) {
+        componentList.add(component);
     }
 
-    public ObservableList<Component> getComponentsList() {
-        return this.componentsList;
+    public ObservableList<Component> getComponentList() {
+        return this.componentList;
     }
 
     //Søkefunksjon med streams
     public ObservableList<Component> searchComponent(String value) {
 
-        return componentsList.stream().filter(component -> component.getComponent().toLowerCase()
+        return componentList.stream().filter(component -> component.getComponent().toLowerCase()
                 .contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     public ObservableList<Component> searchVersion(String value) {
 
-        return componentsList.stream().filter(component -> component.getVersion().toLowerCase()
+        return componentList.stream().filter(component -> component.getVersion().toLowerCase()
                 .contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
     public ObservableList<Component> searchPrice(double value) {
 
-        return componentsList.stream().filter(component -> component.getPrice() == (value))
+        return componentList.stream().filter(component -> component.getPrice() == (value))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 }

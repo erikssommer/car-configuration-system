@@ -58,7 +58,7 @@ public class Main extends Application {
     private void onProgramExit(Stage stage) {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||
-                    !ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
+                    !ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Lukking av programmet");
                 alert.setHeaderText("Lagre før lukking");
@@ -68,7 +68,7 @@ public class Main extends Application {
                         if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()){
                             FileHandler.saveFileCsvOnProgramExit();
                         }
-                        if (!ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()){
+                        if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()){
                             FileHandler.saveFileJobjOnProgramExit();
                         }
                     }

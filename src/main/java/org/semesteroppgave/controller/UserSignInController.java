@@ -39,7 +39,7 @@ public class UserSignInController {
 
     public void initialize() {
         userSignIn.parseExistingUser();
-        if (ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
+        if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
             progressbar.setVisible(true);
             startThread();
         } else {

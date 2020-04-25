@@ -17,8 +17,8 @@ public class FileOpenerJobj implements FileOpener {
              ObjectInputStream oin = new ObjectInputStream(fin)) {
 
             RegisterComponent register = (RegisterComponent) oin.readObject();
-            ApplicationData.getInstance().getRegisterComponent().getComponentsList().clear();
-            register.getComponentsList().forEach(ApplicationData.getInstance().getRegisterComponent()::setComponentsList);
+            ApplicationData.getInstance().getRegisterComponent().getComponentList().clear();
+            register.getComponentList().forEach(ApplicationData.getInstance().getRegisterComponent()::setComponentList);
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
