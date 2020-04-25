@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.carcomponents;
+package org.semesteroppgave.models.data.productcomponents;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

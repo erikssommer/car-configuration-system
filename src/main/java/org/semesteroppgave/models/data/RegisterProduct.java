@@ -2,7 +2,7 @@ package org.semesteroppgave.models.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.semesteroppgave.models.data.carmodel.Product;
+import org.semesteroppgave.models.data.productmodel.Product;
 
 /**
  * Global klasse (hentes fra ApplicationData) som holder på produktlister
@@ -13,8 +13,10 @@ import org.semesteroppgave.models.data.carmodel.Product;
 
 public class RegisterProduct {
 
+    //Liste som inneholder ferdilagde produkter
     private final ObservableList<Product> productList = FXCollections.observableArrayList();
-    private final ObservableList<Product> myProductList = FXCollections.observableArrayList();
+    //Liste som inneholder alle produkter opprettet av bruker
+    private final ObservableList<Product> userProductList = FXCollections.observableArrayList();
     private Product selectedProduct;
 
     public ObservableList<Product> getProductList() {
@@ -25,12 +27,12 @@ public class RegisterProduct {
         productList.add(product);
     }
 
-    public ObservableList<Product> getMyProductList() {
-        return this.myProductList;
+    public ObservableList<Product> getUserProductList() {
+        return this.userProductList;
     }
 
-    public void setMyProductList(Product product) {
-        myProductList.add(product);
+    public void setUserProductList(Product product) {
+        userProductList.add(product);
     }
 
     public Product getSelectedProduct() {
@@ -44,7 +46,7 @@ public class RegisterProduct {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Product product : myProductList) {
+        for (Product product : userProductList) {
             sb.append(product.toFileCsv());
             sb.append(System.lineSeparator());
         }

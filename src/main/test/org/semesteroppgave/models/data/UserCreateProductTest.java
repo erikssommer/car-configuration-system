@@ -1,12 +1,10 @@
 package org.semesteroppgave.models.data;
 
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.models.data.carcomponents.*;
-import org.semesteroppgave.models.data.carcustomization.*;
-import org.semesteroppgave.models.data.carmodel.*;
+import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.productcustomization.*;
+import org.semesteroppgave.models.data.productmodel.*;
 import org.semesteroppgave.models.exceptions.*;
-
-import java.util.function.BooleanSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserCreateProductTest {
 
     @Test
-    void testValidFinishedCar() {
+    void testValidFinishedProduct() {
         //Tester at det er mulig å opprette produkter med og uten tilpasninger (gps, henger, soltat og autopilot)
 
         new Electric.Builder("Elektrisk", 1_200_000)
@@ -55,7 +53,7 @@ class UserCreateProductTest {
     }
 
     @Test
-    void testInvalidFinishedCar() {
+    void testInvalidFinishedProduct() {
         //Tester at ingen komponenter kan være null, ellers kastes EmptyComponentException
 
         assertThrows(EmptyComponentException.class, () -> new Electric.Builder("Elektrisk", 1_200_000)
@@ -98,7 +96,7 @@ class UserCreateProductTest {
     }
 
     @Test
-    void testInvalidVersionFinishedCar() {
+    void testInvalidVersionFinishedProduct() {
         //Tester versjonsbeskrivelsen
 
         assertThrows(InvalidVersionException.class, () -> new Electric.Builder("Elektrisk", 1_200_000)
@@ -116,7 +114,7 @@ class UserCreateProductTest {
     }
 
     @Test
-    void testInvalidDescriptionFinishedCar() {
+    void testInvalidDescriptionFinishedProduct() {
         //Tester beskrivelsen
 
         assertThrows(InvalidDescriptionException.class, () -> new Electric.Builder("Elektrisk", 1_200_000)

@@ -2,7 +2,7 @@ package org.semesteroppgave.models.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.semesteroppgave.models.data.carcomponents.Component;
+import org.semesteroppgave.models.data.productcomponents.Component;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.carcomponents;
+package org.semesteroppgave.models.data.productcomponents;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,15 +10,15 @@ import java.util.Arrays;
  * Atributtene blir ikke serialisert fordi de er alltid de samme ved opprettelse av nytt objekt
  */
 
-public class Motor extends Component {
+public class SeatCover extends Component {
 
     private transient ArrayList<String> model;
     private transient String component;
 
-    public Motor(String version, double price, String description) {
+    public SeatCover(String version, double price, String description) {
         super(version, price, description);
         this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
-        this.component = "Motor";
+        this.component = "Setetrekk";
     }
 
     public ArrayList<String> getModel() {
@@ -44,6 +44,6 @@ public class Motor extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
-        this.component = "Motor";
+        this.component = "Setetrekk";
     }
 }

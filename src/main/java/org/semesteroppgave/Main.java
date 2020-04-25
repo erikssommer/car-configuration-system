@@ -1,14 +1,12 @@
 package org.semesteroppgave;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 
 import java.io.IOException;
@@ -59,7 +57,7 @@ public class Main extends Application {
     //Lagrer til fil når programmet avsluttes hvis listene ikke er tomme
     private void onProgramExit(Stage stage) {
         stage.setOnCloseRequest(windowEvent -> {
-            if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty() ||
+            if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||
                     !ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Lukking av programmet");
@@ -67,7 +65,7 @@ public class Main extends Application {
                 alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
                 alert.showAndWait().ifPresent(response -> {
                     if (response == ButtonType.OK) {
-                        if (!ApplicationData.getInstance().getRegisterProduct().getMyProductList().isEmpty()){
+                        if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()){
                             FileHandler.saveFileCsvOnProgramExit();
                         }
                         if (!ApplicationData.getInstance().getRegisterComponent().getComponentsList().isEmpty()){

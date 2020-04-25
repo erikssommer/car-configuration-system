@@ -1,24 +1,15 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.carcomponents.*;
-import org.semesteroppgave.models.data.carcustomization.Autopilot;
-import org.semesteroppgave.models.data.carcustomization.Gps;
-import org.semesteroppgave.models.data.carcustomization.Sunroof;
-import org.semesteroppgave.models.data.carcustomization.Towbar;
-import org.semesteroppgave.models.data.carmodel.Diesel;
-import org.semesteroppgave.models.data.carmodel.Electric;
-import org.semesteroppgave.models.data.carmodel.Hybrid;
-import org.semesteroppgave.models.data.carmodel.Product;
-import org.semesteroppgave.models.utilities.alerts.Dialogs;
+import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.productcustomization.*;
+import org.semesteroppgave.models.data.productmodel.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 

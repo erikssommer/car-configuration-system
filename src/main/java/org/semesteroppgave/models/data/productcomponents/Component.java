@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.carcomponents;
+package org.semesteroppgave.models.data.productcomponents;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Abstrakt klasse for alle komponenter

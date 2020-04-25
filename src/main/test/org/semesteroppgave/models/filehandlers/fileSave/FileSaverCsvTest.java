@@ -2,18 +2,15 @@ package org.semesteroppgave.models.filehandlers.fileSave;
 
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.carcomponents.*;
-import org.semesteroppgave.models.data.carcustomization.Autopilot;
-import org.semesteroppgave.models.data.carcustomization.Gps;
-import org.semesteroppgave.models.data.carcustomization.Sunroof;
-import org.semesteroppgave.models.data.carcustomization.Towbar;
-import org.semesteroppgave.models.data.carmodel.Electric;
-import org.semesteroppgave.models.data.carmodel.Product;
+import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.productcustomization.Autopilot;
+import org.semesteroppgave.models.data.productcustomization.Gps;
+import org.semesteroppgave.models.data.productcustomization.Sunroof;
+import org.semesteroppgave.models.data.productcustomization.Towbar;
+import org.semesteroppgave.models.data.productmodel.*;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileSaverCsvTest {
 
@@ -32,7 +29,7 @@ class FileSaverCsvTest {
                 .withAutopilot(new Autopilot())
                 .build();
 
-        ApplicationData.getInstance().getRegisterProduct().setMyProductList(testProduct);
+        ApplicationData.getInstance().getRegisterProduct().setUserProductList(testProduct);
 
         FileSaver fileSaver = new FileSaverCsv();
 

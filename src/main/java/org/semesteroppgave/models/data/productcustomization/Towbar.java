@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.carcustomization;
+package org.semesteroppgave.models.data.productcustomization;
 
 public class Towbar extends Customization {
 

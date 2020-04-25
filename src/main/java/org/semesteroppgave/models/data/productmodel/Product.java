@@ -1,7 +1,7 @@
-package org.semesteroppgave.models.data.carmodel;
+package org.semesteroppgave.models.data.productmodel;
 
-import org.semesteroppgave.models.data.carcomponents.*;
-import org.semesteroppgave.models.data.carcustomization.*;
+import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.productcustomization.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;

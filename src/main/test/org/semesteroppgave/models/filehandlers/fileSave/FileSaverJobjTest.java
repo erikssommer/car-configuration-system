@@ -2,12 +2,10 @@ package org.semesteroppgave.models.filehandlers.fileSave;
 
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.carcomponents.Motor;
+import org.semesteroppgave.models.data.productcomponents.Motor;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileSaverJobjTest {
 

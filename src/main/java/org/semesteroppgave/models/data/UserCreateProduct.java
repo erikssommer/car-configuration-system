@@ -4,15 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.carcomponents.*;
-import org.semesteroppgave.models.data.carcustomization.Autopilot;
-import org.semesteroppgave.models.data.carcustomization.Gps;
-import org.semesteroppgave.models.data.carcustomization.Sunroof;
-import org.semesteroppgave.models.data.carcustomization.Towbar;
-import org.semesteroppgave.models.data.carmodel.Diesel;
-import org.semesteroppgave.models.data.carmodel.Electric;
-import org.semesteroppgave.models.data.carmodel.Hybrid;
-import org.semesteroppgave.models.data.carmodel.Product;
+import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.productcustomization.Autopilot;
+import org.semesteroppgave.models.data.productcustomization.Gps;
+import org.semesteroppgave.models.data.productcustomization.Sunroof;
+import org.semesteroppgave.models.data.productcustomization.Towbar;
+import org.semesteroppgave.models.data.productmodel.Diesel;
+import org.semesteroppgave.models.data.productmodel.Electric;
+import org.semesteroppgave.models.data.productmodel.Hybrid;
+import org.semesteroppgave.models.data.productmodel.Product;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
@@ -58,7 +58,7 @@ public class UserCreateProduct {
         this.txtTotalPrice = txtTotalPrice;
     }
 
-    public void createNewCar(String model) {
+    public void createNewProduct(String model) {
         modelComponentsList.clear();
 
         for (Component modelList : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
@@ -107,12 +107,12 @@ public class UserCreateProduct {
 
         tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                addToCar(newSelection.getComponent());
+                addToProduct(newSelection.getComponent());
             }
         });
     }
 
-    private void addToCar(String selectedComponent) {
+    private void addToProduct(String selectedComponent) {
 
         switch (selectedComponent) {
             case "Motor":
@@ -210,8 +210,8 @@ public class UserCreateProduct {
     private void addToPrice() {
 
         livePrice = 0;
-        for (double pris : livePriceList) {
-            livePrice += pris;
+        for (double price : livePriceList) {
+            livePrice += price;
         }
         updateLivePrice();
     }
@@ -226,15 +226,15 @@ public class UserCreateProduct {
     }
 
     private void duplicateProduct(Product product) throws DuplicateException {
-        for (Product car : ApplicationData.getInstance().getRegisterProduct().getMyProductList()) {
-            if (car.equals(product)) {
+        for (Product userProduct : ApplicationData.getInstance().getRegisterProduct().getUserProductList()) {
+            if (userProduct.equals(product)) {
                 lblMessage.setText("");
                 throw new DuplicateException("Produktet er registrert fra før");
             }
         }
     }
 
-    public void finishedCar() throws NullPointerException, IllegalArgumentException {
+    public void finishedProduct() throws NullPointerException, IllegalArgumentException {
 
         if (cbModel.getValue() != null) {
             Product product = null;
@@ -291,7 +291,7 @@ public class UserCreateProduct {
             alert.setContentText("Er du sikker på dette?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    ApplicationData.getInstance().getRegisterProduct().setMyProductList(finalProduct);
+                    ApplicationData.getInstance().getRegisterProduct().setUserProductList(finalProduct);
                     lblMessage.setText("Produktet er opprettet\nTrykk på 'konfgurerte biler' for oversikt");
                 }
             });

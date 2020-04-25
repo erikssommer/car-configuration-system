@@ -6,9 +6,9 @@ module org.semesteroppgave {
     opens org.semesteroppgave.controller to javafx.fxml;
     opens org.semesteroppgave.models.data to javafx.base;
 
-    exports org.semesteroppgave.models.data.carcustomization;
-    exports org.semesteroppgave.models.data.carcomponents;
-    exports org.semesteroppgave.models.data.carmodel;
+    exports org.semesteroppgave.models.data.productcustomization;
+    exports org.semesteroppgave.models.data.productcomponents;
+    exports org.semesteroppgave.models.data.productmodel;
     exports org.semesteroppgave.models.data;
     exports org.semesteroppgave;
 }

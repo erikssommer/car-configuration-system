@@ -1,9 +1,8 @@
 package org.semesteroppgave.models.data;
 
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.models.data.carcomponents.*;
+import org.semesteroppgave.models.data.productcomponents.*;
 import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
-import org.semesteroppgave.models.exceptions.InvalidPriceException;
 import org.semesteroppgave.models.exceptions.InvalidVersionException;
 
 import static org.junit.jupiter.api.Assertions.*;

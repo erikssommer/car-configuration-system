@@ -9,7 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.UserCreateProduct;
-import org.semesteroppgave.models.data.carcomponents.Component;
+import org.semesteroppgave.models.data.productcomponents.Component;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.signin.UserSignIn;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class UserBuildProductController {
 
     private final ObservableList<String> modelChoice = FXCollections.observableArrayList();
-    private UserCreateProduct newCar;
+    private UserCreateProduct newProduct;
 
     @FXML
     private ComboBox<String> cbModel;
@@ -51,7 +51,7 @@ public class UserBuildProductController {
 
     public void initialize() {
         loadChoice();
-        newCar = new UserCreateProduct(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
+        newProduct = new UserCreateProduct(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         columnComponent.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
         cbAutopilot.setVisible(false);
@@ -73,7 +73,7 @@ public class UserBuildProductController {
     private void choiseMade() {
 
         cbModel.valueProperty().addListener((ov, previous, active) -> {
-            newCar.createNewCar(active);
+            newProduct.createNewProduct(active);
             resetChoiceBox(active);
         });
     }
@@ -89,20 +89,20 @@ public class UserBuildProductController {
         cbGps.setSelected(false);
         cbSunroof.setSelected(false);
         cbTowbar.setSelected(false);
-        newCar.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
-        newCar.updateLivePrice();
+        newProduct.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
+        newProduct.updateLivePrice();
     }
 
 
     @FXML
     private void cbClicked() {
-        newCar.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
+        newProduct.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
     }
 
     @FXML
     private void btnDone() {
         try {
-            newCar.finishedCar();
+            newProduct.finishedProduct();
         } catch (EmptyComponentException | DuplicateException e) {
             Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
         }

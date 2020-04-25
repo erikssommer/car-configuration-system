@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.carmodel.Product;
+import org.semesteroppgave.models.data.productmodel.Product;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
@@ -40,7 +40,7 @@ public class ConfiguredProductController {
         tableViewConfigs.setItems(ApplicationData.getInstance().getRegisterProduct().getProductList());
 
         setTableColum(txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy, txtPriceColumnMy);
-        tableViewMyConfig.setItems(ApplicationData.getInstance().getRegisterProduct().getMyProductList());
+        tableViewMyConfig.setItems(ApplicationData.getInstance().getRegisterProduct().getUserProductList());
 
         lblUsername.setText(UserSignIn.getActiveUsername());
     }
@@ -64,7 +64,7 @@ public class ConfiguredProductController {
 
         if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null) {
             ApplicationData.getInstance().getRegisterProduct().setProductList(tableViewMyConfig.getSelectionModel().getSelectedItem());
-            ApplicationData.getInstance().getRegisterProduct().getMyProductList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
+            ApplicationData.getInstance().getRegisterProduct().getUserProductList().remove(tableViewMyConfig.getSelectionModel().getSelectedItem());
 
         } else {
             Dialogs.showErrorDialog("Oups", "Du må markere produktet ditt først!", "Prøv igjen etter å ha valgt din konfigurasjon");

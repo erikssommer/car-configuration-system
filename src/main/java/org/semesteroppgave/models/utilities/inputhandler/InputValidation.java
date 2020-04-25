@@ -2,7 +2,7 @@ package org.semesteroppgave.models.utilities.inputhandler;
 
 import javafx.scene.control.TableView;
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.carcomponents.Component;
+import org.semesteroppgave.models.data.productcomponents.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
