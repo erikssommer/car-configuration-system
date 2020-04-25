@@ -61,14 +61,15 @@ public class UserCreateProduct {
     public void createNewCar(String model) {
         modelComponentsList.clear();
 
-        ApplicationData.getInstance().getRegisterComponent().getComponentsList()
-                .forEach(modelList -> modelList.getModel()
-                .stream()
-                .filter(componentModel -> componentModel.equals(model))
-                .forEach(componentModel -> {
+        for (Component modelList : ApplicationData.getInstance().getRegisterComponent().getComponentsList()) {
+            for (String componentModel : modelList.getModel()) {
+                if (componentModel.equals(model)) {
                     modelComponentsList.add(modelList.getComponent());
-                    setLabelText("Du kan nå velge komponenter til din \n" + model.toLowerCase() + " bil");
-        }));
+                }
+            }
+        }
+
+        setLabelText("Du kan nå velge komponenter til din \n" + model.toLowerCase() + " bil");
 
         livePriceList = new double[13];
 
