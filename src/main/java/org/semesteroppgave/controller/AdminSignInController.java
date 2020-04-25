@@ -1,11 +1,9 @@
 package org.semesteroppgave.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.signin.Admin;
 import org.semesteroppgave.models.signin.AdminSignin;
 
@@ -42,12 +40,12 @@ public class AdminSignInController {
     }
 
     @FXML
-    private void btnCancel(ActionEvent event) throws IOException {
+    private void btnCancel() throws IOException {
         Main.setRoot("usersignin");
     }
 
     @FXML
-    private void btnRegister(ActionEvent event) {
+    private void btnRegister() {
         lblRegister.setText("");
 
         // Prøver å opprette ny admin
@@ -60,7 +58,7 @@ public class AdminSignInController {
     }
 
     @FXML
-    private void btnSignin(ActionEvent event) throws IOException {
+    private void btnSignin() throws IOException {
         // Henter login-info fra admin-filen
         if (adminSignin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText())) {
             //Setter aktiv admin

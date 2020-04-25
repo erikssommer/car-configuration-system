@@ -1,6 +1,5 @@
 package org.semesteroppgave.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import org.semesteroppgave.ApplicationData;
@@ -18,7 +17,7 @@ public class UserProductInfoController {
     }
 
     @FXML
-    private void btnBack(ActionEvent event) throws IOException {
+    private void btnBack() throws IOException {
         Main.setRoot("configuredproduct");
     }
 

@@ -1,6 +1,5 @@
 package org.semesteroppgave.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -56,17 +55,12 @@ public class ConfiguredProductController {
     }
 
     @FXML
-    private void btnBack(ActionEvent event) throws IOException {
+    private void btnBack() throws IOException {
         Main.setRoot("userbuildproduct");
     }
 
     @FXML
-    private void btnExport(ActionEvent event) {
-        FileHandler.saveFileCsv();
-    }
-
-    @FXML
-    private void btnAddToConfigs(ActionEvent event) {
+    private void btnAddToConfigs() {
 
         if (tableViewMyConfig.getSelectionModel().getSelectedItem() != null) {
             ApplicationData.getInstance().getRegisterProduct().setProductList(tableViewMyConfig.getSelectionModel().getSelectedItem());
@@ -78,7 +72,7 @@ public class ConfiguredProductController {
     }
 
     @FXML
-    private void btnMoreInfo(ActionEvent event) {
+    private void btnMoreInfo() {
         chooseTable(tableViewConfigs, tableViewMyConfig);
     }
 
@@ -100,12 +94,16 @@ public class ConfiguredProductController {
     }
 
     @FXML
-    private void openFileMenuClicked(ActionEvent event) {
+    private void openFileMenuClicked() {
         FileHandler.openFileCsv();
     }
 
     @FXML
-    private void saveFileMenuClicked(ActionEvent event) {
-        FileHandler.saveFileCsv();
+    private void saveFileMenuClicked() {
+        if (!tableViewMyConfig.getItems().isEmpty()){
+            FileHandler.saveFileCsv();
+        }else {
+            Dialogs.showErrorDialog("Fil", "Feil i lagring av liste", "Du kan ikke lagre en tom liste");
+        }
     }
 }

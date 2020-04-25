@@ -42,37 +42,13 @@ public class FileHandler {
     }
 
     public static void openFileCvsLaunch() {
-        File loadFile = new File("files/produkter.csv");
+        File loadFile = new File("files/onApplicationLaunch/produkter.csv");
         FileOpener opener = new FileOpenerCsv();
 
         try {
             opener.open(loadFile.toPath());
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Åpning av filen gikk galt", "Grunn: " + e.getMessage());
-        }
-    }
-
-    public static void saveFileCsvOnProgramExit(){
-        File savefile = new File("files/lagredeProdukter.csv");
-        FileSaver saver = new FileSaverCsv();
-
-        try {
-            saver.save(savefile.toPath());
-            System.out.println("Produktene ble lagret til fil");
-        } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
-        }
-    }
-
-    public static void saveFileJobjOnProgramExit(){
-        File savefile = new File("files/lagredeKomponenter.jobj");
-        FileSaver saver = new FileSaverJobj();
-
-        try {
-            saver.save(savefile.toPath());
-            System.out.println("Komponentene ble lagret til fil");
-        } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
         }
     }
 
@@ -97,6 +73,18 @@ public class FileHandler {
                     Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt", "Grunn: " + e.getMessage());
                 }
             }
+        }
+    }
+
+    public static void saveFileCsvOnProgramExit(){
+        File savefile = new File("files/onApplicationExit/lagredeProdukter.csv");
+        FileSaver saver = new FileSaverCsv();
+
+        try {
+            saver.save(savefile.toPath());
+            System.out.println("Produktene ble lagret til fil");
+        } catch (IOException e) {
+            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
         }
     }
 
@@ -141,9 +129,22 @@ public class FileHandler {
         }
     }
 
+    public static void saveFileJobjOnProgramExit(){
+        File savefile = new File("files/onApplicationExit/lagredeKomponenter.jobj");
+        FileSaver saver = new FileSaverJobj();
+
+        try {
+            saver.save(savefile.toPath());
+            System.out.println("Komponentene ble lagret til fil");
+        } catch (IOException e) {
+            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
+        }
+    }
+
     private static File getFileFromFileChooserSave(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
+        fileChooser.setInitialDirectory(new File("files/onApplicationRunning"));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
@@ -156,6 +157,7 @@ public class FileHandler {
     private static File getFileFromFileChooserOpen(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
+        fileChooser.setInitialDirectory(new File("files"));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));

@@ -1,21 +1,16 @@
 package org.semesteroppgave.controller;
 
-import java.io.IOException;
-
 import javafx.concurrent.WorkerStateEvent;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.signin.Admin;
-import org.semesteroppgave.models.signin.AdminSignin;
 import org.semesteroppgave.models.signin.User;
+import org.semesteroppgave.models.signin.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
-import org.semesteroppgave.models.exceptions.*;
-import org.semesteroppgave.models.signin.UserSignIn;
+
+import java.io.IOException;
 
 public class UserSignInController {
 
@@ -53,12 +48,12 @@ public class UserSignInController {
     }
 
     @FXML
-    private void btnAdmin(ActionEvent event) throws IOException {
+    private void btnAdmin() throws IOException {
         Main.setRoot("adminsignin");
     }
 
     @FXML
-    private void btnRegister(ActionEvent event) {
+    private void btnRegister() {
         lblRegister.setText("");
         try {
             userSignIn.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(),
@@ -70,7 +65,7 @@ public class UserSignInController {
     }
 
     @FXML
-    private void btnSignin(ActionEvent event) throws IOException {
+    private void btnSignin() throws IOException {
         // Henter login-info fra user-filen
         if (userSignIn.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText())) {
             //Setter aktivt brukernavn
@@ -86,7 +81,7 @@ public class UserSignInController {
     }
 
     @FXML
-    private void tabRegisterSelected(Event event) {
+    private void tabRegisterSelected() {
         progressbar.setVisible(false);
         lblThreadMessage.setVisible(false);
     }
@@ -94,7 +89,7 @@ public class UserSignInController {
     private void startThread() {
 
         lblThreadMessage.setText("Laster inn fil...");
-        OpenWithThread openWithThread = new OpenWithThread(progressbar, "files/komponenter.jobj");
+        OpenWithThread openWithThread = new OpenWithThread(progressbar, "files/onApplicationLaunch/komponenter.jobj");
         openWithThread.setOnSucceeded(this::fileOpened);
         openWithThread.setOnFailed(this::fileOpeningFailed);
         Thread thread = new Thread(openWithThread);

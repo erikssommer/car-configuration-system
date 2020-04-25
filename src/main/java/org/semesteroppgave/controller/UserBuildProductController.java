@@ -3,8 +3,6 @@ package org.semesteroppgave.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -62,17 +60,17 @@ public class UserBuildProductController {
     }
 
     @FXML
-    private void btnShowConfig(ActionEvent event) throws IOException {
+    private void btnShowConfig() throws IOException {
         Main.setRoot("configuredproduct");
     }
 
     @FXML
-    private void btnSignout(ActionEvent event) throws IOException {
+    private void btnSignout() throws IOException {
         Main.setRoot("usersignin");
     }
 
     @FXML
-    private void choiseMade(Event event) {
+    private void choiseMade() {
 
         cbModel.valueProperty().addListener((ov, previous, active) -> {
             newCar.createNewCar(active);
@@ -97,12 +95,12 @@ public class UserBuildProductController {
 
 
     @FXML
-    private void cbClicked(ActionEvent event) {
+    private void cbClicked() {
         newCar.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
     }
 
     @FXML
-    private void btnDone(ActionEvent event) {
+    private void btnDone() {
         try {
             newCar.finishedCar();
         } catch (EmptyComponentException | DuplicateException e) {

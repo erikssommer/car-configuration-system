@@ -1,12 +1,9 @@
 package org.semesteroppgave.controller;
 
 import javafx.concurrent.WorkerStateEvent;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.KeyEvent;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.AdminCreateComponent;
@@ -69,7 +66,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void btnAdd(ActionEvent event) {
+    private void btnAdd() {
         try {
             createComponent.addComponent(lblMessageCreate, tableViewCreate, txtVersion, txtPrice, txtDescription, cbCreate);
         } catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e) {
@@ -80,7 +77,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void btnComplete(ActionEvent event) {
+    private void btnComplete() {
         try {
             createComponent.completeComponent();
         } catch (IOException e) {
@@ -89,7 +86,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void btnDeleteComponent(ActionEvent event) {
+    private void btnDeleteComponent() {
         try {
             createComponent.deleteColumn(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentsList(), true);
         } catch (InvalidDeleteException e) {
@@ -98,7 +95,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void btnDeleteCreate(ActionEvent event) {
+    private void btnDeleteCreate() {
         try {
             createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
         } catch (InvalidDeleteException e) {
@@ -107,7 +104,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void btnSignout(ActionEvent event) throws IOException {
+    private void btnSignout() throws IOException {
         Main.setRoot("adminsignin");
     }
 
@@ -137,7 +134,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void filterChoiceChanged(ActionEvent event) {
+    private void filterChoiceChanged() {
         try {
             componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
         } catch (InvalidPriceException e) {
@@ -146,7 +143,7 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void onKeyTypedSearch(KeyEvent event) {
+    private void onKeyTypedSearch() {
         try {
             componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
         } catch (InvalidPriceException e) {
@@ -155,17 +152,17 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void tabComponent(Event event) {
+    private void tabComponent() {
         menuBar.setVisible(true);
     }
 
     @FXML
-    private void tabCreate(Event event) {
+    private void tabCreate() {
         menuBar.setVisible(false);
     }
 
     @FXML
-    private void openFileMenuClicked(ActionEvent event) {
+    private void openFileMenuClicked() {
         String filePath = FileHandler.getOpenFileJobj();
         if (!filePath.equals("null")){
             startThread(filePath);
@@ -173,8 +170,12 @@ public class AdminComponentController {
     }
 
     @FXML
-    private void saveFileMenuClicked(ActionEvent event) {
-        FileHandler.saveFileJobj();
+    private void saveFileMenuClicked() {
+        if (!tableViewComponents.getItems().isEmpty()){
+            FileHandler.saveFileJobj();
+        }else {
+            Dialogs.showErrorDialog("Fil", "Feil i lagring av liste", "Du kan ikke lagre en tom liste");
+        }
     }
 
     private void startThread(String filePath){
