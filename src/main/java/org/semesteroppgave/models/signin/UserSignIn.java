@@ -1,7 +1,6 @@
 package org.semesteroppgave.models.signin;
 
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.exceptions.InvalidPasswordException;
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 

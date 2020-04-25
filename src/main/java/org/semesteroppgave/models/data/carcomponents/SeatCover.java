@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
- * Atributtene blir ikke serialisert fordi de er alltid de samme ved obbrettelse av nytt objekt
+ * Atributtene blir ikke serialisert fordi de er alltid de samme ved opprettelse av nytt objekt
  */
 
 public class SeatCover extends Component {
