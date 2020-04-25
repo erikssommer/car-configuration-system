@@ -12,6 +12,7 @@ public class Admin extends Person {
         this.employeeId = employeeId;
     }
 
+    // Alle getter og INGEN setter for å gi uforanderlighet
     public String getEmployeeId() {
         return employeeId;
     }

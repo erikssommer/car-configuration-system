@@ -18,6 +18,7 @@ abstract class Person {
         this.password = PersonValidator.testValidPassword(password);
     }
 
+    // Alle getter og INGEN setter for å gi uforanderlighet
     public String getUsername() {
         return username;
     }
