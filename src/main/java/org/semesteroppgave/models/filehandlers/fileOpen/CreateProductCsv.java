@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.filehandlers;
+package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.semesteroppgave.models.data.carcustomization.*;
 import org.semesteroppgave.models.data.carcomponents.*;
