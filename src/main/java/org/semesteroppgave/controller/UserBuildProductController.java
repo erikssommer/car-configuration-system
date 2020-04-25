@@ -75,26 +75,14 @@ public class UserBuildProductController {
     private void choiseMade(Event event) {
 
         cbModel.valueProperty().addListener((ov, previous, active) -> {
-            switch (active) {
-                case "Elektrisk":
-                    newCar.createNewCar("Elektrisk", "universial");
-                    resetChoiceBox(true);
-                    break;
-                case "Diesel":
-                    newCar.createNewCar("Diesel", "universial");
-                    resetChoiceBox(false);
-                    break;
-                case "Hybrid":
-                    newCar.createNewCar("Hybrid", "universial");
-                    resetChoiceBox(false);
-                    break;
-            }
+            newCar.createNewCar(active);
+            resetChoiceBox(active);
         });
     }
 
-    private void resetChoiceBox(boolean state) {
+    private void resetChoiceBox(String model) {
 
-        cbAutopilot.setVisible(state);
+        cbAutopilot.setVisible(model.equals("Elektrisk"));
 
         gridPaneCustom.setDisable(false);
         tableViewComponent.setDisable(false);

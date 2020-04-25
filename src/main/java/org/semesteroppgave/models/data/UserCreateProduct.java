@@ -58,27 +58,27 @@ public class UserCreateProduct {
         this.txtTotalPrice = txtTotalPrice;
     }
 
-    public void createNewCar(String model1, String model2) {
+    public void createNewCar(String model) {
         modelComponentsList.clear();
 
         ApplicationData.getInstance().getRegisterComponent().getComponentsList()
-                .forEach(model -> model.getModel()
+                .forEach(modelList -> modelList.getModel()
                 .stream()
-                .filter(componentModel -> componentModel.equals(model1) || componentModel.equals(model2))
+                .filter(componentModel -> componentModel.equals(model))
                 .forEach(componentModel -> {
-                    modelComponentsList.add(model.getComponent());
-                    setLabelText("Du kan nå velge komponenter til din \n" + model1.toLowerCase() + " bil");
+                    modelComponentsList.add(modelList.getComponent());
+                    setLabelText("Du kan nå velge komponenter til din \n" + model.toLowerCase() + " bil");
         }));
 
         livePriceList = new double[13];
 
-        if ("Elektrisk".equals(model1)) {
+        if (model.equals("Elektrisk")) {
             livePriceList[0] = 1_200_000;
         }
-        if ("Diesel".equals(model1)) {
+        if (model.equals("Diesel")) {
             livePriceList[0] = 400_000;
         }
-        if ("Hybrid".equals(model1)) {
+        if (model.equals("Hybrid")) {
             livePriceList[0] = 850_000;
         }
 
