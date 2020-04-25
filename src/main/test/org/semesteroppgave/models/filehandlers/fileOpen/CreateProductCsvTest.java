@@ -26,7 +26,7 @@ class CreateProductCsvTest {
 
     @Test
     void createElectric() {
-
+        //Oppretter nytt electric objekt
         Product electric = new Electric.Builder("Elektrisk", 1_200_000)
                 .selectedMotor(new Motor("V12", 12300.0, "Denne V12 motoren er slitesterk og har en veldig høy ytelse"))
                 .selectedRim(new Rim("Feit", 3900.0, "Disse felgene er laget av aluminium som gir en fin glans i solen"))
@@ -38,14 +38,15 @@ class CreateProductCsvTest {
                 .withAutopilot(new Autopilot())
                 .build();
 
+        //Leser inn elektisk-objekt fra fil
         Product electricFromFile = testParcer(Paths.get("files/testFiles/testElektrisk.csv"), "Elektrisk");
-
+        //Tester om de er like
         assertEquals(electric.toString(), electricFromFile.toString());
     }
 
     @Test
     void createDiesel() {
-
+        //Oppretter et nytt diesel-objekt
         Product diesel = new Diesel.Builder("Diesel", 400_000)
                 .selectedMotor(new Motor("V12", 12300.0, "Denne V12 motoren er slitesterk og har en veldig høy ytelse"))
                 .selectedRim(new Rim("Feit", 3900.0, "Disse felgene er laget av aluminium som gir en fin glans i solen"))
@@ -57,14 +58,16 @@ class CreateProductCsvTest {
                 .withSunroof(new Sunroof())
                 .build();
 
+        //Leser inn diesel-objekt fra fil
         Product dieselFromFile = testParcer(Paths.get("files/testFiles/testDiesel.csv"), "Diesel");
-
+        //Tester om de er like
         assertEquals(diesel.toString(), dieselFromFile.toString());
     }
 
+    //Her tester vi at de to objektene er ulike
     @Test
     void createHybrid() {
-        //Her tester vi at de to objektene er ulike
+        //Oppretter et nytt hybrid-objekt
         Product hybrid = new Hybrid.Builder("Hybrid", 850_000)
                 .selectedMotor(new Motor("V12", 12300.0, "Denne V12 motoren er slitesterk og har en veldig høy ytelse"))
                 .selectedRim(new Rim("Feit", 3900.0, "Disse felgene er laget av aluminium som gir en fin glans i solen"))
@@ -75,9 +78,10 @@ class CreateProductCsvTest {
                 .selectedFuelContainer(new FuelContainer("100-liter", 10000, "Denne tanken er stor og har god kondens"))
                 .build();
 
+        //Leser inn hybrid-objekt fra fil
         Product hybridFromFile = testParcer(Paths.get("files/testFiles/testHybrid.csv"), "Hybrid");
 
-
+        //Tester om de er like
         assertNotEquals(hybrid.toString(), hybridFromFile.toString());
 
     }
