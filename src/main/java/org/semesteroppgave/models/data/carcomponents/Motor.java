@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Atributtene blir ikke serialisert fordi de er alltid de samme ved opprettelse av nytt objekt
@@ -16,10 +17,7 @@ public class Motor extends Component {
 
     public Motor(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>();
-        this.model.add("Elektrisk");
-        this.model.add("Hybrid");
-        this.model.add("Diesel");
+        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
         this.component = "Motor";
     }
 
@@ -45,10 +43,7 @@ public class Motor extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>();
-        this.model.add("Elektrisk");
-        this.model.add("Hybrid");
-        this.model.add("Diesel");
+        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
         this.component = "Motor";
     }
 }

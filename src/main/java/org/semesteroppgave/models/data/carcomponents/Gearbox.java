@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Atributtene blir ikke serialisert fordi de er alltid de samme ved opprettelse av nytt objekt
@@ -16,9 +18,7 @@ public class Gearbox extends Component {
 
     public Gearbox(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>();
-        this.model.add("Diesel");
-        this.model.add("Hybrid");
+        this.model = new ArrayList<>(Arrays.asList("Diesel", "Hybrid"));
         this.component = "Girboks";
     }
 
@@ -44,8 +44,7 @@ public class Gearbox extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>();
-        this.model.add("Diesel");
+        this.model = new ArrayList<>(Collections.singletonList("Diesel"));
         this.component = "Girboks";
     }
 }
