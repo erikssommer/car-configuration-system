@@ -12,6 +12,7 @@ import org.semesteroppgave.Main;
 import org.semesteroppgave.models.signin.Admin;
 import org.semesteroppgave.models.signin.AdminSignin;
 import org.semesteroppgave.models.signin.User;
+import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.signin.UserSignIn;
@@ -59,19 +60,12 @@ public class UserSignInController {
     @FXML
     private void btnRegister(ActionEvent event) {
         lblRegister.setText("");
-        // Sjekker at brukeren ikke finnes fra før
-        if (userSignIn.checkIfNotExisting(txtUsernameRegister.getText())) {
+        try {
+            userSignIn.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(),
+                    txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
 
-            // Prøver å opprette ny bruker hvis feltene er fylt inn
-            try {
-                userSignIn.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtName.getText(), txtPhonenumber.getText(), txtEmail.getText());
-
-            } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | IOException e) {
-                lblRegister.setText(e.getMessage());
-            }
-        } else {
-            // Feilmelding hvis brukernavn er opptatt
-            lblRegister.setText("Brukeren finnes fra før\nVelg et annet brukernavn");
+        } catch (IllegalArgumentException | IOException e) {
+            lblRegister.setText(e.getMessage());
         }
     }
 
@@ -115,7 +109,8 @@ public class UserSignInController {
     }
 
     private void fileOpeningFailed(WorkerStateEvent e) {
-        lblThreadMessage.setText(e.getSource().getException().getMessage());
+        lblThreadMessage.setText("Feil i tråd");
+        Dialogs.showErrorDialog("Fil", "Feil i åpning av fil", e.getSource().getException().getMessage());
         enableGUI();
     }
 

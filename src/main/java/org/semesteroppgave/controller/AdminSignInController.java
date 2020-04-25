@@ -50,22 +50,12 @@ public class AdminSignInController {
     private void btnRegister(ActionEvent event) {
         lblRegister.setText("");
 
-        // Sjekker om admin-brukernavnet finnes fra før
-        if (adminSignin.checkIfNotExisting(txtUsernameRegister.getText())) {
+        // Prøver å opprette ny admin
+        try {
+            adminSignin.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
 
-            // Prøver å opprette ny admin
-            try {
-                if (adminSignin.testValidEmpNo(txtEmpNo.getText())) {
-                    adminSignin.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
-                } else {
-                    lblRegister.setText("Ansattnummeret er opptatt eller finnes ikke!\nPrøv et annet.");
-                }
-            } catch (InvalidPhonenumberException | InvalidEmailException | InvalidNameException | InvalidUsernameException | InvalidPasswordException | InvalidEmployeeNoException | IOException e) {
-                lblRegister.setText(e.getMessage());
-            }
-
-        } else {
-            lblRegister.setText("Brukeren finnes fra før\n velg et annet brukernavn");
+        } catch (IllegalArgumentException | IOException e) {
+            lblRegister.setText(e.getMessage());
         }
     }
 

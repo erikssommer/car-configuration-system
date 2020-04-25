@@ -1,9 +1,12 @@
 package org.semesteroppgave.models.signin;
 
 import org.semesteroppgave.Main;
+import org.semesteroppgave.models.exceptions.InvalidEmployeeNoException;
+import org.semesteroppgave.models.exceptions.InvalidUsernameException;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,16 +41,6 @@ public class AdminSignin {
         return availableEmpNos;
     }
 
-    public void register(String username, String password, String empNo) throws IOException {
-        Admin newAdmin = new Admin(username, password, empNo);
-        setAdminList(newAdmin);
-        Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
-        saveToFileUsernamePassword();
-        saveToFileInfo();
-        getAvailableEmpNos().remove(empNo);
-        Main.setRoot("adminsignin");
-    }
-
     public void initializeEmpNos() {
         availableEmpNos.clear();
         availableEmpNos.add("A0123");
@@ -62,14 +55,26 @@ public class AdminSignin {
         availableEmpNos.add("A9012");
     }
 
+    public void register(String username, String password, String empNo) throws IOException, IllegalArgumentException {
+        checkIfNotExisting(username); //Kaster et avvik hvis brukernavnet er opptatt
+        testValidEmpNo(empNo); //Kaster et avvik hvis ansattnummeret ikke er gyldig
+        Admin newAdmin = new Admin(username, password, empNo);
+        setAdminList(newAdmin);
+        Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
+        saveToFileUsernamePassword();
+        saveToFileInfo();
+        getAvailableEmpNos().remove(empNo);
+        Main.setRoot("adminsignin");
+    }
+
     // Sjekker om ansattnummer er gyldig
-    public boolean testValidEmpNo(String empNo) {
+    private void testValidEmpNo(String empNo) {
         for (String admin : availableEmpNos) {
             if (admin.matches(empNo)) {
-                return true;
+                return;
             }
         }
-        return false;
+        throw new InvalidEmployeeNoException("Ansattnummeret er ikke gyldig");
     }
 
     public void parseExistingAdmins() {
@@ -93,8 +98,8 @@ public class AdminSignin {
                 adminList.add(newAdmin);
                 availableEmpNos.remove(empNo);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IllegalArgumentException | FileNotFoundException e) {
+            Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av adminfil", e.getMessage());
         }
     }
 
@@ -122,7 +127,7 @@ public class AdminSignin {
         return false;
     }
 
-    public boolean checkIfNotExisting(String username) {
+    private void checkIfNotExisting(String username) {
 
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "adminUsernameAndPassword");
 
@@ -134,15 +139,12 @@ public class AdminSignin {
                 String checkUsername = s.next();
 
                 if (checkUsername.trim().equals(username.trim())) {
-                    System.out.println("\nUsername " + username.trim() + " already exists in file adminUsernameAndPassword");
-                    return false;
+                    throw new InvalidUsernameException("\nBrukernavnet " + username.trim() + " er opptatt\nVelg et nytt");
                 }
             }
-        } catch (Exception e) {
-            System.out.print("No match with username " + username.trim() + " in file adminUsernameAndPassword");
-            System.out.print("Error :" + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.err.print("Error :" + e.getMessage());
         }
-        return true;
     }
 
     // Lagrer admins brukernavn og passord til fil

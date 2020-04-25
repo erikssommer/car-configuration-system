@@ -13,9 +13,9 @@ public class User extends Person {
         if (name.isEmpty()) throw new InvalidNameException("Du må fylle inn navnet");
         if (phonenumber.isEmpty()) throw new InvalidNameException("Du må fylle inn telefonnummeret");
         if (email.isEmpty()) throw new InvalidNameException("Du må fylle inn email");
-        this.name = name;
-        this.phonenumber = phonenumber;
-        this.email = email;
+        this.name = PersonValidator.testValidName(name);
+        this.phonenumber = PersonValidator.testValidPhone(phonenumber);
+        this.email = PersonValidator.testValidEmail(email);
     }
 
     public String getName() {

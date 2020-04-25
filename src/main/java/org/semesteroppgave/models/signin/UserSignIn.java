@@ -33,7 +33,8 @@ public class UserSignIn {
         UserSignIn.activeUsername = activeUsername;
     }
 
-    public void register(String username, String password, String name, String phonenumber, String eMail) throws IOException {
+    public void register(String username, String password, String name, String phonenumber, String eMail) throws IOException, IllegalArgumentException {
+        checkIfNotExisting(username); //Kaster et avvik hvis brukernavn er opptatt
         User newUser = new User(username, password, name, phonenumber, eMail);
         setUserList(newUser);
         Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
@@ -66,8 +67,8 @@ public class UserSignIn {
                 User newUser = new User(username, password, name, phonenumber, email);
                 userList.add(newUser);
             }
-        } catch (InvalidUsernameException | InvalidPasswordException | FileNotFoundException e) {
-            Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av brukerfiler", e.getMessage());
+        } catch (IllegalArgumentException | FileNotFoundException e) {
+            Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av brukerfil", e.getMessage());
         }
     }
 
@@ -95,7 +96,7 @@ public class UserSignIn {
         return false;
     }
 
-    public boolean checkIfNotExisting(String username) {
+    private void checkIfNotExisting(String username) throws InvalidUsernameException {
 
         var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
 
@@ -107,15 +108,12 @@ public class UserSignIn {
                 String checkUsername = s.next();
 
                 if (checkUsername.trim().equals(username.trim())) {
-                    System.out.println("\nUsername " + username.trim() + " already exists in file userUsernameAndPassword");
-                    return false;
+                    throw new InvalidUsernameException("\nBrukernavnet " + username.trim() + " er ikke ledig\nVelg et nytt");
                 }
             }
-        } catch (Exception e) {
-            System.out.print("No match with username " + username.trim() + " in file userUsernameAndPassword");
-            System.out.print("Error :" + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.err.print("Error :" + e.getMessage());
         }
-        return true;
     }
 
     // Lagrer admins brukernavn og passord til fil

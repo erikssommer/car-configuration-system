@@ -8,7 +8,7 @@ import org.semesteroppgave.models.exceptions.*;
 
 public class PersonValidator {
 
-    public static String testValidName(String name) {
+    public static String testValidName(String name) throws InvalidNameException{
         //Støtter navn som består av én til fire ord.
         //De to første navnene kan ha bindestrek mellom navnene. eks: Markus-Johannes Pedersen
         String[] regex = {
