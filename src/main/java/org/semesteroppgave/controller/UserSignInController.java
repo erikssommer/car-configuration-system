@@ -89,7 +89,7 @@ public class UserSignInController {
     private void startThread() {
 
         lblThreadMessage.setText("Laster inn fil...");
-        OpenWithThread openWithThread = new OpenWithThread(progressbar, "src/main/resources/org/semesteroppgave/files/onApplicationLaunch/komponenter.jobj");
+        OpenWithThread openWithThread = new OpenWithThread(progressbar, Main.class.getResource("files/onApplicationLaunch/komponenter.jobj").getFile());
         openWithThread.setOnSucceeded(this::fileOpened);
         openWithThread.setOnFailed(this::fileOpeningFailed);
         Thread thread = new Thread(openWithThread);

@@ -47,7 +47,7 @@ public class FileHandler {
     }
 
     public static void openFileCvsLaunch() {
-        File loadFile = new File("src/main/resources/org/semesteroppgave/files/onApplicationLaunch/produkter.csv");
+        File loadFile = new File(Main.class.getResource("files/onApplicationLaunch/produkter.csv").getFile());
         FileOpener opener = new FileOpenerCsv();
 
         try {
@@ -82,7 +82,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsvOnProgramExit(){
-        File savefile = new File("src/main/resources/org/semesteroppgave/files/onApplicationExit/lagredeProdukter.csv");
+        File savefile = new File(Main.class.getResource("files/onApplicationExit/lagredeProdukter.csv").getFile());
         FileSaver saver = new FileSaverCsv();
 
         try {
@@ -146,7 +146,7 @@ public class FileHandler {
     }
 
     public static void saveFileJobjOnProgramExit(){
-        File savefile = new File("src/main/resources/org/semesteroppgave/files/onApplicationExit/lagredeKomponenter.jobj");
+        File savefile = new File(Main.class.getResource("files/onApplicationExit/lagredeKomponenter.jobj").getFile());
         FileSaver saver = new FileSaverJobj();
 
         try {
@@ -160,7 +160,7 @@ public class FileHandler {
     private static File getFileFromFileChooserSave(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(new File("src/main/resources/org/semesteroppgave/files/onApplicationRunning"));
+        fileChooser.setInitialDirectory(new File(Main.class.getResource("files/onApplicationRunning").getFile()));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
@@ -173,7 +173,7 @@ public class FileHandler {
     private static File getFileFromFileChooserOpen(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(new File("src/main/resources/org/semesteroppgave/files"));
+        fileChooser.setInitialDirectory(new File(Main.class.getResource("files").getFile()));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));

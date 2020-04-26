@@ -1,6 +1,7 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.junit.jupiter.api.Test;
+import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.productcomponents.*;
 import org.semesteroppgave.models.data.productcustomization.*;
 import org.semesteroppgave.models.data.productmodel.*;
@@ -30,7 +31,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn elektisk-objekt fra fil
-        Product electricFromFile = testParcer(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testElektrisk.csv"), "Elektrisk");
+        Product electricFromFile = testParcer(Paths.get(Main.class.getResource("files/testFiles/testElektrisk.csv").getFile()), "Elektrisk");
         //Tester om de er like
         assertEquals(electric.toString(), electricFromFile.toString());
     }
@@ -50,7 +51,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn diesel-objekt fra fil
-        Product dieselFromFile = testParcer(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testDiesel.csv"), "Diesel");
+        Product dieselFromFile = testParcer(Paths.get(Main.class.getResource("files/testFiles/testDiesel.csv").getFile()), "Diesel");
         //Tester om de er like
         assertEquals(diesel.toString(), dieselFromFile.toString());
     }
@@ -70,7 +71,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn hybrid-objekt fra fil
-        Product hybridFromFile = testParcer(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testHybrid.csv"), "Hybrid");
+        Product hybridFromFile = testParcer(Paths.get(Main.class.getResource("files/testFiles/testHybrid.csv").getFile()), "Hybrid");
 
         //Tester om de er like
         assertNotEquals(hybrid.toString(), hybridFromFile.toString());
