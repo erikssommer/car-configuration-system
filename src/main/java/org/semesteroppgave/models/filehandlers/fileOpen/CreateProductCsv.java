@@ -1,8 +1,8 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
-import org.semesteroppgave.models.data.productcustomization.*;
-import org.semesteroppgave.models.data.productcomponents.*;
-import org.semesteroppgave.models.data.productmodel.*;
+import org.semesteroppgave.models.data.customizations.*;
+import org.semesteroppgave.models.data.components.*;
+import org.semesteroppgave.models.data.productmodels.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.exceptions.InvalidProductException;
 

@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;

@@ -6,7 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.productcomponents.Component;
+import org.semesteroppgave.models.data.components.Component;
 
 /**
  * Klasse  og modell for å søke på komponenter i komponentlisten

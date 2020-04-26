@@ -6,7 +6,7 @@ import javafx.stage.FileChooser;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.ComponentSearch;
-import org.semesteroppgave.models.data.productcomponents.Component;
+import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpener;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerCsv;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerJobj;
@@ -47,7 +47,7 @@ public class FileHandler {
     }
 
     public static void openFileCvsLaunch() {
-        File loadFile = Main.getFile("onApplicationLaunch/produkter.csv");
+        File loadFile = getFile("onApplicationLaunch/produkter.csv");
         FileOpener opener = new FileOpenerCsv();
 
         try {
@@ -82,7 +82,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsvOnProgramExit(){
-        File savefile = Main.getFile("onApplicationExit/lagredeProdukter.csv");
+        File savefile = getFile("onApplicationExit/lagredeProdukter.csv");
         FileSaver saver = new FileSaverCsv();
 
         try {
@@ -146,7 +146,7 @@ public class FileHandler {
     }
 
     public static void saveFileJobjOnProgramExit(){
-        File savefile = Main.getFile("onApplicationExit/lagredeKomponenter.jobj");
+        File savefile = getFile("onApplicationExit/lagredeKomponenter.jobj");
         FileSaver saver = new FileSaverJobj();
 
         try {
@@ -160,7 +160,7 @@ public class FileHandler {
     private static File getFileFromFileChooserSave(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(Main.getFile("onApplicationRunning"));
+        fileChooser.setInitialDirectory(getFile("onApplicationRunning"));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
@@ -186,6 +186,10 @@ public class FileHandler {
     private static String getFileExt(File file) {
         String fileName = file.getName();
         return fileName.substring(fileName.lastIndexOf('.'));
+    }
+
+    public static File getFile(String filepath){
+        return new File("src/main/resources/org/semesteroppgave/files/" + filepath);
     }
 
 }

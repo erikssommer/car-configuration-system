@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.productcomponents;
+package org.semesteroppgave.models.data.components;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

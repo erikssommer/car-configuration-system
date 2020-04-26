@@ -2,7 +2,7 @@ package org.semesteroppgave.models.filehandlers.fileOpen;
 
 
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.productmodel.*;
+import org.semesteroppgave.models.data.productmodels.*;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 

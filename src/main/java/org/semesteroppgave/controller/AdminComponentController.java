@@ -8,7 +8,7 @@ import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.AdminCreateComponent;
 import org.semesteroppgave.models.data.ComponentSearch;
-import org.semesteroppgave.models.data.productcomponents.Component;
+import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.admin.AdminSignin;

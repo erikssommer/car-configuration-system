@@ -1,7 +1,7 @@
 package org.semesteroppgave.models.data;
 
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
 import org.semesteroppgave.models.exceptions.InvalidVersionException;
 

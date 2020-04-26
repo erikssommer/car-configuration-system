@@ -1,6 +1,6 @@
-package org.semesteroppgave.models.data.productmodel;
+package org.semesteroppgave.models.data.productmodels;
 
-import org.semesteroppgave.models.data.productcomponents.*;
+import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;

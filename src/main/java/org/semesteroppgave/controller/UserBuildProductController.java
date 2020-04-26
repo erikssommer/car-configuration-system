@@ -9,7 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.UserCreateProduct;
-import org.semesteroppgave.models.data.productcomponents.Component;
+import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.signin.user.UserSignIn;

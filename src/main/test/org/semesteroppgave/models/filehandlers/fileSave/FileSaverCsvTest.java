@@ -3,12 +3,12 @@ package org.semesteroppgave.models.filehandlers.fileSave;
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.productcomponents.*;
-import org.semesteroppgave.models.data.productcustomization.Autopilot;
-import org.semesteroppgave.models.data.productcustomization.Gps;
-import org.semesteroppgave.models.data.productcustomization.Sunroof;
-import org.semesteroppgave.models.data.productcustomization.Towbar;
-import org.semesteroppgave.models.data.productmodel.*;
+import org.semesteroppgave.models.data.components.*;
+import org.semesteroppgave.models.data.customizations.Autopilot;
+import org.semesteroppgave.models.data.customizations.Gps;
+import org.semesteroppgave.models.data.customizations.Sunroof;
+import org.semesteroppgave.models.data.customizations.Towbar;
+import org.semesteroppgave.models.data.productmodels.*;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -35,7 +35,7 @@ class FileSaverCsvTest {
         FileSaver fileSaver = new FileSaverCsv();
 
         try {
-            fileSaver.save(Paths.get(Main.class.getResource("files/testFiles/testWriteCsv.csv").getFile()));
+            fileSaver.save(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testWriteCsv.csv"));
         } catch (IOException e) {
             e.printStackTrace();
         }

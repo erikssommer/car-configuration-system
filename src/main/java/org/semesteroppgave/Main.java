@@ -42,10 +42,6 @@ public class Main extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    public static File getFile(String filepath){
-        return new File(Main.class.getResource("files/" + filepath).getFile());
-    }
-
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("views/" + fxml + ".fxml"));
         return fxmlLoader.load();

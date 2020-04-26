@@ -12,7 +12,7 @@ class FileOpenerJobjTest {
     void open() {
         FileOpener fileOpener = new FileOpenerJobj();
         try {
-            fileOpener.open(Paths.get(Main.class.getResource("files/testFiles/testOpenJobj.jobj").getFile()));
+            fileOpener.open(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testOpenJobj.jobj"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,7 +2,7 @@ package org.semesteroppgave.models.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.semesteroppgave.models.data.productmodel.Product;
+import org.semesteroppgave.models.data.productmodels.Product;
 
 /**
  * Global klasse (hentes fra ApplicationData) som holder på produktlister

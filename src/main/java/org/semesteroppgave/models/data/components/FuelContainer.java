@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.productcomponents;
+package org.semesteroppgave.models.data.components;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,15 +10,15 @@ import java.util.Arrays;
  * Atributtene blir ikke serialisert fordi de er alltid de samme ved opprettelse av nytt objekt
  */
 
-public class Rim extends Component {
+public class FuelContainer extends Component {
 
     private transient ArrayList<String> model;
     private transient String component;
 
-    public Rim(String version, double price, String description) {
+    public FuelContainer(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
-        this.component = "Felg";
+        this.model = new ArrayList<>(Arrays.asList("Diesel", "Hybrid"));
+        this.component = "Tank";
     }
 
     public ArrayList<String> getModel() {
@@ -43,7 +43,7 @@ public class Rim extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
-        this.component = "Felg";
+        this.model = new ArrayList<>(Arrays.asList("Diesel", "Hybrid"));
+        this.component = "Tank";
     }
 }

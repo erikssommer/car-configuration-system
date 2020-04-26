@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data.productcustomization;
+package org.semesteroppgave.models.data.customizations;
 
 public class Sunroof extends Customization {
 
