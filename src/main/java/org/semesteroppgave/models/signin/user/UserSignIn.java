@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.signin;
+package org.semesteroppgave.models.signin.user;
 
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
@@ -46,8 +46,8 @@ public class UserSignIn {
     public void parseExistingUser() {
         userList.clear();
         // Tar inn info fra bruker-filer
-        var filepathUnamePword = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
-        var filepathUInfo = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userInfo");
+        var filepathUnamePword = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
+        var filepathUInfo = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userInfo");
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepathUInfo)));
@@ -73,7 +73,7 @@ public class UserSignIn {
 
     public boolean verifyLogin(String username, String password) {
 
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
+        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -97,7 +97,7 @@ public class UserSignIn {
 
     private void checkIfNotExisting(String username) throws InvalidUsernameException {
 
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
+        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -117,7 +117,7 @@ public class UserSignIn {
 
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userUsernameAndPassword");
+        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
         } catch (Exception e) {
@@ -127,7 +127,7 @@ public class UserSignIn {
 
     // Lagrer admins info til fil
     private void saveToFileInfo() {
-        var filepath = Paths.get("src/main/java/org/semesteroppgave/models/signin/loginFiles", "userInfo");
+        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userInfo");
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
         } catch (Exception e) {

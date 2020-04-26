@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.signin;
+package org.semesteroppgave.models.utilities.inputhandler;
 
 import org.semesteroppgave.models.exceptions.*;
 

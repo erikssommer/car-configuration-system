@@ -1,6 +1,7 @@
-package org.semesteroppgave.models.signin;
+package org.semesteroppgave.models.signin.admin;
 
 import org.semesteroppgave.models.exceptions.InvalidEmployeeNoException;
+import org.semesteroppgave.models.signin.Person;
 
 public class Admin extends Person {
 

@@ -12,7 +12,7 @@ import org.semesteroppgave.models.data.UserCreateProduct;
 import org.semesteroppgave.models.data.productcomponents.Component;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
-import org.semesteroppgave.models.signin.UserSignIn;
+import org.semesteroppgave.models.signin.user.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;

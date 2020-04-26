@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.signin.Admin;
-import org.semesteroppgave.models.signin.AdminSignin;
+import org.semesteroppgave.models.signin.admin.Admin;
+import org.semesteroppgave.models.signin.admin.AdminSignin;
 
 import java.io.IOException;
 

@@ -5,8 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.signin.User;
-import org.semesteroppgave.models.signin.UserSignIn;
+import org.semesteroppgave.models.signin.user.User;
+import org.semesteroppgave.models.signin.user.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
 

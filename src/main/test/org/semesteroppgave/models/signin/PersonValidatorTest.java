@@ -2,6 +2,7 @@ package org.semesteroppgave.models.signin;
 
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.models.exceptions.*;
+import org.semesteroppgave.models.utilities.inputhandler.PersonValidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

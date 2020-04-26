@@ -1,6 +1,8 @@
-package org.semesteroppgave.models.signin;
+package org.semesteroppgave.models.signin.user;
 
 import org.semesteroppgave.models.exceptions.InvalidNameException;
+import org.semesteroppgave.models.signin.Person;
+import org.semesteroppgave.models.utilities.inputhandler.PersonValidator;
 
 public class User extends Person {
 

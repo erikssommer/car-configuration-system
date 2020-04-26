@@ -11,7 +11,7 @@ import org.semesteroppgave.models.data.ComponentSearch;
 import org.semesteroppgave.models.data.productcomponents.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
-import org.semesteroppgave.models.signin.AdminSignin;
+import org.semesteroppgave.models.signin.admin.AdminSignin;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;

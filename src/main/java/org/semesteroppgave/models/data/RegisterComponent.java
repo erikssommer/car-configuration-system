@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
  * Global klasse (hentes fra ApplicationData) som holder på componentlisten
  * Klassen er serialisert slik at det globale objektet av klassen, funnet i ApplicationData, skal kunne
  * skrives til serialisert jobj-fil
+ * Implementerer writeObject og readObject metodene, slik at Java bruker disse istedenfor standard-metodene
  * Klassen inneholder også søkefunksjon med streams
  */
 
@@ -24,17 +25,6 @@ public class RegisterComponent implements Serializable {
     private static final long serialVersionUID = 1;
 
     private transient ObservableList<Component> componentList = FXCollections.observableArrayList();
-
-    private void writeObject(ObjectOutputStream s) throws IOException, ClassNotFoundException {
-        s.defaultWriteObject();
-        s.writeObject(new ArrayList<>(componentList));
-    }
-
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        List<Component> newComponentList = (List<Component>) s.readObject();
-        componentList = FXCollections.observableArrayList();
-        componentList.addAll(newComponentList);
-    }
 
     public void setComponentList(ObservableList<Component> componentList) {
         this.componentList = componentList;
@@ -65,5 +55,16 @@ public class RegisterComponent implements Serializable {
 
         return componentList.stream().filter(component -> component.getPrice() == (value))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException, ClassNotFoundException {
+        s.defaultWriteObject();
+        s.writeObject(new ArrayList<>(componentList));
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        List<Component> newComponentList = (List<Component>) s.readObject();
+        componentList = FXCollections.observableArrayList();
+        componentList.addAll(newComponentList);
     }
 }
