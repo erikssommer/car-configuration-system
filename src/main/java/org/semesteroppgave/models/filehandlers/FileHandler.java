@@ -47,7 +47,7 @@ public class FileHandler {
     }
 
     public static void openFileCvsLaunch() {
-        File loadFile = new File(Main.class.getResource("files/onApplicationLaunch/produkter.csv").getFile());
+        File loadFile = Main.getFile("onApplicationLaunch/produkter.csv");
         FileOpener opener = new FileOpenerCsv();
 
         try {
@@ -82,7 +82,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsvOnProgramExit(){
-        File savefile = new File(Main.class.getResource("files/onApplicationExit/lagredeProdukter.csv").getFile());
+        File savefile = Main.getFile("onApplicationExit/lagredeProdukter.csv");
         FileSaver saver = new FileSaverCsv();
 
         try {
@@ -146,7 +146,7 @@ public class FileHandler {
     }
 
     public static void saveFileJobjOnProgramExit(){
-        File savefile = new File(Main.class.getResource("files/onApplicationExit/lagredeKomponenter.jobj").getFile());
+        File savefile = Main.getFile("onApplicationExit/lagredeKomponenter.jobj");
         FileSaver saver = new FileSaverJobj();
 
         try {
@@ -160,7 +160,7 @@ public class FileHandler {
     private static File getFileFromFileChooserSave(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(new File(Main.class.getResource("files/onApplicationRunning").getFile()));
+        fileChooser.setInitialDirectory(Main.getFile("onApplicationRunning"));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));

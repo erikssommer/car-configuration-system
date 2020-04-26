@@ -164,6 +164,7 @@ public class AdminComponentController {
     @FXML
     private void openFileMenuClicked() {
         String filePath = FileHandler.getOpenFileJobj();
+        System.out.println(filePath);
         if (!filePath.equals("null")){
             startThread(filePath);
         }

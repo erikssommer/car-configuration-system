@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -39,6 +40,10 @@ public class Main extends Application {
 
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+
+    public static File getFile(String filepath){
+        return new File(Main.class.getResource("files/" + filepath).getFile());
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
