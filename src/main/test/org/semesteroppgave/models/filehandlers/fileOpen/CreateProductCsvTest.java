@@ -30,7 +30,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn elektisk-objekt fra fil
-        Product electricFromFile = testParcer(Paths.get("files/testFiles/testElektrisk.csv"), "Elektrisk");
+        Product electricFromFile = testParcer(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testElektrisk.csv"), "Elektrisk");
         //Tester om de er like
         assertEquals(electric.toString(), electricFromFile.toString());
     }
@@ -50,7 +50,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn diesel-objekt fra fil
-        Product dieselFromFile = testParcer(Paths.get("files/testFiles/testDiesel.csv"), "Diesel");
+        Product dieselFromFile = testParcer(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testDiesel.csv"), "Diesel");
         //Tester om de er like
         assertEquals(diesel.toString(), dieselFromFile.toString());
     }
@@ -70,7 +70,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn hybrid-objekt fra fil
-        Product hybridFromFile = testParcer(Paths.get("files/testFiles/testHybrid.csv"), "Hybrid");
+        Product hybridFromFile = testParcer(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testHybrid.csv"), "Hybrid");
 
         //Tester om de er like
         assertNotEquals(hybrid.toString(), hybridFromFile.toString());

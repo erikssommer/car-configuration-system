@@ -17,7 +17,7 @@ class FileSaverJobjTest {
 
         FileSaver fileSaver = new FileSaverJobj();
         try {
-            fileSaver.save(Paths.get("files/testFiles/testWriteJobj.jobj"));
+            fileSaver.save(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testWriteJobj.jobj"));
         } catch (IOException e) {
             e.printStackTrace();
         }

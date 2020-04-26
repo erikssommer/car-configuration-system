@@ -6,7 +6,6 @@ import javafx.stage.FileChooser;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.ComponentSearch;
-import org.semesteroppgave.models.data.RegisterComponent;
 import org.semesteroppgave.models.data.productcomponents.Component;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpener;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerCsv;
@@ -48,7 +47,7 @@ public class FileHandler {
     }
 
     public static void openFileCvsLaunch() {
-        File loadFile = new File("files/onApplicationLaunch/produkter.csv");
+        File loadFile = new File("src/main/resources/org/semesteroppgave/files/onApplicationLaunch/produkter.csv");
         FileOpener opener = new FileOpenerCsv();
 
         try {
@@ -83,7 +82,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsvOnProgramExit(){
-        File savefile = new File("files/onApplicationExit/lagredeProdukter.csv");
+        File savefile = new File("src/main/resources/org/semesteroppgave/files/onApplicationExit/lagredeProdukter.csv");
         FileSaver saver = new FileSaverCsv();
 
         try {
@@ -147,7 +146,7 @@ public class FileHandler {
     }
 
     public static void saveFileJobjOnProgramExit(){
-        File savefile = new File("files/onApplicationExit/lagredeKomponenter.jobj");
+        File savefile = new File("src/main/resources/org/semesteroppgave/files/onApplicationExit/lagredeKomponenter.jobj");
         FileSaver saver = new FileSaverJobj();
 
         try {
@@ -161,7 +160,7 @@ public class FileHandler {
     private static File getFileFromFileChooserSave(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(new File("files/onApplicationRunning"));
+        fileChooser.setInitialDirectory(new File("src/main/resources/org/semesteroppgave/files/onApplicationRunning"));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
@@ -174,7 +173,7 @@ public class FileHandler {
     private static File getFileFromFileChooserOpen(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(new File("files"));
+        fileChooser.setInitialDirectory(new File("src/main/resources/org/semesteroppgave/files"));
 
         if (mode == DialogMode.Jobj) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));

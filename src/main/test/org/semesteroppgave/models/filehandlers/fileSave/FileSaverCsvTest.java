@@ -34,7 +34,7 @@ class FileSaverCsvTest {
         FileSaver fileSaver = new FileSaverCsv();
 
         try {
-            fileSaver.save(Paths.get("files/testFiles/testWriteCsv.csv"));
+            fileSaver.save(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testWriteCsv.csv"));
         } catch (IOException e) {
             e.printStackTrace();
         }
