@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.user.User;
 import org.semesteroppgave.models.signin.user.UserSignIn;
 import org.semesteroppgave.models.utilities.threadhelper.StartThread;
@@ -41,7 +42,7 @@ public class UserSignInController implements ApplicationThread{
         userSignIn.parseExistingUser();
         if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
             progressbar.setVisible(true);
-            startThread.start(Main.class.getResource("files/onApplicationLaunch/komponenter.jobj").getFile());
+            startThread.start(String.valueOf(FileHandler.getFile("onApplicationLaunch/komponenter.jobj")));
         } else {
             progressbar.setVisible(false);
         }

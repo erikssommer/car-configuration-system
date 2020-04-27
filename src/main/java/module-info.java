@@ -2,7 +2,6 @@ module org.semesteroppgave {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens org.semesteroppgave to javafx.fxml;
     opens org.semesteroppgave.controller to javafx.fxml;
     opens org.semesteroppgave.models.data to javafx.base;
 

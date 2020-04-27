@@ -2,8 +2,8 @@ package org.semesteroppgave.models.filehandlers.fileSave;
 
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.components.Motor;
+import org.semesteroppgave.models.filehandlers.FileHandler;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -18,7 +18,7 @@ class FileSaverJobjTest {
 
         FileSaver fileSaver = new FileSaverJobj();
         try {
-            fileSaver.save(Paths.get("src/main/resources/org/semesteroppgave/files/testFiles/testWriteJobj.jobj"));
+            fileSaver.save(Paths.get(String.valueOf(FileHandler.getFile("testFiles/testWriteJobj.jobj"))));
         } catch (IOException e) {
             e.printStackTrace();
         }

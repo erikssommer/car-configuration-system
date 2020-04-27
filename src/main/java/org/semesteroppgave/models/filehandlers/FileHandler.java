@@ -19,12 +19,12 @@ import java.io.IOException;
 public class FileHandler {
 
     private enum DialogMode {
-        Jobj,
-        Csv,
+        JOBJ,
+        CSV,
     }
 
     public static void openFileCsv() {
-        File selectedFile = getFileFromFileChooserOpen(DialogMode.Csv);
+        File selectedFile = getFileFromFileChooserOpen(DialogMode.CSV);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -58,7 +58,7 @@ public class FileHandler {
     }
 
     public static void saveFileCsv() {
-        File selectedFile = getFileFromFileChooserSave(DialogMode.Csv);
+        File selectedFile = getFileFromFileChooserSave(DialogMode.CSV);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -94,7 +94,7 @@ public class FileHandler {
     }
 
     public static String getOpenFileJobj(){
-        return String.valueOf(getFileFromFileChooserOpen(DialogMode.Jobj));
+        return String.valueOf(getFileFromFileChooserOpen(DialogMode.JOBJ));
     }
 
     public static void openFileJobjThread(String filepath) {
@@ -114,7 +114,7 @@ public class FileHandler {
         ObservableList<Component> originalList = FXCollections.observableArrayList();
 
         originalList.addAll(ApplicationData.getInstance().getRegisterComponent().getComponentList());
-        File selectedFile = getFileFromFileChooserSave(DialogMode.Jobj);
+        File selectedFile = getFileFromFileChooserSave(DialogMode.JOBJ);
 
         //Hvis admin lagrer etter et søk, så blir søkelisten lagret
         if (!componentSearch.getSearchResult().isEmpty()){
@@ -162,7 +162,7 @@ public class FileHandler {
         fileChooser.setTitle("Velg fil");
         fileChooser.setInitialDirectory(getFile("onApplicationRunning"));
 
-        if (mode == DialogMode.Jobj) {
+        if (mode == DialogMode.JOBJ) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
         } else {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
@@ -173,9 +173,9 @@ public class FileHandler {
     private static File getFileFromFileChooserOpen(DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(new File(Main.class.getResource("files").getFile()));
+        fileChooser.setInitialDirectory(getFile(""));
 
-        if (mode == DialogMode.Jobj) {
+        if (mode == DialogMode.JOBJ) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
         } else {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));

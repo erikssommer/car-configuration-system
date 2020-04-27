@@ -1,10 +1,10 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.data.customizations.*;
 import org.semesteroppgave.models.data.productmodels.*;
+import org.semesteroppgave.models.filehandlers.FileHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class CreateProductCsvTest {
 
@@ -31,7 +32,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn elektisk-objekt fra fil
-        Product electricFromFile = testParcer(Paths.get(Main.class.getResource("files/testFiles/testElektrisk.csv").getFile()), "Elektrisk");
+        Product electricFromFile = testParcer(Paths.get(String.valueOf(FileHandler.getFile("testFiles/testElektrisk.csv"))), "Elektrisk");
         //Tester om de er like
         assertEquals(electric.toString(), electricFromFile.toString());
     }
@@ -51,7 +52,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn diesel-objekt fra fil
-        Product dieselFromFile = testParcer(Paths.get(Main.class.getResource("files/testFiles/testDiesel.csv").getFile()), "Diesel");
+        Product dieselFromFile = testParcer(Paths.get(String.valueOf(FileHandler.getFile("testFiles/testDiesel.csv"))), "Diesel");
         //Tester om de er like
         assertEquals(diesel.toString(), dieselFromFile.toString());
     }
@@ -71,7 +72,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn hybrid-objekt fra fil
-        Product hybridFromFile = testParcer(Paths.get(Main.class.getResource("files/testFiles/testHybrid.csv").getFile()), "Hybrid");
+        Product hybridFromFile = testParcer(Paths.get(String.valueOf(FileHandler.getFile("testFiles/testHybrid.csv"))), "Hybrid");
 
         //Tester om de er like
         assertNotEquals(hybrid.toString(), hybridFromFile.toString());

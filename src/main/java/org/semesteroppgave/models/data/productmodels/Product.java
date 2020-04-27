@@ -39,7 +39,7 @@ public abstract class Product {
         this.towbar = builder.towbar;
     }
 
-    @SuppressWarnings("unchecked")//'return (T) this;' gir en 'Unchecked cast', men i dette tilfellet vil det aldri bli kastet et avvik
+    @SuppressWarnings("unchecked")//'return (T) this;' gir en 'Unchecked cast', men i dette tilfellet vil ikke bli kastet et avvik
     public static class Builder<T extends Builder<T>> {
         private final String model; //Denne er viktig, så den legger vi i konstruktøren
         private final double modelPrice; //Denne er viktig, så den legger vi i konstruktøren

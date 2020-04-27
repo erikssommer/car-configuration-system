@@ -2,9 +2,9 @@ package org.semesteroppgave.models.utilities.inputhandler;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.models.exceptions.InvalidComponentException;
-import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
-import org.semesteroppgave.models.exceptions.InvalidVersionException;
+import org.semesteroppgave.models.exceptions.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class InputValidationTest {
 
@@ -25,12 +25,12 @@ class InputValidationTest {
 
     @Test
     void testInvalidVersion() {
-        Assertions.assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion(""));
-        Assertions.assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("000"));
-        Assertions.assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("Dette er ca to tegn for mye"));
-        Assertions.assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("%/?"));
-        Assertions.assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion(" "));
-        Assertions.assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("  "));
+        assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion(""));
+        assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("000"));
+        assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("Dette er ca to tegn for mye"));
+        assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("%/?"));
+        assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion(" "));
+        assertThrows(InvalidVersionException.class, () -> InputValidation.testValidVersion("  "));
     }
 
     @Test
@@ -48,13 +48,13 @@ class InputValidationTest {
 
     @Test
     void testInvalidDescription() {
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription(" "));
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("B"));
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("b"));
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("beskrivelse"));
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("00000"));
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("Beskrivelse på over 100 tegn er en del å skrive, men dette skal begyne å nærme seg noe, bare litt til og litt til"));
-        Assertions.assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("%/?+&#"));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription(" "));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("B"));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("b"));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("beskrivelse"));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("00000"));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("Beskrivelse på over 100 tegn er en del å skrive, men dette skal begyne å nærme seg noe, bare litt til og litt til"));
+        assertThrows(InvalidDescriptionException.class, () -> InputValidation.testValidDescription("%/?+&#"));
     }
 
     @Test
@@ -70,11 +70,11 @@ class InputValidationTest {
 
     @Test
     void testInvalidComponent() {
-        Assertions.assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent(""));
-        Assertions.assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent(" "));
-        Assertions.assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("1"));
-        Assertions.assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("Moto"));
-        Assertions.assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("ank"));
-        Assertions.assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("Understell"));
+        assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent(""));
+        assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent(" "));
+        assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("1"));
+        assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("Moto"));
+        assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("ank"));
+        assertThrows(InvalidComponentException.class, () -> InputValidation.testValidComponent("Understell"));
     }
 }

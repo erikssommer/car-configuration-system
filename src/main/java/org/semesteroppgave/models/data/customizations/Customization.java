@@ -5,8 +5,8 @@ package org.semesteroppgave.models.data.customizations;
  */
 
 public abstract class Customization {
-    private String customProperty;
-    private double price;
+    private final String customProperty;
+    private final double price;
 
     public Customization(String customProperty, double price) {
         this.customProperty = customProperty;
@@ -17,16 +17,8 @@ public abstract class Customization {
         return customProperty;
     }
 
-    public void setCustomProperty(String customProperty) {
-        this.customProperty = customProperty;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String toFile() {
