@@ -1,6 +1,5 @@
 package org.semesteroppgave.controller;
 
-import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -13,16 +12,17 @@ import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.admin.AdminSignin;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
-import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
+import org.semesteroppgave.models.utilities.threadhelper.StartThread;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
 
-public class AdminComponentController {
+public class AdminComponentController implements ApplicationThread {
 
     private final InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
     private final ComponentSearch componentSearch = new ComponentSearch();
     private final AdminCreateComponent createComponent = new AdminCreateComponent(componentSearch);
+    private StartThread startThread;
 
     @FXML
     private Tab tabCreate;
@@ -54,7 +54,9 @@ public class AdminComponentController {
     @FXML
     private final MenuBar menuBar = new MenuBar();
 
+    @Override
     public void initialize() {
+        startThread = new StartThread(this, lblThreadMessage, progressBar);
         tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentList());
         txtPriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
@@ -164,9 +166,10 @@ public class AdminComponentController {
     @FXML
     private void openFileMenuClicked() {
         String filePath = FileHandler.getOpenFileJobj();
-        System.out.println(filePath);
         if (!filePath.equals("null")){
-            startThread(filePath);
+            progressBar.setVisible(true);
+            lblThreadMessage.setVisible(true);
+            startThread.start(filePath);
         }
     }
 
@@ -179,29 +182,7 @@ public class AdminComponentController {
         }
     }
 
-    private void startThread(String filePath){
-        progressBar.setVisible(true);
-        lblThreadMessage.setVisible(true);
-        lblThreadMessage.setText("Laster inn fil...");
-        OpenWithThread openWithThread = new OpenWithThread(progressBar, filePath);
-        openWithThread.setOnSucceeded(this::fileOpened);
-        openWithThread.setOnFailed(this::fileOpeningFailed);
-        Thread thread = new Thread(openWithThread);
-        thread.setDaemon(true);
-        disableGUI();
-        thread.start();
-    }
-
-    private void fileOpened(WorkerStateEvent e) {
-        enableGUI();
-    }
-
-    private void fileOpeningFailed(WorkerStateEvent e) {
-        Dialogs.showErrorDialog("Fil", "Feil i åpning av fil", e.getSource().getException().getMessage());
-        enableGUI();
-    }
-
-    private void disableGUI() {
+    public void disableGUI() {
         tabCreate.setDisable(true);
         txtSearch.setDisable(true);
         cbFilter.setDisable(true);
@@ -211,7 +192,7 @@ public class AdminComponentController {
         tableViewComponents.setDisable(true);
     }
 
-    private void enableGUI() {
+    public void enableGUI() {
         tabCreate.setDisable(false);
         txtSearch.setDisable(false);
         cbFilter.setDisable(false);

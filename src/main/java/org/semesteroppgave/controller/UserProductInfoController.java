@@ -7,11 +7,12 @@ import org.semesteroppgave.Main;
 
 import java.io.IOException;
 
-public class UserProductInfoController {
+public class UserProductInfoController implements ApplicationController{
 
     @FXML
     private TextArea txtInfo;
 
+    @Override
     public void initialize() {
         txtInfo.setText(ApplicationData.getInstance().getRegisterProduct().getSelectedProduct().toString());
     }

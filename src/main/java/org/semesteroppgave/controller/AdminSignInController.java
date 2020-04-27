@@ -9,7 +9,7 @@ import org.semesteroppgave.models.signin.admin.AdminSignin;
 
 import java.io.IOException;
 
-public class AdminSignInController {
+public class AdminSignInController implements ApplicationController{
 
     private final AdminSignin adminSignin = new AdminSignin();
 
@@ -34,6 +34,7 @@ public class AdminSignInController {
     @FXML
     private Label lblRegister;
 
+    @Override
     public void initialize() {
         adminSignin.initializeEmpNos();
         adminSignin.parseExistingAdmins();

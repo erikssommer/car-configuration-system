@@ -1,18 +1,16 @@
 package org.semesteroppgave.controller;
 
-import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.signin.user.User;
 import org.semesteroppgave.models.signin.user.UserSignIn;
-import org.semesteroppgave.models.utilities.alerts.Dialogs;
-import org.semesteroppgave.models.utilities.helpers.OpenWithThread;
+import org.semesteroppgave.models.utilities.threadhelper.StartThread;
 
 import java.io.IOException;
 
-public class UserSignInController {
+public class UserSignInController implements ApplicationThread{
 
     private final UserSignIn userSignIn = new UserSignIn();
 
@@ -37,11 +35,13 @@ public class UserSignInController {
     @FXML
     private ProgressBar progressbar;
 
+    @Override
     public void initialize() {
+        StartThread startThread = new StartThread(this, lblThreadMessage, progressbar);
         userSignIn.parseExistingUser();
         if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
             progressbar.setVisible(true);
-            startThread();
+            startThread.start(Main.class.getResource("files/onApplicationLaunch/komponenter.jobj").getFile());
         } else {
             progressbar.setVisible(false);
         }
@@ -86,30 +86,8 @@ public class UserSignInController {
         lblThreadMessage.setVisible(false);
     }
 
-    private void startThread() {
-
-        lblThreadMessage.setText("Laster inn fil...");
-        OpenWithThread openWithThread = new OpenWithThread(progressbar, Main.class.getResource("files/onApplicationLaunch/komponenter.jobj").getFile());
-        openWithThread.setOnSucceeded(this::fileOpened);
-        openWithThread.setOnFailed(this::fileOpeningFailed);
-        Thread thread = new Thread(openWithThread);
-        thread.setDaemon(true);
-        disableGUI();
-        thread.start();
-    }
-
-    private void fileOpened(WorkerStateEvent e) {
-        lblThreadMessage.setText("Ferdig");
-        enableGUI();
-    }
-
-    private void fileOpeningFailed(WorkerStateEvent e) {
-        lblThreadMessage.setText("Feil i tråd");
-        Dialogs.showErrorDialog("Fil", "Feil i åpning av fil", e.getSource().getException().getMessage());
-        enableGUI();
-    }
-
-    private void disableGUI() {
+    @Override
+    public void disableGUI() {
         tabRegister.setDisable(true);
         txtPasswordLogin.setDisable(true);
         txtUsernameLogin.setDisable(true);
@@ -117,7 +95,8 @@ public class UserSignInController {
         btnAdmin.setDisable(true);
     }
 
-    private void enableGUI() {
+    @Override
+    public void enableGUI() {
         tabRegister.setDisable(false);
         txtPasswordLogin.setDisable(false);
         txtUsernameLogin.setDisable(false);

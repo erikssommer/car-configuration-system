@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.utilities.helpers;
+package org.semesteroppgave.models.utilities.threadhelper;
 
 import javafx.concurrent.Task;
 import javafx.scene.control.ProgressBar;

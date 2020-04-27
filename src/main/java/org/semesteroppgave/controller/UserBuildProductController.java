@@ -17,7 +17,7 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
-public class UserBuildProductController {
+public class UserBuildProductController implements ApplicationController{
 
     private final ObservableList<String> modelChoice = FXCollections.observableArrayList();
     private UserCreateProduct newProduct;
@@ -49,6 +49,7 @@ public class UserBuildProductController {
     @FXML
     private Label lblMessage, lblUsername;
 
+    @Override
     public void initialize() {
         loadChoice();
         newProduct = new UserCreateProduct(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);

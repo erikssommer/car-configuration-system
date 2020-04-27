@@ -14,7 +14,7 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
-public class ConfiguredProductController {
+public class ConfiguredProductController implements ApplicationController{
     @FXML
     private Label lblUsername;
     @FXML
@@ -35,6 +35,7 @@ public class ConfiguredProductController {
     @FXML
     private TableColumn<Product, String> txtMotorColumnMy, txtRimColumnMy, txtSeatcoverColumnMy, txtSpoilerColumnMy, txtTireColumnMy;
 
+    @Override
     public void initialize() {
         setTableColum(txtMotorColumn, txtRimColumn, txtSeatcoverColumn, txtSpoilerColumn, txtTireColumn, txtPriceColumn);
         tableViewConfigs.setItems(ApplicationData.getInstance().getRegisterProduct().getProductList());
