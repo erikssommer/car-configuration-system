@@ -29,7 +29,7 @@ public class Main extends Application {
         //Laster inn ferdiglagde podukter
         loadConfiguredProducts();
         scene = new Scene(loadFXML("usersignin"));
-        stage.setTitle("Bilregistrering");
+        stage.setTitle("dataMet Bilkonfigurering");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setWidth(750);

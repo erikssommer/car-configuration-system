@@ -35,14 +35,4 @@ public enum Custom {
     public String toFile() {
         return getCustomProperty() + ";" + getPrice();
     }
-
-    public boolean equals(Custom obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else {
-            return (obj.getCustomProperty().equals(customProperty) && obj.getPrice() == price);
-        }
-    }
 }
