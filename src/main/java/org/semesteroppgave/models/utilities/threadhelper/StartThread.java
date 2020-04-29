@@ -35,6 +35,7 @@ public class StartThread {
     }
 
     private void fileOpeningFailed(WorkerStateEvent e) {
+        lblThreadMessage.setText("Feil i tråd");
         Dialogs.showErrorDialog("Fil", "Feil i åpning av fil", e.getSource().getException().getMessage());
         applicationThread.enableGUI();
     }

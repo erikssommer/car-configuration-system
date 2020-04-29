@@ -34,6 +34,11 @@ public class FuelContainer extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 6;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

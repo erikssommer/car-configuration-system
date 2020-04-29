@@ -34,6 +34,11 @@ public class Battery extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 5;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

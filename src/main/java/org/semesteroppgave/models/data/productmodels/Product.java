@@ -22,9 +22,9 @@ public abstract class Product {
     private final SeatCover seatcover; //Påkreves
     private final Spoiler spoiler; //Påkreves
     private final Tires tires; //Påkreves
-    private final Gps gps; //Valgfri
-    private final Sunroof sunroof; //Valgfri
-    private final Towbar towbar; //Valgfri
+    private final Custom gps; //Valgfri
+    private final Custom sunroof; //Valgfri
+    private final Custom towbar; //Valgfri
 
     protected Product(Builder<?> builder) {
         this.model = builder.model;
@@ -48,9 +48,9 @@ public abstract class Product {
         private SeatCover seatcover;
         private Spoiler spoiler;
         private Tires tires;
-        private Gps gps;
-        private Sunroof sunroof;
-        private Towbar towbar;
+        private Custom gps;
+        private Custom sunroof;
+        private Custom towbar;
 
         public Builder(String model, double modelPrice) {
             this.model = model;
@@ -92,19 +92,19 @@ public abstract class Product {
             return (T) this;
         }
 
-        public T withGps(Gps gps) {
+        public T withGps(Custom gps) {
             this.gps = gps;
 
             return (T) this;
         }
 
-        public T withSunroof(Sunroof sunroof) {
+        public T withSunroof(Custom sunroof) {
             this.sunroof = sunroof;
 
             return (T) this;
         }
 
-        public T withTowbar(Towbar towbar) {
+        public T withTowbar(Custom towbar) {
             this.towbar = towbar;
 
             return (T) this;
@@ -141,15 +141,15 @@ public abstract class Product {
         return tires;
     }
 
-    public Gps getGps() {
+    public Custom getGps() {
         return this.gps;
     }
 
-    public Sunroof getSunroof() {
+    public Custom getSunroof() {
         return this.sunroof;
     }
 
-    public Towbar getTowbar() {
+    public Custom getTowbar() {
         return this.towbar;
     }
 
@@ -173,7 +173,7 @@ public abstract class Product {
 
     //Metode som støtter toString metodene til underklassene til Car
     //For å unngå duplikat kode
-    public String testCustom(DecimalFormat df, Autopilot autopilot) {
+    public String testCustom(DecimalFormat df, Custom autopilot) {
 
         String message = "";
         if (getGps() != null) {
@@ -196,7 +196,7 @@ public abstract class Product {
         return message;
     }
 
-    public String customToFile(Autopilot autopilot) {
+    public String customToFile(Custom autopilot) {
         String message = "";
         if (getGps() != null) {
             message += getGps().toFile() + ";";

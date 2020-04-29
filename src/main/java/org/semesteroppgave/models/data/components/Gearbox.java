@@ -35,6 +35,11 @@ public class Gearbox extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 7;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

@@ -25,10 +25,10 @@ class UserCreateProductTest {
                 .selectedSpoiler(new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart"))
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedBattery(new Battery("80 kWh", 15000, "EL-bilbatteri med rekkevidde på 500 km"))
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
                 .withTowbar(null) //Null er tillat her
-                .withAutopilot(new Autopilot())
+                .withAutopilot(Custom.AUTOPILOT)
                 .build();
 
         new Electric.Builder("Elektrisk", 1_200_000)
@@ -38,7 +38,7 @@ class UserCreateProductTest {
                 .selectedSpoiler(new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart"))
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedBattery(new Battery("80 kWh", 15000, "EL-bilbatteri med rekkevidde på 500 km"))
-                .withGps(new Gps())
+                .withGps(Custom.GPS)
                 .build();
 
         new Hybrid.Builder("Hybrid", 850_000)
@@ -63,10 +63,10 @@ class UserCreateProductTest {
                 .selectedSpoiler(new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart"))
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedBattery(null) //Null er ikke tillat her
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
-                .withTowbar(new Towbar())
-                .withAutopilot(new Autopilot())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
+                .withTowbar(Custom.TOWBAR)
+                .withAutopilot(Custom.AUTOPILOT)
                 .build());
 
         assertThrows(EmptyComponentException.class, () -> new Diesel.Builder("Diesel", 400_000)
@@ -76,9 +76,9 @@ class UserCreateProductTest {
                 .selectedSpoiler(new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart"))
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedGearbox(new Gearbox("Sporsautomat", 25000, "Automatgir som gir raske girskift og høy ytelse"))
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
-                .withTowbar(new Towbar())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
+                .withTowbar(Custom.TOWBAR)
                 .build());
 
         assertThrows(EmptyComponentException.class, () -> new Hybrid.Builder("Hybrid", 400_000)
@@ -89,9 +89,9 @@ class UserCreateProductTest {
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedBattery(new Battery("80 kWh", 15000, "EL-bilbatteri med rekkevidde på 500 km"))
                 .selectedFuelContainer(new FuelContainer("40-liter", 5000, "Drivstofftank som er stor nok for de aller fleste"))
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
-                .withTowbar(new Towbar())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
+                .withTowbar(Custom.TOWBAR)
                 .build());
     }
 
@@ -106,10 +106,10 @@ class UserCreateProductTest {
                 .selectedSpoiler(new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart"))
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedBattery(null) //Null er ikke tillat her
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
-                .withTowbar(new Towbar())
-                .withAutopilot(new Autopilot())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
+                .withTowbar(Custom.TOWBAR)
+                .withAutopilot(Custom.AUTOPILOT)
                 .build());
     }
 
@@ -124,10 +124,10 @@ class UserCreateProductTest {
                 .selectedSpoiler(new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart"))
                 .selectedTires(new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre"))
                 .selectedBattery(new Battery("80 kWh", 15000, "EL-bilbatteri med rekkevidde på 500 km"))
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
                 .withTowbar(null)
-                .withAutopilot(new Autopilot())
+                .withAutopilot(Custom.AUTOPILOT)
                 .build());
     }
 

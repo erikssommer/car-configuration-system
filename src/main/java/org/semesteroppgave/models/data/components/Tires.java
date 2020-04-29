@@ -34,6 +34,11 @@ public class Tires extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 4;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

@@ -16,9 +16,9 @@ public class CreateProductCsv {
     private Battery battery;
     private FuelContainer fuelContainer;
 
-    private Gps gps;
-    private Sunroof sunroof;
-    private Towbar towbar;
+    private Custom gps;
+    private Custom sunroof;
+    private Custom towbar;
 
 
     public Electric createElectric(String[] object) throws IllegalArgumentException {
@@ -26,9 +26,9 @@ public class CreateProductCsv {
         commonCustom(object);
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
 
-        Autopilot autopilot = null;
+        Custom autopilot = null;
         if (object[32].equals("Autopilot")) {
-            autopilot = new Autopilot();
+            autopilot = Custom.AUTOPILOT;
         } else if (!object[32].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[32] + " støttes ikke");
         }
@@ -103,19 +103,19 @@ public class CreateProductCsv {
         sunroof = null;
         //Tester om produktet skal ha tilpasningen
         if (object[26].equals("GPS-system")) {
-            gps = new Gps();
+            gps = Custom.GPS;
         } else if (!object[26].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[26] + " støttes ikke");
         }
 
         if (object[28].equals("Soltak")) {
-            sunroof = new Sunroof();
+            sunroof = Custom.SUNROOF;
         } else if (!object[28].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[28] + " støttes ikke");
         }
 
         if (object[30].equals("Tillhengerfeste")) {
-            towbar = new Towbar();
+            towbar = Custom.TOWBAR;
         } else if (!object[30].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[30] + " støttes ikke");
         }

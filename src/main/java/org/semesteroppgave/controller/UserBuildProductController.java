@@ -3,6 +3,7 @@ package org.semesteroppgave.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -10,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.UserCreateProduct;
 import org.semesteroppgave.models.data.components.Component;
+import org.semesteroppgave.models.data.customizations.Custom;
 import org.semesteroppgave.models.exceptions.DuplicateException;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.signin.user.UserSignIn;
@@ -90,14 +92,7 @@ public class UserBuildProductController implements ApplicationController{
         cbGps.setSelected(false);
         cbSunroof.setSelected(false);
         cbTowbar.setSelected(false);
-        newProduct.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
         newProduct.updateLivePrice();
-    }
-
-
-    @FXML
-    private void cbClicked() {
-        newProduct.customization(cbAutopilot, cbTowbar, cbSunroof, cbGps);
     }
 
     @FXML
@@ -114,5 +109,25 @@ public class UserBuildProductController implements ApplicationController{
         modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
         cbModel.getItems().addAll(modelChoice);
         cbModel.setPromptText("Velg modell");
+    }
+
+    @FXML
+    public void cbGps(ActionEvent event) {
+        newProduct.customization(cbGps, Custom.GPS);
+    }
+
+    @FXML
+    public void cbSunroof(ActionEvent event) {
+        newProduct.customization(cbSunroof, Custom.SUNROOF);
+    }
+
+    @FXML
+    public void cbTowbar(ActionEvent event) {
+        newProduct.customization(cbTowbar, Custom.TOWBAR);
+    }
+
+    @FXML
+    public void cbAutopilot(ActionEvent event) {
+        newProduct.customization(cbAutopilot, Custom.AUTOPILOT);
     }
 }

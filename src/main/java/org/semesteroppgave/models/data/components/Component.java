@@ -35,6 +35,8 @@ public abstract class Component implements Serializable {
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
     }
 
+    public abstract int getIndex();
+
     public abstract ArrayList<String> getModel();
 
     public abstract String getComponent();

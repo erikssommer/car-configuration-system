@@ -21,10 +21,10 @@ class FileSaverCsvTest {
                 .selectedSpoiler(new Spoiler("Høy", 1000, "Denne spoileren gir ekstra fart ettersom den er meget høy"))
                 .selectedTires(new Tires("Sommer", 1500.0, "Disse sommerdekkene er veldig slitesterke"))
                 .selectedBattery(new Battery("Li-ion", 10000.0, "Li-ion batteri er miljøvennlige og har lang rekkevidde"))
-                .withGps(new Gps())
-                .withSunroof(new Sunroof())
-                .withTowbar(new Towbar())
-                .withAutopilot(new Autopilot())
+                .withGps(Custom.GPS)
+                .withSunroof(Custom.SUNROOF)
+                .withTowbar(Custom.TOWBAR)
+                .withAutopilot(Custom.AUTOPILOT)
                 .build();
 
         ApplicationData.getInstance().getRegisterProduct().setUserProductList(testProduct);

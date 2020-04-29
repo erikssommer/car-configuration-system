@@ -32,6 +32,10 @@ public class Rim extends Component {
     public void setComponent(String component) {
         this.component = component;
     }
+    @Override
+    public int getIndex() {
+        return 1;
+    }
 
     @Override
     public String toString() {

@@ -34,6 +34,11 @@ public class SeatCover extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 2;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

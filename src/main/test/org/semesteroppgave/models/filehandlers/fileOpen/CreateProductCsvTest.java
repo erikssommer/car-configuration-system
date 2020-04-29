@@ -27,8 +27,8 @@ class CreateProductCsvTest {
                 .selectedSpoiler(new Spoiler("Høy", 1000, "Denne spoileren gir ekstra fart ettersom den er meget høy"))
                 .selectedTires(new Tires("Sommer", 1500.0, "Disse sommerdekkene er veldig slitesterke"))
                 .selectedBattery(new Battery("Li-ion", 10000.0, "Li-ion batteri er miljøvennlige og har lang rekkevidde"))
-                .withGps(new Gps())
-                .withAutopilot(new Autopilot())
+                .withGps(Custom.GPS)
+                .withAutopilot(Custom.AUTOPILOT)
                 .build();
 
         //Leser inn elektisk-objekt fra fil
@@ -48,7 +48,7 @@ class CreateProductCsvTest {
                 .selectedTires(new Tires("Sommer", 1500.0, "Disse sommerdekkene er veldig slitesterke"))
                 .selectedGearbox(new Gearbox("Automat", 5000, "Automat girboks er dyrere enn manuell, men er mer komportabelt"))
                 .selectedFuelContainer(new FuelContainer("100-liter", 10000, "Denne tanken er stor og har god kondens"))
-                .withSunroof(new Sunroof())
+                .withSunroof(Custom.SUNROOF)
                 .build();
 
         //Leser inn diesel-objekt fra fil

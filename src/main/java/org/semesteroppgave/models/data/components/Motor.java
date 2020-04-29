@@ -34,6 +34,11 @@ public class Motor extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

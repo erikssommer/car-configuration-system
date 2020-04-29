@@ -34,6 +34,11 @@ public class Spoiler extends Component {
     }
 
     @Override
+    public int getIndex() {
+        return 3;
+    }
+
+    @Override
     public String toString() {
         return super.getVersion();
     }

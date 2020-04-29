@@ -78,10 +78,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-            <CheckBox fx:id="cbGps" mnemonicParsing="false" onAction="#cbClicked" text="GPS" />
-            <CheckBox fx:id="cbTowbar" mnemonicParsing="false" onAction="#cbClicked" text="Henger" GridPane.rowIndex="1" />
-            <CheckBox fx:id="cbSunroof" mnemonicParsing="false" onAction="#cbClicked" text="Soltak" GridPane.columnIndex="1" />
-            <CheckBox fx:id="cbAutopilot" mnemonicParsing="false" onAction="#cbClicked" text="Autopilot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="cbGps" mnemonicParsing="false" onAction="#cbGps" text="GPS" />
+            <CheckBox fx:id="cbTowbar" mnemonicParsing="false" onAction="#cbTowbar" text="Henger" GridPane.rowIndex="1" />
+            <CheckBox fx:id="cbSunroof" mnemonicParsing="false" onAction="#cbSunroof" text="Soltak" GridPane.columnIndex="1" />
+            <CheckBox fx:id="cbAutopilot" mnemonicParsing="false" onAction="#cbAutopilot" text="Autopilot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </GridPane>
    <Label fx:id="lblUsername" layoutX="618.0" layoutY="35.0" prefHeight="17.0" prefWidth="127.0" />
    <Label layoutX="575.0" layoutY="35.0" text="Bruker:" />

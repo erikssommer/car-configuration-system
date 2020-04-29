@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Electric extends Product {
 
     private final Battery battery; //Påkreves
-    private final Autopilot autopilot; //Valgfri
+    private final Custom autopilot; //Valgfri
 
     public Electric(Builder builder) {
         super(builder);
@@ -20,7 +20,7 @@ public class Electric extends Product {
 
     public static class Builder extends Product.Builder<Builder> {
         private Battery battery;
-        private Autopilot autopilot;
+        private Custom autopilot;
 
         public Builder(String model, double modelPrice) {
             super(model, modelPrice);
@@ -33,7 +33,7 @@ public class Electric extends Product {
             return this;
         }
 
-        public Builder withAutopilot(Autopilot autopilot) {
+        public Builder withAutopilot(Custom autopilot) {
             this.autopilot = autopilot;
 
             return this;
@@ -49,7 +49,7 @@ public class Electric extends Product {
         return battery;
     }
 
-    public Autopilot getAutopilot() {
+    public Custom getAutopilot() {
         return autopilot;
     }
 
