@@ -3,7 +3,6 @@ package org.semesteroppgave.controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -112,22 +111,22 @@ public class UserBuildProductController implements ApplicationController{
     }
 
     @FXML
-    public void cbGps(ActionEvent event) {
+    public void cbGps() {
         newProduct.customization(cbGps, Custom.GPS);
     }
 
     @FXML
-    public void cbSunroof(ActionEvent event) {
+    public void cbSunroof() {
         newProduct.customization(cbSunroof, Custom.SUNROOF);
     }
 
     @FXML
-    public void cbTowbar(ActionEvent event) {
+    public void cbTowbar() {
         newProduct.customization(cbTowbar, Custom.TOWBAR);
     }
 
     @FXML
-    public void cbAutopilot(ActionEvent event) {
+    public void cbAutopilot() {
         newProduct.customization(cbAutopilot, Custom.AUTOPILOT);
     }
 }
