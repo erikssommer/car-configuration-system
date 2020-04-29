@@ -35,6 +35,7 @@ public abstract class Component implements Serializable {
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
     }
 
+    //Index som angir posisjon i array ved oppretting av nytt produkt
     public abstract int getIndex();
 
     public abstract ArrayList<String> getModel();

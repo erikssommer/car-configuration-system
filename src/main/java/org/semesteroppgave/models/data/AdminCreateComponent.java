@@ -61,37 +61,6 @@ public class AdminCreateComponent {
 
         duplicateComponent(newComponent);
 
-        Motor motor = new Motor("V12",12300,"Denne V12 motoren er slitesterk og har en veldig høy ytelse");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(motor);
-        Motor motor2 = new Motor("V8",1230,"Denne V8 motoren er lett å vedlikeholde og lager lite lyd");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(motor2);
-        Rim rim = new Rim("Feit",3900,"Disse felgene er laget av aluminium som gir en fin glans i solen");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(rim);
-        SeatCover seatCover = new SeatCover("Mykt",123,"Dette setetrekket er veldig komfortabelt under lange kjøreturer");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(seatCover);
-        SeatCover seatCover2 = new SeatCover("Sport",12300,"Dette setetrekket er for deg som er ute etter fart. Mindre behagelig over tid");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(seatCover2);
-        Spoiler spoiler = new Spoiler("Høy",1000,"Denne spoileren gir ekstra fart ettersom den er meget høy");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(spoiler);
-        Spoiler spoiler2 = new Spoiler("Lav",500,"Denne spoileren gir mindre fart men god luftmotstand");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(spoiler2);
-        Tires tires = new Tires("Vinter",1000,"Disse vinterdekkene er gode på alle typer snø og is");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(tires);
-        Tires tires2 = new Tires("Sommer",1500,"Disse sommerdekkene er veldig slitesterke");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(tires2);
-        Tires tires3 = new Tires("Alround",2000,"Disse dekkene er gode på alle forhold og underlag");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(tires3);
-        Gearbox gearbox = new Gearbox("Manuell",3000,"Manuell girboks er billigere enn automat, og du kan lettere kontrolere bilen");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(gearbox);
-        Gearbox gearbox2 = new Gearbox("Automat",5000,"Automat girboks er dyrere enn manuell, men er mer komportabelt");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(gearbox2);
-        Battery battery = new Battery("Li-ion",10000,"Li-ion batteri er miljøvennlige og har lang rekkevidde");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(battery);
-        FuelContainer fuelContainer = new FuelContainer("50-liter",5000,"Denne tanken er liten og lett");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(fuelContainer);
-        FuelContainer fuelContainer2 = new FuelContainer("100-liter",10000,"Denne tanken er stor og har god kondens");
-        ApplicationData.getInstance().getRegisterComponent().setComponentList(fuelContainer2);
-
         if (newComponent != null) {
             createComponentList.add(newComponent);
             tableViewAddedConfig.setItems(createComponentList);
