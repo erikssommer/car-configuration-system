@@ -6,6 +6,12 @@ import javafx.scene.control.ProgressBar;
 import org.semesteroppgave.controller.ApplicationThread;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
+/**
+ * Modell for controllerne som behandler tråder
+ * Her blir ApplicationThread interfacet brukt til å aktivere gui etter trådbehandling
+ * Klassen kaller på OpenWithThread som en tråd
+ */
+
 public class StartThread {
 
     private final ApplicationThread applicationThread;

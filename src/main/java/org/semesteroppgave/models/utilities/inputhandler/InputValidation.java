@@ -6,6 +6,10 @@ import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
+/**
+ * Klasse for validering av input ved opprettelse/redigering av objekt
+ */
+
 public class InputValidation {
 
     public static String testValidVersion(String input) {

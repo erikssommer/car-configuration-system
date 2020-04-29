@@ -12,6 +12,11 @@ import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
 
+/**
+ * Klasse for opprettelse av komponenter og redigering i tableview
+ * Modell til AdminComponentController
+ */
+
 public class AdminCreateComponent {
     //Liste over alle komponentene
     private final ObservableList<Component> createComponentList = FXCollections.observableArrayList();
@@ -73,6 +78,7 @@ public class AdminCreateComponent {
         }
     }
 
+    //Teser om komponenter finnes fra før
     private void duplicateComponent(Component component) throws IllegalArgumentException {
 
         for (Component createComponent : createComponentList) {

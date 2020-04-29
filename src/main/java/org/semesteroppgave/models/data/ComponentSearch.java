@@ -9,8 +9,8 @@ import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.models.data.components.Component;
 
 /**
- * Klasse  og modell for å søke på komponenter i komponentlisten
- * Koblet til AdminComponentController
+ * Klasse for å søke på komponenter i komponentlisten
+ * Model til AdminComponentController
  */
 
 public class ComponentSearch {

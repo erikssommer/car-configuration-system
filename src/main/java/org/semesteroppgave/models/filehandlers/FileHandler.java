@@ -16,6 +16,10 @@ import org.semesteroppgave.models.filehandlers.fileSave.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Klasse som tar seg av filhåndering for både .jobj og.csv - filer
+ */
+
 public class FileHandler {
 
     private enum DialogMode {

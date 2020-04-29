@@ -9,6 +9,11 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Klasse som leser fra serialisert jobj-fil og oppretter componenter
+ * Legger komponentene inn i komponentlisten
+ */
+
 public class FileOpenerJobj implements FileOpener {
 
     @Override

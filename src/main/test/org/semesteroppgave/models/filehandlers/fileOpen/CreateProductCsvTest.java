@@ -15,6 +15,10 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * Test av opprettelse av produkter fra csv-fil
+ */
+
 class CreateProductCsvTest {
 
     @Test

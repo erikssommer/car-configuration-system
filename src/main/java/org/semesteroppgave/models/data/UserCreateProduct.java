@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
 /**
- * Modellen for opprettelse av produkt på brukeren sin side.
+ * Modell for opprettelse av produkt på brukeren sin side.
  * Er koblet til UserBuildProductController
  */
 

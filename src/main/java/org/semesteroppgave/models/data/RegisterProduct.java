@@ -7,15 +7,13 @@ import org.semesteroppgave.models.data.productmodels.Product;
 /**
  * Global klasse (hentes fra ApplicationData) som holder på produktlister
  * Listen productList er alle tidligere konfigurerte biler
- * Listen myProdyctList er min konfigurerte bil
+ * Listen userProductList er liste som inneholder alle produkter opprettet av bruker
  * Objektet selectedProduct er den bilen som skal vises mer informasjon om
  */
 
 public class RegisterProduct {
 
-    //Liste som inneholder ferdilagde produkter
     private final ObservableList<Product> productList = FXCollections.observableArrayList();
-    //Liste som inneholder alle produkter opprettet av bruker
     private final ObservableList<Product> userProductList = FXCollections.observableArrayList();
     private Product selectedProduct;
 

@@ -10,6 +10,10 @@ import org.semesteroppgave.models.filehandlers.FileHandler;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+/**
+ * Test for lagring av csv-fil
+ */
+
 class FileSaverCsvTest {
 
     @Test

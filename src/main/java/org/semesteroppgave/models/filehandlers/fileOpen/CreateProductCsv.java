@@ -6,6 +6,10 @@ import org.semesteroppgave.models.data.productmodels.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.exceptions.InvalidProductException;
 
+/**
+ * Klasse som oppretter nye product-objekter fra csv-fil
+ */
+
 public class CreateProductCsv {
 
     private Motor motor;

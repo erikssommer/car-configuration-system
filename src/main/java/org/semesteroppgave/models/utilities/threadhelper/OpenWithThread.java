@@ -4,6 +4,12 @@ import javafx.concurrent.Task;
 import javafx.scene.control.ProgressBar;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 
+/**
+ * Klasse som behandler filer i egen tråd
+ * Utvides av Task
+ * Returnerer void ettersom filbehandlingen legger objektene rett inn i lister og ikke blir returnert
+ */
+
 public class OpenWithThread extends Task<Void> {
 
     private final ProgressBar progressBar;

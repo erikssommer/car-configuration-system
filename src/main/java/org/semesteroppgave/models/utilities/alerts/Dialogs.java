@@ -2,6 +2,10 @@ package org.semesteroppgave.models.utilities.alerts;
 
 import javafx.scene.control.Alert;
 
+/**
+ * Dialogbokser som gir informasjon til bruker ved popup-bokser
+ */
+
 public class Dialogs {
 
     public static void showErrorDialog(String errorTitle, String errorHeader, String errorContent) {

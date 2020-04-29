@@ -6,6 +6,10 @@ import org.semesteroppgave.models.utilities.inputhandler.PersonValidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test for inputvalidering av bruker og admin
+ */
+
 class PersonValidatorTest {
 
     @Test

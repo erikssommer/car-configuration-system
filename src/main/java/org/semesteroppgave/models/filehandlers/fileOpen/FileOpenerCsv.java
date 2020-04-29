@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Klasse som leser inn fra csv-fil og oppretter produkter
+ */
+
 public class FileOpenerCsv implements FileOpener {
 
     CreateProductCsv create = new CreateProductCsv();
@@ -31,6 +35,11 @@ public class FileOpenerCsv implements FileOpener {
         }
     }
 
+    /**
+     * @param line rekke med som splittes med ;
+     * @return returnerer produktet ferdig opprettet
+     * @throws IllegalArgumentException hvis det er gal informasjon i csv-filen
+     */
     private Product parseProduct(String line) throws IllegalArgumentException {
         Product productRead;
         String[] split = line.split(";");

@@ -6,6 +6,10 @@ import org.semesteroppgave.models.exceptions.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test av inputvalidering for opprettelse av nye komponenter
+ */
+
 class InputValidationTest {
 
     @Test

@@ -2,6 +2,7 @@ package org.semesteroppgave.models.signin.user;
 
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
+import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.File;
@@ -11,6 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+/**
+ * Modell for bruker
+ */
 
 public class UserSignIn {
     private final ArrayList<User> userList = new ArrayList<>();
@@ -46,8 +51,8 @@ public class UserSignIn {
     public void parseExistingUser() {
         userList.clear();
         // Tar inn info fra bruker-filer
-        var filepathUnamePword = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
-        var filepathUInfo = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userInfo");
+        var filepathUnamePword = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
+        var filepathUInfo = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepathUInfo)));
@@ -73,7 +78,7 @@ public class UserSignIn {
 
     public boolean verifyLogin(String username, String password) {
 
-        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -88,16 +93,15 @@ public class UserSignIn {
                     return true;
                 }
             }
-        } catch (Exception e) {
-            System.out.print("No match with username " + username.trim() + " in file userUsernameAndPassword");
-            System.out.print("Error :" + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.err.print("Error :" + e.getMessage());
         }
         return false;
     }
 
     private void checkIfNotExisting(String username) throws InvalidUsernameException {
 
-        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -117,7 +121,7 @@ public class UserSignIn {
 
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
-        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userUsernameAndPassword");
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
         } catch (Exception e) {
@@ -127,7 +131,7 @@ public class UserSignIn {
 
     // Lagrer admins info til fil
     private void saveToFileInfo() {
-        var filepath = Paths.get("src/main/resources/org/semesteroppgave/files/signin", "userInfo");
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo")));
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
         } catch (Exception e) {
