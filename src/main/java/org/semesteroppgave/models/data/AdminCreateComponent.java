@@ -135,7 +135,7 @@ public class AdminCreateComponent {
         }
         int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
         ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
-        //Her plasserer jeg det nye objektet på den tidligere plassen til det gamle objektet
+        //Her plasseres det nye objektet på den tidligere plassen til det gamle objektet
         ApplicationData.getInstance().getRegisterComponent().getComponentList().add(index, newComponent);
     }
 

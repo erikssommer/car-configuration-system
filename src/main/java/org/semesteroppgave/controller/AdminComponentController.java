@@ -182,6 +182,7 @@ public class AdminComponentController implements ApplicationThread {
         }
     }
 
+    @Override
     public void disableGUI() {
         tabCreate.setDisable(true);
         txtSearch.setDisable(true);
@@ -192,6 +193,7 @@ public class AdminComponentController implements ApplicationThread {
         tableViewComponents.setDisable(true);
     }
 
+    @Override
     public void enableGUI() {
         tabCreate.setDisable(false);
         txtSearch.setDisable(false);
