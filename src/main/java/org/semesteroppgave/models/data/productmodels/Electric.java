@@ -5,6 +5,7 @@ import org.semesteroppgave.models.data.customizations.*;
 import org.semesteroppgave.models.exceptions.EmptyComponentException;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class Electric extends Product {
 
@@ -76,7 +77,7 @@ public class Electric extends Product {
         if (obj instanceof Electric) {
             Electric product = (Electric) obj;
             return super.equals(product) && product.getBattery().equals(battery)
-                    && ((product.getAutopilot() == null && autopilot == null) || product.getAutopilot().equals(autopilot));
+                    && ((product.getAutopilot() == null && autopilot == null) || Objects.equals(product.getAutopilot(), autopilot));
         }
         return false;
     }
