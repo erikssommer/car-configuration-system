@@ -55,7 +55,7 @@ public class InputValidation {
         if (price.matches(regex)){
             return input;
         }
-        throw new InvalidPriceException("Kan ikke være negativ eller ha flere enn 3 desimaler");
+        throw new InvalidPriceException("Prisen kan ikke være negativ eller ha flere enn 3 desimaler");
     }
 
     public static void testComponentCount(TableView<Component> tableViewComponents, String input) {
