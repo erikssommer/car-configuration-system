@@ -30,8 +30,13 @@ public class FileOpenerCsv implements FileOpener {
             while ((line = bufferedReader.readLine()) != null) {
                 ApplicationData.getInstance().getRegisterProduct().setProductList(parseProduct(line));
             }
-        } catch (IllegalArgumentException e) {
-            Dialogs.showErrorDialog("Oups", "Feil i innlasting fra cvs-fil", e.getMessage());
+
+        } catch (InvalidProductException | InvalidPriceException | InvalidVersionException | InvalidDescriptionException | EmptyComponentException e) {
+            Dialogs.showErrorDialog("Oups!", "Feil i innlasting fra cvs-fil", e.getMessage() +
+                    "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
+        } catch (NumberFormatException nfe){
+            Dialogs.showErrorDialog("Oups!", "Feil i innlasting fra cvs-fil", "Prisen må være fyllt inn og være et tall" +
+                    "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
         }
     }
 

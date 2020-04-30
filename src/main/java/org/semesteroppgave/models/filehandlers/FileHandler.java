@@ -109,7 +109,7 @@ public class FileHandler {
         try {
             opener.open(loadFile.toPath());
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Åpning av filen gikk galt", "Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("Fil", "Åpning av filen i tråd gikk galt", "Grunn: " + e.getMessage());
         }
     }
 
