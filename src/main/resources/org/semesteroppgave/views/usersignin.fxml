@@ -13,35 +13,33 @@
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Logg inn">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <children>
-                    <Label layoutX="41.0" layoutY="44.0" text="Logg inn bruker">
-                        <font>
-                            <Font size="27.0"/>
-                        </font>
-                    </Label>
-                    <Label layoutX="41.0" layoutY="160.0" text="Brukernavn">
-                        <font>
-                            <Font size="17.0"/>
-                        </font>
-                    </Label>
-                    <Label layoutX="41.0" layoutY="213.0" text="Passord">
-                        <font>
-                            <Font size="17.0"/>
-                        </font>
-                    </Label>
-                    <TextField fx:id="txtUsernameLogin" layoutX="133.0" layoutY="157.0"/>
-                    <TextField fx:id="txtPasswordLogin" layoutX="133.0" layoutY="210.0"/>
-                    <Button fx:id="btnSignin" layoutX="228.0" layoutY="259.0" mnemonicParsing="false"
-                            onAction="#btnSignin" text="Logg inn"/>
-                    <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="312.0" layoutY="210.0"
-                           prefHeight="66.0" prefWidth="344.0"/>
-                    <Button fx:id="btnAdmin" layoutX="43.0" layoutY="259.0" mnemonicParsing="false"
-                            onAction="#btnAdmin" text="Admin"/>
-                    <ProgressBar fx:id="progressbar" layoutX="27.0" layoutY="446.0" prefHeight="20.0"
-                                 prefWidth="682.0" progress="0.0"/>
-                    <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0"
-                           layoutY="412.0" prefHeight="17.0" prefWidth="290.0"/>
-                </children>
+                <Label layoutX="41.0" layoutY="44.0" text="Logg inn bruker">
+                    <font>
+                        <Font size="27.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="41.0" layoutY="160.0" text="Brukernavn">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="41.0" layoutY="213.0" text="Passord">
+                    <font>
+                        <Font size="17.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="txtUsernameLogin" layoutX="133.0" layoutY="157.0"/>
+                <TextField fx:id="txtPasswordLogin" layoutX="133.0" layoutY="210.0"/>
+                <Button fx:id="btnSignin" layoutX="228.0" layoutY="259.0" mnemonicParsing="false"
+                        onAction="#btnSignin" text="Logg inn"/>
+                <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="312.0" layoutY="210.0"
+                       prefHeight="66.0" prefWidth="344.0"/>
+                <Button fx:id="btnAdmin" layoutX="43.0" layoutY="259.0" mnemonicParsing="false"
+                        onAction="#btnAdmin" text="Admin"/>
+                <ProgressBar fx:id="progressbar" layoutX="27.0" layoutY="446.0" prefHeight="20.0"
+                             prefWidth="682.0" progress="0.0"/>
+                <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0"
+                       layoutY="412.0" prefHeight="17.0" prefWidth="290.0"/>
             </AnchorPane>
         </Tab>
         <Tab fx:id="tabRegister" onSelectionChanged="#tabRegisterSelected" text="Registrer ny">

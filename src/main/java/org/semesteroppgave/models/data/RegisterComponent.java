@@ -62,6 +62,7 @@ public class RegisterComponent implements Serializable {
         s.writeObject(new ArrayList<>(componentList));
     }
 
+    @SuppressWarnings("unchecked")
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         List<Component> newComponentList = (List<Component>) s.readObject();
         componentList = FXCollections.observableArrayList();

@@ -152,6 +152,7 @@ public class AdminCreateComponent {
      * @param doubleStrConverter objekt i konverteringsklasse for double
      */
 
+    @SuppressWarnings("ClassEscapesDefinedScope")
     public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
         try {
             if (doubleStrConverter.wasSuccessful()) {

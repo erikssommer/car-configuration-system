@@ -10,9 +10,9 @@ public enum Custom {
     TOWBAR("Tillhengerfeste", 1000, 2),
     AUTOPILOT("Autopilot", 50_000, 3);
 
-    String customProperty;
-    double price;
-    int index;
+    final String customProperty;
+    final double price;
+    final int index;
 
     Custom(String customProperty, double price, int index) {
         this.customProperty = customProperty;

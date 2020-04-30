@@ -17,7 +17,7 @@ import java.nio.file.Path;
 
 public class FileOpenerCsv implements FileOpener {
 
-    CreateProductCsv create = new CreateProductCsv();
+    final CreateProductCsv create = new CreateProductCsv();
 
     @Override
     public void open(Path filePath) throws IOException {

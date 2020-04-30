@@ -1,6 +1,5 @@
 package org.semesteroppgave.models.utilities.inputhandler;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.models.exceptions.*;
 
