@@ -110,6 +110,7 @@ public class UserBuildProductController implements ApplicationController{
         cbModel.setPromptText("Velg modell");
     }
 
+    //Valg av tilpasninger med checkboxer
     @FXML
     public void cbGps() {
         newProduct.customization(cbGps, Custom.GPS);

@@ -22,14 +22,17 @@ public class Gearbox extends Component {
         this.component = "Girboks";
     }
 
+    @Override
     public ArrayList<String> getModel() {
         return model;
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }

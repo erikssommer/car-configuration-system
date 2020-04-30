@@ -21,14 +21,17 @@ public class Tires extends Component {
         this.component = "Dekk";
     }
 
+    @Override
     public ArrayList<String> getModel() {
         return model;
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }

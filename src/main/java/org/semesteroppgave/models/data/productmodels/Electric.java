@@ -94,7 +94,5 @@ public class Electric extends Product {
 
         message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
-
-
     }
 }

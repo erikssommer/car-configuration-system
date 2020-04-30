@@ -18,10 +18,9 @@ import java.io.IOException;
  */
 
 public class AdminCreateComponent {
-    //Liste over alle komponentene
-    private final ObservableList<Component> createComponentList = FXCollections.observableArrayList();
-    //Liste over komponenter i comboboksen
-    private final ObservableList<String> componentChoice = FXCollections.observableArrayList();
+
+    private final ObservableList<Component> createComponentList = FXCollections.observableArrayList(); //Liste over alle komponentene
+    private final ObservableList<String> componentChoice = FXCollections.observableArrayList(); //Liste over komponenter i comboboksen
     private final ComponentSearch componentSearch;
 
     public AdminCreateComponent(ComponentSearch componentSearch) {
@@ -32,6 +31,7 @@ public class AdminCreateComponent {
         return this.createComponentList;
     }
 
+    //Metode som oppretter komponent fra input og legger det inn i tableview. Tester for duplikater
     public void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description, ComboBox<String> cbCreate) throws IllegalArgumentException {
         lblMessage.setText("");
         Component newComponent = null;
@@ -78,7 +78,7 @@ public class AdminCreateComponent {
         }
     }
 
-    //Teser om komponenter finnes fra før
+    //Teser om komponenter finnes fra før i de ulike listene
     private void duplicateComponent(Component component) throws IllegalArgumentException {
 
         for (Component createComponent : createComponentList) {
@@ -109,6 +109,7 @@ public class AdminCreateComponent {
         Main.setRoot("admincomponent");
     }
 
+    //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent
     private void convert(Component component) {
         Component newComponent;
         switch (component.getComponent()) {
@@ -144,6 +145,12 @@ public class AdminCreateComponent {
         //Her plasseres det nye objektet på den tidligere plassen til det gamle objektet
         ApplicationData.getInstance().getRegisterComponent().getComponentList().add(index, newComponent);
     }
+
+    /**
+     * Metoder for redigering i tableview, som tester input. Avvik er også håndtert her
+     * @param event får tak i verdien fra kolonne i tableviw
+     * @param doubleStrConverter objekt i konverteringsklasse for double
+     */
 
     public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
         try {
@@ -194,6 +201,7 @@ public class AdminCreateComponent {
         return ApplicationData.getInstance().getRegisterComponent().getComponentList().stream().noneMatch(item -> item.getVersion().equals(value));
     }
 
+    //Sletting av komponenter fra tableview
     public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list, boolean state) throws IllegalArgumentException {
 
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
@@ -225,11 +233,11 @@ public class AdminCreateComponent {
         }
     }
 
+    //Legger inn verdier i combokox for valg av komponent
     public void loadChoice(ComboBox<String> cbCreate) {
         componentChoice.removeAll();
         componentChoice.addAll("Motor", "Felg", "Setetrekk", "Spoiler", "Dekk", "Batteri", "Tank", "Girboks");
         cbCreate.getItems().addAll(componentChoice);
         cbCreate.setValue(componentChoice.get(0));
-
     }
 }

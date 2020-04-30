@@ -25,10 +25,12 @@ public class Battery extends Component {
         return this.model;
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }

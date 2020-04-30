@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Klasse som leser fra serialisert jobj-fil og oppretter componenter
+ * Klasse som leser fra serialisert jobj-fil og oppretter komponenter
  * Legger komponentene inn i komponentlisten
  */
 

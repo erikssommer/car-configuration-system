@@ -103,6 +103,5 @@ public class UserSignInController implements ApplicationThread{
         txtUsernameLogin.setDisable(false);
         btnSignin.setDisable(false);
         btnAdmin.setDisable(false);
-
     }
 }

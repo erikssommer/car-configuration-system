@@ -15,8 +15,10 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import java.io.IOException;
 
 public class ConfiguredProductController implements ApplicationController{
+
     @FXML
     private Label lblUsername;
+
     @FXML
     private TableView<Product> tableViewConfigs;
 

@@ -21,14 +21,17 @@ public class SeatCover extends Component {
         this.component = "Setetrekk";
     }
 
+    @Override
     public ArrayList<String> getModel() {
         return model;
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }

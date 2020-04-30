@@ -51,5 +51,4 @@ public class RegisterProduct {
 
         return sb.toString();
     }
-
 }

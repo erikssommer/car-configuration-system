@@ -100,8 +100,8 @@ public class UserCreateProduct {
         });
     }
 
+    //Legger inn valgte komponenter i listen med indeksen til hver komponent
     private void addToProduct(Component selectedComponent) {
-
         productComponants[selectedComponent.getIndex()] = selectedComponent;
         livePriceList[selectedComponent.getIndex()+1] = selectedComponent.getPrice();
 
@@ -109,6 +109,7 @@ public class UserCreateProduct {
         setLabelText("Du har valgt ny " + selectedComponent.getComponent().toLowerCase());
     }
 
+    //Metode for valg av tilpasninger
     public void customization(CheckBox checkBox, Custom mode) {
 
         if (checkBox.isSelected() && productCustomization[mode.getIndex()] == null) {
@@ -153,6 +154,7 @@ public class UserCreateProduct {
         }
     }
 
+    //Metode som oppretter produkter. Bruk av builder-pattern
     public void finishedProduct() throws NullPointerException, IllegalArgumentException {
 
         if (cbModel.getValue() != null) {

@@ -21,14 +21,17 @@ public class Spoiler extends Component {
         this.component = "Spoiler";
     }
 
+    @Override
     public ArrayList<String> getModel() {
         return model;
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }

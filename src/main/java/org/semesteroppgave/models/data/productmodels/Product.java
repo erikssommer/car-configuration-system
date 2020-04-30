@@ -229,7 +229,7 @@ public abstract class Product {
                 getSeatCover().toFile() + ";" + getSpoiler().toFile() + ";" + getTires().toFile();
     }
 
-    @Override
+
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -248,7 +248,6 @@ public abstract class Product {
     }
 
 
-    @Override
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");

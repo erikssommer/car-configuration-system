@@ -21,14 +21,17 @@ public class Motor extends Component {
         this.component = "Motor";
     }
 
+    @Override
     public ArrayList<String> getModel() {
         return model;
     }
 
+    @Override
     public String getComponent() {
         return component;
     }
 
+    @Override
     public void setComponent(String component) {
         this.component = component;
     }
