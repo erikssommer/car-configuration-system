@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserSignInController">
+    <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Logg inn">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <children>
+                    <Label layoutX="41.0" layoutY="44.0" text="Logg inn bruker">
+                        <font>
+                            <Font size="27.0"/>
+                        </font>
+                    </Label>
+                    <Label layoutX="41.0" layoutY="160.0" text="Brukernavn">
+                        <font>
+                            <Font size="17.0"/>
+                        </font>
+                    </Label>
+                    <Label layoutX="41.0" layoutY="213.0" text="Passord">
+                        <font>
+                            <Font size="17.0"/>
+                        </font>
+                    </Label>
+                    <TextField fx:id="txtUsernameLogin" layoutX="133.0" layoutY="157.0"/>
+                    <TextField fx:id="txtPasswordLogin" layoutX="133.0" layoutY="210.0"/>
+                    <Button fx:id="btnSignin" layoutX="228.0" layoutY="259.0" mnemonicParsing="false"
+                            onAction="#btnSignin" text="Logg inn"/>
+                    <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="312.0" layoutY="210.0"
+                           prefHeight="66.0" prefWidth="344.0"/>
+                    <Button fx:id="btnAdmin" layoutX="43.0" layoutY="259.0" mnemonicParsing="false"
+                            onAction="#btnAdmin" text="Admin"/>
+                    <ProgressBar fx:id="progressbar" layoutX="27.0" layoutY="446.0" prefHeight="20.0"
+                                 prefWidth="682.0" progress="0.0"/>
+                    <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0"
+                           layoutY="412.0" prefHeight="17.0" prefWidth="290.0"/>
+                </children>
+            </AnchorPane>
+        </Tab>
+        <Tab fx:id="tabRegister" onSelectionChanged="#tabRegisterSelected" text="Registrer ny">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <Label layoutX="50.0" layoutY="40.0" text="Registrer ny bruker">
+                    <font>
+                        <Font size="27.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="116.0" text="Navn"/>
+                <Label layoutX="50.0" layoutY="157.0" text="Epost"/>
+                <Label layoutX="50.0" layoutY="196.0" text="Telefonnr"/>
+                <Label layoutX="50.0" layoutY="242.0" text="Brukernavn"/>
+                <Label layoutX="51.0" layoutY="286.0" text="Passord"/>
+                <TextField fx:id="txtName" layoutX="134.0" layoutY="111.0"/>
+                <TextField fx:id="txtEmail" layoutX="134.0" layoutY="152.0"/>
+                <TextField fx:id="txtPhonenumber" layoutX="134.0" layoutY="191.0"/>
+                <TextField fx:id="txtUsernameRegister" layoutX="134.0" layoutY="237.0"/>
+                <TextField fx:id="txtPasswordRegister" layoutX="134.0" layoutY="281.0"/>
+                <Button layoutX="228.0" layoutY="335.0" mnemonicParsing="false" onAction="#btnRegister"
+                        text="Registrer"/>
+                <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="321.0" layoutY="282.0"
+                       prefHeight="64.0" prefWidth="206.0"/>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+</AnchorPane>

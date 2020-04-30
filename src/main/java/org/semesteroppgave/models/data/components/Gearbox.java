@@ -18,7 +18,7 @@ public class Gearbox extends Component {
 
     public Gearbox(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>(Arrays.asList("Diesel", "Hybrid"));
+        this.model = new ArrayList<>(Collections.singletonList("Diesel"));
         this.component = "Girboks";
     }
 
