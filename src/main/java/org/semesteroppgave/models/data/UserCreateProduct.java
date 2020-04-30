@@ -47,14 +47,12 @@ public class UserCreateProduct {
 
     public void createNewProduct(String model) {
         modelComponentsList.clear();
-
-        for (Component modelList : ApplicationData.getInstance().getRegisterComponent().getComponentList()) {
-            for (String componentModel : modelList.getModel()) {
-                if (componentModel.equals(model)) {
-                    modelComponentsList.add(modelList.getComponent());
-                }
-            }
-        }
+        //Finner komponenter til valgt modell
+        ApplicationData.getInstance().getRegisterComponent().getComponentList()
+                        .forEach(modelList -> modelList.getModel()
+                        .stream().filter(componentModel -> componentModel.equals(model))
+                        .map(componentModel -> modelList.getComponent())
+                        .forEachOrdered(modelComponentsList::add));
 
         setLabelText("Du kan nå velge komponenter til din \n" + model.toLowerCase() + " bil");
 
@@ -89,8 +87,7 @@ public class UserCreateProduct {
         chooseComponentList.clear();
 
         ApplicationData.getInstance().getRegisterComponent().getComponentList()
-                .stream()
-                .filter(component -> component.getComponent().equals(selectedComponent))
+                .stream().filter(component -> component.getComponent().equals(selectedComponent))
                 .forEachOrdered(chooseComponentList::add);
 
         tableViewVersion.setItems(chooseComponentList);
