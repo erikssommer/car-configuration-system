@@ -12,14 +12,14 @@ import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.admin.AdminSignin;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
+import org.semesteroppgave.models.utilities.inputhandler.DoubleConverter;
 import org.semesteroppgave.models.utilities.threadhelper.StartThread;
-import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
 
 public class AdminComponentController implements ApplicationThread {
 
-    private final InputValidation.DoubleStringConverter doubleStrConverter = new InputValidation.DoubleStringConverter();
+    private final DoubleConverter.DoubleStringConverter doubleStrConverter = new DoubleConverter.DoubleStringConverter();
     private final ComponentSearch componentSearch = new ComponentSearch();
     private final AdminCreateComponent createComponent = new AdminCreateComponent(componentSearch);
     private StartThread startThread;
@@ -70,11 +70,13 @@ public class AdminComponentController implements ApplicationThread {
     @FXML
     private void btnAdd() {
         try {
-            createComponent.addComponent(lblMessageCreate, tableViewCreate, txtVersion, txtPrice, txtDescription, cbCreate);
+            lblMessageCreate.setText("");
+            createComponent.addComponent(tableViewCreate, txtVersion, txtPrice, txtDescription, cbCreate);
+            lblMessageCreate.setText("Komponenten er lagt til");
         } catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e) {
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
-        } catch (NumberFormatException e) {
-            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", "Du må skrive inn et gyldig tall");
+        } catch (NumberFormatException nfe){
+            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", "Prisen må være fyllt inn og være et tall");
         }
     }
 

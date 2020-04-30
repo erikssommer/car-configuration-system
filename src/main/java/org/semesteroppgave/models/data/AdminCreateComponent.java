@@ -8,6 +8,7 @@ import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
+import org.semesteroppgave.models.utilities.inputhandler.DoubleConverter;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.io.IOException;
 
 public class AdminCreateComponent {
 
-    private final ObservableList<Component> createComponentList = FXCollections.observableArrayList(); //Liste over alle komponentene
+    private final ObservableList<Component> createComponentList = FXCollections.observableArrayList(); //Liste over nye komponenter
     private final ObservableList<String> componentChoice = FXCollections.observableArrayList(); //Liste over komponenter i comboboksen
     private final ComponentSearch componentSearch;
 
@@ -32,9 +33,8 @@ public class AdminCreateComponent {
     }
 
     //Metode som oppretter komponent fra input og legger det inn i tableview. Tester for duplikater
-    public void addComponent(Label lblMessage, TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description, ComboBox<String> cbCreate) throws IllegalArgumentException {
-        lblMessage.setText("");
-        Component newComponent = null;
+    public void addComponent(TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description, ComboBox<String> cbCreate) throws IllegalArgumentException {
+        Component newComponent;
         switch (cbCreate.getValue()) {
             case "Motor":
                 newComponent = new Motor(version.getText(), Double.parseDouble(price.getText()), description.getText());
@@ -61,21 +61,16 @@ public class AdminCreateComponent {
                 newComponent = new Gearbox(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
             default:
-                Dialogs.showErrorDialog("Legg til komponent", "Fant ikke komponenten", "Prøv igjen");
+                throw new InvalidComponentException("Fant ikke komponenten");
         }
 
         duplicateComponent(newComponent);
 
-        if (newComponent != null) {
-            createComponentList.add(newComponent);
-            tableViewAddedConfig.setItems(createComponentList);
-            lblMessage.setText("Komponenten er lagt til");
-            version.clear();
-            price.clear();
-            description.clear();
-        } else {
-            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", "Denne komponenten finnes fra før");
-        }
+        createComponentList.add(newComponent);
+        tableViewAddedConfig.setItems(createComponentList);
+        version.clear();
+        price.clear();
+        description.clear();
     }
 
     //Teser om komponenter finnes fra før i de ulike listene
@@ -152,14 +147,13 @@ public class AdminCreateComponent {
      * @param doubleStrConverter objekt i konverteringsklasse for double
      */
 
-    @SuppressWarnings("ClassEscapesDefinedScope")
-    public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, InputValidation.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
+    public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, DoubleConverter.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
         try {
             if (doubleStrConverter.wasSuccessful()) {
                 event.getRowValue().setPrice(event.getNewValue());
             }
-        } catch (NumberFormatException e) {
-            Dialogs.showErrorDialog("Feil,", "Feil i pris", "Du må skrive inn et positivt tall");
+        } catch (NullPointerException e){
+            Dialogs.showErrorDialog("Feil", "Feil i pris", "Du må fylle inn prisen");
         } catch (IllegalArgumentException e) {
             Dialogs.showErrorDialog("Feil", "Ugyldig pris: ", e.getMessage());
         }
@@ -199,7 +193,8 @@ public class AdminCreateComponent {
     }
 
     private boolean checkUniquenessVersion(String value) {
-        return ApplicationData.getInstance().getRegisterComponent().getComponentList().stream().noneMatch(item -> item.getVersion().equals(value));
+        return ApplicationData.getInstance().getRegisterComponent().getComponentList()
+                .stream().noneMatch(item -> item.getVersion().equals(value));
     }
 
     //Sletting av komponenter fra tableview

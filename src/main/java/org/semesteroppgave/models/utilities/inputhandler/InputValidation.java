@@ -4,7 +4,6 @@ import javafx.scene.control.TableView;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
-import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 /**
  * Klasse for validering av input ved opprettelse/redigering av objekt
@@ -51,44 +50,12 @@ public class InputValidation {
     }
 
     public static double testValidPrice(double input) {
-        DoubleStringConverter doubleStrConverter = new DoubleStringConverter();
-        doubleStrConverter.fromString(String.valueOf(input));
-        if (doubleStrConverter.wasSuccessful()) {
+        String price = String.valueOf(input);
+        String regex = "^[0-9]+(.|,)?[0-9]{1,3}$";
+        if (price.matches(regex)){
             return input;
         }
-        throw new InvalidPriceException("Prisen er ugyldig");
-    }
-
-    public static class DoubleStringConverter extends javafx.util.converter.DoubleStringConverter {
-        private boolean conversionSuccessful;
-
-        @Override
-        public Double fromString(String s) {
-            try {
-                Double result = super.fromString(s);
-                if (result < 0.0) {
-                    throw new InvalidPriceException("Prisen kan ikke være negativ");
-                }
-                conversionSuccessful = true;
-                return result;
-            } catch (NumberFormatException e) {
-                Dialogs.showErrorDialog("Feil", "Feil i pris", "Du må skrive inn et gyldig tall");
-                conversionSuccessful = false;
-                return 0.0;
-            } catch (NullPointerException e) {
-                Dialogs.showErrorDialog("Feil", "Feil i pris", "Du må fylle inn prisen");
-                conversionSuccessful = false;
-                return 0.0;
-            } catch (InvalidPriceException e) {
-                Dialogs.showErrorDialog("Feil", "Feil i pris", e.getMessage());
-                conversionSuccessful = false;
-                return 0.0;
-            }
-        }
-
-        public boolean wasSuccessful() {
-            return conversionSuccessful;
-        }
+        throw new InvalidPriceException("Kan ikke være negativ eller ha flere enn 3 desimaler");
     }
 
     public static void testComponentCount(TableView<Component> tableViewComponents, String input) {

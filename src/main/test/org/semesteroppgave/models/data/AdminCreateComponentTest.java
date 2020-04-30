@@ -3,6 +3,7 @@ package org.semesteroppgave.models.data;
 import org.junit.jupiter.api.Test;
 import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.InvalidDescriptionException;
+import org.semesteroppgave.models.exceptions.InvalidPriceException;
 import org.semesteroppgave.models.exceptions.InvalidVersionException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,12 +18,12 @@ class AdminCreateComponentTest {
     void testValidAddComponent() {
         new Motor("700hk", 25000, "Motor for best ytelse - både i akselerasjon og toppfart");
         new Rim("16-tommer", 4000, "Felg som er standard. God komfort, ok utseende");
-        new SeatCover("Komfort skinn", 10000, "Setetrekk i skinn som er komfortabelt for lange kjøreturer");
+        new SeatCover("Komfort skinn", 10000.3, "Setetrekk i skinn som er komfortabelt for lange kjøreturer");
         new Spoiler("Høy og bred", 4000, "Spoiler for stor sportsutseende og maks veigrep i høy fart");
-        new Tires("Pirelli Sommer", 5600, "Sommerdekk som er gode på alle typer sommerføre");
+        new Tires("Pirelli Sommer", 5600.2, "Sommerdekk som er gode på alle typer sommerføre");
         new Battery("80 kWh", 15000, "EL-bilbatteri med rekkevidde på 500 km");
         new FuelContainer("40-liter", 5000, "Drivstofftank som er stor nok for de aller fleste");
-        new Gearbox("Sporsautomat", 25000, "Automatgir som gir raske girskift og høy ytelse");
+        new Gearbox("Sporsautomat", 25000.321, "Automatgir som gir raske girskift og høy ytelse");
 
     }
 
@@ -37,11 +38,11 @@ class AdminCreateComponentTest {
         assertThrows(InvalidVersionException.class, () ->
                 new SeatCover("K", 500, "Setetrekk i skinn som er komfortabelt for lange kjøreturer"));
 
-        assertThrows(InvalidDescriptionException.class, () ->
-                new Spoiler("Høy og bred", 4000, "hei"));
+        assertThrows(InvalidPriceException.class, () ->
+                new Spoiler("Høy og bred", -1, "Gir god fart"));
 
-        assertThrows(InvalidDescriptionException.class, () ->
-                new Tires("Pirelli Sommer", 5600, "lnpirfnm"));
+        assertThrows(InvalidPriceException.class, () ->
+                new Tires("Pirelli Sommer", 23.98345, "lnpirfnm")); //For mange desimaler
 
         assertThrows(InvalidDescriptionException.class, () ->
                 new Battery("80 kWh", 15000, "46578"));
