@@ -12,7 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.ConfiguredProductController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.ConfiguredProductController">
       <Label layoutX="36.0" layoutY="35.0" text="Tidligere konfigurerte biler">
          <font>
             <Font size="24.0" />
@@ -28,12 +30,36 @@
                   <TextFieldTableCell fx:factory="forTableColumn" />
               </cellFactory>
           </TableColumn>
-          <TableColumn fx:id="txtMotorColumn" prefWidth="75.0" reorderable="false" text="Motor" />
-            <TableColumn fx:id="txtRimColumn" prefWidth="87.0" reorderable="false" text="Felger" />
-            <TableColumn fx:id="txtSeatcoverColumn" prefWidth="112.0" reorderable="false" text="Setetrekk" />
-            <TableColumn fx:id="txtSpoilerColumn" prefWidth="105.0" reorderable="false" text="Spoiler" />
-            <TableColumn fx:id="txtTireColumn" prefWidth="119.0" reorderable="false" text="Dekk" />
-            <TableColumn fx:id="txtPriceColumn" prefWidth="103.0" reorderable="false" text="Pris (kr)" />
+          <TableColumn prefWidth="75.0" reorderable="false" text="Motor">
+              <cellValueFactory>
+                  <PropertyValueFactory property="motor" />
+              </cellValueFactory>
+          </TableColumn>
+            <TableColumn prefWidth="87.0" reorderable="false" text="Felger">
+                <cellValueFactory>
+                    <PropertyValueFactory property="rim" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="112.0" reorderable="false" text="Setetrekk">
+                <cellValueFactory>
+                    <PropertyValueFactory property="seatCover" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="105.0" reorderable="false" text="Spoiler">
+                <cellValueFactory>
+                    <PropertyValueFactory property="spoiler" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="119.0" reorderable="false" text="Dekk">
+                <cellValueFactory>
+                    <PropertyValueFactory property="tires" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="103.0" reorderable="false" text="Pris (kr)">
+                <cellValueFactory>
+                    <PropertyValueFactory property="totalPrice" />
+                </cellValueFactory>
+            </TableColumn>
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -46,7 +72,7 @@
       </Label>
       <Button layoutX="633.0" layoutY="492.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="82.0" text="Tilbake" />
       <Button layoutX="633.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnMoreInfo" text="Vis mer info" />
-      <TableView fx:id="tableViewMyConfig" layoutX="36.0" layoutY="287.0" prefHeight="152.0">
+      <TableView fx:id="tableViewUserConfig" layoutX="36.0" layoutY="287.0" prefHeight="152.0">
          <columns>
             <TableColumn prefWidth="75.0" reorderable="false" text="Modell">
                <cellValueFactory>
@@ -56,12 +82,36 @@
                   <TextFieldTableCell fx:factory="forTableColumn" />
                </cellFactory>
             </TableColumn>
-            <TableColumn fx:id="txtMotorColumnMy" prefWidth="75.0" reorderable="false" text="Motor" />
-            <TableColumn fx:id="txtRimColumnMy" prefWidth="87.0" reorderable="false" text="Felger" />
-            <TableColumn fx:id="txtSeatcoverColumnMy" prefWidth="112.0" reorderable="false" text="Setetrekk" />
-            <TableColumn fx:id="txtSpoilerColumnMy" prefWidth="105.0" reorderable="false" text="Spoiler" />
-            <TableColumn fx:id="txtTireColumnMy" prefWidth="119.0" reorderable="false" text="Dekk" />
-            <TableColumn fx:id="txtPriceColumnMy" prefWidth="103.0" reorderable="false" text="Pris (kr)" />
+            <TableColumn prefWidth="75.0" reorderable="false" text="Motor">
+                <cellValueFactory>
+                    <PropertyValueFactory property="motor" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="87.0" reorderable="false" text="Felger">
+                <cellValueFactory>
+                    <PropertyValueFactory property="rim" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="112.0" reorderable="false" text="Setetrekk">
+                <cellValueFactory>
+                    <PropertyValueFactory property="seatCover" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="105.0" reorderable="false" text="Spoiler">
+                <cellValueFactory>
+                    <PropertyValueFactory property="spoiler" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="119.0" reorderable="false" text="Dekk">
+                <cellValueFactory>
+                    <PropertyValueFactory property="tires" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="103.0" reorderable="false" text="Pris (kr)">
+                <cellValueFactory>
+                    <PropertyValueFactory property="totalPrice" />
+                </cellValueFactory>
+            </TableColumn>
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
