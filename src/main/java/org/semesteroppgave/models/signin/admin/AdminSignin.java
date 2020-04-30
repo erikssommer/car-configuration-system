@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Modell for Admin
+ * Modell for pålogging admin
  */
 
 public class AdminSignin {
@@ -65,7 +65,8 @@ public class AdminSignin {
         testValidEmpNo(empNo); //Kaster et avvik hvis ansattnummeret ikke er gyldig
         Admin newAdmin = new Admin(username, password, empNo);
         setAdminList(newAdmin);
-        Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert", "Logg inn med brukernavn og passord");
+        Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert",
+                "Logg inn med brukernavn og passord");
         saveToFileUsernamePassword();
         saveToFileInfo();
         getAvailableEmpNos().remove(empNo);
@@ -121,7 +122,8 @@ public class AdminSignin {
                 String checkPassword = s.next();
 
                 if (checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())) {
-                    System.out.println("\nSuccessful match with username " + username.trim() + " in file adminUsernameAndPassword");
+                    System.out.println("\nSuccessful match with username " + username.trim()
+                            + " in file adminUsernameAndPassword");
                     return true;
                 }
             }

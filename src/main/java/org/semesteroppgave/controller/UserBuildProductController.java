@@ -1,8 +1,6 @@
 package org.semesteroppgave.controller;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,7 +18,6 @@ import java.io.IOException;
 
 public class UserBuildProductController implements ApplicationController{
 
-    private final ObservableList<String> modelChoice = FXCollections.observableArrayList();
     private UserCreateProduct newProduct;
 
     @FXML
@@ -52,8 +49,8 @@ public class UserBuildProductController implements ApplicationController{
 
     @Override
     public void initialize() {
-        loadChoice();
         newProduct = new UserCreateProduct(tableViewComponent, tableViewVersion, cbModel, lblMessage, txtTotalPrice);
+        newProduct.loadChoice();
         txtPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         columnComponent.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
         cbAutopilot.setVisible(false);
@@ -101,13 +98,6 @@ public class UserBuildProductController implements ApplicationController{
         } catch (EmptyComponentException | DuplicateException e) {
             Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
         }
-    }
-
-    private void loadChoice() {
-        modelChoice.removeAll();
-        modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
-        cbModel.getItems().addAll(modelChoice);
-        cbModel.setPromptText("Velg modell");
     }
 
     //Valg av tilpasninger med checkboxer

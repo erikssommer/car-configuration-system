@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.ComponentSearch;
+import org.semesteroppgave.models.utilities.search.ComponentSearch;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpener;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerCsv;

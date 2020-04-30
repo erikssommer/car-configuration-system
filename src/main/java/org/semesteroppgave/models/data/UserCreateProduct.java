@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 public class UserCreateProduct {
     private final ObservableList<String> modelComponentsList = FXCollections.observableArrayList(); //Liste for komponentnavn
     private final ObservableList<Component> chooseComponentList = FXCollections.observableArrayList(); //Liste for valg av komponent
+    private final ObservableList<String> modelChoice = FXCollections.observableArrayList(); //Liste over comboBox valg
     private final TableView<String> tableViewComponent;
     private final TableView<Component> tableViewVersion;
     private final ComboBox<String> cbModel;
@@ -35,7 +36,8 @@ public class UserCreateProduct {
     private Component[] productComponants; //Liste som holder på valgte komponenter
     private Custom[] productCustomization; //Liste som holder på valgte tilpasninger
 
-    public UserCreateProduct(TableView<String> tableViewComponent, TableView<Component> tableViewVersion, ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
+    public UserCreateProduct(TableView<String> tableViewComponent, TableView<Component> tableViewVersion,
+                             ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
         this.tableViewComponent = tableViewComponent;
         this.tableViewVersion = tableViewVersion;
         this.cbModel = cbModel;
@@ -103,7 +105,7 @@ public class UserCreateProduct {
     //Legger inn valgte komponenter i listen med indeksen til hver komponent
     private void addToProduct(Component selectedComponent) {
         productComponants[selectedComponent.getIndex()] = selectedComponent;
-        livePriceList[selectedComponent.getIndex()+1] = selectedComponent.getPrice();
+        livePriceList[selectedComponent.getIndex() + 1] = selectedComponent.getPrice();
 
         addToPrice();
         setLabelText("Du har valgt ny " + selectedComponent.getComponent().toLowerCase());
@@ -217,8 +219,17 @@ public class UserCreateProduct {
                 }
             });
         } else {
-            Dialogs.showErrorDialog("Oups!", "Du må velge modell", "Deretter velge komponenter til bilen");
+            Dialogs.showErrorDialog("Oups!", "Du må velge modell",
+                    "Deretter velge komponenter til bilen");
         }
+    }
+
+    //Legger inn valg av modelltype i combobox
+    public void loadChoice() {
+        modelChoice.removeAll();
+        modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
+        cbModel.getItems().addAll(modelChoice);
+        cbModel.setPromptText("Velg modell");
     }
 }
 

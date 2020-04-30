@@ -21,6 +21,7 @@ public class Battery extends Component {
         this.component = "Batteri";
     }
 
+    @Override
     public ArrayList<String> getModel() {
         return this.model;
     }

@@ -26,7 +26,8 @@ public class InputValidation {
             }
         }
 
-        throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig\nDen må være mellom 2 og 25 tegn\nog starte med stor bokstav.");
+        throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig" +
+                "\nDen må være mellom 2 og 25 tegn\nog starte med stor bokstav.");
     }
 
     public static String testValidDescription(String input) {
@@ -37,7 +38,8 @@ public class InputValidation {
             return input;
         }
 
-        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig.\nDen må være mellom 5 og 100 tegn\nog starte med stor bokstav.");
+        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig." +
+                "\nDen må være mellom 5 og 100 tegn\nog starte med stor bokstav.");
 
     }
 

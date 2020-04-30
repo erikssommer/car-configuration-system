@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data;
+package org.semesteroppgave.models.utilities.search;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +10,6 @@ import org.semesteroppgave.models.data.components.Component;
 
 /**
  * Klasse for å søke på komponenter i komponentlisten
- * Model til AdminComponentController
  */
 
 public class ComponentSearch {
@@ -28,7 +27,7 @@ public class ComponentSearch {
         }
     }
 
-    public void search(String choiceFilter, String searchWord, TableView<Component> tableView) {
+    private void search(String choiceFilter, String searchWord, TableView<Component> tableView) {
         searchResult.clear();
 
         switch (choiceFilter) {
@@ -41,8 +40,7 @@ public class ComponentSearch {
             case "Pris":
                 try {
                     searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
-                } catch (NumberFormatException ignored) {
-                }
+                } catch (NumberFormatException ignored) {}
                 break;
         }
         tableView.setItems(searchResult);

@@ -10,6 +10,7 @@ import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.inputhandler.DoubleConverter;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
+import org.semesteroppgave.models.utilities.search.ComponentSearch;
 
 import java.io.IOException;
 
@@ -33,7 +34,9 @@ public class AdminCreateComponent {
     }
 
     //Metode som oppretter komponent fra input og legger det inn i tableview. Tester for duplikater
-    public void addComponent(TableView<Component> tableViewAddedConfig, TextField version, TextField price, TextArea description, ComboBox<String> cbCreate) throws IllegalArgumentException {
+    public void addComponent(TableView<Component> tableViewAddedConfig, TextField version, TextField price,
+                             TextArea description, ComboBox<String> cbCreate) throws IllegalArgumentException {
+
         Component newComponent;
         switch (cbCreate.getValue()) {
             case "Motor":
@@ -104,7 +107,7 @@ public class AdminCreateComponent {
         Main.setRoot("admincomponent");
     }
 
-    //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent
+    //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent-klasse
     private void convert(Component component) {
         Component newComponent;
         switch (component.getComponent()) {
@@ -147,7 +150,8 @@ public class AdminCreateComponent {
      * @param doubleStrConverter objekt i konverteringsklasse for double
      */
 
-    public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event, DoubleConverter.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
+    public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event,
+                                DoubleConverter.DoubleStringConverter doubleStrConverter, TableView<Component> tableViewAddedConfig) {
         try {
             if (doubleStrConverter.wasSuccessful()) {
                 event.getRowValue().setPrice(event.getNewValue());
@@ -180,7 +184,8 @@ public class AdminCreateComponent {
                 event.getRowValue().setVersion(newValue);
             } else {
                 event.getRowValue().setVersion(event.getOldValue());
-                Dialogs.showErrorDialog("Redigeringsfeil", "Duplisering av komponent", newValue + " finnes fra før");
+                Dialogs.showErrorDialog("Redigeringsfeil", "Duplisering av komponent",
+                        newValue + " finnes fra før");
             }
             //JavaFX bug omvei
             event.getTableColumn().setVisible(false);
@@ -198,7 +203,8 @@ public class AdminCreateComponent {
     }
 
     //Sletting av komponenter fra tableview
-    public void deleteColumn(TableView<Component> tableViewComponents, ObservableList<Component> list, boolean state) throws IllegalArgumentException {
+    public void deleteColumn(TableView<Component> tableViewComponents,
+                             ObservableList<Component> list, boolean state) throws IllegalArgumentException {
 
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
             if (state) {

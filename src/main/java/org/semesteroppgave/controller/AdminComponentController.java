@@ -6,7 +6,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.AdminCreateComponent;
-import org.semesteroppgave.models.data.ComponentSearch;
+import org.semesteroppgave.models.utilities.search.ComponentSearch;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
@@ -23,6 +23,7 @@ public class AdminComponentController implements ApplicationThread {
     private final ComponentSearch componentSearch = new ComponentSearch();
     private final AdminCreateComponent createComponent = new AdminCreateComponent(componentSearch);
     private StartThread startThread;
+    public MenuBar menuBar = new MenuBar();
 
     @FXML
     private Tab tabCreate;
@@ -50,9 +51,7 @@ public class AdminComponentController implements ApplicationThread {
 
     @FXML
     private ProgressBar progressBar;
-
-    @FXML
-    private final MenuBar menuBar = new MenuBar();
+    
 
     @Override
     public void initialize() {
@@ -76,7 +75,8 @@ public class AdminComponentController implements ApplicationThread {
         } catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e) {
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
         } catch (NumberFormatException nfe){
-            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", "Prisen må være fyllt inn og være et tall");
+            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent",
+                    "Prisen må være fyllt inn og være et tall");
         }
     }
 
@@ -165,6 +165,7 @@ public class AdminComponentController implements ApplicationThread {
     @FXML
     private void tabCreate() {
         menuBar.setVisible(false);
+
     }
 
     @FXML
@@ -182,7 +183,8 @@ public class AdminComponentController implements ApplicationThread {
         if (!tableViewComponents.getItems().isEmpty()){
             FileHandler.saveFileJobj(componentSearch);
         }else {
-            Dialogs.showErrorDialog("Fil", "Feil i lagring av liste", "Du kan ikke lagre en tom liste");
+            Dialogs.showErrorDialog("Fil", "Feil i lagring av liste",
+                    "Du kan ikke lagre en tom liste");
         }
     }
 

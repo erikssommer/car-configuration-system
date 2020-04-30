@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Modell for bruker
+ * Modell for pålogging bruker
  */
 
 public class UserSignIn {
@@ -41,7 +41,8 @@ public class UserSignIn {
         checkIfNotExisting(username); //Kaster et avvik hvis brukernavn er opptatt
         User newUser = new User(username, password, name, phonenumber, eMail);
         setUserList(newUser);
-        Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert", "Logg inn med brukernavn og passord");
+        Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert",
+                "Logg inn med brukernavn og passord");
         saveToFileUsernamePassword();
         saveToFileInfo();
         Main.setRoot("usersignin");
