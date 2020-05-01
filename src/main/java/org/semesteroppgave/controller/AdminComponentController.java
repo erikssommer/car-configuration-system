@@ -12,7 +12,7 @@ import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.admin.AdminSignin;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
-import org.semesteroppgave.models.utilities.inputhandler.DoubleConverter;
+import org.semesteroppgave.models.utilities.converters.DoubleConverter;
 import org.semesteroppgave.models.utilities.threadhelper.StartThread;
 
 import java.io.IOException;

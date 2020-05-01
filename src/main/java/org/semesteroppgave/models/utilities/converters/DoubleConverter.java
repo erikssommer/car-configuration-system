@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.utilities.inputhandler;
+package org.semesteroppgave.models.utilities.converters;
 
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 

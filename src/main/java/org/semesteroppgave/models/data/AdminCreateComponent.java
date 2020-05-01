@@ -8,7 +8,8 @@ import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
-import org.semesteroppgave.models.utilities.inputhandler.DoubleConverter;
+import org.semesteroppgave.models.utilities.converters.ComponentConverter;
+import org.semesteroppgave.models.utilities.converters.DoubleConverter;
 import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 import org.semesteroppgave.models.utilities.search.ComponentSearch;
 
@@ -109,35 +110,7 @@ public class AdminCreateComponent {
 
     //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent-klasse
     private void convert(Component component) {
-        Component newComponent;
-        switch (component.getComponent()) {
-            case "Motor":
-                newComponent = new Motor(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Felg":
-                newComponent = new Rim(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Setetrekk":
-                newComponent = new SeatCover(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Spoiler":
-                newComponent = new Spoiler(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Dekk":
-                newComponent = new Tires(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Batteri":
-                newComponent = new Battery(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Tank":
-                newComponent = new FuelContainer(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            case "Girboks":
-                newComponent = new Gearbox(component.getVersion(), component.getPrice(), component.getDescription());
-                break;
-            default:
-                throw new InvalidComponentException("Fant ikke komponenten");
-        }
+        Component newComponent = ComponentConverter.convert(component);
         int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
         ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
         //Her plasseres det nye objektet på den tidligere plassen til det gamle objektet
