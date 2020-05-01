@@ -41,7 +41,7 @@ public abstract class Product {
         this.towbar = builder.towbar;
     }
 
-    @SuppressWarnings("unchecked")//'return (T) this;' gir en 'Unchecked cast', men i dette tilfellet vil ikke bli kastet et avvik
+    @SuppressWarnings("unchecked")
     public static class Builder<T extends Builder<T>> {
         private final String model; //Denne er viktig, så den legger vi i konstruktøren
         private final double modelPrice; //Denne er viktig, så den legger vi i konstruktøren
@@ -173,17 +173,19 @@ public abstract class Product {
         return price;
     }
 
-    //Metode som støtter toString metodene til underklassene til Car
+    //Metode som støtter toString metodene til underklassene til Product
     //For å unngå duplikat kode
-    public String testCustom(DecimalFormat df, Custom autopilot) {
-
+    public String customToString(DecimalFormat df, Custom autopilot) {
         String message = "";
+
         if (getGps() != null) {
             message += getGps().getCustomProperty() + "\nPris: " + df.format(getGps().getPrice()) + "kr\n\n";
         }
+
         if (getSunroof() != null) {
             message += getSunroof().getCustomProperty() + "\nPris: " + df.format(getSunroof().getPrice()) + "kr\n\n";
         }
+
         if (getTowbar() != null) {
             message += getTowbar().getCustomProperty() + "\nPris: " + df.format(getTowbar().getPrice()) + "kr\n\n";
         }
@@ -198,26 +200,29 @@ public abstract class Product {
         return message;
     }
 
-    public String customToFile(Custom autopilot) {
+    public String customToFileCsv(Custom autopilot) {
         String message = "";
+
         if (getGps() != null) {
-            message += getGps().toFile() + ";";
+            message += getGps().toFileCsv() + ";";
         } else {
             message += ";;";
         }
+
         if (getSunroof() != null) {
-            message += getSunroof().toFile() + ";";
+            message += getSunroof().toFileCsv() + ";";
         } else {
             message += ";;";
         }
+
         if (getTowbar() != null) {
-            message += getTowbar().toFile() + ";";
+            message += getTowbar().toFileCsv() + ";";
         } else {
             message += ";;";
         }
 
         if (autopilot != null) {
-            message += autopilot.toFile() + ";";
+            message += autopilot.toFileCsv() + ";";
         } else {
             message += ";;";
         }

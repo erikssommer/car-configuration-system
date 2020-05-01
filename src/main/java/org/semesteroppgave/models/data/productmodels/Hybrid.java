@@ -55,7 +55,7 @@ public class Hybrid extends Product {
     public String toFileCsv() {
 
         return super.toFileCsv() + ";" + getBattery().toFile() + ";" +
-                getFuelContainer().toFile() + ";;;;" + super.customToFile(null) + getTotalPrice();
+                getFuelContainer().toFile() + ";;;;" + super.customToFileCsv(null) + getTotalPrice();
 
     }
 
@@ -85,7 +85,7 @@ public class Hybrid extends Product {
                 "Tank : " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
-        message += super.testCustom(df, null);
+        message += super.customToString(df, null);
 
         message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;

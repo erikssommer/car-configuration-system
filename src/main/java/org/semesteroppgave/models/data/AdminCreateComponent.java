@@ -109,7 +109,7 @@ public class AdminCreateComponent {
     }
 
     //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent-klasse
-    private void convert(Component component) {
+    private void convert(Component component) throws InvalidComponentException{
         Component newComponent = ComponentConverter.convert(component);
         int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
         ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
@@ -176,8 +176,8 @@ public class AdminCreateComponent {
     }
 
     //Sletting av komponenter fra tableview
-    public void deleteColumn(TableView<Component> tableViewComponents,
-                             ObservableList<Component> list, boolean state) throws IllegalArgumentException {
+    public void deleteRow(TableView<Component> tableViewComponents,
+                          ObservableList<Component> list, boolean state) throws IllegalArgumentException {
 
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
             if (state) {

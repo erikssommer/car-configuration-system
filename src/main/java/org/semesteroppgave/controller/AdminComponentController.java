@@ -92,7 +92,7 @@ public class AdminComponentController implements ApplicationThread {
     @FXML
     private void btnDeleteComponent() {
         try {
-            createComponent.deleteColumn(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentList(), true);
+            createComponent.deleteRow(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentList(), true);
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
@@ -101,7 +101,7 @@ public class AdminComponentController implements ApplicationThread {
     @FXML
     private void btnDeleteCreate() {
         try {
-            createComponent.deleteColumn(tableViewCreate, createComponent.getCreateComponentList(), false);
+            createComponent.deleteRow(tableViewCreate, createComponent.getCreateComponentList(), false);
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }

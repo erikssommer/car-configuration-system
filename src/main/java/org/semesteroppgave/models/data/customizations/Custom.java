@@ -1,7 +1,7 @@
 package org.semesteroppgave.models.data.customizations;
 
 /**
- * Enum-klasse med konstante tilpasninger
+ * Enum-klasse med konstante verdier for tilpasninger
  */
 
 public enum Custom {
@@ -10,9 +10,9 @@ public enum Custom {
     TOWBAR("Tillhengerfeste", 1000, 2),
     AUTOPILOT("Autopilot", 50_000, 3);
 
-    final String customProperty;
-    final double price;
-    final int index;
+    private final String customProperty;
+    private final double price;
+    private final int index;
 
     Custom(String customProperty, double price, int index) {
         this.customProperty = customProperty;
@@ -28,11 +28,12 @@ public enum Custom {
         return this.price;
     }
 
+    //Index er plassering i array ved opprettelse av produkt
     public int getIndex(){
         return this.index;
     }
 
-    public String toFile() {
+    public String toFileCsv() {
         return getCustomProperty() + ";" + getPrice();
     }
 }

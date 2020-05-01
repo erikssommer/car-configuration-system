@@ -72,7 +72,7 @@ public class InputValidation {
             tableViewComponents.refresh();
             throw new InvalidDeleteException("Kan ikke " + input + " denne komponenten " +
                     "fordi det må minst være én av denne komponenten. Hvis det manger en komponent når brukeren" +
-                    " oppretter en bil, vil brukeren ikke ha mulighet til å opprette en bil");
+                    " oppretter et produkt, vil brukeren ikke ha mulighet til å opprette et produkt");
         }
     }
 }

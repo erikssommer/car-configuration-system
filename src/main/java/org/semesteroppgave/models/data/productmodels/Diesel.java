@@ -56,7 +56,7 @@ public class Diesel extends Product {
     public String toFileCsv() {
 
         return super.toFileCsv() + ";;;;" + getFuelContainer().toFile() + ";" +
-                getGearbox().toFile() + ";" + super.customToFile(null) + getTotalPrice();
+                getGearbox().toFile() + ";" + super.customToFileCsv(null) + getTotalPrice();
 
     }
 
@@ -84,7 +84,7 @@ public class Diesel extends Product {
                 "Girboks: " + getGearbox().getVersion() + "\nPris: " + df.format(getGearbox().getPrice()) + "kr\nBeskrivelse: " + getGearbox().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
-        message += super.testCustom(df, null);
+        message += super.customToString(df, null);
 
         message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;

@@ -57,7 +57,7 @@ public class Electric extends Product {
     public String toFileCsv() {
 
         return super.toFileCsv() + ";" + getBattery().toFile() + ";;;;;;;"
-                + super.customToFile(autopilot) + getTotalPrice();
+                + super.customToFileCsv(autopilot) + getTotalPrice();
 
     }
 
@@ -90,7 +90,7 @@ public class Electric extends Product {
                 "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
                 "Tilpasninger som er valgt for konfigurasjonen: \n\n";
 
-        message += super.testCustom(df, getAutopilot());
+        message += super.customToString(df, getAutopilot());
 
         message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
         return message;
