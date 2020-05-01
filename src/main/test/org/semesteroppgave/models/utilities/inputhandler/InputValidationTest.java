@@ -64,8 +64,8 @@ class InputValidationTest {
     void testValidComponent() {
         InputValidation.testValidComponent("Batteri");
         InputValidation.testValidComponent("Motor");
-        InputValidation.testValidComponent("Felg");
-        InputValidation.testValidComponent("Setetrekk");
+        InputValidation.testValidComponent("felg"); //Aksepterer liten forbokstav, fordi den blir til stor i tableview
+        InputValidation.testValidComponent("setetrekk");
         InputValidation.testValidComponent("Dekk");
         InputValidation.testValidComponent("Girboks");
         InputValidation.testValidComponent("Tank");

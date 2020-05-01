@@ -144,10 +144,10 @@ public class AdminCreateComponent {
             convert(event.getTableView().getSelectionModel().getSelectedItem());
         } catch (InvalidComponentException e) {
             Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig komponent!", e.getMessage());
-            tableViewComponents.refresh();
         } catch (InvalidDeleteException e) {
-            Dialogs.showErrorDialog("Feil", "Du kan ikke endre komponent!", e.getMessage());
+            Dialogs.showErrorDialog("Feil", "Du kan ikke endre komponenten!", e.getMessage());
         }
+        tableViewComponents.refresh();
     }
 
     public void editVersionColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents) {
@@ -166,8 +166,8 @@ public class AdminCreateComponent {
 
         } catch (InvalidVersionException | DuplicateException e) {
             Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig versjon!", e.getMessage());
-            tableViewComponents.refresh();
         }
+        tableViewComponents.refresh();
     }
 
     private boolean checkUniquenessVersion(String value) {

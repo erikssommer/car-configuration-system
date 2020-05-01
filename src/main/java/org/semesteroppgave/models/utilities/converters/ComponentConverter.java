@@ -11,22 +11,22 @@ import org.semesteroppgave.models.exceptions.InvalidComponentException;
 public class ComponentConverter {
 
     public static Component convert(Component component){
-        switch (component.getComponent()) {
-            case "Motor":
+        switch (component.getComponent().toLowerCase()) {
+            case "motor":
                  return new Motor(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Felg":
+            case "felg":
                 return new Rim(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Setetrekk":
+            case "setetrekk":
                 return new SeatCover(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Spoiler":
+            case "spoiler":
                 return new Spoiler(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Dekk":
+            case "dekk":
                 return new Tires(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Batteri":
+            case "batteri":
                 return new Battery(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Tank":
+            case "tank":
                 return new FuelContainer(component.getVersion(), component.getPrice(), component.getDescription());
-            case "Girboks":
+            case "girboks":
                 return new Gearbox(component.getVersion(), component.getPrice(), component.getDescription());
 
             default: throw new InvalidComponentException("Fant ikke komponenten");

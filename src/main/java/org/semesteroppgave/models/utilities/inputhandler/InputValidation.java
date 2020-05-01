@@ -44,8 +44,10 @@ public class InputValidation {
     }
 
     public static String testValidComponent(String input) {
-        if (!input.equals("Motor") && !input.equals("Felg") && !input.equals("Setetrekk") && !input.equals("Dekk")
-                && !input.equals("Spoiler") && !input.equals("Girboks") && !input.equals("Batteri") && !input.equals("Tank")) {
+        if (!input.toLowerCase().equals("motor") && !input.toLowerCase().equals("felg")
+                && !input.toLowerCase().equals("setetrekk") && !input.toLowerCase().equals("dekk")
+                && !input.toLowerCase().equals("spoiler") && !input.toLowerCase().equals("girboks")
+                && !input.toLowerCase().equals("batteri") && !input.toLowerCase().equals("tank")) {
             throw new InvalidComponentException("Det er ikke mulig å opprette en: " + input);
         }
         return input;
