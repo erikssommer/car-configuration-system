@@ -109,7 +109,7 @@ public class AdminCreateComponent {
     }
 
     //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent-klasse
-    private void convert(Component component) throws InvalidComponentException{
+    private void editComponent(Component component) throws InvalidComponentException{
         Component newComponent = ComponentConverter.convert(component);
         int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
         ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
@@ -141,7 +141,7 @@ public class AdminCreateComponent {
         try {
             InputValidation.testComponentCount(tableViewComponents, "endre");
             event.getRowValue().setComponent(InputValidation.testValidComponent(event.getNewValue()));
-            convert(event.getTableView().getSelectionModel().getSelectedItem());
+            editComponent(event.getTableView().getSelectionModel().getSelectedItem());
         } catch (InvalidComponentException e) {
             Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig komponent!", e.getMessage());
         } catch (InvalidDeleteException e) {
