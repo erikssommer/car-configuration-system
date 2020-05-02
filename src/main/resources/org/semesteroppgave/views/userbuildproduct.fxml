@@ -16,18 +16,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserBuildProductController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+            prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserBuildProductController">
       <Label layoutX="46.0" layoutY="43.0" text="Bygg din bil">
          <font>
             <Font name="Avenir Book" size="33.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="97.0" text="Velg først en modell">
+      <Label layoutX="46.0" layoutY="110.0" text="Velg først en modell">
          <font>
             <Font name="Avenir Book" size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbModel" layoutX="204.0" layoutY="95.0" onShown="#choiseMade" prefWidth="150.0" />
+      <ComboBox fx:id="cbModel" layoutX="204.0" layoutY="109.0" onShown="#choiseMade" prefWidth="150.0" />
       <TableView fx:id="tableViewComponent" layoutX="46.0" layoutY="178.0" prefHeight="255.0" prefWidth="141.0">
           <placeholder>
               <Label text=" " />
@@ -70,7 +72,7 @@
       <font>
          <Font name="Avenir Book" size="13.0" />
       </font></Button>
-      <Button layoutX="647.0" layoutY="493.0" mnemonicParsing="false" onAction="#btnSignout" prefHeight="27.0" prefWidth="64.0" text="Logg ut">
+      <Button layoutX="644.0" layoutY="493.0" mnemonicParsing="false" onAction="#btnSignout" prefHeight="27.0" prefWidth="64.0" text="Logg ut">
       <font>
          <Font name="Avenir Book" size="13.0" />
       </font></Button>
@@ -110,9 +112,7 @@
       <font>
          <Font name="Avenir Book" size="13.0" />
       </font></Label>
-   <ImageView fitHeight="255.0" fitWidth="342.0" layoutX="418.0" layoutY="-22.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@billogo.png" />
-      </image>
-   </ImageView>
+    <ImageView fitHeight="165.0" fitWidth="220.0" layoutX="470.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@billogo.png" />
+    </ImageView>
 </AnchorPane>

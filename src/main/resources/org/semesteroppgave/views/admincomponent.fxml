@@ -21,7 +21,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminComponentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminComponentController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab onSelectionChanged="#tabComponent" style="-fx-font-family: avenir book;" text="Komponenter">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -146,20 +148,18 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-                <Button layoutX="434.0" layoutY="449.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad">
+                <Button layoutX="534.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
-                <Button layoutX="667.0" layoutY="449.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør">
+                <Button layoutX="662.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblMessageCreate" layoutX="129.0" layoutY="405.0" prefHeight="17.0" prefWidth="198.0" />
-            <ImageView fitHeight="238.0" fitWidth="309.0" layoutX="418.0" layoutY="-49.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billogo.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="193.0" fitWidth="309.0" layoutX="439.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@billogo.png" />
+                </ImageView>
             </AnchorPane>
         </Tab>
     </TabPane>

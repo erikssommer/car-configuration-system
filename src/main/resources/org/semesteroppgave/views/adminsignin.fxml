@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminSignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminSignInController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab style="-fx-font-family: avenir book;" text="Logg inn">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -40,11 +42,10 @@
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="375.0" layoutY="215.0" prefHeight="67.0" prefWidth="347.0" />
-            <ImageView fitHeight="253.0" fitWidth="371.0" layoutX="412.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billogo.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="253.0" fitWidth="371.0" layoutX="412.0" layoutY="-40.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <Image url="@billogo.png"/>
+                </ImageView>
             </AnchorPane>
         </Tab>
         <Tab style="-fx-font-family: avenir book;" text="Registrer ny">
@@ -77,11 +78,10 @@
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblRegister" layoutX="345.0" layoutY="195.0" prefHeight="67.0" prefWidth="322.0" />
-            <ImageView fitHeight="253.0" fitWidth="370.0" layoutX="412.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billogo.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="253.0" fitWidth="370.0" layoutX="412.0" layoutY="-32.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <Image url="@billogo.png"/>
+                </ImageView>
             </AnchorPane>
         </Tab>
     </TabPane>

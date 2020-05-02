@@ -11,7 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserSignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+            prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserSignInController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab style="-fx-font-family: avenir book;" text="Logg inn">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -43,11 +45,10 @@
                </font></Button>
                 <ProgressBar fx:id="progressbar" layoutX="27.0" layoutY="446.0" prefHeight="20.0" prefWidth="682.0" progress="0.0" />
                 <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="412.0" prefHeight="17.0" prefWidth="290.0" />
-            <ImageView fitHeight="266.0" fitWidth="353.0" layoutX="349.0" layoutY="-52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billogo.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="266.0" fitWidth="353.0" layoutX="349.0" layoutY="-52.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <Image url="@billogo.png"/>
+                </ImageView>
             <Label layoutX="335.0" layoutY="150.0" text="Velkommen til DataMet bilkonfigurering ">
                <font>
                   <Font name="Avenir Book" size="20.0" />
@@ -97,11 +98,10 @@
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="349.0" layoutY="376.0" prefHeight="64.0" prefWidth="206.0" />
-            <ImageView fitHeight="247.0" fitWidth="363.0" layoutX="406.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@billogo.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="247.0" fitWidth="363.0" layoutX="406.0" layoutY="-29.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <Image url="@billogo.png"/>
+                </ImageView>
             </AnchorPane>
         </Tab>
     </TabPane>
