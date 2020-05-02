@@ -16,25 +16,28 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.control.cell.TextFieldTableCell?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminComponentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminComponentController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
-        <Tab onSelectionChanged="#tabComponent" text="Komponenter">
+        <Tab onSelectionChanged="#tabComponent" style="-fx-font-family: avenir book;" text="Komponenter">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                 <Label layoutX="35.0" layoutY="25.0" text="Registrerte komponenter">
                     <font>
-                        <Font size="24.0" />
+                        <Font name="Avenir Book" size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="584.0" layoutY="19.0" text="Admin ID:" />
+                <Label layoutX="584.0" layoutY="19.0" text="Admin ID:">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Label>
                 <Label fx:id="lblAdminID" layoutX="644.0" layoutY="19.0" prefHeight="17.0" prefWidth="40.0" />
                 <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" prefHeight="292.0">
                     <columns>
-                        <TableColumn onEditCommit="#editComponent" prefWidth="204.0" reorderable="false" resizable="false" text="Komponent">
+                        <TableColumn onEditCommit="#editComponent" prefWidth="204.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Komponent">
                             <cellValueFactory>
                                 <PropertyValueFactory property="component" />
                             </cellValueFactory>
@@ -42,7 +45,7 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn onEditCommit="#editVersion" prefWidth="248.0" reorderable="false" resizable="false" text="Versjon">
+                        <TableColumn onEditCommit="#editVersion" prefWidth="248.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Versjon">
                             <cellValueFactory>
                                 <PropertyValueFactory property="version" />
                             </cellValueFactory>
@@ -50,7 +53,7 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="228.0" reorderable="false" resizable="false" text="Pris (kr)">
+                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="228.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
                             <cellValueFactory>
                                 <PropertyValueFactory property="price" />
                             </cellValueFactory>
@@ -62,58 +65,70 @@
                 </TableView>
                 <Label layoutX="531.0" layoutY="84.0" text="Søkeord:">
                     <font>
-                        <Font size="14.0" />
+                        <Font name="Avenir Book" size="13.0" />
                     </font>
                 </Label>
                 <TextField fx:id="txtSearch" layoutX="597.0" layoutY="79.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
                 <ComboBox fx:id="cbFilter" layoutX="396.0" layoutY="79.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
-                <Label layoutX="329.0" layoutY="84.0" text="Filtrer etter:" />
-                <Button fx:id="btnSignOut" layoutX="654.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut" />
-                <Button fx:id="btnDeleteComponent" layoutX="321.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent" />
+                <Label layoutX="321.0" layoutY="84.0" text="Filtrer etter:">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Label>
+                <Button fx:id="btnSignOut" layoutX="654.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Button>
+                <Button fx:id="btnDeleteComponent" layoutX="321.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Button>
             <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="460.0" prefHeight="17.0" prefWidth="250.0" />
             <ProgressBar fx:id="progressBar" layoutX="36.0" layoutY="483.0" prefHeight="20.0" prefWidth="679.0" progress="0.0" />
             </AnchorPane>
         </Tab>
-        <Tab fx:id="tabCreate" onSelectionChanged="#tabCreate" text="Opprett ny">
+        <Tab fx:id="tabCreate" onSelectionChanged="#tabCreate" style="-fx-font-family: avenir book;" text="Opprett ny">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="30.0" layoutY="27.0" text="Opprett nye komponenter">
+                <Label layoutX="24.0" layoutY="43.0" text="Opprett nye komponenter">
                     <font>
-                        <Font size="24.0" />
+                        <Font name="Avenir Book" size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="30.0" layoutY="85.0" text="Komponent:">
+                <Label layoutX="24.0" layoutY="111.0" text="Komponent:">
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="cbCreate" layoutX="128.0" layoutY="83.0" prefWidth="150.0" />
-                <Label layoutX="29.0" layoutY="134.0" text="Versjon">
+                <ComboBox fx:id="cbCreate" layoutX="128.0" layoutY="109.0" prefWidth="150.0" />
+                <Label layoutX="29.0" layoutY="159.0" text="Versjon">
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="30.0" layoutY="183.0" text="Pris">
+                <Label layoutX="30.0" layoutY="209.0" text="Pris">
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="29.0" layoutY="237.0" text="Beskrivelse">
+                <Label layoutX="29.0" layoutY="261.0" text="Beskrivelse">
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txtVersion" layoutX="128.0" layoutY="132.0" prefHeight="27.0" prefWidth="150.0" />
-                <TextField fx:id="txtPrice" layoutX="129.0" layoutY="180.0" prefHeight="27.0" prefWidth="148.0" />
-                <TextArea fx:id="txtDescription" layoutX="128.0" layoutY="229.0" prefHeight="140.0" prefWidth="200.0" wrapText="true" />
-                <Button layoutX="270.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnAdd" text="Legg til" />
-                <Label layoutX="410.0" layoutY="85.0" text="Komponenter opprettet">
+                <TextField fx:id="txtVersion" layoutX="128.0" layoutY="158.0" prefHeight="27.0" prefWidth="150.0" />
+                <TextField fx:id="txtPrice" layoutX="129.0" layoutY="207.0" prefHeight="27.0" prefWidth="148.0" />
+                <TextArea fx:id="txtDescription" layoutX="128.0" layoutY="261.0" prefHeight="140.0" prefWidth="200.0" wrapText="true" />
+                <Button layoutX="266.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnAdd" text="Legg til">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Button>
+                <Label layoutX="418.0" layoutY="135.0" text="Komponenter opprettet">
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <TableView fx:id="tableViewCreate" editable="true" layoutX="410.0" layoutY="129.0" prefHeight="239.0">
+                <TableView fx:id="tableViewCreate" editable="true" layoutX="418.0" layoutY="166.0" prefHeight="239.0">
                     <columns>
-                        <TableColumn onEditCommit="#editVersionCreate" prefWidth="204.0" resizable="false" text="Versjon">
+                        <TableColumn onEditCommit="#editVersionCreate" prefWidth="204.0" resizable="false" style="-fx-font-family: avenir book;" text="Versjon">
                             <cellValueFactory>
                                 <PropertyValueFactory property="version" />
                             </cellValueFactory>
@@ -121,7 +136,7 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn fx:id="txtPriceColumnCreate" onEditCommit="#editPriceCreate" prefWidth="93.0" resizable="false" text="Pris">
+                        <TableColumn fx:id="txtPriceColumnCreate" onEditCommit="#editPriceCreate" prefWidth="93.0" resizable="false" style="-fx-font-family: avenir book;" text="Pris">
                             <cellValueFactory>
                                 <PropertyValueFactory property="price" />
                             </cellValueFactory>
@@ -131,14 +146,25 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-                <Button layoutX="527.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad" />
-                <Button layoutX="656.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør" />
-                <Label fx:id="lblMessageCreate" layoutX="129.0" layoutY="376.0" prefHeight="17.0" prefWidth="198.0" />
+                <Button layoutX="434.0" layoutY="449.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Button>
+                <Button layoutX="667.0" layoutY="449.0" mnemonicParsing="false" onAction="#btnComplete" text="Fullfør">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Button>
+                <Label fx:id="lblMessageCreate" layoutX="129.0" layoutY="405.0" prefHeight="17.0" prefWidth="198.0" />
+            <ImageView fitHeight="238.0" fitWidth="309.0" layoutX="418.0" layoutY="-49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@billogo.png" />
+               </image>
+            </ImageView>
             </AnchorPane>
         </Tab>
     </TabPane>
     <AnchorPane layoutX="677.0" prefHeight="33.0" prefWidth="73.0">
-        <MenuBar fx:id="menuBar" prefHeight="33.0" prefWidth="73.0">
+        <MenuBar fx:id="menuBar" prefHeight="33.0" prefWidth="73.0" style="-fx-font-family: avenir book;">
             <Menu text="Fil">
                 <MenuItem onAction="#openFileMenuClicked" text="Åpne" />
                 <MenuItem onAction="#saveFileMenuClicked" text="Lagre" />
