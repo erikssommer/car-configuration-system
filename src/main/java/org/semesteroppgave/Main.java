@@ -29,6 +29,7 @@ public class Main extends Application {
         //Laster inn ferdiglagde podukter
         loadConfiguredProducts();
         scene = new Scene(loadFXML("usersignin"));
+        scene.getStylesheets().add(getClass().getResource("views/stylesheet.css").toExternalForm());
         stage.setTitle("dataMet Bilkonfigurering");
         stage.setScene(scene);
         stage.setResizable(false);
