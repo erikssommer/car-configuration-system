@@ -10,30 +10,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+            prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminSignInController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab style="-fx-font-family: avenir book;" text="Logg inn">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="41.0" layoutY="67.0" text="Logg inn admin">
+                <Label layoutX="43.0" layoutY="76.0" text="Logg inn admin">
                     <font>
                         <Font name="Avenir Book" size="27.0" />
                     </font>
                 </Label>
-                <Label layoutX="41.0" layoutY="181.0" text="Brukernavn">
+                <Label layoutX="52.0" layoutY="180.0" text="Brukernavn">
                     <font>
                         <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="65.0" layoutY="226.0" text="Passord">
+                <Label layoutX="76.0" layoutY="225.0" text="Passord">
                     <font>
                         <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
                 <TextField fx:id="txtUsernameSignin" layoutX="148.0" layoutY="178.0" />
                 <TextField fx:id="txtPasswordSignin" layoutX="148.0" layoutY="223.0" />
-                <Button layoutX="243.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn">
+                <Button layoutX="239.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
@@ -41,31 +41,30 @@
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
-                <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="375.0" layoutY="215.0" prefHeight="67.0" prefWidth="347.0" />
-                <ImageView fitHeight="253.0" fitWidth="371.0" layoutX="412.0" layoutY="-40.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <Image url="@billogo.png"/>
+                <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="323.0" layoutY="225.0" prefHeight="67.0" prefWidth="347.0" />
+                <ImageView fitHeight="253.0" fitWidth="371.0" layoutX="375.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@billogo.png" />
                 </ImageView>
             </AnchorPane>
         </Tab>
         <Tab style="-fx-font-family: avenir book;" text="Registrer ny">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="43.0" layoutY="85.0" text="Registrer ny admin">
+                <Label layoutX="33.0" layoutY="84.0" text="Registrer ny admin">
                     <font>
                         <Font name="Avenir Book" size="27.0" />
                     </font>
                 </Label>
-                <Label layoutX="30.0" layoutY="160.0" text="Ansattnummer">
+                <Label layoutX="34.0" layoutY="160.0" text="Ansattnummer">
                     <font>
                         <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="43.0" layoutY="201.0" text="Brukernavn">
+                <Label layoutX="60.0" layoutY="201.0" text="Brukernavn">
                     <font>
                         <Font name="Avenir Book" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="69.0" layoutY="250.0" text="Passord">
+                <Label layoutX="86.0" layoutY="247.0" text="Passord">
                     <font>
                         <Font name="Avenir Book" size="17.0" />
                     </font>
@@ -73,14 +72,13 @@
                 <TextField fx:id="txtEmpNo" layoutX="162.0" layoutY="158.0" />
                 <TextField fx:id="txtUsernameRegister" layoutX="162.0" layoutY="199.0" />
                 <TextField fx:id="txtPasswordRegister" layoutX="162.0" layoutY="245.0" />
-                <Button layoutX="256.0" layoutY="309.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer">
+                <Button layoutX="253.0" layoutY="292.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblRegister" layoutX="345.0" layoutY="195.0" prefHeight="67.0" prefWidth="322.0" />
-                <ImageView fitHeight="253.0" fitWidth="370.0" layoutX="412.0" layoutY="-32.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <Image url="@billogo.png"/>
+                <ImageView fitHeight="253.0" fitWidth="370.0" layoutX="375.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@billogo.png" />
                 </ImageView>
             </AnchorPane>
         </Tab>

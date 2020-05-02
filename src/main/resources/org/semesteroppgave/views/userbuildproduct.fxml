@@ -67,7 +67,7 @@
          <Font name="Avenir Book" size="13.0" />
       </font></Label>
       <TextField fx:id="txtTotalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="528.0" layoutY="292.0" prefHeight="22.0" prefWidth="119.0" promptText="0,0kr" />
-      <Label fx:id="lblMessage" alignment="TOP_LEFT" layoutX="492.0" layoutY="339.0" prefHeight="40.0" prefWidth="220.0" />
+      <Label fx:id="lblMessage" alignment="TOP_LEFT" layoutX="492.0" layoutY="331.0" prefHeight="60.0" prefWidth="220.0" />
       <Button layoutX="580.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnShowConfig" prefHeight="29.0" prefWidth="127.0" text="Konfigurerte biler" textAlignment="CENTER" wrapText="true">
       <font>
          <Font name="Avenir Book" size="13.0" />
@@ -107,12 +107,12 @@
             <Font name="Avenir Book" size="13.0" />
          </font></CheckBox>
       </GridPane>
-   <Label fx:id="lblUsername" layoutX="618.0" layoutY="35.0" prefHeight="17.0" prefWidth="127.0" />
+   <Label fx:id="lblUsername" layoutX="618.0" layoutY="37.0" prefHeight="17.0" prefWidth="127.0" />
    <Label layoutX="575.0" layoutY="35.0" text="Bruker:">
       <font>
          <Font name="Avenir Book" size="13.0" />
       </font></Label>
-    <ImageView fitHeight="165.0" fitWidth="220.0" layoutX="470.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="165.0" fitWidth="220.0" layoutX="486.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@billogo.png" />
     </ImageView>
 </AnchorPane>

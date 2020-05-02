@@ -17,7 +17,7 @@
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab style="-fx-font-family: avenir book;" text="Logg inn">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="34.0" layoutY="164.0" prefHeight="32.0" prefWidth="206.0" text="Logg inn bruker">
+                <Label layoutX="56.0" layoutY="164.0" prefHeight="32.0" prefWidth="206.0" text="Logg inn bruker">
                     <font>
                         <Font name="Avenir Book" size="19.0" />
                     </font>
@@ -34,27 +34,26 @@
                 </Label>
                 <TextField fx:id="txtUsernameLogin" layoutX="148.0" layoutY="214.0" />
                 <TextField fx:id="txtPasswordLogin" layoutX="148.0" layoutY="258.0" />
-                <Button fx:id="btnSignin" layoutX="240.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn">
+                <Button fx:id="btnSignin" layoutX="239.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="45.0" layoutY="346.0" prefHeight="66.0" prefWidth="344.0" />
-                <Button fx:id="btnAdmin" layoutX="148.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnAdmin" text="Admin">
+                <Button fx:id="btnAdmin" layoutX="147.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnAdmin" text="Admin">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <ProgressBar fx:id="progressbar" layoutX="27.0" layoutY="446.0" prefHeight="20.0" prefWidth="682.0" progress="0.0" />
                 <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="412.0" prefHeight="17.0" prefWidth="290.0" />
-                <ImageView fitHeight="266.0" fitWidth="353.0" layoutX="349.0" layoutY="-52.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <Image url="@billogo.png"/>
+                <ImageView fitHeight="266.0" fitWidth="353.0" layoutX="355.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@billogo.png" />
                 </ImageView>
-            <Label layoutX="335.0" layoutY="150.0" text="Velkommen til DataMet bilkonfigurering ">
+            <Label layoutX="350.0" layoutY="140.0" text="Velkommen til DataMet bilkonfigurering ">
                <font>
                   <Font name="Avenir Book" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="395.0" layoutY="213.0" text="Bygg din drømmebil hos oss">
+            <Label layoutX="410.0" layoutY="200.0" text="Bygg din drømmebil hos oss">
                <font>
                   <Font name="Avenir Book" size="19.0" />
                </font>
@@ -63,28 +62,28 @@
         </Tab>
         <Tab fx:id="tabRegister" onSelectionChanged="#tabRegisterSelected" style="-fx-font-family: avenir book;" text="Registrer ny">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="44.0" layoutY="82.0" text="Registrer ny bruker">
+                <Label layoutX="51.0" layoutY="82.0" text="Registrer ny bruker">
                     <font>
                         <Font name="Avenir Book" size="27.0" />
                     </font>
                 </Label>
-                <Label layoutX="65.0" layoutY="170.0" text="Navn">
+                <Label layoutX="94.0" layoutY="170.0" text="Navn">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="64.0" layoutY="209.0" text="Epost">
+                <Label layoutX="92.0" layoutY="208.0" text="Epost">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="44.0" layoutY="247.0" text="Telefonnr">
+                <Label layoutX="64.0" layoutY="245.0" text="Telefonnr">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="38.0" layoutY="287.0" text="Brukernavn">
+                <Label layoutX="51.0" layoutY="285.0" text="Brukernavn">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="56.0" layoutY="335.0" text="Passord">
+                <Label layoutX="74.0" layoutY="334.0" text="Passord">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
@@ -93,14 +92,13 @@
                 <TextField fx:id="txtPhonenumber" layoutX="144.0" layoutY="245.0" />
                 <TextField fx:id="txtUsernameRegister" layoutX="144.0" layoutY="285.0" />
                 <TextField fx:id="txtPasswordRegister" layoutX="144.0" layoutY="333.0" />
-                <Button layoutX="238.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer">
+                <Button layoutX="235.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
                 <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="349.0" layoutY="376.0" prefHeight="64.0" prefWidth="206.0" />
-                <ImageView fitHeight="247.0" fitWidth="363.0" layoutX="406.0" layoutY="-29.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <Image url="@billogo.png"/>
+                <ImageView fitHeight="154.0" fitWidth="244.0" layoutX="544.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@billogo.png" />
                 </ImageView>
             </AnchorPane>
         </Tab>
