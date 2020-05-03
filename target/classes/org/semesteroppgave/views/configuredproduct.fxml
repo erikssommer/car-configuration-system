@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
+            prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.ConfiguredProductController">
-      <Label layoutX="36.0" layoutY="35.0" text="Tidligere konfigurerte biler">
+      <Label layoutX="36.0" layoutY="262.0" text="Konfigurerte bilpakker">
          <font>
-            <Font size="24.0" />
+            <Font name="Avenir Book" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="tableViewConfigs" layoutX="36.0" layoutY="75.0" prefHeight="159.0">
+      <TableView fx:id="tableViewConfigs" layoutX="36.0" layoutY="293.0" prefHeight="143.0" prefWidth="678.0">
         <columns>
-          <TableColumn prefWidth="75.0" reorderable="false" text="Modell">
+          <TableColumn editable="false" prefWidth="75.0" reorderable="false" style="-fx-font-family: avenir book;" text="Modell">
               <cellValueFactory>
                   <PropertyValueFactory property="model" />
               </cellValueFactory>
@@ -30,32 +30,32 @@
                   <TextFieldTableCell fx:factory="forTableColumn" />
               </cellFactory>
           </TableColumn>
-          <TableColumn prefWidth="75.0" reorderable="false" text="Motor">
+          <TableColumn editable="false" prefWidth="75.0" reorderable="false" style="-fx-font-family: avenir book;" text="Motor">
               <cellValueFactory>
                   <PropertyValueFactory property="motor" />
               </cellValueFactory>
           </TableColumn>
-            <TableColumn prefWidth="87.0" reorderable="false" text="Felger">
+            <TableColumn editable="false" prefWidth="87.0" reorderable="false" style="-fx-font-family: avenir book;" text="Felger">
                 <cellValueFactory>
                     <PropertyValueFactory property="rim" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="112.0" reorderable="false" text="Setetrekk">
+            <TableColumn editable="false" prefWidth="112.0" reorderable="false" style="-fx-font-family: avenir book;" text="Setetrekk">
                 <cellValueFactory>
                     <PropertyValueFactory property="seatCover" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="105.0" reorderable="false" text="Spoiler">
+            <TableColumn editable="false" prefWidth="105.0" reorderable="false" style="-fx-font-family: avenir book;" text="Spoiler">
                 <cellValueFactory>
                     <PropertyValueFactory property="spoiler" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="119.0" reorderable="false" text="Dekk">
+            <TableColumn editable="false" prefWidth="119.0" reorderable="false" style="-fx-font-family: avenir book;" text="Dekk">
                 <cellValueFactory>
                     <PropertyValueFactory property="tires" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="103.0" reorderable="false" text="Pris (kr)">
+            <TableColumn editable="false" prefWidth="103.0" reorderable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
                 <cellValueFactory>
                     <PropertyValueFactory property="totalPrice" />
                 </cellValueFactory>
@@ -65,16 +65,22 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Label layoutX="36.0" layoutY="253.0" text="Min konfig">
+      <Label layoutX="36.0" layoutY="47.0" text="Min bilkonfigurasjon">
          <font>
-            <Font size="17.0" />
+            <Font name="Avenir Book" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="633.0" layoutY="492.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="27.0" prefWidth="82.0" text="Tilbake" />
-      <Button layoutX="633.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnMoreInfo" text="Vis mer info" />
-      <TableView fx:id="tableViewUserConfig" layoutX="36.0" layoutY="287.0" prefHeight="152.0">
+      <Button layoutX="628.0" layoutY="492.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="29.0" prefWidth="87.0" text="Tilbake">
+      <font>
+         <Font name="Avenir Book" size="13.0" />
+      </font></Button>
+      <Button layoutX="627.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnMoreInfo" text="Vis mer info">
+      <font>
+         <Font name="Avenir Book" size="13.0" />
+      </font></Button>
+      <TableView fx:id="tableViewUserConfig" layoutX="36.0" layoutY="78.0" prefHeight="152.0">
          <columns>
-            <TableColumn prefWidth="75.0" reorderable="false" text="Modell">
+            <TableColumn editable="false" prefWidth="75.0" reorderable="false" style="-fx-font-family: avenir book;" text="Modell">
                <cellValueFactory>
                   <PropertyValueFactory property="model" />
                </cellValueFactory>
@@ -82,32 +88,32 @@
                   <TextFieldTableCell fx:factory="forTableColumn" />
                </cellFactory>
             </TableColumn>
-            <TableColumn prefWidth="75.0" reorderable="false" text="Motor">
+            <TableColumn editable="false" prefWidth="75.0" reorderable="false" style="-fx-font-family: avenir book;" text="Motor">
                 <cellValueFactory>
                     <PropertyValueFactory property="motor" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="87.0" reorderable="false" text="Felger">
+            <TableColumn editable="false" prefWidth="87.0" reorderable="false" style="-fx-font-family: avenir book;" text="Felger">
                 <cellValueFactory>
                     <PropertyValueFactory property="rim" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="112.0" reorderable="false" text="Setetrekk">
+            <TableColumn editable="false" prefWidth="112.0" reorderable="false" style="-fx-font-family: avenir book;" text="Setetrekk">
                 <cellValueFactory>
                     <PropertyValueFactory property="seatCover" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="105.0" reorderable="false" text="Spoiler">
+            <TableColumn editable="false" prefWidth="105.0" reorderable="false" style="-fx-font-family: avenir book;" text="Spoiler">
                 <cellValueFactory>
                     <PropertyValueFactory property="spoiler" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="119.0" reorderable="false" text="Dekk">
+            <TableColumn editable="false" prefWidth="119.0" reorderable="false" style="-fx-font-family: avenir book;" text="Dekk">
                 <cellValueFactory>
                     <PropertyValueFactory property="tires" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="103.0" reorderable="false" text="Pris (kr)">
+            <TableColumn editable="false" prefWidth="103.0" reorderable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
                 <cellValueFactory>
                     <PropertyValueFactory property="totalPrice" />
                 </cellValueFactory>
@@ -117,13 +123,19 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="521.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnAddToConfigs" prefHeight="27.0" prefWidth="101.0" text="Legg til i konfig" />
-    <MenuBar prefHeight="29.0" prefWidth="750.0">
+      <Button layoutX="406.0" layoutY="452.0" mnemonicParsing="false" onAction="#btnAddToConfigs" prefHeight="29.0" prefWidth="207.0" text="Legg til i min konfigurasjonsliste">
+      <font>
+         <Font name="Avenir Book" size="13.0" />
+      </font></Button>
+    <MenuBar prefHeight="29.0" prefWidth="750.0" style="-fx-font-family: avenir book;">
         <Menu mnemonicParsing="false" text="Fil">
             <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne" />
             <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre" />
         </Menu>
     </MenuBar>
-   <Label layoutX="572.0" layoutY="41.0" text="Bruker:" />
-   <Label fx:id="lblUsername" layoutX="613.0" layoutY="41.0" prefHeight="17.0" prefWidth="129.0" />
+   <Label layoutX="572.0" layoutY="41.0" text="Bruker:">
+      <font>
+         <Font name="Avenir Book" size="13.0" />
+      </font></Label>
+   <Label fx:id="lblUsername" layoutX="614.0" layoutY="42.0" prefHeight="17.0" prefWidth="129.0" />
 </AnchorPane>

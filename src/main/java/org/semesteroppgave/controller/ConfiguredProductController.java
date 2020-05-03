@@ -40,11 +40,11 @@ public class ConfiguredProductController implements ApplicationController {
     @FXML
     private void btnAddToConfigs() {
 
-        if (tableViewUserConfig.getSelectionModel().getSelectedItem() != null) {
+        if (tableViewConfigs.getSelectionModel().getSelectedItem() != null) {
             ApplicationData.getInstance().getRegisterProduct()
-                    .setProductList(tableViewUserConfig.getSelectionModel().getSelectedItem());
+                    .setUserProductList(tableViewConfigs.getSelectionModel().getSelectedItem());
             ApplicationData.getInstance().getRegisterProduct()
-                    .getUserProductList().remove(tableViewUserConfig.getSelectionModel().getSelectedItem());
+                    .getProductList().remove(tableViewConfigs.getSelectionModel().getSelectedItem());
 
         } else {
             Dialogs.showErrorDialog("Oups", "Du må markere produktet ditt først!",
