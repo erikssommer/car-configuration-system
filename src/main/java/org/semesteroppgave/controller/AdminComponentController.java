@@ -155,6 +155,9 @@ public class AdminComponentController implements ApplicationThread {
     private void onKeyTypedSearch() {
         try {
             componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
+            txtEditDescription.setDisable(true);
+            txtEditDescription.setText("");
+            btnDescription.setVisible(false);
         } catch (InvalidPriceException e) {
             Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
         }
