@@ -1,14 +1,19 @@
 package org.semesteroppgave.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
+import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.data.productmodels.Product;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.user.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
+import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
 
@@ -92,6 +97,26 @@ public class ConfiguredProductController implements ApplicationController {
         } else {
             Dialogs.showErrorDialog("Fil", "Feil i lagring av liste",
                     "Du kan ikke lagre en tom liste");
+        }
+    }
+
+    @FXML
+    private void deleteProduct() {
+        if (tableViewUserConfig.getSelectionModel().getSelectedItem() != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Bekreft");
+            alert.setHeaderText("Du har valgt produktmodellen: " +
+                    tableViewUserConfig.getSelectionModel().getSelectedItem().getModel());
+            alert.setContentText("Ønsker du virkerlig å slette dette produktet?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    ApplicationData.getInstance().getRegisterProduct().getUserProductList()
+                            .remove(tableViewUserConfig.getSelectionModel().getSelectedItem());
+                }
+            });
+        } else {
+            Dialogs.showErrorDialog("Feil", "Du har ikke valgt et produkt",
+                    "Velg et produkt og prøv på nytt");
         }
     }
 }

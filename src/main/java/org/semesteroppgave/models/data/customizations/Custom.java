@@ -7,7 +7,7 @@ package org.semesteroppgave.models.data.customizations;
 public enum Custom {
     GPS("GPS-system", 2000, 0),
     SUNROOF("Soltak", 5000, 1),
-    TOWBAR("Tillhengerfeste", 1000, 2),
+    TOWBAR("Hengerfeste", 1000, 2),
     AUTOPILOT("Autopilot", 50_000, 3);
 
     private final String customProperty;

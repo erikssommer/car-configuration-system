@@ -94,7 +94,7 @@
          <font>
             <Font name="Avenir Book" size="13.0" />
          </font></CheckBox>
-            <CheckBox fx:id="cbTowbar" mnemonicParsing="false" onAction="#cbTowbar" text="Henger" GridPane.rowIndex="1">
+            <CheckBox fx:id="cbTowbar" mnemonicParsing="false" onAction="#cbTowbar" text="Hengerfeste" GridPane.rowIndex="1">
          <font>
             <Font name="Avenir Book" size="13.0" />
          </font></CheckBox>

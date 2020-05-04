@@ -31,7 +31,7 @@ public class CreateProductCsv {
         battery = new Battery(object[17], Double.parseDouble(object[18]), object[19]);
 
         Custom autopilot = null;
-        if (object[32].equals("Autopilot")) {
+        if (object[32].equals(Custom.AUTOPILOT.getCustomProperty())) {
             autopilot = Custom.AUTOPILOT;
         } else if (!object[32].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[32] + " støttes ikke");
@@ -106,19 +106,19 @@ public class CreateProductCsv {
         towbar = null;
         sunroof = null;
         //Tester om produktet skal ha tilpasningen
-        if (object[26].equals("GPS-system")) {
+        if (object[26].equals(Custom.GPS.getCustomProperty())) {
             gps = Custom.GPS;
         } else if (!object[26].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[26] + " støttes ikke");
         }
 
-        if (object[28].equals("Soltak")) {
+        if (object[28].equals(Custom.SUNROOF.getCustomProperty())) {
             sunroof = Custom.SUNROOF;
         } else if (!object[28].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[28] + " støttes ikke");
         }
 
-        if (object[30].equals("Tillhengerfeste")) {
+        if (object[30].equals(Custom.TOWBAR.getCustomProperty())) {
             towbar = Custom.TOWBAR;
         } else if (!object[30].isEmpty()) {
             throw new InvalidProductException("Tilpasningen: " + object[30] + " støttes ikke");
