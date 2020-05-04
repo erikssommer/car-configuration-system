@@ -10,7 +10,7 @@ Gruppe: 6677
 Gruppemedlemmer: 364, 330, 328
 
 ------
-#### **_Nødvendig informasjon for pålogging i programmet_**
+### **_Nødvendig informasjon for pålogging i programmet_**
 
 #### **Admin pålogging;**
 
