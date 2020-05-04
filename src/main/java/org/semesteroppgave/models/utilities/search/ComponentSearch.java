@@ -39,7 +39,7 @@ public class ComponentSearch {
                 break;
             case "Pris":
                 try {
-                    searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(Double.parseDouble(searchWord)));
+                    searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(searchWord));
                 } catch (NumberFormatException ignored) {}
                 break;
         }

@@ -50,10 +50,10 @@ public class RegisterComponent implements Serializable {
         return componentList.stream().filter(component -> component.getVersion().toLowerCase()
                 .contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
+    //Gjør prisen om til string for å få et mer brukervennlig søk
+    public ObservableList<Component> searchPrice(String value) {
 
-    public ObservableList<Component> searchPrice(double value) {
-
-        return componentList.stream().filter(component -> component.getPrice() == (value))
+        return componentList.stream().filter(component -> String.valueOf(component.getPrice()).contains(value))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
