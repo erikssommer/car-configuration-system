@@ -96,6 +96,7 @@ public class AdminComponentController implements ApplicationThread {
         try {
             createComponent.deleteRow(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentList(), true);
             txtEditDescription.setText("");
+            txtEditDescription.setDisable(true);
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
