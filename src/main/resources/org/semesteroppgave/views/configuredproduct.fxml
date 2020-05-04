@@ -21,6 +21,9 @@
          </font>
       </Label>
       <TableView fx:id="tableViewConfigs" layoutX="36.0" layoutY="293.0" prefHeight="143.0" prefWidth="678.0">
+          <placeholder>
+              <Label text="Det er ikke opprettet ferdiglagde produkter" />
+          </placeholder>
         <columns>
           <TableColumn editable="false" prefWidth="75.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Modell">
               <cellValueFactory>
@@ -79,6 +82,9 @@
          <Font name="Avenir Book" size="13.0" />
       </font></Button>
       <TableView fx:id="tableViewUserConfig" layoutX="36.0" layoutY="78.0" prefHeight="152.0">
+          <placeholder>
+              <Label text="Det er ikke opprettet noen produkter" />
+          </placeholder>
          <columns>
             <TableColumn editable="false" prefWidth="75.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Modell">
                <cellValueFactory>

@@ -37,7 +37,10 @@
                   <Font name="Avenir Book" size="13.0" />
                </font></Label>
                 <Label fx:id="lblAdminID" layoutX="644.0" layoutY="19.0" prefHeight="17.0" prefWidth="40.0" />
-                <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" onMouseClicked="#showDescription" prefHeight="292.0" prefWidth="441.0">
+                <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" onMouseClicked="#showDescription" prefHeight="292.0">
+                    <placeholder>
+                        <Label text="Det er ikke opprettet noen komponenter" />
+                    </placeholder>
                     <columns>
                         <TableColumn onEditCommit="#editComponent" prefWidth="132.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Komponent">
                             <cellValueFactory>
@@ -55,7 +58,7 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="145.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
+                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="146.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
                             <cellValueFactory>
                                 <PropertyValueFactory property="price" />
                             </cellValueFactory>
@@ -144,6 +147,9 @@
                     </font>
                 </Label>
                 <TableView fx:id="tableViewCreate" editable="true" layoutX="418.0" layoutY="166.0" prefHeight="239.0">
+                    <placeholder>
+                        <Label text=" " />
+                    </placeholder>
                     <columns>
                         <TableColumn onEditCommit="#editVersionCreate" prefWidth="204.0" resizable="false" style="-fx-font-family: avenir book;" text="Versjon">
                             <cellValueFactory>
