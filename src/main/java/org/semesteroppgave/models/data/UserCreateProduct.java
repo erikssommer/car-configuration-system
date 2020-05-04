@@ -3,9 +3,10 @@ package org.semesteroppgave.models.data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.util.Duration;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.models.data.components.*;
-import org.semesteroppgave.models.data.customizations.*;
+import org.semesteroppgave.models.data.customizations.Custom;
 import org.semesteroppgave.models.data.productmodels.Diesel;
 import org.semesteroppgave.models.data.productmodels.Electric;
 import org.semesteroppgave.models.data.productmodels.Hybrid;
@@ -92,9 +93,10 @@ public class UserCreateProduct {
 
         tableViewVersion.setItems(chooseComponentList);
 
-        //Når bruker holder musen over en komponent vil beskrivelsen vises i et vindu
+        //Når bruker holder musepeker over en komponent vil beskrivelsen vises i et vindu
         tableViewVersion.setRowFactory(tableView -> {
             Tooltip tooltip = new Tooltip();
+            tooltip.setShowDelay(new Duration(500));
             final TableRow<Component> row = new TableRow<>();
 
             row.hoverProperty().addListener((observable) -> {
