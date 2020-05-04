@@ -92,6 +92,23 @@ public class UserCreateProduct {
 
         tableViewVersion.setItems(chooseComponentList);
 
+        //Når bruker holder musen over en komponent vil beskrivelsen vises i et vindu
+        tableViewVersion.setRowFactory(tableView -> {
+            Tooltip tooltip = new Tooltip();
+            final TableRow<Component> row = new TableRow<>();
+
+            row.hoverProperty().addListener((observable) -> {
+                final Component component = row.getItem();
+
+                if (row.isHover() && component != null) {
+                    tooltip.setText("Beskrivelse: "+ component.getDescription());
+                    tableViewVersion.setTooltip(tooltip);
+                }
+            });
+
+            return row;
+        });
+
         tableViewVersion.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 addToProduct(newSelection);
