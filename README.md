@@ -1,6 +1,8 @@
 # semesteroppgave
 Semesteroppgave i programutvikling ved OsloMet våren 2020
 
+Vi har valgt å løse oppgaven med et konfigureringsprogram for bil.
+
 Gruppe: 6677
 
 Gruppemedlemmer: 364, 330, 328
@@ -14,7 +16,7 @@ Brukernavn: Admin123
 
 Passord: Java13
 
-Tillatte ansattID'er for ny ansattbruker: a123, a456, a789
+Tillatte ansattID'er for ny ansattbruker: A1234, A4567, A7890
 
 ------
 
