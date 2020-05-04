@@ -193,6 +193,7 @@ public class AdminComponentController implements ApplicationThread {
     private void showDescription() {
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
             txtEditDescription.setText(tableViewComponents.getSelectionModel().getSelectedItem().getDescription());
+            btnDescription.setVisible(false);
         }
     }
 
