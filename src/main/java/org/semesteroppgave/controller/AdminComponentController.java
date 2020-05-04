@@ -6,13 +6,13 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.data.AdminCreateComponent;
-import org.semesteroppgave.models.utilities.search.ComponentSearch;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.admin.AdminSignin;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.converters.DoubleConverter;
+import org.semesteroppgave.models.utilities.search.ComponentSearch;
 import org.semesteroppgave.models.utilities.threadhelper.StartThread;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class AdminComponentController implements ApplicationThread {
     private Tab tabCreate;
 
     @FXML
-    private Button btnSignOut, btnDeleteComponent;
+    private Button btnSignOut, btnDeleteComponent, btnDescription;
 
     @FXML
     private TableView<Component> tableViewComponents, tableViewCreate;
@@ -44,14 +44,14 @@ public class AdminComponentController implements ApplicationThread {
     private TextField txtSearch, txtVersion, txtPrice;
 
     @FXML
-    private TextArea txtDescription;
+    private TextArea txtDescription, txtEditDescription;
 
     @FXML
     private Label lblAdminID, lblMessageCreate, lblThreadMessage;
 
     @FXML
     private ProgressBar progressBar;
-    
+
 
     @Override
     public void initialize() {
@@ -64,6 +64,7 @@ public class AdminComponentController implements ApplicationThread {
         lblAdminID.setText(AdminSignin.getActiveAdminId());
         progressBar.setVisible(false);
         lblThreadMessage.setVisible(false);
+        btnDescription.setVisible(false);
     }
 
     @FXML
@@ -74,7 +75,7 @@ public class AdminComponentController implements ApplicationThread {
             lblMessageCreate.setText("Komponenten er lagt til");
         } catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e) {
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent",
                     "Prisen må være fyllt inn og være et tall");
         }
@@ -171,7 +172,7 @@ public class AdminComponentController implements ApplicationThread {
     @FXML
     private void openFileMenuClicked() {
         String filePath = FileHandler.getOpenFileJobj();
-        if (!filePath.equals("null")){
+        if (!filePath.equals("null")) {
             progressBar.setVisible(true);
             lblThreadMessage.setVisible(true);
             startThread.start(filePath);
@@ -180,12 +181,35 @@ public class AdminComponentController implements ApplicationThread {
 
     @FXML
     private void saveFileMenuClicked() {
-        if (!tableViewComponents.getItems().isEmpty()){
+        if (!tableViewComponents.getItems().isEmpty()) {
             FileHandler.saveFileJobj(componentSearch);
-        }else {
+        } else {
             Dialogs.showErrorDialog("Fil", "Feil i lagring av liste",
                     "Du kan ikke lagre en tom liste");
         }
+    }
+
+    @FXML
+    private void showDescription() {
+        if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
+            txtEditDescription.setText(tableViewComponents.getSelectionModel().getSelectedItem().getDescription());
+        }
+    }
+
+    @FXML
+    private void editDescription() {
+        btnDescription.setVisible(true);
+    }
+
+    @FXML
+    void btnDescription() {
+        try {
+            tableViewComponents.getSelectionModel().getSelectedItem().setDescription(txtEditDescription.getText());
+        }catch (InvalidDescriptionException e) {
+            Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig beskrivelse!", e.getMessage());
+            txtEditDescription.setText(tableViewComponents.getSelectionModel().getSelectedItem().getDescription());
+        }
+        btnDescription.setVisible(false);
     }
 
     @Override

@@ -21,9 +21,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminComponentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.AdminComponentController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab onSelectionChanged="#tabComponent" style="-fx-font-family: avenir book;" text="Komponenter">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -37,9 +35,9 @@
                   <Font name="Avenir Book" size="13.0" />
                </font></Label>
                 <Label fx:id="lblAdminID" layoutX="644.0" layoutY="19.0" prefHeight="17.0" prefWidth="40.0" />
-                <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" prefHeight="292.0">
+                <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" onMouseClicked="#showDescription" prefHeight="292.0" prefWidth="441.0">
                     <columns>
-                        <TableColumn onEditCommit="#editComponent" prefWidth="204.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Komponent">
+                        <TableColumn onEditCommit="#editComponent" prefWidth="132.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Komponent">
                             <cellValueFactory>
                                 <PropertyValueFactory property="component" />
                             </cellValueFactory>
@@ -47,7 +45,7 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn onEditCommit="#editVersion" prefWidth="248.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Versjon">
+                        <TableColumn onEditCommit="#editVersion" prefWidth="162.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Versjon">
                             <cellValueFactory>
                                 <PropertyValueFactory property="version" />
                             </cellValueFactory>
@@ -55,7 +53,7 @@
                                 <TextFieldTableCell fx:factory="forTableColumn" />
                             </cellFactory>
                         </TableColumn>
-                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="228.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
+                        <TableColumn fx:id="txtPriceColumn" onEditCommit="#editPrice" prefWidth="145.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Pris (kr)">
                             <cellValueFactory>
                                 <PropertyValueFactory property="price" />
                             </cellValueFactory>
@@ -65,27 +63,42 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-                <Label layoutX="531.0" layoutY="84.0" text="Søkeord:">
+                <Label layoutX="292.0" layoutY="84.0" text="Søkeord:">
                     <font>
                         <Font name="Avenir Book" size="13.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txtSearch" layoutX="597.0" layoutY="79.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
-                <ComboBox fx:id="cbFilter" layoutX="396.0" layoutY="79.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
-                <Label layoutX="321.0" layoutY="84.0" text="Filtrer etter:">
+                <TextField fx:id="txtSearch" layoutX="360.0" layoutY="80.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
+                <ComboBox fx:id="cbFilter" layoutX="151.0" layoutY="80.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
+                <Label layoutX="70.0" layoutY="84.0" text="Filtrer etter:">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Label>
-                <Button fx:id="btnSignOut" layoutX="654.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut">
+                <Button fx:id="btnSignOut" layoutX="655.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnSignout" text="Logg ut">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
-                <Button fx:id="btnDeleteComponent" layoutX="321.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent">
+                <Button fx:id="btnDeleteComponent" layoutX="36.0" layoutY="427.0" mnemonicParsing="false" onAction="#btnDeleteComponent" text="Slett komponent">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
             <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="251.0" layoutY="460.0" prefHeight="17.0" prefWidth="250.0" />
-            <ProgressBar fx:id="progressBar" layoutX="36.0" layoutY="483.0" prefHeight="20.0" prefWidth="679.0" progress="0.0" />
+            <ProgressBar fx:id="progressBar" layoutX="36.0" layoutY="483.0" prefHeight="20.0" prefWidth="683.0" progress="0.0" />
+            <TextArea fx:id="txtEditDescription" layoutX="501.0" layoutY="159.0" onKeyPressed="#editDescription" prefHeight="211.0" prefWidth="218.0" promptText="Velg en komponent" wrapText="true">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font>
+            </TextArea>
+            <Label layoutX="501.0" layoutY="128.0" text="Beskrivelse">
+               <font>
+                  <Font name="Avenir Book" size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnDescription" layoutX="655.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnDescription" prefHeight="29.0" prefWidth="64.0" text="Bekreft">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font>
+            </Button>
             </AnchorPane>
         </Tab>
         <Tab fx:id="tabCreate" onSelectionChanged="#tabCreate" style="-fx-font-family: avenir book;" text="Opprett ny">
