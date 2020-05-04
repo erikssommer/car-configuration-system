@@ -38,7 +38,7 @@
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
-                <Label fx:id="lblSignin" alignment="BOTTOM_LEFT" layoutX="45.0" layoutY="346.0" prefHeight="66.0" prefWidth="344.0" />
+                <Label fx:id="lblSignin" alignment="TOP_LEFT" layoutX="147.0" layoutY="346.0" prefHeight="66.0" prefWidth="344.0" />
                 <Button fx:id="btnAdmin" layoutX="147.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnAdmin" text="Admin">
                <font>
                   <Font name="Avenir Book" size="13.0" />
@@ -96,7 +96,7 @@
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
-                <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="349.0" layoutY="376.0" prefHeight="64.0" prefWidth="206.0" />
+                <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="327.0" layoutY="334.0" prefHeight="64.0" prefWidth="273.0" />
                 <ImageView fitHeight="110.0" fitWidth="133.0" layoutX="609.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@billogo.png" />
                 </ImageView>
