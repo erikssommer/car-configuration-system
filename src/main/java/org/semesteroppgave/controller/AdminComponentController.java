@@ -65,6 +65,7 @@ public class AdminComponentController implements ApplicationThread {
         progressBar.setVisible(false);
         lblThreadMessage.setVisible(false);
         btnDescription.setVisible(false);
+        txtEditDescription.setDisable(true);
     }
 
     @FXML
@@ -94,6 +95,7 @@ public class AdminComponentController implements ApplicationThread {
     private void btnDeleteComponent() {
         try {
             createComponent.deleteRow(tableViewComponents, ApplicationData.getInstance().getRegisterComponent().getComponentList(), true);
+            txtEditDescription.setText("");
         } catch (InvalidDeleteException e) {
             Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
         }
@@ -175,6 +177,8 @@ public class AdminComponentController implements ApplicationThread {
         if (!filePath.equals("null")) {
             progressBar.setVisible(true);
             lblThreadMessage.setVisible(true);
+            btnDescription.setVisible(false);
+            txtEditDescription.setText("");
             startThread.start(filePath);
         }
     }
@@ -194,6 +198,7 @@ public class AdminComponentController implements ApplicationThread {
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
             txtEditDescription.setText(tableViewComponents.getSelectionModel().getSelectedItem().getDescription());
             btnDescription.setVisible(false);
+            txtEditDescription.setDisable(false);
         }
     }
 
@@ -222,6 +227,8 @@ public class AdminComponentController implements ApplicationThread {
         btnSignOut.setDisable(true);
         menuBar.setDisable(true);
         tableViewComponents.setDisable(true);
+        btnDescription.setDisable(true);
+        txtEditDescription.setDisable(true);
     }
 
     @Override
@@ -235,5 +242,7 @@ public class AdminComponentController implements ApplicationThread {
         tableViewComponents.setDisable(false);
         progressBar.setVisible(false);
         lblThreadMessage.setVisible(false);
+        btnDescription.setDisable(false);
+        txtEditDescription.setDisable(true);
     }
 }
