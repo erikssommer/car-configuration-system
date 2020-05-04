@@ -38,7 +38,7 @@ public class ComponentSearch {
                 searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchVersion(searchWord));
                 break;
             case "Pris":
-                    searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(searchWord));
+                searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(searchWord));
                 break;
         }
         tableView.setItems(searchResult);
