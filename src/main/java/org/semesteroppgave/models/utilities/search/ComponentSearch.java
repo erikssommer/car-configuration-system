@@ -38,9 +38,7 @@ public class ComponentSearch {
                 searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchVersion(searchWord));
                 break;
             case "Pris":
-                try {
                     searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(searchWord));
-                } catch (NumberFormatException ignored) {}
                 break;
         }
         tableView.setItems(searchResult);
