@@ -1,6 +1,5 @@
 package org.semesteroppgave.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -8,12 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.data.productmodels.Product;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.user.UserSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
-import org.semesteroppgave.models.utilities.inputhandler.InputValidation;
 
 import java.io.IOException;
 
