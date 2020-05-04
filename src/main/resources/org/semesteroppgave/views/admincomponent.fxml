@@ -39,7 +39,7 @@
                 <Label fx:id="lblAdminID" layoutX="644.0" layoutY="19.0" prefHeight="17.0" prefWidth="40.0" />
                 <TableView fx:id="tableViewComponents" editable="true" layoutX="35.0" layoutY="128.0" onMouseClicked="#showDescription" prefHeight="292.0">
                     <placeholder>
-                        <Label text="Det er ikke opprettet noen komponenter" />
+                        <Label text="Ingen komponenter" />
                     </placeholder>
                     <columns>
                         <TableColumn onEditCommit="#editComponent" prefWidth="132.0" reorderable="false" resizable="false" style="-fx-font-family: avenir book;" text="Komponent">
@@ -68,14 +68,14 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-                <Label layoutX="292.0" layoutY="84.0" text="Søkeord:">
+                <Label layoutX="303.0" layoutY="84.0" text="Søkeord:">
                     <font>
                         <Font name="Avenir Book" size="13.0" />
                     </font>
                 </Label>
                 <TextField fx:id="txtSearch" layoutX="360.0" layoutY="80.0" onKeyTyped="#onKeyTypedSearch" prefHeight="27.0" prefWidth="116.0" />
-                <ComboBox fx:id="cbFilter" layoutX="151.0" layoutY="80.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
-                <Label layoutX="70.0" layoutY="84.0" text="Filtrer etter:">
+                <ComboBox fx:id="cbFilter" layoutX="169.0" layoutY="80.0" onAction="#filterChoiceChanged" prefHeight="27.0" prefWidth="122.0" />
+                <Label layoutX="94.0" layoutY="84.0" text="Filtrer etter:">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Label>
