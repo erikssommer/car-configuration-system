@@ -225,8 +225,8 @@ public class UserCreateProduct {
             Product finalProduct = product;
             duplicateProduct(finalProduct);
             Dialogs.showConfirmationDialog("Du ønsker å opprette en " + cbModel.getValue().toLowerCase() + " bil",
-                    respons -> {
-                        if (respons == ButtonType.OK) {
+                    response -> {
+                        if (response == ButtonType.OK) {
                             ApplicationData.getInstance().getRegisterProduct().setUserProductList(finalProduct);
                             lblMessage.setText("Produktet er opprettet\nTrykk på 'konfgurerte biler' for oversikt");
                         }

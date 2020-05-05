@@ -18,8 +18,6 @@ public class InputValidation {
                 "^[0-9]+[[-]a-zæøå A-ZÆØÅ().,]{1,25}$"
         };
 
-        // ^[A-ZÆØÅ0-9]+([A-ZÆØÅa-zæøå0-9()[-],. ]){1,25}$
-
         for (String str : regex) {
             if (input.matches(str)) {
                 return input;
