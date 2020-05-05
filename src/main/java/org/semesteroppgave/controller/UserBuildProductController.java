@@ -57,10 +57,6 @@ public class UserBuildProductController implements ApplicationController{
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
         lblUsername.setText(UserSignIn.getActiveUsername());
-        if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()){
-            Dialogs.showWarningDialog("Varsel", "Ingen komponenter",
-                    "Admin må opprette komponenter før du kan bygge en bil");
-        }
     }
 
     @FXML

@@ -7,6 +7,7 @@ import org.semesteroppgave.Main;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.signin.user.User;
 import org.semesteroppgave.models.signin.user.UserSignIn;
+import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.threadhelper.StartThread;
 
 import java.io.IOException;
@@ -76,6 +77,10 @@ public class UserSignInController implements ApplicationThread{
                 }
             }
             Main.setRoot("userbuildproduct");
+            if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()){
+                Dialogs.showWarningDialog("Varsel", "Ingen komponenter",
+                        "Admin må opprette komponenter før du kan bygge en bil");
+            }
         } else {
             lblSignin.setText("Feil brukernavn og/eller passord");
         }
