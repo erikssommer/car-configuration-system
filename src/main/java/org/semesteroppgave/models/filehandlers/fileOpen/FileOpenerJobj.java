@@ -1,7 +1,7 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.semesteroppgave.ApplicationData;
-import org.semesteroppgave.models.data.RegisterComponent;
+import org.semesteroppgave.models.data.registrationdata.RegisterComponent;
 
 import java.io.IOException;
 import java.io.InputStream;

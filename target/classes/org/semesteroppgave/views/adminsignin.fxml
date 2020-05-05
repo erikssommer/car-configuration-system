@@ -16,7 +16,7 @@
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <Tab style="-fx-font-family: avenir book;" text="Logg inn">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="56.0" layoutY="164.0" text="Logg inn admin">
+                <Label layoutX="56.0" layoutY="164.0" prefHeight="32.0" prefWidth="206.0" text="Logg inn admin">
                     <font>
                         <Font name="Avenir Book" size="19.0" />
                     </font>

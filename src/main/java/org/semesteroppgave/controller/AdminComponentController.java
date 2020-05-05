@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.AdminCreateComponent;
+import org.semesteroppgave.models.services.AdminCreateComponent;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;

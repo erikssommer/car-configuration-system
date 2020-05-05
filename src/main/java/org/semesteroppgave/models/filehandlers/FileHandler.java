@@ -37,14 +37,16 @@ public class FileHandler {
             if (".csv".equals(fileExt)) {
                 opener = new FileOpenerCsv();
             } else {
-                Dialogs.showErrorDialog("Fil", "Feil ved åpning av fil", "Du kan bare åpne csv filer som bruker");
+                Dialogs.showErrorDialog("Fil", "Feil ved åpning av fil",
+                        "Du kan bare åpne csv filer som bruker");
             }
 
             if (opener != null) {
                 try {
                     opener.open(selectedFile.toPath());
                 } catch (IOException e) {
-                    Dialogs.showErrorDialog("Fil", "Feil i åpneing av fil", "Åpning av filen feilet. Grunn: " + e.getMessage());
+                    Dialogs.showErrorDialog("Fil", "Feil i åpneing av fil",
+                            "Åpning av filen feilet. Grunn: " + e.getMessage());
                 }
             }
         }
@@ -71,15 +73,18 @@ public class FileHandler {
             if (".csv".equals(fileExt)) {
                 saver = new FileSaverCsv();
             } else {
-                Dialogs.showErrorDialog("Lagring til fil", "Feil i lagring til fil", "Du kan bare lagre til csv filer.");
+                Dialogs.showErrorDialog("Lagring til fil", "Feil i lagring til fil",
+                        "Du kan bare lagre til csv filer.");
             }
 
             if (saver != null) {
                 try {
                     saver.save(selectedFile.toPath());
-                    Dialogs.showSuccessDialog("Fil", "Listen ble korrekt lagret til fil", "Registeret ble lagret!");
+                    Dialogs.showSuccessDialog("Fil", "Listen ble korrekt lagret til fil",
+                            "Registeret ble lagret!");
                 } catch (IOException e) {
-                    Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt", "Grunn: " + e.getMessage());
+                    Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt",
+                            "Grunn: " + e.getMessage());
                 }
             }
         }
@@ -109,7 +114,8 @@ public class FileHandler {
         try {
             opener.open(loadFile.toPath());
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Åpning av filen i tråd gikk galt", "Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("Fil", "Åpning av jobj-filen i tråd gikk galt",
+                    "Grunn: " + e.getMessage());
         }
     }
 
@@ -132,15 +138,18 @@ public class FileHandler {
             if (".jobj".equals(fileExt)) {
                 saver = new FileSaverJobj();
             } else {
-                Dialogs.showErrorDialog("Fil", "Feil i lagring til fil", "Du kan bare lagre til jobj filer.");
+                Dialogs.showErrorDialog("Fil", "Feil i lagring til fil",
+                        "Du kan bare lagre til jobj filer.");
             }
 
             if (saver != null) {
                 try {
                     saver.save(selectedFile.toPath());
-                    Dialogs.showSuccessDialog("Fil", "Listen ble korrekt lagret til jobj-fil", "Registeret ble lagret!");
+                    Dialogs.showSuccessDialog("Fil", "Listen ble korrekt lagret til jobj-fil",
+                            "Registeret ble lagret!");
                 } catch (IOException e) {
-                    Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt", "Grunn: " + e.getMessage());
+                    Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt",
+                            "Grunn: " + e.getMessage());
                     e.printStackTrace();
                 }
             }

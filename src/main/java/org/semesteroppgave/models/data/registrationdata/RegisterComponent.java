@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data;
+package org.semesteroppgave.models.data.registrationdata;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

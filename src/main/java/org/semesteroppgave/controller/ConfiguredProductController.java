@@ -1,7 +1,6 @@
 package org.semesteroppgave.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
@@ -100,17 +99,14 @@ public class ConfiguredProductController implements ApplicationController {
     @FXML
     private void deleteProduct() {
         if (tableViewUserConfig.getSelectionModel().getSelectedItem() != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Bekreft");
-            alert.setHeaderText("Du har valgt produktmodellen: " +
-                    tableViewUserConfig.getSelectionModel().getSelectedItem().getModel());
-            alert.setContentText("Ønsker du virkerlig å slette dette produktet?");
-            alert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    ApplicationData.getInstance().getRegisterProduct().getUserProductList()
-                            .remove(tableViewUserConfig.getSelectionModel().getSelectedItem());
-                }
-            });
+            Dialogs.showConfirmationDialog("Du har valgt produktmodellen: " +
+                            tableViewUserConfig.getSelectionModel().getSelectedItem().getModel(),
+                    response -> {
+                        if (response == ButtonType.OK) {
+                            ApplicationData.getInstance().getRegisterProduct().getUserProductList()
+                                    .remove(tableViewUserConfig.getSelectionModel().getSelectedItem());
+                        }
+                    });
         } else {
             Dialogs.showErrorDialog("Feil", "Du har ikke valgt et produkt",
                     "Velg et produkt og prøv på nytt");

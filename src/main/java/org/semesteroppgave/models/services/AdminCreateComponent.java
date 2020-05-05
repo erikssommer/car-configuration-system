@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data;
+package org.semesteroppgave.models.services;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -109,7 +109,7 @@ public class AdminCreateComponent {
     }
 
     //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent-klasse
-    private void editComponent(Component component) throws InvalidComponentException{
+    private void editComponent(Component component) throws InvalidComponentException {
         Component newComponent = ComponentConverter.convert(component);
         int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
         ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
@@ -119,7 +119,8 @@ public class AdminCreateComponent {
 
     /**
      * Metoder for redigering i tableview, som tester input. Avvik er også håndtert her
-     * @param event får tak i verdien fra kolonne i tableviw
+     *
+     * @param event              får tak i verdien fra kolonne i tableviw
      * @param doubleStrConverter objekt i konverteringsklasse for double
      */
 
@@ -129,7 +130,7 @@ public class AdminCreateComponent {
             if (doubleStrConverter.wasSuccessful()) {
                 event.getRowValue().setPrice(event.getNewValue());
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Dialogs.showErrorDialog("Feil", "Feil i pris", "Du må fylle inn prisen");
         } catch (IllegalArgumentException e) {
             Dialogs.showErrorDialog("Feil", "Ugyldig pris: ", e.getMessage());
@@ -186,23 +187,21 @@ public class AdminCreateComponent {
                 //Det må være minst én av hver komponent
                 InputValidation.testComponentCount(tableViewComponents, "slette flere av");
             }
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Bekreft");
-            alert.setHeaderText("Du har valgt komponenten: " + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
-                    + ", versjon: " + tableViewComponents.getSelectionModel().getSelectedItem().getVersion());
-            alert.setContentText("Ønsker du virkerlig å slette denne komponenten?");
-            alert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
-                    //Tester om vi finner det samme objektet i søkerListen. Hvis så, sletter vi det også
-                    for (Component component : componentSearch.getSearchResult()) {
-                        if (component.equals(tableViewComponents.getSelectionModel().getSelectedItem())) {
-                            componentSearch.getSearchResult().remove(component);
-                            break;
+            Dialogs.showConfirmationDialog("Du har valgt komponenten: "
+                            + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
+                            + ", versjon: " + tableViewComponents.getSelectionModel().getSelectedItem().getVersion(),
+                    response -> {
+                        if (response == ButtonType.OK) {
+                            list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
+                            //Tester om vi finner det samme objektet i søkerListen. Hvis så, sletter vi det også
+                            for (Component component : componentSearch.getSearchResult()) {
+                                if (component.equals(tableViewComponents.getSelectionModel().getSelectedItem())) {
+                                    componentSearch.getSearchResult().remove(component);
+                                    break;
+                                }
+                            }
                         }
-                    }
-                }
-            });
+                    });
         } else {
             Dialogs.showErrorDialog("Feil", "Du har ikke valgt en komponent", "Velg en komponent og prøv på nytt");
         }

@@ -1,4 +1,4 @@
-package org.semesteroppgave.models.data;
+package org.semesteroppgave.models.services;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,7 +50,7 @@ public class UserCreateProduct {
         modelComponentsList.clear();
         //Finner komponenter til valgt modell
         ApplicationData.getInstance().getRegisterComponent().getComponentList()
-                        .forEach(modelList -> modelList.getModel()
+                .forEach(modelList -> modelList.getModel()
                         .stream().filter(componentModel -> componentModel.equals(model))
                         .map(componentModel -> modelList.getComponent())
                         .forEachOrdered(modelComponentsList::add));
@@ -103,7 +103,7 @@ public class UserCreateProduct {
                 final Component component = row.getItem();
 
                 if (row.isHover() && component != null) {
-                    tooltip.setText("Beskrivelse: "+ component.getDescription());
+                    tooltip.setText("Beskrivelse: " + component.getDescription());
                     tableViewVersion.setTooltip(tooltip);
                 }
             });
@@ -224,16 +224,13 @@ public class UserCreateProduct {
 
             Product finalProduct = product;
             duplicateProduct(finalProduct);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Bekreft");
-            alert.setHeaderText("Du ønsker å opprette en " + cbModel.getValue().toLowerCase() + " bil");
-            alert.setContentText("Er du sikker på dette?");
-            alert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    ApplicationData.getInstance().getRegisterProduct().setUserProductList(finalProduct);
-                    lblMessage.setText("Produktet er opprettet\nTrykk på 'konfgurerte biler' for oversikt");
-                }
-            });
+            Dialogs.showConfirmationDialog("Du ønsker å opprette en " + cbModel.getValue().toLowerCase() + " bil",
+                    respons -> {
+                        if (respons == ButtonType.OK) {
+                            ApplicationData.getInstance().getRegisterProduct().setUserProductList(finalProduct);
+                            lblMessage.setText("Produktet er opprettet\nTrykk på 'konfgurerte biler' for oversikt");
+                        }
+                    });
         } else {
             Dialogs.showErrorDialog("Oups!", "Du må velge modell",
                     "Deretter velge komponenter til bilen");

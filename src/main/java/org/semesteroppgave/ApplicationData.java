@@ -1,7 +1,7 @@
 package org.semesteroppgave;
 
-import org.semesteroppgave.models.data.RegisterComponent;
-import org.semesteroppgave.models.data.RegisterProduct;
+import org.semesteroppgave.models.data.registrationdata.RegisterComponent;
+import org.semesteroppgave.models.data.registrationdata.RegisterProduct;
 
 /**
  * Globale objekt som både bruker og admin må ha tilgang til

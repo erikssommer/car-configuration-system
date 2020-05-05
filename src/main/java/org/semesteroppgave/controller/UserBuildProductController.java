@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.data.UserCreateProduct;
+import org.semesteroppgave.models.services.UserCreateProduct;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.data.customizations.Custom;
 import org.semesteroppgave.models.exceptions.DuplicateException;
@@ -56,6 +57,10 @@ public class UserBuildProductController implements ApplicationController{
         cbAutopilot.setVisible(false);
         gridPaneCustom.setDisable(true);
         lblUsername.setText(UserSignIn.getActiveUsername());
+        if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()){
+            Dialogs.showWarningDialog("Varsel", "Ingen komponenter",
+                    "Admin må opprette komponenter før du kan bygge en bil");
+        }
     }
 
     @FXML
