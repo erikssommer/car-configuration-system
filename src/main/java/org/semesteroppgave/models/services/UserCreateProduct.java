@@ -225,6 +225,7 @@ public class UserCreateProduct {
             Product finalProduct = product;
             duplicateProduct(finalProduct);
             Dialogs.showConfirmationDialog("Du ønsker å opprette en " + cbModel.getValue().toLowerCase() + " bil",
+                    "Er du sikker på dette?",
                     response -> {
                         if (response == ButtonType.OK) {
                             ApplicationData.getInstance().getRegisterProduct().setUserProductList(finalProduct);

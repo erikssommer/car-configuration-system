@@ -190,6 +190,7 @@ public class AdminCreateComponent {
             Dialogs.showConfirmationDialog("Du har valgt komponenten: "
                             + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
                             + ", versjon: " + tableViewComponents.getSelectionModel().getSelectedItem().getVersion(),
+                    "Ønsker du virkelig å slette denne komponenten?",
                     response -> {
                         if (response == ButtonType.OK) {
                             list.remove(tableViewComponents.getSelectionModel().getSelectedItem());

@@ -38,11 +38,11 @@ public class Dialogs {
         alert.showAndWait();
     }
 
-    public static void showConfirmationDialog(String confirmationHeader, Consumer<? super ButtonType> action){
+    public static void showConfirmationDialog(String header, String content, Consumer<? super ButtonType> action){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Bekreft");
-        alert.setHeaderText(confirmationHeader);
-        alert.setContentText("Er du sikker på at du ønsker å slette?");
+        alert.setHeaderText(header);
+        alert.setContentText(content);
 
         alert.showAndWait().ifPresent(action);
     }

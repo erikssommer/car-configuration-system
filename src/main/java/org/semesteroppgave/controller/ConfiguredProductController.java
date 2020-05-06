@@ -101,6 +101,7 @@ public class ConfiguredProductController implements ApplicationController {
         if (tableViewUserConfig.getSelectionModel().getSelectedItem() != null) {
             Dialogs.showConfirmationDialog("Du har valgt produktmodellen: " +
                             tableViewUserConfig.getSelectionModel().getSelectedItem().getModel(),
+                    "Ønsker du virkelig å slette dette produktet?",
                     response -> {
                         if (response == ButtonType.OK) {
                             ApplicationData.getInstance().getRegisterProduct().getUserProductList()
