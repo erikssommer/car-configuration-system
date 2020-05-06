@@ -4,10 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.semesteroppgave.models.filehandlers.FileHandler;
+import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
@@ -60,21 +60,19 @@ public class Main extends Application {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||
                     !ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Lukking av programmet");
-                alert.setHeaderText("Lagre før lukking");
-                alert.setContentText("Ønsker du å lagre endringer før programmet avsluttes?");
-                alert.showAndWait().ifPresent(response -> {
-                    if (response == ButtonType.OK) {
-                        if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()){
-                            FileHandler.saveFileCsvOnProgramExit();
-                        }
-                        if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()){
-                            FileHandler.saveFileJobjOnProgramExit();
-                        }
-                    }
-                });
+                Dialogs.showConfirmationDialog("Ønsker du å lagre endringer før programmet avsluttes?",
+                        response -> {
+                            if (response == ButtonType.OK) {
+                                if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()) {
+                                    FileHandler.saveFileCsvOnProgramExit();
+                                }
+                                if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
+                                    FileHandler.saveFileJobjOnProgramExit();
+                                }
+                            }
+                        });
             }
+
         });
     }
 }
