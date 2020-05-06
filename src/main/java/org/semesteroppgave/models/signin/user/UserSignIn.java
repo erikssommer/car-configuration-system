@@ -52,8 +52,8 @@ public class UserSignIn {
     public void parseExistingUser() {
         userList.clear();
         // Tar inn info fra bruker-filer
-        var filepathUnamePword = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
-        var filepathUInfo = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo")));
+        var filepathUnamePword = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
+        var filepathUInfo = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo.txt")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepathUInfo)));
@@ -79,7 +79,7 @@ public class UserSignIn {
 
     public boolean verifyLogin(String username, String password) {
 
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -90,7 +90,7 @@ public class UserSignIn {
                 String checkPassword = s.next();
 
                 if (checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())) {
-                    System.out.println("\nSuccessful match with username " + username.trim() + " in file userUsernameAndPassword");
+                    System.out.println("\nSuccessful match with username " + username.trim() + " in file userUsernameAndPassword.txt");
                     return true;
                 }
             }
@@ -102,7 +102,7 @@ public class UserSignIn {
 
     private void checkIfNotExisting(String username) throws InvalidUsernameException {
 
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -122,7 +122,7 @@ public class UserSignIn {
 
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
         } catch (Exception e) {
@@ -132,7 +132,7 @@ public class UserSignIn {
 
     // Lagrer admins info til fil
     private void saveToFileInfo() {
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo.txt")));
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
         } catch (Exception e) {

@@ -85,8 +85,8 @@ public class AdminSignin {
 
     public void parseExistingAdmins() {
         adminList.clear();
-        var filepathAInfo = Paths.get(String.valueOf(FileHandler.getFile("signin/adminInfo")));
-        var filepathAUnamePword = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword")));
+        var filepathAInfo = Paths.get(String.valueOf(FileHandler.getFile("signin/adminInfo.txt")));
+        var filepathAUnamePword = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword.txt")));
 
         try {
             Scanner info = new Scanner(new File(String.valueOf(filepathAInfo)));
@@ -111,7 +111,7 @@ public class AdminSignin {
 
     public boolean verifyLogin(String username, String password) {
 
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword.txt")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -123,7 +123,7 @@ public class AdminSignin {
 
                 if (checkUsername.trim().equals(username.trim()) && checkPassword.trim().equals(password.trim())) {
                     System.out.println("\nSuccessful match with username " + username.trim()
-                            + " in file adminUsernameAndPassword");
+                            + " in file adminUsernameAndPassword.txt");
                     return true;
                 }
             }
@@ -135,7 +135,7 @@ public class AdminSignin {
 
     private void checkIfNotExisting(String username) {
 
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword.txt")));
 
         try {
             Scanner s = new Scanner(new File(String.valueOf(filepath)));
@@ -155,7 +155,7 @@ public class AdminSignin {
 
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminUsernameAndPassword.txt")));
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminUsernamePassword().getBytes());
         } catch (Exception e) {
@@ -165,7 +165,7 @@ public class AdminSignin {
 
     // Lagrer admins info til fil
     private void saveToFileInfo() {
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminInfo")));
+        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/adminInfo.txt")));
         try {
             Files.write(Paths.get(String.valueOf(filepath)), txtToFileAdminInfo().getBytes());
         } catch (Exception e) {
