@@ -43,6 +43,7 @@ public class Dialogs {
         alert.setTitle("Bekreft");
         alert.setHeaderText(confirmationHeader);
         alert.setContentText("Er du sikker på at du ønsker å slette?");
+
         alert.showAndWait().ifPresent(action);
     }
 }
