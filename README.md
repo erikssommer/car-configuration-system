@@ -1,4 +1,4 @@
-# semesteroppgave
+# Semesteroppgave DATA1600
 Semesteroppgave i programutvikling ved OsloMet våren 2020
 
 Alternativ 2: Bil
@@ -18,7 +18,7 @@ Brukernavn: Admin123
 
 Passord: Java13
 
-Tillatte ansattID'er for ny ansattbruker: A1234, A4567, A7890
+Tillatte ansattnummer for ny ansattbruker: A1234, A4567, A7890
 
 ------
 
