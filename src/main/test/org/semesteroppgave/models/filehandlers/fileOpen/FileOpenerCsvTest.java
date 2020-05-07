@@ -1,7 +1,6 @@
 package org.semesteroppgave.models.filehandlers.fileOpen;
 
 import org.junit.jupiter.api.Test;
-import org.semesteroppgave.models.filehandlers.FileHandler;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -16,7 +15,7 @@ class FileOpenerCsvTest {
     void open() {
         FileOpener fileOpener = new FileOpenerCsv();
         try {
-            fileOpener.open(Paths.get(String.valueOf(FileHandler.getFile("testFiles/testOpenCsv.csv"))));
+            fileOpener.open(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testOpenCsv.csv").getFile()));
         } catch (IOException e) {
             e.printStackTrace();
         }

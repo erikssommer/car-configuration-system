@@ -5,16 +5,19 @@ import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.Main;
-import org.semesteroppgave.models.utilities.search.ComponentSearch;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpener;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerCsv;
 import org.semesteroppgave.models.filehandlers.fileOpen.FileOpenerJobj;
+import org.semesteroppgave.models.filehandlers.fileSave.FileSaver;
+import org.semesteroppgave.models.filehandlers.fileSave.FileSaverCsv;
+import org.semesteroppgave.models.filehandlers.fileSave.FileSaverJobj;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
-import org.semesteroppgave.models.filehandlers.fileSave.*;
+import org.semesteroppgave.models.utilities.search.ComponentSearch;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 /**
  * Klasse som tar seg av filhåndering for både .jobj og.csv - filer
@@ -22,13 +25,18 @@ import java.io.IOException;
 
 public class FileHandler {
 
-    private enum DialogMode {
+    private enum FileMode {
         JOBJ,
         CSV,
     }
 
+    private enum DialogMode {
+        OPEN,
+        SAVE,
+    }
+
     public static void openFileCsv() {
-        File selectedFile = getFileFromFileChooserOpen(DialogMode.CSV);
+        File selectedFile = getFileFromFileChooser(FileMode.CSV, DialogMode.OPEN);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -52,19 +60,17 @@ public class FileHandler {
         }
     }
 
-    public static void openFileCvsLaunch() {
-        File loadFile = getFile("onApplicationLaunch/produkter.csv");
+    public static void openFileCvsLaunch(String filePath) {
         FileOpener opener = new FileOpenerCsv();
-
         try {
-            opener.open(loadFile.toPath());
+            opener.open(Paths.get(filePath));
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Åpning av filen gikk galt", "Grunn: " + e.getMessage());
         }
     }
 
     public static void saveFileCsv() {
-        File selectedFile = getFileFromFileChooserSave(DialogMode.CSV);
+        File selectedFile = getFileFromFileChooser(FileMode.CSV, DialogMode.SAVE);
 
         if (selectedFile != null) {
             String fileExt = getFileExt(selectedFile);
@@ -90,12 +96,11 @@ public class FileHandler {
         }
     }
 
-    public static void saveFileCsvOnProgramExit(){
-        File savefile = getFile("onApplicationExit/lagredeProdukter.csv");
+    public static void saveFileCsvOnProgramExit(String filepath){
         FileSaver saver = new FileSaverCsv();
 
         try {
-            saver.save(savefile.toPath());
+            saver.save(Paths.get(filepath));
             System.out.println("Produktene ble lagret til fil");
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
@@ -103,7 +108,7 @@ public class FileHandler {
     }
 
     public static String getOpenFileJobj(){
-        return String.valueOf(getFileFromFileChooserOpen(DialogMode.JOBJ));
+        return String.valueOf(getFileFromFileChooser(FileMode.JOBJ, DialogMode.OPEN));
     }
 
     public static void openFileJobjThread(String filepath) {
@@ -124,7 +129,7 @@ public class FileHandler {
         ObservableList<Component> originalList = FXCollections.observableArrayList();
 
         originalList.addAll(ApplicationData.getInstance().getRegisterComponent().getComponentList());
-        File selectedFile = getFileFromFileChooserSave(DialogMode.JOBJ);
+        File selectedFile = getFileFromFileChooser(FileMode.JOBJ, DialogMode.SAVE);
 
         //Hvis admin lagrer etter et søk, så blir søkelisten lagret
         if (!componentSearch.getSearchResult().isEmpty()){
@@ -158,51 +163,40 @@ public class FileHandler {
         }
     }
 
-    public static void saveFileJobjOnProgramExit(){
-        File savefile = getFile("onApplicationExit/lagredeKomponenter.jobj");
+    public static void saveFileJobjOnProgramExit(String filepath){
         FileSaver saver = new FileSaverJobj();
 
         try {
-            saver.save(savefile.toPath());
+            saver.save(Paths.get(filepath));
             System.out.println("Komponentene ble lagret til fil");
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
         }
     }
 
-    private static File getFileFromFileChooserSave(DialogMode mode) {
+    private static File getFileFromFileChooser(FileMode file, DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(getFile("onApplicationRunning"));
+        //Tester om det har blitt opprettet en mappe
+        if (Main.folderCreated){
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + "SemesteroppgaveLagredeFiler"));
+        }
 
-        if (mode == DialogMode.JOBJ) {
+        if (file == FileMode.JOBJ) {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
         } else {
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
         }
-        return fileChooser.showSaveDialog(Main.getScene().getWindow());
-    }
 
-    private static File getFileFromFileChooserOpen(DialogMode mode) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(getFile(""));
-
-        if (mode == DialogMode.JOBJ) {
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Serialized files", "*.jobj"));
-        } else {
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Csv files", "*.csv"));
+        if (mode == DialogMode.OPEN){
+            return fileChooser.showOpenDialog(Main.getScene().getWindow());
+        }else {
+            return fileChooser.showSaveDialog(Main.getScene().getWindow());
         }
-        return fileChooser.showOpenDialog(Main.getScene().getWindow());
     }
 
     private static String getFileExt(File file) {
         String fileName = file.getName();
         return fileName.substring(fileName.lastIndexOf('.'));
     }
-
-    public static File getFile(String filepath){
-        return new File("src/main/resources/org/semesteroppgave/files/" + filepath);
-    }
-
 }

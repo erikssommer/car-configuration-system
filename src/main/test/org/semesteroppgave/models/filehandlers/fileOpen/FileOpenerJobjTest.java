@@ -16,7 +16,7 @@ class FileOpenerJobjTest {
     void open() {
         FileOpener fileOpener = new FileOpenerJobj();
         try {
-            fileOpener.open(Paths.get(String.valueOf(FileHandler.getFile("testFiles/testOpenJobj.jobj"))));
+            fileOpener.open(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testOpenJobj.jobj").getFile()));
         } catch (IOException e) {
             e.printStackTrace();
         }

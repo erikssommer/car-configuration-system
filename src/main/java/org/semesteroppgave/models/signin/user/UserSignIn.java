@@ -2,7 +2,6 @@ package org.semesteroppgave.models.signin.user;
 
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.exceptions.InvalidUsernameException;
-import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.File;
@@ -52,12 +51,12 @@ public class UserSignIn {
     public void parseExistingUser() {
         userList.clear();
         // Tar inn info fra bruker-filer
-        var filepathUnamePword = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
-        var filepathUInfo = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo.txt")));
+        String filepathUnamePword = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
+        String filepathUInfo = getClass().getResource("/org/semesteroppgave/files/signin/userInfo.txt").getFile();
 
         try {
-            Scanner s = new Scanner(new File(String.valueOf(filepathUInfo)));
-            Scanner g = new Scanner(new File(String.valueOf(filepathUnamePword)));
+            Scanner s = new Scanner(new File(filepathUInfo));
+            Scanner g = new Scanner(new File(filepathUnamePword));
 
             s.useDelimiter("[,\n]");
             g.useDelimiter("[,\n]");
@@ -79,10 +78,10 @@ public class UserSignIn {
 
     public boolean verifyLogin(String username, String password) {
 
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
+        String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
 
         try {
-            Scanner s = new Scanner(new File(String.valueOf(filepath)));
+            Scanner s = new Scanner(new File(filepath));
 
             s.useDelimiter("[,\n]");
             while (s.hasNext()) {
@@ -102,10 +101,10 @@ public class UserSignIn {
 
     private void checkIfNotExisting(String username) throws InvalidUsernameException {
 
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
+        String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
 
         try {
-            Scanner s = new Scanner(new File(String.valueOf(filepath)));
+            Scanner s = new Scanner(new File(filepath));
 
             s.useDelimiter("[,\n]");
             while (s.hasNext()) {
@@ -122,9 +121,9 @@ public class UserSignIn {
 
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userUsernameAndPassword.txt")));
+        String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
         try {
-            Files.write(Paths.get(String.valueOf(filepath)), txtToFileUsernamePassword().getBytes());
+            Files.write(Paths.get(filepath), txtToFileUsernamePassword().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,9 +131,9 @@ public class UserSignIn {
 
     // Lagrer admins info til fil
     private void saveToFileInfo() {
-        var filepath = Paths.get(String.valueOf(FileHandler.getFile("signin/userInfo.txt")));
+        String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userInfo.txt").getFile();
         try {
-            Files.write(Paths.get(String.valueOf(filepath)), txtToFileUserInfo().getBytes());
+            Files.write(Paths.get(filepath), txtToFileUserInfo().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -9,7 +9,7 @@ module org.semesteroppgave {
     exports org.semesteroppgave.models.data.productmodels;
     exports org.semesteroppgave.models.data.registrationdata;
     exports org.semesteroppgave.models.utilities.converters;
-    exports org.semesteroppgave.models.exceptions;
     exports org.semesteroppgave.models.utilities.search;
+    exports org.semesteroppgave.models.exceptions;
     exports org.semesteroppgave;
 }

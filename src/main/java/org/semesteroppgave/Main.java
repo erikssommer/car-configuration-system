@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -17,6 +18,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Scene scene;
+    public static boolean folderCreated;
 
     public static Scene getScene() {
         return scene;
@@ -24,6 +26,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //Lager en mappe lokalt på datamaskinen for lagring av filer
+        createFolderOnComputer();
         //Lagring av data ved avslutting av programmet
         onProgramExit(stage);
         //Laster inn ferdiglagde podukter
@@ -52,10 +56,28 @@ public class Main extends Application {
     }
 
     private void loadConfiguredProducts() {
-        FileHandler.openFileCvsLaunch();
+        FileHandler.openFileCvsLaunch(getClass().getResource("/org/semesteroppgave/files/onApplicationLaunch/produkter.csv").getFile());
     }
 
-    //Lagrer til fil når programmet avsluttes hvis listene ikke er tomme
+    private void createFolderOnComputer(){
+        String home = System.getProperty("user.home");
+        File filePath = new File(home + File.separator + "SemesteroppgaveLagredeFiler");
+        if (!filePath.exists()){
+            if (filePath.mkdirs()){
+                System.out.println("Oppretter mappe lokalt på datamaskinen");
+                folderCreated = true;
+            }
+        }else {
+            System.out.println("Mappen eksisterer fra før");
+            folderCreated = true;
+        }
+        if (!filePath.exists()){
+            folderCreated = false;
+            System.out.println("Mappen eksisterer ikke");
+        }
+    }
+
+    //Lagrer til fil når programmet avsluttes hvis listene ikke er tomme og mappen er opprettet
     private void onProgramExit(Stage stage) {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||
@@ -63,11 +85,17 @@ public class Main extends Application {
                 Dialogs.showConfirmationDialog("Ønsker du å lagre endringer før programmet avsluttes?","",
                         response -> {
                             if (response == ButtonType.OK) {
-                                if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()) {
-                                    FileHandler.saveFileCsvOnProgramExit();
-                                }
-                                if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
-                                    FileHandler.saveFileJobjOnProgramExit();
+                                if (folderCreated){
+                                    if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()) {
+                                        FileHandler.saveFileCsvOnProgramExit(System.getProperty("user.home") + "/"
+                                                + "SemesteroppgaveLagredeFiler/lagredeProdukter.csv");
+                                    }
+                                    if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
+                                        FileHandler.saveFileJobjOnProgramExit(System.getProperty("user.home") + "/"
+                                                + "SemesteroppgaveLagredeFiler/lagredeKomponenter.jobj");
+                                    }
+                                }else {
+                                    System.out.println("Kunne ikke lagre fordi mappen ikke har blitt oprettet");
                                 }
                             }
                         });
