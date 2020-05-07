@@ -27,3 +27,11 @@ Tillatte ansattID'er for ny ansattbruker: A1234, A4567, A7890
 Brukernavn: Bruker123
 
 Passord: Java13
+
+---
+
+### **_Kilder_**
+Billogo:
+https://pixabay.com/no/illustrations/bil-ikonet-bil-logo-auto-3657902/
+
+Nedlastningsdato: 15.04.2020
