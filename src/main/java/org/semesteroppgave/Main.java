@@ -60,20 +60,18 @@ public class Main extends Application {
     }
 
     private void createFolderOnComputer(){
-        String home = System.getProperty("user.home");
-        File filePath = new File(home + File.separator + "SemesteroppgaveLagredeFiler");
+        File filePath = new File(System.getProperty("user.home") + File.separator + "SemesteroppgaveLagredeFiler");
         if (!filePath.exists()){
             if (filePath.mkdirs()){
                 System.out.println("Oppretter mappe lokalt på datamaskinen");
                 folderCreated = true;
+            } else {
+                System.out.println("Klarte ikke å opprette mappe");
+                folderCreated = false;
             }
         }else {
             System.out.println("Mappen eksisterer fra før");
             folderCreated = true;
-        }
-        if (!filePath.exists()){
-            folderCreated = false;
-            System.out.println("Mappen eksisterer ikke");
         }
     }
 

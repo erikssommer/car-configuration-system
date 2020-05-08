@@ -179,7 +179,7 @@ public class FileHandler {
         fileChooser.setTitle("Velg fil");
         //Tester om det har blitt opprettet en mappe
         if (Main.folderCreated){
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + "SemesteroppgaveLagredeFiler"));
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/SemesteroppgaveLagredeFiler"));
         }
 
         if (file == FileMode.JOBJ) {
