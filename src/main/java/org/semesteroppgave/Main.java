@@ -81,7 +81,8 @@ public class Main extends Application {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||
                     !ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
-                Dialogs.showConfirmationDialog("Ønsker du å lagre endringer før programmet avsluttes?","",
+                Dialogs.showConfirmationDialog("Ønsker du å lagre endringer før programmet avsluttes?",
+                        "Filene lagres i mappen: " + FOLDERNAME,
                         response -> {
                             if (response == ButtonType.OK) {
                                 if (folderCreated){
