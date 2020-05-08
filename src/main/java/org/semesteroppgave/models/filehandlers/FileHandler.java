@@ -17,7 +17,9 @@ import org.semesteroppgave.models.utilities.search.ComponentSearch;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
+
+import static org.semesteroppgave.Main.FOLDERNAME;
+import static org.semesteroppgave.Main.folderCreated;
 
 /**
  * Klasse som tar seg av filhåndering for både .jobj og.csv - filer
@@ -61,9 +63,10 @@ public class FileHandler {
     }
 
     public static void openFileCvsLaunch(String filePath) {
+        File file = new File(filePath);
         FileOpener opener = new FileOpenerCsv();
         try {
-            opener.open(Paths.get(filePath));
+            opener.open(file.toPath());
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Åpning av filen gikk galt", "Grunn: " + e.getMessage());
         }
@@ -98,9 +101,10 @@ public class FileHandler {
 
     public static void saveFileCsvOnProgramExit(String filepath){
         FileSaver saver = new FileSaverCsv();
+        File file = new File(filepath);
 
         try {
-            saver.save(Paths.get(filepath));
+            saver.save(file.toPath());
             System.out.println("Produktene ble lagret til fil");
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
@@ -165,9 +169,10 @@ public class FileHandler {
 
     public static void saveFileJobjOnProgramExit(String filepath){
         FileSaver saver = new FileSaverJobj();
+        File file = new File(filepath);
 
         try {
-            saver.save(Paths.get(filepath));
+            saver.save(file.toPath());
             System.out.println("Komponentene ble lagret til fil");
         } catch (IOException e) {
             Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
@@ -178,8 +183,8 @@ public class FileHandler {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
         //Tester om det har blitt opprettet en mappe
-        if (Main.folderCreated){
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/SemesteroppgaveLagredeFiler"));
+        if (folderCreated){
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + FOLDERNAME));
         }
 
         if (file == FileMode.JOBJ) {

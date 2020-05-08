@@ -19,16 +19,16 @@ public class ConfiguredProductController implements ApplicationController {
     private Label lblUsername;
 
     @FXML
-    private TableView<Product> tableViewConfigs;
+    private TableView<Product> tvConfigurations;
 
     @FXML
-    private TableView<Product> tableViewUserConfig;
+    private TableView<Product> tvUserConfigurations;
 
     @Override
     public void initialize() {
 
-        tableViewConfigs.setItems(ApplicationData.getInstance().getRegisterProduct().getProductList());
-        tableViewUserConfig.setItems(ApplicationData.getInstance().getRegisterProduct().getUserProductList());
+        tvConfigurations.setItems(ApplicationData.getInstance().getRegisterProduct().getProductList());
+        tvUserConfigurations.setItems(ApplicationData.getInstance().getRegisterProduct().getUserProductList());
 
         lblUsername.setText(UserSignIn.getActiveUsername());
     }
@@ -41,11 +41,11 @@ public class ConfiguredProductController implements ApplicationController {
     @FXML
     private void btnAddToConfigs() {
 
-        if (tableViewConfigs.getSelectionModel().getSelectedItem() != null) {
+        if (tvConfigurations.getSelectionModel().getSelectedItem() != null) {
             ApplicationData.getInstance().getRegisterProduct()
-                    .setUserProductList(tableViewConfigs.getSelectionModel().getSelectedItem());
+                    .setUserProductList(tvConfigurations.getSelectionModel().getSelectedItem());
             ApplicationData.getInstance().getRegisterProduct()
-                    .getProductList().remove(tableViewConfigs.getSelectionModel().getSelectedItem());
+                    .getProductList().remove(tvConfigurations.getSelectionModel().getSelectedItem());
 
         } else {
             Dialogs.showErrorDialog("Oups", "Du må markere produktet ditt først!",
@@ -55,7 +55,7 @@ public class ConfiguredProductController implements ApplicationController {
 
     @FXML
     private void btnMoreInfo() {
-        getSelectedTable(tableViewConfigs, tableViewUserConfig);
+        getSelectedTable(tvConfigurations, tvUserConfigurations);
     }
 
     //Metode som finner tabellen og rad som er markert og setter den som makert produkt
@@ -88,7 +88,7 @@ public class ConfiguredProductController implements ApplicationController {
 
     @FXML
     private void saveFileMenuClicked() {
-        if (!tableViewUserConfig.getItems().isEmpty()) {
+        if (!tvUserConfigurations.getItems().isEmpty()) {
             FileHandler.saveFileCsv();
         } else {
             Dialogs.showErrorDialog("Fil", "Feil i lagring av liste",
@@ -98,14 +98,14 @@ public class ConfiguredProductController implements ApplicationController {
 
     @FXML
     private void deleteProduct() {
-        if (tableViewUserConfig.getSelectionModel().getSelectedItem() != null) {
+        if (tvUserConfigurations.getSelectionModel().getSelectedItem() != null) {
             Dialogs.showConfirmationDialog("Du har valgt produktmodellen: " +
-                            tableViewUserConfig.getSelectionModel().getSelectedItem().getModel(),
+                            tvUserConfigurations.getSelectionModel().getSelectedItem().getModel(),
                     "Ønsker du virkelig å slette dette produktet?",
                     response -> {
                         if (response == ButtonType.OK) {
                             ApplicationData.getInstance().getRegisterProduct().getUserProductList()
-                                    .remove(tableViewUserConfig.getSelectionModel().getSelectedItem());
+                                    .remove(tvUserConfigurations.getSelectionModel().getSelectedItem());
                         }
                     });
         } else {

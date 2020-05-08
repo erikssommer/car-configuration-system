@@ -22,16 +22,10 @@ public class UserSignInController implements ApplicationThread{
     private Button btnAdmin, btnSignin;
 
     @FXML
-    private TextField txtUsernameLogin, txtPasswordLogin;
+    private Label lblSignin, lblRegister, lblThreadMessage;
 
     @FXML
-    private Label lblSignin, lblRegister;
-
-    @FXML
-    private TextField txtName, txtEmail, txtPhonenumber, txtUsernameRegister, txtPasswordRegister;
-
-    @FXML
-    private Label lblThreadMessage;
+    private TextField txtName, txtEmail, txtPhonenumber, txtUsernameRegister, txtPasswordRegister, txtUsernameLogin, txtPasswordLogin;
 
     @FXML
     private ProgressBar progressbar;
@@ -42,7 +36,7 @@ public class UserSignInController implements ApplicationThread{
         userSignIn.parseExistingUser();
         if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
             progressbar.setVisible(true);
-            startThread.start(getClass().getResource("/org/semesteroppgave/files/onApplicationLaunch/komponenter.jobj").getPath());
+            startThread.start(getClass().getResource("/org/semesteroppgave/files/onApplicationLaunch/components.jobj").getPath());
         } else {
             progressbar.setVisible(false);
         }

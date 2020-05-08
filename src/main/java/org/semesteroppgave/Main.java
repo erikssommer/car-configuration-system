@@ -19,6 +19,7 @@ public class Main extends Application {
 
     private static Scene scene;
     public static boolean folderCreated;
+    public static final String FOLDERNAME = "Semesteroppgave_g6677";
 
     public static Scene getScene() {
         return scene;
@@ -56,11 +57,11 @@ public class Main extends Application {
     }
 
     private void loadConfiguredProducts() {
-        FileHandler.openFileCvsLaunch(getClass().getResource("/org/semesteroppgave/files/onApplicationLaunch/produkter.csv").getFile());
+        FileHandler.openFileCvsLaunch(getClass().getResource("/org/semesteroppgave/files/onApplicationLaunch/products.csv").getFile());
     }
 
     private void createFolderOnComputer(){
-        File filePath = new File(System.getProperty("user.home") + File.separator + "SemesteroppgaveLagredeFiler");
+        File filePath = new File(System.getProperty("user.home") + File.separator + FOLDERNAME);
         if (!filePath.exists()){
             if (filePath.mkdirs()){
                 System.out.println("Oppretter mappe lokalt på datamaskinen");
@@ -86,11 +87,11 @@ public class Main extends Application {
                                 if (folderCreated){
                                     if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()) {
                                         FileHandler.saveFileCsvOnProgramExit(System.getProperty("user.home") + "/"
-                                                + "SemesteroppgaveLagredeFiler/lagredeProdukter.csv");
+                                                + FOLDERNAME + "/lagredeProdukter.csv");
                                     }
                                     if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
                                         FileHandler.saveFileJobjOnProgramExit(System.getProperty("user.home") + "/"
-                                                + "SemesteroppgaveLagredeFiler/lagredeKomponenter.jobj");
+                                                + FOLDERNAME + "/lagredeKomponenter.jobj");
                                     }
                                 }else {
                                     System.out.println("Kunne ikke lagre fordi mappen ikke har blitt oprettet");

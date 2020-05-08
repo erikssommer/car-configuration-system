@@ -38,7 +38,7 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn elektisk-objekt fra fil
-        Product electricFromFile = testParcer(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testElektrisk.csv").getFile()), "Elektrisk");
+        Product electricFromFile = testParcer(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testElectric.csv").getFile()), "Elektrisk");
         //Tester om de er like
         assertEquals(electric.toString(), electricFromFile.toString());
     }

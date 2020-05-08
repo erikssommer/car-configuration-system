@@ -14,25 +14,10 @@ public class AdminSignInController implements ApplicationController{
     private final AdminSignin adminSignin = new AdminSignin();
 
     @FXML
-    private TextField txtUsernameSignin;
+    private TextField txtUsernameSignin, txtPasswordSignin, txtEmpNo, txtUsernameRegister, txtPasswordRegister;
 
     @FXML
-    private TextField txtPasswordSignin;
-
-    @FXML
-    private Label lblSignin;
-
-    @FXML
-    private TextField txtEmpNo;
-
-    @FXML
-    private TextField txtUsernameRegister;
-
-    @FXML
-    private TextField txtPasswordRegister;
-
-    @FXML
-    private Label lblRegister;
+    private Label lblSignin, lblRegister;
 
     @Override
     public void initialize() {
