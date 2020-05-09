@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.models.data.components.Motor;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 /**
  * Test for lagring av serialisert jobj-fil
@@ -20,8 +20,9 @@ class FileSaverJobjTest {
         );
 
         FileSaver fileSaver = new FileSaverJobj();
+        File file = new File(getClass().getResource("/org/semesteroppgave/files/testFiles/testWriteJobj.jobj").getFile());
         try {
-            fileSaver.save(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testWriteJobj.jobj").getFile()));
+            fileSaver.save(file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
         }

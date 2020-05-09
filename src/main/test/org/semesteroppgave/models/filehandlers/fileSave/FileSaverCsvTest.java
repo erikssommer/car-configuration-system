@@ -7,8 +7,8 @@ import org.semesteroppgave.models.data.customizations.Custom;
 import org.semesteroppgave.models.data.productmodels.Electric;
 import org.semesteroppgave.models.data.productmodels.Product;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 /**
  * Test for lagring av csv-fil
@@ -34,9 +34,9 @@ class FileSaverCsvTest {
         ApplicationData.getInstance().getRegisterProduct().setUserProductList(testProduct);
 
         FileSaver fileSaver = new FileSaverCsv();
-
+        File file = new File(getClass().getResource("/org/semesteroppgave/files/testFiles/testWriteCsv.csv").getFile());
         try {
-            fileSaver.save(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testWriteCsv.csv").getFile()));
+            fileSaver.save(file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
         }

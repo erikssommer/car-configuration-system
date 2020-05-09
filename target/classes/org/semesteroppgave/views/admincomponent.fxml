@@ -169,7 +169,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-                <Button layoutX="534.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnDeleteCreate" text="Slett rad">
+                <Button layoutX="534.0" layoutY="422.0" mnemonicParsing="false" onAction="#btnDeleteFromRegisterNewComponent" text="Slett rad">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
@@ -184,9 +184,9 @@
             </AnchorPane>
         </Tab>
     </TabPane>
-    <AnchorPane layoutX="677.0" prefHeight="33.0" prefWidth="73.0">
-        <MenuBar fx:id="menuBar" prefHeight="33.0" prefWidth="73.0" style="-fx-font-family: avenir book;">
-            <Menu text="Fil">
+    <AnchorPane layoutX="635.0" prefHeight="33.0" prefWidth="115.0">
+        <MenuBar fx:id="menuBar" prefHeight="33.0" prefWidth="115.0" style="-fx-font-family: avenir book;">
+            <Menu text="Filbehandling">
                 <MenuItem onAction="#openFileMenuClicked" text="Åpne" />
                 <MenuItem onAction="#saveFileMenuClicked" text="Lagre" />
             </Menu>

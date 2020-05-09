@@ -19,7 +19,7 @@ public class Admin extends Person {
     }
 
     //Format til fil
-    public String printTxtAdminUnamePword() {
+    public String printTxtAdminUsernamePassword() {
         return getUsername() + "," + getPassword();
     }
 }

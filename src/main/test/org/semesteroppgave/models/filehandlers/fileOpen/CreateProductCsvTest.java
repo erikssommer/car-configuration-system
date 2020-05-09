@@ -9,10 +9,10 @@ import org.semesteroppgave.models.data.productmodels.Hybrid;
 import org.semesteroppgave.models.data.productmodels.Product;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -38,7 +38,8 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn elektisk-objekt fra fil
-        Product electricFromFile = testParcer(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testElectric.csv").getFile()), "Elektrisk");
+        File file = new File(getClass().getResource("/org/semesteroppgave/files/testFiles/testElectric.csv").getFile());
+        Product electricFromFile = testParcer(file.toPath(), "Elektrisk");
         //Tester om de er like
         assertEquals(electric.toString(), electricFromFile.toString());
     }
@@ -58,7 +59,8 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn diesel-objekt fra fil
-        Product dieselFromFile = testParcer(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testDiesel.csv").getFile()), "Diesel");
+        File file = new File(getClass().getResource("/org/semesteroppgave/files/testFiles/testDiesel.csv").getFile());
+        Product dieselFromFile = testParcer(file.toPath(), "Diesel");
         //Tester om de er like
         assertEquals(diesel.toString(), dieselFromFile.toString());
     }
@@ -78,7 +80,8 @@ class CreateProductCsvTest {
                 .build();
 
         //Leser inn hybrid-objekt fra fil
-        Product hybridFromFile = testParcer(Paths.get(getClass().getResource("/org/semesteroppgave/files/testFiles/testHybrid.csv").getFile()), "Hybrid");
+        File file = new File(getClass().getResource("/org/semesteroppgave/files/testFiles/testHybrid.csv").getFile());
+        Product hybridFromFile = testParcer(file.toPath(), "Hybrid");
 
         //Tester om de er like
         assertNotEquals(hybrid.toString(), hybridFromFile.toString());

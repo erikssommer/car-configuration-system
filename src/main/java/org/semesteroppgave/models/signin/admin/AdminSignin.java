@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -156,8 +155,9 @@ public class AdminSignin {
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/adminUsernameAndPassword.txt").getFile();
+        File file = new File(filepath);
         try {
-            Files.write(Paths.get(filepath), txtToFileAdminUsernamePassword().getBytes());
+            Files.write(file.toPath(), txtToFileAdminUsernamePassword().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -166,8 +166,9 @@ public class AdminSignin {
     // Lagrer admins info til fil
     private void saveToFileInfo() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/adminInfo.txt").getFile();
+        File file = new File(filepath);
         try {
-            Files.write(Paths.get(filepath), txtToFileAdminInfo().getBytes());
+            Files.write(file.toPath(), txtToFileAdminInfo().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -177,7 +178,7 @@ public class AdminSignin {
     private String txtToFileAdminUsernamePassword() {
         StringBuilder ut = new StringBuilder();
         for (Admin newAdmin : adminList) {
-            ut.append(newAdmin.printTxtAdminUnamePword()).append("\n");
+            ut.append(newAdmin.printTxtAdminUsernamePassword()).append("\n");
         }
         return ut.toString();
     }

@@ -103,7 +103,7 @@ public class AdminComponentController implements ApplicationThread {
     }
 
     @FXML
-    private void btnDeleteCreate() {
+    private void btnDeleteFromRegisterNewComponent() {
         try {
             createComponent.deleteRow(tableViewCreate, createComponent.getCreateComponentList(), false);
         } catch (InvalidDeleteException e) {

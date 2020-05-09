@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -122,8 +121,9 @@ public class UserSignIn {
     // Lagrer admins brukernavn og passord til fil
     private void saveToFileUsernamePassword() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
+        File file = new File(filepath);
         try {
-            Files.write(Paths.get(filepath), txtToFileUsernamePassword().getBytes());
+            Files.write(file.toPath(), txtToFileUsernamePassword().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,8 +132,9 @@ public class UserSignIn {
     // Lagrer admins info til fil
     private void saveToFileInfo() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userInfo.txt").getFile();
+        File file = new File(filepath);
         try {
-            Files.write(Paths.get(filepath), txtToFileUserInfo().getBytes());
+            Files.write(file.toPath(), txtToFileUserInfo().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }

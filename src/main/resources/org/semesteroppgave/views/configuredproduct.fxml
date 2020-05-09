@@ -134,7 +134,7 @@
          <Font name="Avenir Book" size="13.0" />
       </font></Button>
     <MenuBar prefHeight="29.0" prefWidth="750.0" style="-fx-font-family: avenir book;">
-        <Menu mnemonicParsing="false" text="Fil">
+        <Menu mnemonicParsing="false" text="Filbehandling">
             <MenuItem mnemonicParsing="false" onAction="#openFileMenuClicked" text="Åpne" />
             <MenuItem mnemonicParsing="false" onAction="#saveFileMenuClicked" text="Lagre" />
         </Menu>
