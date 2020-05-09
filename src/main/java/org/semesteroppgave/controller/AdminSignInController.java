@@ -5,13 +5,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.semesteroppgave.Main;
 import org.semesteroppgave.models.signin.admin.Admin;
-import org.semesteroppgave.models.signin.admin.AdminSignin;
+import org.semesteroppgave.models.signin.admin.AdminSignIn;
 
 import java.io.IOException;
 
 public class AdminSignInController implements ApplicationController{
 
-    private final AdminSignin adminSignin = new AdminSignin();
+    private final AdminSignIn adminSignin = new AdminSignIn();
 
     @FXML
     private TextField txtUsernameSignin, txtPasswordSignin, txtEmpNo, txtUsernameRegister, txtPasswordRegister;
@@ -50,7 +50,7 @@ public class AdminSignInController implements ApplicationController{
             //Setter aktiv admin
             for (Admin admin : adminSignin.getAdminList()) {
                 if (admin.getPassword().equals(txtPasswordSignin.getText())) {
-                    AdminSignin.setActiveAdminId(admin.getEmployeeId());
+                    AdminSignIn.setActiveAdminId(admin.getEmployeeId());
                 }
             }
             Main.setRoot("admincomponent");

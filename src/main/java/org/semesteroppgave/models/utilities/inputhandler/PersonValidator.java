@@ -57,15 +57,15 @@ public class PersonValidator {
         throw new InvalidPhonenumberException("Skriv inn gyldig telefonnummer\n");
     }
 
-    public static String testValidEmail(String ePost) throws InvalidEmailException {
+    public static String testValidEmail(String email) throws InvalidEmailException {
         String[] regex = {
                 "[a-zæøåA-ZÆØÅ0-9.]+[@][a-z]+[.][a-z]+",
                 "[a-zæøåA-ZÆØÅ0-9.]+[@][a-z]+[.][a-z]+[.][a-z]+"
         };
 
         for (String str : regex) {
-            if (ePost.matches(str)) {
-                return ePost;
+            if (email.matches(str)) {
+                return email;
             }
         }
         throw new InvalidEmailException("Skriv inn gyldig epost\n");

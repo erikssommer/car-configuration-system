@@ -195,7 +195,7 @@ public abstract class Product {
         }
 
         if (getGps() == null && getSunroof() == null && getTowbar() == null && autopilot == null) {
-            message += "Denne komfigurasjonen har ingen tilpasninger\n\n";
+            message += "Denne konfigurasjonen har ingen tilpasninger\n\n";
         }
         return message;
     }

@@ -82,7 +82,7 @@ public class AdminCreateComponent {
 
         for (Component createComponent : createComponentList) {
             if (createComponent.equals(component)) {
-                throw new DuplicateException("Komponenten finnes allerede is opprettele av komponent listen");
+                throw new DuplicateException("Komponenten finnes allerede i opprettele av komponent-listen");
             }
         }
 
@@ -208,7 +208,7 @@ public class AdminCreateComponent {
         }
     }
 
-    //Legger inn verdier i combokox for valg av komponent
+    //Legger inn verdier i combobox for valg av komponent
     public void loadChoice(ComboBox<String> cbCreate) {
         componentChoice.removeAll();
         componentChoice.addAll("Motor", "Felg", "Setetrekk", "Spoiler", "Dekk", "Batteri", "Tank", "Girboks");

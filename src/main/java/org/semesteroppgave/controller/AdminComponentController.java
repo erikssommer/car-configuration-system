@@ -9,7 +9,7 @@ import org.semesteroppgave.models.services.AdminCreateComponent;
 import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 import org.semesteroppgave.models.filehandlers.FileHandler;
-import org.semesteroppgave.models.signin.admin.AdminSignin;
+import org.semesteroppgave.models.signin.admin.AdminSignIn;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 import org.semesteroppgave.models.utilities.converters.DoubleConverter;
 import org.semesteroppgave.models.utilities.search.ComponentSearch;
@@ -61,7 +61,7 @@ public class AdminComponentController implements ApplicationThread {
         txtPriceColumnCreate.setCellFactory(TextFieldTableCell.forTableColumn(doubleStrConverter));
         componentSearch.loadFilter(cbFilter);
         createComponent.loadChoice(cbCreate);
-        lblAdminID.setText(AdminSignin.getActiveAdminId());
+        lblAdminID.setText(AdminSignIn.getActiveAdminId());
         progressBar.setVisible(false);
         lblThreadMessage.setVisible(false);
         btnDescription.setVisible(false);

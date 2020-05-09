@@ -16,7 +16,7 @@ import java.util.Scanner;
  * Modell for pålogging admin
  */
 
-public class AdminSignin {
+public class AdminSignIn {
 
     private final ArrayList<Admin> adminList = new ArrayList<>();
     // Oppretter liste med gyldige og ledige ansattnummer
@@ -176,11 +176,11 @@ public class AdminSignin {
 
     // Skriver admins brukernavn og passord til fil
     private String txtToFileAdminUsernamePassword() {
-        StringBuilder ut = new StringBuilder();
+        StringBuilder msgOut = new StringBuilder();
         for (Admin newAdmin : adminList) {
-            ut.append(newAdmin.printTxtAdminUsernamePassword()).append("\n");
+            msgOut.append(newAdmin.printTxtAdminUsernamePassword()).append("\n");
         }
-        return ut.toString();
+        return msgOut.toString();
     }
 
     // Skriver admins ansattnummer til fil

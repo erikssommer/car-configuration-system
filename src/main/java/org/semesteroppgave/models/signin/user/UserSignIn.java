@@ -142,19 +142,19 @@ public class UserSignIn {
 
     // Skriver brukers brukernavn og passord til fil
     private String txtToFileUsernamePassword() {
-        StringBuilder ut = new StringBuilder();
+        StringBuilder msgOut = new StringBuilder();
         for (User newUser : userList) {
-            ut.append(newUser.printTxtUsernamePassword()).append("\n");
+            msgOut.append(newUser.printTxtUsernamePassword()).append("\n");
         }
-        return ut.toString();
+        return msgOut.toString();
     }
 
     // Skriver brukers info til fil
     private String txtToFileUserInfo() {
-        StringBuilder ut = new StringBuilder();
+        StringBuilder msgOut = new StringBuilder();
         for (User newUser : userList) {
-            ut.append(newUser.printTxtUserInfo()).append("\n");
+            msgOut.append(newUser.printTxtUserInfo()).append("\n");
         }
-        return ut.toString();
+        return msgOut.toString();
     }
 }
