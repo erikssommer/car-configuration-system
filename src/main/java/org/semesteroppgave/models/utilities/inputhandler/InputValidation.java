@@ -6,7 +6,7 @@ import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 
 /**
- * Klasse for validering av input ved opprettelse/redigering av objekt
+ * Klasse for validering av input ved opprettelse/redigering av Component-objekt
  */
 
 public class InputValidation {

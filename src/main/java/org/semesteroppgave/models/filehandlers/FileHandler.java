@@ -22,7 +22,7 @@ import static org.semesteroppgave.Main.FOLDERNAME;
 import static org.semesteroppgave.Main.folderCreated;
 
 /**
- * Klasse som tar seg av filhåndering for både .jobj og.csv - filer
+ * Klasse som tar seg av filhåndering for både .jobj og .csv - filer
  */
 
 public class FileHandler {
@@ -184,7 +184,7 @@ public class FileHandler {
         fileChooser.setTitle("Velg fil");
         //Tester om det har blitt opprettet en mappe
         if (folderCreated){
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/" + FOLDERNAME));
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + File.separator + FOLDERNAME));
         }
 
         if (file == FileMode.JOBJ) {

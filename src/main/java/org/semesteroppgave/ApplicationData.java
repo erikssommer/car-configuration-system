@@ -31,5 +31,4 @@ public class ApplicationData {
         return this.registerProduct;
     }
 
-    //Her kan vi fortsette å legge til globale objekter
 }
