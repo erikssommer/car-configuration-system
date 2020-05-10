@@ -7,6 +7,7 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
  * Avvik blir ikke kastet her fordi de kan ikke bli behandlet utenfor klassen.
  * Ved feil returnerer klassen 0.0.
  * "conversionSuccessful" er true hvis konverteringen er vellykket
+ * Hentet fra løsningsforslag oblig1
  */
 
 public class DoubleConverter {
