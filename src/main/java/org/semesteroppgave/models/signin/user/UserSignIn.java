@@ -118,7 +118,7 @@ public class UserSignIn {
         }
     }
 
-    // Lagrer admins brukernavn og passord til fil i target-mappe
+    // Lagrer admins brukernavn og passord til fil i target-mappe. Forsvinner med maven clean
     private void saveToFileUsernamePassword() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
         File file = new File(filepath);
@@ -129,7 +129,7 @@ public class UserSignIn {
         }
     }
 
-    // Lagrer admins info til fil i target-mappe
+    // Lagrer admins info til fil i target-mappe. Forsvinner med maven clean
     private void saveToFileInfo() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userInfo.txt").getFile();
         File file = new File(filepath);
