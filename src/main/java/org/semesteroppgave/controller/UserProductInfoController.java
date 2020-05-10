@@ -7,7 +7,7 @@ import org.semesteroppgave.Main;
 
 import java.io.IOException;
 
-public class UserProductInfoController implements ApplicationController{
+public class UserProductInfoController implements ApplicationController {
 
     @FXML
     private TextArea txtInfo;

@@ -31,14 +31,14 @@ public class Diesel extends Product {
             return this;
         }
 
-        public Builder selectedGearbox(Gearbox gearbox){
+        public Builder selectedGearbox(Gearbox gearbox) {
             if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
             this.gearbox = gearbox;
 
             return this;
         }
 
-        public Diesel build(){
+        public Diesel build() {
             return new Diesel(this);
         }
     }

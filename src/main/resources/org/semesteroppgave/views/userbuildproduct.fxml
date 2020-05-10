@@ -29,7 +29,7 @@
             <Font name="Avenir Book" size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbModel" layoutX="204.0" layoutY="109.0" onShown="#choiseMade" prefWidth="150.0" />
+      <ComboBox fx:id="cbModel" layoutX="204.0" layoutY="109.0" onShown="#productModelChoiseMade" prefWidth="150.0" />
       <TableView fx:id="tableViewComponent" layoutX="46.0" layoutY="178.0" prefHeight="255.0" prefWidth="141.0">
           <placeholder>
               <Label text=" " />

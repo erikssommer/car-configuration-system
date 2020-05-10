@@ -11,7 +11,7 @@ import org.semesteroppgave.models.exceptions.*;
 
 public class InputValidation {
 
-    public static String testValidVersion(String input) {
+    public static String testValidVersion(String input) throws InvalidVersionException {
 
         String[] regex = {
                 "^[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){1,25}$",
@@ -28,7 +28,7 @@ public class InputValidation {
                 "\nDen må være mellom 2 og 25 tegn\nog starte med stor bokstav.");
     }
 
-    public static String testValidDescription(String input) {
+    public static String testValidDescription(String input) throws InvalidDescriptionException{
 
         String regex = "[A-ZÆØÅ]+([A-ZÆØÅa-zæøå0-9()[-],. ]){4,100}$";
 
@@ -36,12 +36,12 @@ public class InputValidation {
             return input;
         }
 
-        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig." +
-                "\nDen må være mellom 5 og 100 tegn\nog starte med stor bokstav.");
+        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig.\n" +
+                "Den må være mellom 5 og 100 tegn\nog starte med stor bokstav.");
 
     }
 
-    public static String testValidComponent(String input) {
+    public static String testValidComponent(String input) throws InvalidComponentException {
         if (!input.toLowerCase().equals("motor") && !input.toLowerCase().equals("felg")
                 && !input.toLowerCase().equals("setetrekk") && !input.toLowerCase().equals("dekk")
                 && !input.toLowerCase().equals("spoiler") && !input.toLowerCase().equals("girboks")
@@ -51,7 +51,7 @@ public class InputValidation {
         return input;
     }
 
-    public static double testValidPrice(double input) {
+    public static double testValidPrice(double input) throws InvalidPriceException {
         String price = String.valueOf(input);
         String regex = "^[0-9]+(.|,)?[0-9]{1,3}$";
         if (price.matches(regex)){
@@ -60,19 +60,18 @@ public class InputValidation {
         throw new InvalidPriceException("Prisen kan ikke være negativ eller ha flere enn 3 desimaler");
     }
 
-    public static void testComponentCount(TableView<Component> tableViewComponents, String input) {
+    public static void testComponentCount(TableView<Component> tableViewComponents, String input) throws InvalidDeleteException{
         int counter = 0;
         for (Component component : ApplicationData.getInstance().getRegisterComponent().getComponentList()) {
             if (component.getComponent().equals(tableViewComponents.getSelectionModel().getSelectedItem().getComponent())) {
                 counter++;
             }
         }
-        //Hvis denne intreffer er det bare én av denne type komponent igjen og vi kaster et avvik
+        //Hvis denne intreffer er det bare én av denne type komponent igjen og det blir kastet et avvik
         if (counter == 1) {
             tableViewComponents.refresh();
-            throw new InvalidDeleteException("Kan ikke " + input + " denne komponenten " +
-                    "fordi det må minst være én av denne komponenten. Hvis det manger en komponent når brukeren" +
-                    " oppretter et produkt, vil brukeren ikke ha mulighet til å opprette et produkt");
+            throw new InvalidDeleteException("Kan ikke " + input + " denne komponenten.\n" +
+                    "Det må minst være én av hver komponent for at bruker skal\nkunne opprette et produkt");
         }
     }
 }

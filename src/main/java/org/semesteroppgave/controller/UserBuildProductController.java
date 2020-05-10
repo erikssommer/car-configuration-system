@@ -16,7 +16,7 @@ import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 import java.io.IOException;
 
-public class UserBuildProductController implements ApplicationController{
+public class UserBuildProductController implements ApplicationController {
 
     private UserCreateProduct newProduct;
 
@@ -69,7 +69,7 @@ public class UserBuildProductController implements ApplicationController{
     }
 
     @FXML
-    private void choiseMade() {
+    private void productModelChoiseMade() {
 
         cbModel.valueProperty().addListener((ov, previous, active) -> {
             newProduct.createNewProduct(active);

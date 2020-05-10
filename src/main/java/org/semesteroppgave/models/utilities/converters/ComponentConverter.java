@@ -10,10 +10,10 @@ import org.semesteroppgave.models.exceptions.InvalidComponentException;
 
 public class ComponentConverter {
 
-    public static Component convert(Component component){
+    public static Component convert(Component component) {
         switch (component.getComponent().toLowerCase()) {
             case "motor":
-                 return new Motor(component.getVersion(), component.getPrice(), component.getDescription());
+                return new Motor(component.getVersion(), component.getPrice(), component.getDescription());
             case "felg":
                 return new Rim(component.getVersion(), component.getPrice(), component.getDescription());
             case "setetrekk":
@@ -29,7 +29,8 @@ public class ComponentConverter {
             case "girboks":
                 return new Gearbox(component.getVersion(), component.getPrice(), component.getDescription());
 
-            default: throw new InvalidComponentException("Fant ikke komponenten");
+            default:
+                throw new InvalidComponentException("Fant ikke komponenten");
         }
     }
 }

@@ -60,17 +60,17 @@ public class Main extends Application {
         FileHandler.openFileCvsLaunch(getClass().getResource("/org/semesteroppgave/files/onApplicationLaunch/products.csv").getFile());
     }
 
-    private void createFolderOnComputer(){
+    private void createFolderOnComputer() {
         File filePath = new File(System.getProperty("user.home") + File.separator + FOLDERNAME);
-        if (!filePath.exists()){
-            if (filePath.mkdirs()){
+        if (!filePath.exists()) {
+            if (filePath.mkdirs()) {
                 System.out.println("Oppretter mappe lokalt på datamaskinen");
                 folderCreated = true;
             } else {
                 System.out.println("Klarte ikke å opprette mappe");
                 folderCreated = false;
             }
-        }else {
+        } else {
             System.out.println("Mappen eksisterer fra før");
             folderCreated = true;
         }
@@ -85,7 +85,7 @@ public class Main extends Application {
                         "Filene lagres i mappen: " + FOLDERNAME,
                         response -> {
                             if (response == ButtonType.OK) {
-                                if (folderCreated){
+                                if (folderCreated) {
                                     if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()) {
                                         FileHandler.saveFileCsvOnProgramExit(System.getProperty("user.home") + "/"
                                                 + FOLDERNAME + "/lagredeProdukter.csv");
@@ -94,7 +94,7 @@ public class Main extends Application {
                                         FileHandler.saveFileJobjOnProgramExit(System.getProperty("user.home") + "/"
                                                 + FOLDERNAME + "/lagredeKomponenter.jobj");
                                     }
-                                }else {
+                                } else {
                                     System.out.println("Kunne ikke lagre fordi mappen ikke har blitt oprettet");
                                 }
                             }

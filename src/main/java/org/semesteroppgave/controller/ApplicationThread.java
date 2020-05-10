@@ -6,9 +6,10 @@ package org.semesteroppgave.controller;
  * Blir brukt i klassen 'StartThread' for å aktivere/deaktivere gui-elementer
  */
 
-public interface ApplicationThread extends ApplicationController{
+public interface ApplicationThread extends ApplicationController {
 
     void disableGUI();
+
     void enableGUI();
 
 }

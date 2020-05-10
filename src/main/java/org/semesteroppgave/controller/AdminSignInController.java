@@ -9,7 +9,7 @@ import org.semesteroppgave.models.signin.admin.AdminSignIn;
 
 import java.io.IOException;
 
-public class AdminSignInController implements ApplicationController{
+public class AdminSignInController implements ApplicationController {
 
     private final AdminSignIn adminSignin = new AdminSignIn();
 

@@ -75,8 +75,8 @@ public class PersonValidator {
         if (username.matches(regex)) {
             return username;
         }
-        throw new InvalidUsernameException("Skriv inn gyldig brukernavn." +
-                "\nMå være minst 6 tegn og inneholde\nminst en bokstav og et tall");
+        throw new InvalidUsernameException("Skriv inn gyldig brukernavn.\n" +
+                "Må være minst 6 tegn og inneholde\nminst en bokstav og et tall");
     }
 
     public static String testValidPassword(String password) throws InvalidPasswordException {
@@ -85,7 +85,7 @@ public class PersonValidator {
         if (password.matches(regex)) {
             return password;
         }
-        throw new InvalidPasswordException("Skriv inn gyldig passord." +
-                "\nMå være minst 4 tegn og inneholde\nminst en bokstav og et tall");
+        throw new InvalidPasswordException("Skriv inn gyldig passord.\n" +
+                "Må være minst 4 tegn og inneholde\nminst en bokstav og et tall");
     }
 }

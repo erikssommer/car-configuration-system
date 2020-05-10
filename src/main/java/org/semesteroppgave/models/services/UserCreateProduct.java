@@ -173,7 +173,7 @@ public class UserCreateProduct {
     }
 
     //Metode som oppretter produkter. Bruk av builder-pattern
-    public void finishedProduct() throws NullPointerException, IllegalArgumentException {
+    public void finishedProduct() throws IllegalArgumentException {
 
         if (cbModel.getValue() != null) {
             Product product = null;

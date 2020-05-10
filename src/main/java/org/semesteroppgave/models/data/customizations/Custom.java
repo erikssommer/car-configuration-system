@@ -24,12 +24,12 @@ public enum Custom {
         return this.customProperty;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return this.price;
     }
 
     //Index er plassering i array ved opprettelse av produkt
-    public int getIndex(){
+    public int getIndex() {
         return this.index;
     }
 

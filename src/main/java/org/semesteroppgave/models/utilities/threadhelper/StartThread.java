@@ -18,13 +18,13 @@ public class StartThread {
     private final Label lblThreadMessage;
     private final ProgressBar progressBar;
 
-    public StartThread(ApplicationThread applicationThread, Label lblThreadMessage, ProgressBar progressBar){
+    public StartThread(ApplicationThread applicationThread, Label lblThreadMessage, ProgressBar progressBar) {
         this.applicationThread = applicationThread;
         this.lblThreadMessage = lblThreadMessage;
         this.progressBar = progressBar;
     }
 
-    public void start(String filePath){
+    public void start(String filePath) {
         lblThreadMessage.setText("Laster inn fil...");
         OpenWithThread openWithThread = new OpenWithThread(progressBar, filePath);
         openWithThread.setOnSucceeded(this::fileOpened);

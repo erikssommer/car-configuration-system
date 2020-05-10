@@ -17,7 +17,7 @@ public class ComponentSearch {
     private final ObservableList<Component> searchResult = FXCollections.observableArrayList();
     private final ObservableList<String> componentFilter = FXCollections.observableArrayList();
 
-    public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter) throws IllegalArgumentException {
+    public void filter(TextField txtSearch, TableView<Component> tableViewComponents, ComboBox<String> cbFilter) {
         if (txtSearch.getText().isEmpty()) {
             tableViewComponents.setItems(ApplicationData.getInstance().getRegisterComponent().getComponentList());
         } else {

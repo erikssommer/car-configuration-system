@@ -145,23 +145,15 @@ public class AdminComponentController implements ApplicationThread {
 
     @FXML
     private void filterChoiceChanged() {
-        try {
-            componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
-        } catch (InvalidPriceException e) {
-            Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
-        }
+        componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
     }
 
     @FXML
     private void onKeyTypedSearch() {
-        try {
-            componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
-            txtEditDescription.setDisable(true);
-            txtEditDescription.setText("");
-            btnDescription.setVisible(false);
-        } catch (InvalidPriceException e) {
-            Dialogs.showErrorDialog("Feil i søket", e.getMessage(), "Prøv på nytt");
-        }
+        componentSearch.filter(txtSearch, tableViewComponents, cbFilter);
+        txtEditDescription.setDisable(true);
+        txtEditDescription.setText("");
+        btnDescription.setVisible(false);
     }
 
     @FXML
@@ -172,7 +164,6 @@ public class AdminComponentController implements ApplicationThread {
     @FXML
     private void tabCreate() {
         menuBar.setVisible(false);
-
     }
 
     @FXML
@@ -215,7 +206,7 @@ public class AdminComponentController implements ApplicationThread {
     void btnDescription() {
         try {
             tableViewComponents.getSelectionModel().getSelectedItem().setDescription(txtEditDescription.getText());
-        }catch (InvalidDescriptionException e) {
+        } catch (InvalidDescriptionException e) {
             Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig beskrivelse!", e.getMessage());
             txtEditDescription.setText(tableViewComponents.getSelectionModel().getSelectedItem().getDescription());
         }

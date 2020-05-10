@@ -38,7 +38,7 @@ public class Dialogs {
         alert.showAndWait();
     }
 
-    public static void showConfirmationDialog(String header, String content, Consumer<? super ButtonType> action){
+    public static void showConfirmationDialog(String header, String content, Consumer<? super ButtonType> action) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Bekreft");
         alert.setHeaderText(header);

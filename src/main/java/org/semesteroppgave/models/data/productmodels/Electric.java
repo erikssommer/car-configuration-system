@@ -26,7 +26,7 @@ public class Electric extends Product {
             super(model, modelPrice);
         }
 
-        public Builder selectedBattery(Battery battery){
+        public Builder selectedBattery(Battery battery) {
             if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
             this.battery = battery;
 
@@ -39,7 +39,7 @@ public class Electric extends Product {
             return this;
         }
 
-        public Electric build(){
+        public Electric build() {
             return new Electric(this);
         }
     }

@@ -109,8 +109,13 @@ public class ConfiguredProductController implements ApplicationController {
                         }
                     });
         } else {
-            Dialogs.showErrorDialog("Feil", "Du har ikke valgt et produkt",
-                    "Velg et produkt og prøv på nytt");
+            if (tvConfigurations.getSelectionModel().getSelectedItem() != null) {
+                Dialogs.showErrorDialog("Feil", "Du har valgt feil liste",
+                        "Det er bare mulig å slette egne konfigurasjoner");
+            } else {
+                Dialogs.showErrorDialog("Feil", "Du har ikke valgt et produkt",
+                        "Velg et produkt og prøv på nytt");
+            }
         }
     }
 }

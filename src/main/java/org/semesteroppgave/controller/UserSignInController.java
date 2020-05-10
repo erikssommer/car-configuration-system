@@ -11,7 +11,7 @@ import org.semesteroppgave.models.utilities.threadhelper.StartThread;
 
 import java.io.IOException;
 
-public class UserSignInController implements ApplicationThread{
+public class UserSignInController implements ApplicationThread {
 
     private final UserSignIn userSignIn = new UserSignIn();
 
@@ -70,7 +70,7 @@ public class UserSignInController implements ApplicationThread{
                 }
             }
             Main.setRoot("userbuildproduct");
-            if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()){
+            if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
                 Dialogs.showWarningDialog("Varsel", "Ingen komponenter",
                         "Admin må opprette komponenter før du kan bygge en bil");
             }

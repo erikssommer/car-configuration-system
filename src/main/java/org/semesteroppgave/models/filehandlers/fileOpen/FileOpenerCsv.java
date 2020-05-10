@@ -34,10 +34,10 @@ public class FileOpenerCsv implements FileOpener {
         } catch (InvalidProductException | InvalidPriceException | InvalidVersionException | InvalidDescriptionException | EmptyComponentException e) {
             Dialogs.showErrorDialog("Oups!", "Feil i innlasting fra cvs-fil", e.getMessage() +
                     "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             Dialogs.showErrorDialog("Oups!", "Feil i innlasting fra cvs-fil",
                     "Prisen må være fyllt inn og være et tall" +
-                                "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
+                            "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
         }
     }
 

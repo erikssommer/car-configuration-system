@@ -23,7 +23,7 @@ public class Hybrid extends Product {
             super(model, modelPrice);
         }
 
-        public Builder selectedBattery(Battery battery){
+        public Builder selectedBattery(Battery battery) {
             if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
             this.battery = battery;
 
@@ -37,7 +37,7 @@ public class Hybrid extends Product {
             return this;
         }
 
-        public Hybrid build(){
+        public Hybrid build() {
             return new Hybrid(this);
         }
     }
