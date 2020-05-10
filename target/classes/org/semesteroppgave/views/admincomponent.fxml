@@ -184,8 +184,8 @@
             </AnchorPane>
         </Tab>
     </TabPane>
-    <AnchorPane layoutX="635.0" prefHeight="33.0" prefWidth="115.0">
-        <MenuBar fx:id="menuBar" prefHeight="33.0" prefWidth="115.0" style="-fx-font-family: avenir book;">
+    <AnchorPane layoutX="635.0" layoutY="-2.0" prefHeight="36.0" prefWidth="115.0">
+        <MenuBar fx:id="menuBar" layoutY="4.0" prefHeight="20.0" prefWidth="115.0" style="-fx-font-family: avenir book;">
             <Menu text="Filbehandling">
                 <MenuItem onAction="#openFileMenuClicked" text="Åpne" />
                 <MenuItem onAction="#saveFileMenuClicked" text="Lagre" />

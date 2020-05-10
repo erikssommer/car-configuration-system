@@ -102,7 +102,7 @@ public class AdminCreateComponent {
     public void completeComponent() throws IOException {
 
         for (Component component : createComponentList) {
-            ApplicationData.getInstance().getRegisterComponent().setComponentList(component);
+            ApplicationData.getInstance().getRegisterComponent().getComponentList().add(0, component);
         }
         createComponentList.clear();
         Main.setRoot("admincomponent");
