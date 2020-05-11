@@ -9,10 +9,11 @@ Alternativ 2: Bil
 
 Dette konfigurasjonssystemet har en admin-side(superbruker) hvor det er mulig å opprette og redigere nye komponenter,
 samt muligheter for søk i liste og filbehandling av serialiserte filer i egen tråd. Programmet har en bruker-side(sluttbruker)
-hvor det kan opprettes bilprodukter med ulike tilpasninger. Dette systemet støtter pris for hver komponent/tilpasning
-og kalkulering av totalpris. Det er mulig å lagre lister av produkter til csv-fil. Konseptet bruker og superbruker
-inkluderes ved to innloggingssider med mulighet for opprettelse av nye brukere og superbrukere. Admin må ha gyldig
-ansattnummer. Informasjon om innlogging i programmet står nedenfor.
+hvor det kan opprettes bilprodukter med komponenter og ulike tilpasninger. Dette systemet støtter pris for hver komponent/tilpasning
+og kalkulering av totalpris. Det er mulig å lagre lister av produkter til csv-fil, og få opp liste over tidligere
+fullførte konfigurerte produkter. Konseptet bruker og superbruker inkluderes ved to innloggingssider med mulighet for
+opprettelse av nye brukere og superbrukere. Admin må ha gyldig ansattnummer.
+Informasjon om innlogging i programmet står nedenfor.
 
 ------
 ### **_Nødvendig informasjon for pålogging i programmet_**
