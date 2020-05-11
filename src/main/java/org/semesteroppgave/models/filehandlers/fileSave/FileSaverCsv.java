@@ -26,7 +26,7 @@ public class FileSaverCsv implements FileSaver {
     }
 
     private void writeHeader(StringBuilder sb) {
-        String[] title = new String[]{"Model", "Modelpris", "Motor", "Pris", "Beskrivelse", "Felg", "Pris", "Beskrivelse",
+        String[] title = new String[]{"Modell", "Modellpris", "Motor", "Pris", "Beskrivelse", "Felg", "Pris", "Beskrivelse",
                 "Setetrekk", "Pris", "Beskrivelse", "Spoiler", "Pris", "Beskrivelse", "Dekk", "Pris", "Beskrivelse",
                 "Batteri", "Pris", "Beskrivelse", "Tank", "Pris", "Beskrivelse", "Girboks", "Pris", "Beskrivelse",
                 "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris"};
