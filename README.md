@@ -18,21 +18,19 @@ ansattnummer. Informasjon om innlogging i programmet står nedenfor.
 ### **_Nødvendig informasjon for pålogging i programmet_**
 
 #### **Admin pålogging;**
-
+````
 Brukernavn: Admin123
 
 Passord: Java13
-
+````
 Gyldige ansattnummer for ny adminbruker: A1234, A4567, A7890
 
-------
-
 #### **Bruker pålogging;**
-
+````
 Brukernavn: Bruker123
 
 Passord: Java13
-
+````
 ---
 
 ### **_Kilder_**
