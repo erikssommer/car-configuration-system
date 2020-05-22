@@ -47,16 +47,16 @@ public class FileHandler {
             if (".csv".equals(fileExt)) {
                 opener = new FileOpenerCsv();
             } else {
-                Dialogs.showErrorDialog("Fil", "Feil ved åpning av fil",
-                        "Du kan bare åpne csv filer som bruker");
+                Dialogs.showErrorDialog("File", "Error opening file",
+                        "You can only open .csv files that a user");
             }
 
             if (opener != null) {
                 try {
                     opener.open(selectedFile.toPath());
                 } catch (IOException e) {
-                    Dialogs.showErrorDialog("Fil", "Feil i åpneing av fil",
-                            "Åpning av filen feilet. Grunn: " + e.getMessage());
+                    Dialogs.showErrorDialog("File", "Error opening file",
+                            "Opening of file failed. Reason: " + e.getMessage());
                 }
             }
         }
@@ -68,7 +68,7 @@ public class FileHandler {
         try {
             opener.open(file.toPath());
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Åpning av filen gikk galt", "Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("File", "Error opening file", "Reason: " + e.getMessage());
         }
     }
 
@@ -82,18 +82,18 @@ public class FileHandler {
             if (".csv".equals(fileExt)) {
                 saver = new FileSaverCsv();
             } else {
-                Dialogs.showErrorDialog("Lagring til fil", "Feil i lagring til fil",
-                        "Du kan bare lagre til csv filer.");
+                Dialogs.showErrorDialog("Save to file", "File storage error",
+                        "You can only save to .csv files");
             }
 
             if (saver != null) {
                 try {
                     saver.save(selectedFile.toPath());
-                    Dialogs.showSuccessDialog("Fil", "Listen ble korrekt lagret til fil",
-                            "Registeret ble lagret!");
+                    Dialogs.showSuccessDialog("File", "The list was correctly saved to file",
+                            "The register was saved!");
                 } catch (IOException e) {
-                    Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt",
-                            "Grunn: " + e.getMessage());
+                    Dialogs.showErrorDialog("Oups", "File storage went wrong",
+                            "Reason: " + e.getMessage());
                 }
             }
         }
@@ -105,9 +105,9 @@ public class FileHandler {
 
         try {
             saver.save(file.toPath());
-            System.out.println("Produktene ble lagret til fil");
+            System.out.println("The products were saved to file");
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("File", "File saving went wrong", "Reason: " + e.getMessage());
         }
     }
 
@@ -123,8 +123,8 @@ public class FileHandler {
         try {
             opener.open(loadFile.toPath());
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Åpning av jobj-filen i tråd gikk galt",
-                    "Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("File", "Opening .jobj file on thread went wrong",
+                    "Reason: " + e.getMessage());
         }
     }
 
@@ -147,18 +147,18 @@ public class FileHandler {
             if (".jobj".equals(fileExt)) {
                 saver = new FileSaverJobj();
             } else {
-                Dialogs.showErrorDialog("Fil", "Feil i lagring til fil",
-                        "Du kan bare lagre til jobj filer.");
+                Dialogs.showErrorDialog("File", "File storage error",
+                        "You can only save to .jobj files");
             }
 
             if (saver != null) {
                 try {
                     saver.save(selectedFile.toPath());
-                    Dialogs.showSuccessDialog("Fil", "Listen ble korrekt lagret til jobj-fil",
-                            "Registeret ble lagret!");
+                    Dialogs.showSuccessDialog("File", "The list was correctly saved to .jobj file",
+                            "The register was saved!");
                 } catch (IOException e) {
-                    Dialogs.showErrorDialog("Oups", "Lagring til fil gikk galt",
-                            "Grunn: " + e.getMessage());
+                    Dialogs.showErrorDialog("Oups", "File storage went wrong",
+                            "Reason: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
@@ -173,15 +173,16 @@ public class FileHandler {
 
         try {
             saver.save(file.toPath());
-            System.out.println("Komponentene ble lagret til fil");
+            System.out.println("The components were saved to file");
         } catch (IOException e) {
-            Dialogs.showErrorDialog("Fil", "Lagring av filen gikk galt", "Grunn: " + e.getMessage());
+            Dialogs.showErrorDialog("File", "File saving went wrong", "Reason: "
+                    + e.getMessage());
         }
     }
 
     private static File getFileFromFileChooser(FileMode file, DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Velg fil");
+        fileChooser.setTitle("Choose file");
         //Tests whether a folder has been created
         if (folderCreated){
             fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + File.separator + FOLDERNAME));

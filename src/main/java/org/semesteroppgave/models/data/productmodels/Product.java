@@ -58,35 +58,35 @@ public abstract class Product {
         }
 
         public T selectedMotor(Motor motor) {
-            if (motor == null) throw new EmptyComponentException("Du har glemt å velge en motor");
+            if (motor == null) throw new EmptyComponentException("You forgot to choose a motor");
             this.motor = motor;
 
             return (T) this;
         }
 
         public T selectedRim(Rim rim) {
-            if (rim == null) throw new EmptyComponentException("Du har glemt å velge felger");
+            if (rim == null) throw new EmptyComponentException("You forgot to choose rims");
             this.rim = rim;
 
             return (T) this;
         }
 
         public T selectedSeatcover(SeatCover seatcover) {
-            if (seatcover == null) throw new EmptyComponentException("Du har glemt å velge setetrekk");
+            if (seatcover == null) throw new EmptyComponentException("You forgot to choose a seat cover");
             this.seatcover = seatcover;
 
             return (T) this;
         }
 
         public T selectedSpoiler(Spoiler spoiler) {
-            if (spoiler == null) throw new EmptyComponentException("Du har glemt å velge en spoiler");
+            if (spoiler == null) throw new EmptyComponentException("You forgot to choose a spoiler");
             this.spoiler = spoiler;
 
             return (T) this;
         }
 
         public T selectedTires(Tires tires) {
-            if (tires == null) throw new EmptyComponentException("Du har glemt å velge dekk");
+            if (tires == null) throw new EmptyComponentException("You forgot to choose tires");
             this.tires = tires;
 
             return (T) this;
@@ -177,23 +177,23 @@ public abstract class Product {
         String message = "";
 
         if (getGps() != null) {
-            message += getGps().getCustomProperty() + "\nPris: " + df.format(getGps().getPrice()) + "kr\n\n";
+            message += getGps().getCustomProperty() + "\nPrice: " + df.format(getGps().getPrice()) + "kr\n\n";
         }
 
         if (getSunroof() != null) {
-            message += getSunroof().getCustomProperty() + "\nPris: " + df.format(getSunroof().getPrice()) + "kr\n\n";
+            message += getSunroof().getCustomProperty() + "\nPrice: " + df.format(getSunroof().getPrice()) + "kr\n\n";
         }
 
         if (getTowbar() != null) {
-            message += getTowbar().getCustomProperty() + "\nPris: " + df.format(getTowbar().getPrice()) + "kr\n\n";
+            message += getTowbar().getCustomProperty() + "\nPrice: " + df.format(getTowbar().getPrice()) + "kr\n\n";
         }
 
         if (autopilot != null) {
-            message += autopilot.getCustomProperty() + "\nPris: " + df.format(autopilot.getPrice()) + "kr\n\n";
+            message += autopilot.getCustomProperty() + "\nPrice: " + df.format(autopilot.getPrice()) + "kr\n\n";
         }
 
         if (getGps() == null && getSunroof() == null && getTowbar() == null && autopilot == null) {
-            message += "Denne konfigurasjonen har ingen tilpasninger\n\n";
+            message += "This configuration has no customizations\n\n";
         }
         return message;
     }
@@ -254,12 +254,12 @@ public abstract class Product {
     public String toString() {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
-        return "Bilmodell: " + getModel() + "\nModellpris: " + df.format(getModelPrice()) + "kr\n\n" +
-                "Motor: " + getMotor().getVersion() + "\nPris: " + df.format(getMotor().getPrice()) + "kr\nBeskrivelse: " + getMotor().getDescription() + "\n\n" +
-                "Felg: " + getRim().getVersion() + "\nPris: " + df.format(getRim().getPrice()) + "kr\nBeskrivelse: " + getRim().getDescription() + "\n\n" +
-                "Setetrekk: " + getSeatCover().getVersion() + "\nPris: " + df.format(getSeatCover().getPrice()) + "kr\nBeskrivelse: " + getSeatCover().getDescription() + "\n\n" +
-                "Spoiler: " + getSpoiler().getVersion() + "\nPris: " + df.format(getSpoiler().getPrice()) + "kr\nBeskrivelse: " + getSpoiler().getDescription() + "\n\n" +
-                "Dekk: " + getTires().getVersion() + "\nPris: " + df.format(getTires().getPrice()) + "kr\nBeskrivelse: " + getTires().getDescription() + "\n\n";
+        return "Car model: " + getModel() + "\nModel price: " + df.format(getModelPrice()) + "kr\n\n" +
+                "Motor: " + getMotor().getVersion() + "\nPrice: " + df.format(getMotor().getPrice()) + "kr\nDescription: " + getMotor().getDescription() + "\n\n" +
+                "Rim: " + getRim().getVersion() + "\nPrice: " + df.format(getRim().getPrice()) + "kr\nDescription: " + getRim().getDescription() + "\n\n" +
+                "Seat cover: " + getSeatCover().getVersion() + "\nPrice: " + df.format(getSeatCover().getPrice()) + "kr\nDescription: " + getSeatCover().getDescription() + "\n\n" +
+                "Spoiler: " + getSpoiler().getVersion() + "\nPrice: " + df.format(getSpoiler().getPrice()) + "kr\nDescription: " + getSpoiler().getDescription() + "\n\n" +
+                "Tire: " + getTires().getVersion() + "\nPrice: " + df.format(getTires().getPrice()) + "kr\nDescription: " + getTires().getDescription() + "\n\n";
 
     }
 }

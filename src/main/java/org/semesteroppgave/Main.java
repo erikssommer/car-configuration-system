@@ -19,7 +19,7 @@ public class Main extends Application {
 
     private static Scene scene;
     public static boolean folderCreated;
-    public static final String FOLDERNAME = "DataMet_configurations";
+    public static final String FOLDERNAME = "DataMet_Configurations";
 
     public static Scene getScene() {
         return scene;
@@ -64,14 +64,14 @@ public class Main extends Application {
         File filePath = new File(System.getProperty("user.home") + File.separator + FOLDERNAME);
         if (!filePath.exists()) {
             if (filePath.mkdirs()) {
-                System.out.println("Oppretter mappe lokalt på datamaskinen");
+                System.out.println("Creates folder locally on computer");
                 folderCreated = true;
             } else {
-                System.out.println("Klarte ikke å opprette mappe");
+                System.out.println("Failed to create folder");
                 folderCreated = false;
             }
         } else {
-            System.out.println("Mappen eksisterer fra før");
+            System.out.println("The folder already exists");
             folderCreated = true;
         }
     }
@@ -81,8 +81,8 @@ public class Main extends Application {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||
                     !ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
-                Dialogs.showConfirmationDialog("Ønsker du å lagre endringer før programmet avsluttes?",
-                        "Filene lagres i mappen: " + FOLDERNAME,
+                Dialogs.showConfirmationDialog("Do you want to save changes before quitting the program?",
+                        "The files are stored in the folder: " + FOLDERNAME,
                         response -> {
                             if (response == ButtonType.OK) {
                                 if (folderCreated) {
@@ -95,7 +95,7 @@ public class Main extends Application {
                                                 + FOLDERNAME + "/lagredeKomponenter.jobj");
                                     }
                                 } else {
-                                    System.out.println("Kunne ikke lagre fordi mappen ikke har blitt oprettet");
+                                    System.out.println("Failed to save because folder was not created");
                                 }
                             }
                         });

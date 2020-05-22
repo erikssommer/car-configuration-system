@@ -69,11 +69,11 @@ public class UserSignInController implements ApplicationThread {
             }
             Main.setRoot("userbuildproduct");
             if (ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
-                Dialogs.showWarningDialog("Varsel", "Ingen komponenter",
-                        "Admin må opprette komponenter før du kan bygge en bil");
+                Dialogs.showWarningDialog("Warning", "No components",
+                        "Admin must create components before you can build a car");
             }
         } else {
-            lblSignin.setText("Feil brukernavn og/eller passord");
+            lblSignin.setText("Incorrect username and / or password");
         }
     }
 

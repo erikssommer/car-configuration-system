@@ -25,14 +25,14 @@ public class Diesel extends Product {
         }
 
         public Builder selectedFuelContainer(FuelContainer fuelContainer) {
-            if (fuelContainer == null) throw new EmptyComponentException("Du har glemt å velge en tank");
+            if (fuelContainer == null) throw new EmptyComponentException("You forgot to choose a fuel container");
             this.fuelContainer = fuelContainer;
 
             return this;
         }
 
         public Builder selectedGearbox(Gearbox gearbox) {
-            if (gearbox == null) throw new EmptyComponentException("Du har glemt å velge en girboks");
+            if (gearbox == null) throw new EmptyComponentException("You forgot to choose a gearbox");
             this.gearbox = gearbox;
 
             return this;
@@ -80,13 +80,13 @@ public class Diesel extends Product {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
         String message = super.toString() +
-                "Tank: " + getFuelContainer().getVersion() + "\nPris: " + df.format(getFuelContainer().getPrice()) + "kr\nBeskrivelse: " + getFuelContainer().getDescription() + "\n\n" +
-                "Girboks: " + getGearbox().getVersion() + "\nPris: " + df.format(getGearbox().getPrice()) + "kr\nBeskrivelse: " + getGearbox().getDescription() + "\n\n" +
-                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+                "Fuel container: " + getFuelContainer().getVersion() + "\nPrice: " + df.format(getFuelContainer().getPrice()) + "kr\nDescription: " + getFuelContainer().getDescription() + "\n\n" +
+                "Gearbox: " + getGearbox().getVersion() + "\nPrice: " + df.format(getGearbox().getPrice()) + "kr\nDescription: " + getGearbox().getDescription() + "\n\n" +
+                "Customizations selected for configuration: \n\n";
 
         message += super.customToString(df, null);
 
-        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
+        message += "The total price of the product is: " + df.format(getTotalPrice()) + "kr";
         return message;
     }
 }

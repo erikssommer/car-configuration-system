@@ -40,7 +40,7 @@ public class Dialogs {
 
     public static void showConfirmationDialog(String header, String content, Consumer<? super ButtonType> action) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Bekreft");
+        alert.setTitle("Confirm");
         alert.setHeaderText(header);
         alert.setContentText(content);
 

@@ -25,7 +25,7 @@ public class PersonValidator {
                 return name;
             }
         }
-        throw new InvalidNameException("Navnet du skrev inn er ikke gyldig\n");
+        throw new InvalidNameException("The name you entered is not valid\n");
     }
 
     public static String testValidPhone(String phonenumber) throws InvalidPhonenumberException {
@@ -52,7 +52,7 @@ public class PersonValidator {
                 return phonenumber;
             }
         }
-        throw new InvalidPhonenumberException("Skriv inn gyldig telefonnummer\n");
+        throw new InvalidPhonenumberException("Please enter a valid phone number\n");
     }
 
     public static String testValidEmail(String email) throws InvalidEmailException {
@@ -66,7 +66,7 @@ public class PersonValidator {
                 return email;
             }
         }
-        throw new InvalidEmailException("Skriv inn gyldig epost\n");
+        throw new InvalidEmailException("Please enter a valid email\n");
     }
 
     public static String testValidUsername(String username) throws InvalidUsernameException {
@@ -75,8 +75,8 @@ public class PersonValidator {
         if (username.matches(regex)) {
             return username;
         }
-        throw new InvalidUsernameException("Skriv inn gyldig brukernavn.\n" +
-                "Må være minst 6 tegn og inneholde\nminst en bokstav og et tall");
+        throw new InvalidUsernameException("Please enter a valid username.\n" +
+                "Must be at least 6 characters and contain\nat least one letter and number");
     }
 
     public static String testValidPassword(String password) throws InvalidPasswordException {
@@ -85,7 +85,7 @@ public class PersonValidator {
         if (password.matches(regex)) {
             return password;
         }
-        throw new InvalidPasswordException("Skriv inn gyldig passord.\n" +
-                "Må være minst 4 tegn og inneholde\nminst en bokstav og et tall");
+        throw new InvalidPasswordException("Please enter a valid password.\n" +
+                "Must be at least 4 characters long and contain\nt least one letter and number");
     }
 }

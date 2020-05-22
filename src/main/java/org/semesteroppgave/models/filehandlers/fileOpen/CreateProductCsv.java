@@ -34,7 +34,7 @@ public class CreateProductCsv {
         if (object[32].equals(Custom.AUTOPILOT.getCustomProperty())) {
             autopilot = Custom.AUTOPILOT;
         } else if (!object[32].isEmpty()) {
-            throw new InvalidProductException("Tilpasningen: " + object[32] + " støttes ikke");
+            throw new InvalidProductException("Customization: " + object[32] + " not supported");
         }
 
         return new Electric.Builder("Elektrisk", 1_200_000)
@@ -109,19 +109,19 @@ public class CreateProductCsv {
         if (object[26].equals(Custom.GPS.getCustomProperty())) {
             gps = Custom.GPS;
         } else if (!object[26].isEmpty()) {
-            throw new InvalidProductException("Tilpasningen: " + object[26] + " støttes ikke");
+            throw new InvalidProductException("Customization: " + object[26] + " not supported");
         }
 
         if (object[28].equals(Custom.SUNROOF.getCustomProperty())) {
             sunroof = Custom.SUNROOF;
         } else if (!object[28].isEmpty()) {
-            throw new InvalidProductException("Tilpasningen: " + object[28] + " støttes ikke");
+            throw new InvalidProductException("Customization: " + object[28] + " not supported");
         }
 
         if (object[30].equals(Custom.TOWBAR.getCustomProperty())) {
             towbar = Custom.TOWBAR;
         } else if (!object[30].isEmpty()) {
-            throw new InvalidProductException("Tilpasningen: " + object[30] + " støttes ikke");
+            throw new InvalidProductException("Customization: " + object[30] + " not supported");
         }
     }
 }

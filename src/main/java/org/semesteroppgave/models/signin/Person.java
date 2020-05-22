@@ -13,8 +13,8 @@ public abstract class Person {
     private final String password;
 
     public Person(String username, String password) {
-        if (username.isEmpty()) throw new InvalidUsernameException("Du må fylle inn brukernavn");
-        if (password.isEmpty()) throw new InvalidUsernameException("Du må fylle inn passord");
+        if (username.isEmpty()) throw new InvalidUsernameException("You must enter your username");
+        if (password.isEmpty()) throw new InvalidUsernameException("You must enter your password");
         this.username = PersonValidator.testValidUsername(username);
         this.password = PersonValidator.testValidPassword(password);
     }

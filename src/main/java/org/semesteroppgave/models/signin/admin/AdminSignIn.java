@@ -62,8 +62,8 @@ public class AdminSignIn {
         testValidEmpNo(empNo);
         Admin newAdmin = new Admin(username, password, empNo);
         setAdminList(newAdmin);
-        Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert",
-                "Logg inn med brukernavn og passord");
+        Dialogs.showSuccessDialog("New admin", "New admin registered",
+                "Login with username and password");
         saveToFileUsernamePassword();
         saveToFileInfo();
         getAvailableEmpNos().remove(empNo);
@@ -76,7 +76,7 @@ public class AdminSignIn {
                 return;
             }
         }
-        throw new InvalidEmployeeNoException("Ansattnummeret er ikke gyldig");
+        throw new InvalidEmployeeNoException("The employee number is not valid");
     }
 
     public void parseExistingAdmins() {
@@ -101,7 +101,7 @@ public class AdminSignIn {
                 availableEmpNos.remove(empNo);
             }
         } catch (IllegalArgumentException | FileNotFoundException e) {
-            Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av adminfil", e.getMessage());
+            Dialogs.showErrorDialog("Oups", "An error occurred while parsing admin file", e.getMessage());
         }
     }
 
@@ -141,7 +141,7 @@ public class AdminSignIn {
                 String checkUsername = s.next();
 
                 if (checkUsername.trim().equals(username.trim())) {
-                    throw new InvalidUsernameException("\nBrukernavnet " + username.trim() + " er opptatt\nVelg et nytt");
+                    throw new InvalidUsernameException("\nThe username " + username.trim() + " is busy\nChoose a new one");
                 }
             }
         } catch (FileNotFoundException e) {

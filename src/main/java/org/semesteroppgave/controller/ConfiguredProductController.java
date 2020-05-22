@@ -48,8 +48,8 @@ public class ConfiguredProductController implements ApplicationController {
                     .getProductList().remove(tvConfigurations.getSelectionModel().getSelectedItem());
 
         } else {
-            Dialogs.showErrorDialog("Oups", "Du må markere produktet ditt først!",
-                    "Prøv igjen etter å ha valgt din konfigurasjon");
+            Dialogs.showErrorDialog("Oups", "You must select your product first!",
+                    "Please try again after selecting your configuration");
         }
     }
 
@@ -73,11 +73,11 @@ public class ConfiguredProductController implements ApplicationController {
                 Main.setRoot("userproductinfo");
             } catch (IOException e) {
                 Dialogs.showErrorDialog("Oups",
-                        "Det har skjedd en feil i åpning av nytt vindu", e.getMessage());
+                        "There was an error opening a new window", e.getMessage());
             }
         } else {
-            Dialogs.showErrorDialog("Oups", "Du må velge en bil først!",
-                    "Prøv igjen etter å ha valgt et produkt");
+            Dialogs.showErrorDialog("Oups", "You must choose a product first!",
+                    "Please try again after selecting a product");
         }
     }
 
@@ -91,17 +91,17 @@ public class ConfiguredProductController implements ApplicationController {
         if (!tvUserConfigurations.getItems().isEmpty()) {
             FileHandler.saveFileCsv();
         } else {
-            Dialogs.showErrorDialog("Fil", "Feil i lagring av liste",
-                    "Du kan ikke lagre en tom liste");
+            Dialogs.showErrorDialog("File", "Error saving list",
+                    "You cannot save an empty list");
         }
     }
 
     @FXML
     private void deleteProduct() {
         if (tvUserConfigurations.getSelectionModel().getSelectedItem() != null) {
-            Dialogs.showConfirmationDialog("Du har valgt produktmodellen: " +
+            Dialogs.showConfirmationDialog("You have selected the product model: " +
                             tvUserConfigurations.getSelectionModel().getSelectedItem().getModel(),
-                    "Ønsker du virkelig å slette dette produktet?",
+                    "Do you really want to delete this product?",
                     response -> {
                         if (response == ButtonType.OK) {
                             ApplicationData.getInstance().getRegisterProduct().getUserProductList()
@@ -110,11 +110,11 @@ public class ConfiguredProductController implements ApplicationController {
                     });
         } else {
             if (tvConfigurations.getSelectionModel().getSelectedItem() != null) {
-                Dialogs.showErrorDialog("Feil", "Du har valgt feil liste",
-                        "Det er bare mulig å slette egne konfigurasjoner");
+                Dialogs.showErrorDialog("Error", "You have selected the wrong list",
+                        "It is only possible to delete your own configurations");
             } else {
-                Dialogs.showErrorDialog("Feil", "Du har ikke valgt et produkt",
-                        "Velg et produkt og prøv på nytt");
+                Dialogs.showErrorDialog("Error", "You have not selected a product",
+                        "Please select a product and try again");
             }
         }
     }

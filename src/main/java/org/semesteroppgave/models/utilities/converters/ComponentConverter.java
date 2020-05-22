@@ -30,7 +30,7 @@ public class ComponentConverter {
                 return new Gearbox(component.getVersion(), component.getPrice(), component.getDescription());
 
             default:
-                throw new InvalidComponentException("Fant ikke komponenten");
+                throw new InvalidComponentException("Could not find component");
         }
     }
 }

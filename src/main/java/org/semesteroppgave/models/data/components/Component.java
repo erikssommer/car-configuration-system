@@ -28,8 +28,8 @@ public abstract class Component implements Serializable {
     private transient SimpleStringProperty description;
 
     public Component(String version, double price, String desciption) {
-        if (version.isBlank()) throw new EmptyComponentException("Du har glemt å fylle inn versjonen");
-        if (desciption.isBlank()) throw new EmptyComponentException("Du har glemt å fylle inn beskrivelsen");
+        if (version.isBlank()) throw new EmptyComponentException("You forgot to fill in the version");
+        if (desciption.isBlank()) throw new EmptyComponentException("You forgot to fill in the description");
         this.version = new SimpleStringProperty(InputValidation.testValidVersion(version));
         this.price = new SimpleDoubleProperty(InputValidation.testValidPrice(price));
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));

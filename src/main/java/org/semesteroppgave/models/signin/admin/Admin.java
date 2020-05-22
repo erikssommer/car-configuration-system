@@ -9,7 +9,7 @@ public class Admin extends Person {
 
     public Admin(String username, String password, String employeeId) {
         super(username, password);
-        if (employeeId.isEmpty()) throw new InvalidEmployeeNoException("Du må angi adminid");
+        if (employeeId.isEmpty()) throw new InvalidEmployeeNoException("You must enter employee number");
         this.employeeId = employeeId;
     }
 

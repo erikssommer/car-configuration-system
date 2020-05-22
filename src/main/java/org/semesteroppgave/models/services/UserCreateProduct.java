@@ -55,7 +55,7 @@ public class UserCreateProduct {
                         .map(componentModel -> modelList.getComponent())
                         .forEachOrdered(modelComponentsList::add));
 
-        setLabelText("Du kan nå velge komponenter til din \n" + model.toLowerCase() + " bil");
+        setLabelText("You can now select components for your \n" + model.toLowerCase() + " car");
 
         //Resets the lists when selecting a new model type
         productComponants = new Component[8];
@@ -103,7 +103,7 @@ public class UserCreateProduct {
                 final Component component = row.getItem();
 
                 if (row.isHover() && component != null) {
-                    tooltip.setText("Beskrivelse: " + component.getDescription());
+                    tooltip.setText("Description: " + component.getDescription());
                     tableViewVersion.setTooltip(tooltip);
                 }
             });
@@ -124,20 +124,20 @@ public class UserCreateProduct {
         livePriceList[selectedComponent.getIndex() + 1] = selectedComponent.getPrice();
 
         addToPrice();
-        setLabelText("Du har valgt ny " + selectedComponent.getComponent().toLowerCase());
+        setLabelText("You have selected new " + selectedComponent.getComponent().toLowerCase());
     }
 
     //Method of selecting customizations
     public void customization(CheckBox checkBox, Custom mode) {
 
         if (checkBox.isSelected() && productCustomization[mode.getIndex()] == null) {
-            setLabelText("Du har lagt til " + mode.getCustomProperty().toLowerCase());
+            setLabelText("You added " + mode.getCustomProperty().toLowerCase());
             productCustomization[mode.getIndex()] = mode;
             livePriceList[mode.getIndex() + 9] = productCustomization[mode.getIndex()].getPrice();
         }
 
         if (!checkBox.isSelected() && productCustomization[mode.getIndex()] != null) {
-            setLabelText("Du har fjernet " + mode.getCustomProperty().toLowerCase());
+            setLabelText("You have removed " + mode.getCustomProperty().toLowerCase());
             livePriceList[mode.getIndex() + 9] = 0;
             productCustomization[mode.getIndex()] = null;
         }
@@ -167,7 +167,7 @@ public class UserCreateProduct {
         for (Product userProduct : ApplicationData.getInstance().getRegisterProduct().getUserProductList()) {
             if (userProduct.equals(product)) {
                 lblMessage.setText("");
-                throw new DuplicateException("Produktet er registrert fra før");
+                throw new DuplicateException("The product is already registered");
             }
         }
     }
@@ -224,17 +224,17 @@ public class UserCreateProduct {
 
             Product finalProduct = product;
             duplicateProduct(finalProduct);
-            Dialogs.showConfirmationDialog("Du ønsker å opprette en " + cbModel.getValue().toLowerCase() + " bil",
-                    "Er du sikker på dette?",
+            Dialogs.showConfirmationDialog("You want to create a " + cbModel.getValue().toLowerCase() + " car",
+                    "Are you sure about this?",
                     response -> {
                         if (response == ButtonType.OK) {
                             ApplicationData.getInstance().getRegisterProduct().setUserProductList(finalProduct);
-                            lblMessage.setText("Produktet er opprettet\nTrykk på 'konfgurerte biler' for oversikt");
+                            lblMessage.setText("The product has been created\nClick on 'configured cars' for overview");
                         }
                     });
         } else {
-            Dialogs.showErrorDialog("Oups!", "Du må velge modell",
-                    "Deretter velge komponenter til bilen");
+            Dialogs.showErrorDialog("Oups!", "You must choose the model",
+                    "Then choose components for the car");
         }
     }
 
@@ -243,7 +243,7 @@ public class UserCreateProduct {
         modelChoice.removeAll();
         modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
         cbModel.getItems().addAll(modelChoice);
-        cbModel.setPromptText("Velg modell");
+        cbModel.setPromptText("Choose model");
     }
 }
 

@@ -26,15 +26,15 @@ public class FileSaverCsv implements FileSaver {
     }
 
     private void writeHeader(StringBuilder sb) {
-        String[] title = new String[]{"Modell", "Modellpris", "Motor", "Pris", "Beskrivelse", "Felg", "Pris", "Beskrivelse",
-                "Setetrekk", "Pris", "Beskrivelse", "Spoiler", "Pris", "Beskrivelse", "Dekk", "Pris", "Beskrivelse",
-                "Batteri", "Pris", "Beskrivelse", "Tank", "Pris", "Beskrivelse", "Girboks", "Pris", "Beskrivelse",
-                "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris", "Tilpasning", "Pris"};
+        String[] title = new String[]{"Model", "Model price", "Motor", "Price", "Description", "Rim", "Price", "Description",
+                "Seat cover", "Price", "Description", "Spoiler", "Price", "Description", "Tires", "Price", "Description",
+                "Battery", "Price", "Description", "Fuel container", "Price", "Description", "Gearbox", "Price", "Description",
+                "Customization", "Price", "Customization", "Price", "Customization", "Price", "Customization", "Price"};
 
         for (String addTitle : title) {
             sb.append(addTitle);
             sb.append(";");
         }
-        sb.append("Totalpris");
+        sb.append("Total price");
     }
 }

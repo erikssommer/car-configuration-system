@@ -73,12 +73,12 @@ public class AdminComponentController implements ApplicationThread {
         try {
             lblMessageCreate.setText("");
             createComponent.addComponent(tableViewCreate, txtVersion, txtPrice, txtDescription, cbCreate);
-            lblMessageCreate.setText("Komponenten er lagt til");
+            lblMessageCreate.setText("The component has been added");
         } catch (EmptyComponentException | DuplicateException | InvalidVersionException | InvalidDescriptionException | InvalidPriceException e) {
-            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent", e.getMessage());
+            Dialogs.showErrorDialog("Oups!", "Component creation error", e.getMessage());
         } catch (NumberFormatException nfe) {
-            Dialogs.showErrorDialog("Oups!", "Feil i oppretting av komponent",
-                    "Prisen må være fyllt inn og være et tall");
+            Dialogs.showErrorDialog("Oups!", "Component creation error",
+                    "The price must be filled in and be a number");
         }
     }
 
@@ -98,7 +98,7 @@ public class AdminComponentController implements ApplicationThread {
             txtEditDescription.setText("");
             txtEditDescription.setDisable(true);
         } catch (InvalidDeleteException e) {
-            Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
+            Dialogs.showErrorDialog("Invalid delete", "You cannot delete this component", e.getMessage());
         }
     }
 
@@ -107,7 +107,7 @@ public class AdminComponentController implements ApplicationThread {
         try {
             createComponent.deleteRow(tableViewCreate, createComponent.getCreateComponentList(), false);
         } catch (InvalidDeleteException e) {
-            Dialogs.showErrorDialog("Ugyldig slett", "Du kan ikke slette denne komponenten", e.getMessage());
+            Dialogs.showErrorDialog("Invalid delete", "You cannot delete this component", e.getMessage());
         }
     }
 
@@ -183,8 +183,8 @@ public class AdminComponentController implements ApplicationThread {
         if (!tableViewComponents.getItems().isEmpty()) {
             FileHandler.saveFileJobj(componentSearch);
         } else {
-            Dialogs.showErrorDialog("Fil", "Feil i lagring av liste",
-                    "Du kan ikke lagre en tom liste");
+            Dialogs.showErrorDialog("File", "Error saving list",
+                    "You cannot save an empty list");
         }
     }
 
@@ -207,7 +207,7 @@ public class AdminComponentController implements ApplicationThread {
         try {
             tableViewComponents.getSelectionModel().getSelectedItem().setDescription(txtEditDescription.getText());
         } catch (InvalidDescriptionException e) {
-            Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig beskrivelse!", e.getMessage());
+            Dialogs.showErrorDialog("Editing error", "Invalid description!", e.getMessage());
             txtEditDescription.setText(tableViewComponents.getSelectionModel().getSelectedItem().getDescription());
         }
         btnDescription.setVisible(false);

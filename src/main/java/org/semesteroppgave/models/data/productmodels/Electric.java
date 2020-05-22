@@ -27,7 +27,7 @@ public class Electric extends Product {
         }
 
         public Builder selectedBattery(Battery battery) {
-            if (battery == null) throw new EmptyComponentException("Du har glemt å velge et batteri");
+            if (battery == null) throw new EmptyComponentException("You forgot to choose a battery");
             this.battery = battery;
 
             return this;
@@ -87,12 +87,12 @@ public class Electric extends Product {
 
         DecimalFormat df = new DecimalFormat("###,###,###.###");
         String message = super.toString() +
-                "Batteri : " + getBattery().getVersion() + "\nPris: " + df.format(getBattery().getPrice()) + "kr\nBeskrivelse: " + getBattery().getDescription() + "\n\n" +
-                "Tilpasninger som er valgt for konfigurasjonen: \n\n";
+                "Battery : " + getBattery().getVersion() + "\nPrice: " + df.format(getBattery().getPrice()) + "kr\nDescription: " + getBattery().getDescription() + "\n\n" +
+                "Customizations selected for the configuration: \n\n";
 
         message += super.customToString(df, getAutopilot());
 
-        message += "Totalprisen på produktet er: " + df.format(getTotalPrice()) + "kr";
+        message += "The total price of the product is: " + df.format(getTotalPrice()) + "kr";
         return message;
     }
 }

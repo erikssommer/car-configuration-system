@@ -96,7 +96,7 @@ public class UserBuildProductController implements ApplicationController {
         try {
             newProduct.finishedProduct();
         } catch (EmptyComponentException | DuplicateException e) {
-            Dialogs.showErrorDialog("Oups", "Feil i oppretting av komponenter", e.getMessage());
+            Dialogs.showErrorDialog("Oups", "Error creating components", e.getMessage());
         }
     }
 

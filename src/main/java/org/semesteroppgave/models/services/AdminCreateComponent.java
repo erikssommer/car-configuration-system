@@ -65,7 +65,7 @@ public class AdminCreateComponent {
                 newComponent = new Gearbox(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
             default:
-                throw new InvalidComponentException("Fant ikke komponenten");
+                throw new InvalidComponentException("Could not find component");
         }
 
         duplicateComponent(newComponent);
@@ -82,19 +82,19 @@ public class AdminCreateComponent {
 
         for (Component createComponent : createComponentList) {
             if (createComponent.equals(component)) {
-                throw new DuplicateException("Komponenten finnes allerede i opprettele av komponent-listen");
+                throw new DuplicateException("The component is already in the creation of component list");
             }
         }
 
         for (Component searchComponent : componentSearch.getSearchResult()) {
             if (searchComponent.equals(component)) {
-                throw new DuplicateException("Komponenten finnes allerede i søkelisten");
+                throw new DuplicateException("The component is already in the search list");
             }
         }
 
         for (Component listComponent : ApplicationData.getInstance().getRegisterComponent().getComponentList()) {
             if (listComponent.equals(component)) {
-                throw new DuplicateException("Komponenten finnes allerede i komponentlisten");
+                throw new DuplicateException("The component is already in the component list");
             }
         }
     }
@@ -131,22 +131,22 @@ public class AdminCreateComponent {
                 event.getRowValue().setPrice(event.getNewValue());
             }
         } catch (NullPointerException e) {
-            Dialogs.showErrorDialog("Feil", "Feil i pris", "Du må fylle inn prisen");
+            Dialogs.showErrorDialog("Error", "Price error", "You must fill in the price");
         } catch (IllegalArgumentException e) {
-            Dialogs.showErrorDialog("Feil", "Ugyldig pris: ", e.getMessage());
+            Dialogs.showErrorDialog("Error", "Invalid price: ", e.getMessage());
         }
         tableViewAddedConfig.refresh();
     }
 
     public void editComponentColumn(TableColumn.CellEditEvent<Component, String> event, TableView<Component> tableViewComponents) {
         try {
-            InputValidation.testComponentCount(tableViewComponents, "endre");
+            InputValidation.testComponentCount(tableViewComponents, "change");
             event.getRowValue().setComponent(InputValidation.testValidComponent(event.getNewValue()));
             editComponent(event.getTableView().getSelectionModel().getSelectedItem());
         } catch (InvalidComponentException e) {
-            Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig komponent!", e.getMessage());
+            Dialogs.showErrorDialog("Editing error", "Invalid component!", e.getMessage());
         } catch (InvalidDeleteException e) {
-            Dialogs.showErrorDialog("Feil", "Du kan ikke endre komponenten!", e.getMessage());
+            Dialogs.showErrorDialog("Error", "You cannot change the component!", e.getMessage());
         }
         tableViewComponents.refresh();
     }
@@ -158,15 +158,15 @@ public class AdminCreateComponent {
                 event.getRowValue().setVersion(newValue);
             } else {
                 event.getRowValue().setVersion(event.getOldValue());
-                Dialogs.showErrorDialog("Redigeringsfeil", "Duplisering av komponent",
-                        newValue + " finnes fra før");
+                Dialogs.showErrorDialog("Editing error", "Duplication of component",
+                        newValue + " exists from before");
             }
             //JavaFX bug detour
             event.getTableColumn().setVisible(false);
             event.getTableColumn().setVisible(true);
 
         } catch (InvalidVersionException | DuplicateException e) {
-            Dialogs.showErrorDialog("Redigeringsfeil", "Ugyldig versjon!", e.getMessage());
+            Dialogs.showErrorDialog("Editing error", "Invalid version!", e.getMessage());
         }
         tableViewComponents.refresh();
     }
@@ -185,12 +185,12 @@ public class AdminCreateComponent {
                 //If state is true, then it is adminComponentController that changes on
                 //Here we find out if it is possible to delete a component
                 //There must be at least one of each component
-                InputValidation.testComponentCount(tableViewComponents, "slette flere av");
+                InputValidation.testComponentCount(tableViewComponents, "delete more of");
             }
-            Dialogs.showConfirmationDialog("Du har valgt komponenten: "
+            Dialogs.showConfirmationDialog("You have selected the component: "
                             + tableViewComponents.getSelectionModel().getSelectedItem().getComponent()
-                            + ", versjon: " + tableViewComponents.getSelectionModel().getSelectedItem().getVersion(),
-                    "Ønsker du virkelig å slette denne komponenten?",
+                            + ", version: " + tableViewComponents.getSelectionModel().getSelectedItem().getVersion(),
+                    "Do you really want to delete this component?",
                     response -> {
                         if (response == ButtonType.OK) {
                             list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
@@ -204,7 +204,8 @@ public class AdminCreateComponent {
                         }
                     });
         } else {
-            Dialogs.showErrorDialog("Feil", "Du har ikke valgt en komponent", "Velg en komponent og prøv på nytt");
+            Dialogs.showErrorDialog("Error", "You have not selected a component",
+                    "Please select a component and try again");
         }
     }
 

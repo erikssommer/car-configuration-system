@@ -24,8 +24,8 @@ public class InputValidation {
             }
         }
 
-        throw new InvalidVersionException("Versjonen du skrev inn er ikke gyldig" +
-                "\nDen må være mellom 2 og 25 tegn\nog starte med stor bokstav.");
+        throw new InvalidVersionException("The version you entered is not valid." +
+                "\nIt must be between 2 and 25 characters\nand start with a capital letter");
     }
 
     public static String testValidDescription(String input) throws InvalidDescriptionException{
@@ -36,8 +36,8 @@ public class InputValidation {
             return input;
         }
 
-        throw new InvalidDescriptionException("Beskrivelsen du skrev inn er ikke gyldig.\n" +
-                "Den må være mellom 5 og 100 tegn\nog starte med stor bokstav.");
+        throw new InvalidDescriptionException("The description you entered is not valid.\n" +
+                "It must be between 5 and 100 characters\nnd start with a capital letter");
 
     }
 
@@ -46,7 +46,7 @@ public class InputValidation {
                 && !input.toLowerCase().equals("setetrekk") && !input.toLowerCase().equals("dekk")
                 && !input.toLowerCase().equals("spoiler") && !input.toLowerCase().equals("girboks")
                 && !input.toLowerCase().equals("batteri") && !input.toLowerCase().equals("tank")) {
-            throw new InvalidComponentException("Det er ikke mulig å opprette en: " + input);
+            throw new InvalidComponentException("It is not possible to create a: " + input);
         }
         return input;
     }
@@ -57,7 +57,7 @@ public class InputValidation {
         if (price.matches(regex)){
             return input;
         }
-        throw new InvalidPriceException("Prisen kan ikke være negativ eller ha flere enn 3 desimaler");
+        throw new InvalidPriceException("The price cannot be negative or have more than 3 decimal places");
     }
 
     public static void testComponentCount(TableView<Component> tableViewComponents, String input) throws InvalidDeleteException{
@@ -70,8 +70,8 @@ public class InputValidation {
         //If this occurs, there is only one such component left and an exception is thrown
         if (counter == 1) {
             tableViewComponents.refresh();
-            throw new InvalidDeleteException("Kan ikke " + input + " denne komponenten.\n" +
-                    "Det må minst være én av hver komponent for at bruker skal\nkunne opprette et produkt");
+            throw new InvalidDeleteException("Can not " + input + " this component.\n" +
+                    "There must be at least one of each component for the user to\nbe able to create a product");
         }
     }
 }

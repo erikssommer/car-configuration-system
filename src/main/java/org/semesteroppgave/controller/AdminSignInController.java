@@ -52,7 +52,7 @@ public class AdminSignInController implements ApplicationController {
             }
             Main.setRoot("admincomponent");
         } else {
-            lblSignin.setText("Feil brukernavn og/eller passord");
+            lblSignin.setText("Incorrect username and / or password");
         }
     }
 }

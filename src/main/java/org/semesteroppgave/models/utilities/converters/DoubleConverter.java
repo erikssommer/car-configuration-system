@@ -21,7 +21,7 @@ public class DoubleConverter {
                 conversionSuccessful = true;
                 return result;
             } catch (NumberFormatException e) {
-                Dialogs.showErrorDialog("Feil", "Feil i pris", "Du må skrive inn et gyldig tall");
+                Dialogs.showErrorDialog("Error", "Price error", "You must enter a valid number");
                 conversionSuccessful = false;
                 return 0.0;
             }

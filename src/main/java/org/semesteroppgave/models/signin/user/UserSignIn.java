@@ -39,8 +39,8 @@ public class UserSignIn {
         checkIfNotExisting(username);
         User newUser = new User(username, password, name, phonenumber, eMail);
         setUserList(newUser);
-        Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert",
-                "Logg inn med brukernavn og passord");
+        Dialogs.showSuccessDialog("New user", "New user was registered",
+                "Login with username and password");
         saveToFileUsernamePassword();
         saveToFileInfo();
         Main.setRoot("usersignin");
@@ -69,7 +69,7 @@ public class UserSignIn {
                 userList.add(newUser);
             }
         } catch (IllegalArgumentException | FileNotFoundException e) {
-            Dialogs.showErrorDialog("Oups", "En feil har skjedd ved parsing av brukerfil", e.getMessage());
+            Dialogs.showErrorDialog("Oups", "An error occurred while parsing user file", e.getMessage());
         }
     }
 
@@ -108,7 +108,7 @@ public class UserSignIn {
                 String checkUsername = s.next();
 
                 if (checkUsername.trim().equals(username.trim())) {
-                    throw new InvalidUsernameException("\nBrukernavnet " + username.trim() + " er ikke ledig\nVelg et nytt");
+                    throw new InvalidUsernameException("\nThe username " + username.trim() + " is not available\nChoose a new one");
                 }
             }
         } catch (FileNotFoundException e) {

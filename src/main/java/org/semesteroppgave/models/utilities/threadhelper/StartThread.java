@@ -25,7 +25,7 @@ public class StartThread {
     }
 
     public void start(String filePath) {
-        lblThreadMessage.setText("Laster inn fil...");
+        lblThreadMessage.setText("Loading file...");
         OpenWithThread openWithThread = new OpenWithThread(progressBar, filePath);
         openWithThread.setOnSucceeded(this::fileOpened);
         openWithThread.setOnFailed(this::fileOpeningFailed);
@@ -36,13 +36,13 @@ public class StartThread {
     }
 
     private void fileOpened(WorkerStateEvent e) {
-        lblThreadMessage.setText("Ferdig");
+        lblThreadMessage.setText("Done");
         applicationThread.enableGUI();
     }
 
     private void fileOpeningFailed(WorkerStateEvent e) {
-        lblThreadMessage.setText("Feil i tråd");
-        Dialogs.showErrorDialog("Fil", "Feil i åpning av fil", e.getSource().getException().getMessage());
+        lblThreadMessage.setText("Error in thread");
+        Dialogs.showErrorDialog("File", "Error opening file", e.getSource().getException().getMessage());
         applicationThread.enableGUI();
     }
 }

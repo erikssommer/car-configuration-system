@@ -12,9 +12,9 @@ public class User extends Person {
 
     public User(String username, String password, String name, String phonenumber, String email) {
         super(username, password);
-        if (name.isEmpty()) throw new InvalidNameException("Du må fylle inn navnet");
-        if (email.isEmpty()) throw new InvalidNameException("Du må fylle inn email");
-        if (phonenumber.isEmpty()) throw new InvalidNameException("Du må fylle inn telefonnummeret");
+        if (name.isEmpty()) throw new InvalidNameException("You must fill in your name");
+        if (email.isEmpty()) throw new InvalidNameException("You must fill in your email");
+        if (phonenumber.isEmpty()) throw new InvalidNameException("You must enter your phone number");
         this.name = PersonValidator.testValidName(name);
         this.email = PersonValidator.testValidEmail(email);
         this.phonenumber = PersonValidator.testValidPhone(phonenumber);

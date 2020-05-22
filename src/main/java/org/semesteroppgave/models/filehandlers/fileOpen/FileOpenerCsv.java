@@ -32,12 +32,12 @@ public class FileOpenerCsv implements FileOpener {
             }
 
         } catch (InvalidProductException | InvalidPriceException | InvalidVersionException | InvalidDescriptionException | EmptyComponentException e) {
-            Dialogs.showErrorDialog("Oups!", "Feil i innlasting fra cvs-fil", e.getMessage() +
-                    "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
+            Dialogs.showErrorDialog("Oups!", "Error downloading from csv file", e.getMessage() +
+                    "\n\nLoading successful products until the error occurred");
         } catch (NumberFormatException nfe) {
-            Dialogs.showErrorDialog("Oups!", "Feil i innlasting fra cvs-fil",
-                    "Prisen må være fyllt inn og være et tall" +
-                            "\n\nLaster inn vellykkede produkter frem til feilen oppsto");
+            Dialogs.showErrorDialog("Oups!", "Error downloading from csv file",
+                    "The price must be filled in and be a number" +
+                            "\n\nLoading successful products until the error occurred");
         }
     }
 
@@ -51,7 +51,7 @@ public class FileOpenerCsv implements FileOpener {
         String[] split = line.split(";");
 
         if (split.length != 35) {
-            throw new InvalidProductException("Feil antall kolonner. Bruk ; for å skille de");
+            throw new InvalidProductException("Wrong number of columns. Use ; to separate them");
         }
 
         switch (split[0]) {
@@ -65,7 +65,7 @@ public class FileOpenerCsv implements FileOpener {
                 productRead = create.createHybrid(split);
                 break;
             default:
-                throw new InvalidProductException("Modellen " + split[0] + " finnes ikke");
+                throw new InvalidProductException("The model " + split[0] + " does not exist");
         }
 
         return productRead;
