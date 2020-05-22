@@ -1,4 +1,4 @@
-# Car Configuration
+# Car Configuration System
 Semester assignment in program development at OsloMet spring 2020
 
 This configuration system has an admin page (super user) where it is possible to create and edit new components,
