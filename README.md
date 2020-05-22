@@ -1,41 +1,35 @@
-# Semesteroppgave DATA1600
-Semesteroppgave i programutvikling ved OsloMet våren 2020
+# Car Configuration
+Semester assignment in program development at OsloMet spring 2020
 
-Gruppe: 6677
-
-Gruppemedlemmer: 364, 330, 328
-
-Alternativ 2: Bil
-
-Dette konfigurasjonssystemet har en admin-side(superbruker) hvor det er mulig å opprette og redigere nye komponenter,
-samt muligheter for søk i liste og filbehandling av serialiserte filer i egen tråd. Programmet har en bruker-side(sluttbruker)
-hvor det kan opprettes bilprodukter med komponenter og ulike tilpasninger. Dette systemet støtter pris for hver komponent/tilpasning
-og kalkulering av totalpris. Det er mulig å lagre lister av produkter til csv-fil, og få opp liste over tidligere
-fullførte konfigurerte produkter. Konseptet bruker og superbruker inkluderes ved to innloggingssider med mulighet for
-opprettelse av nye brukere og superbrukere. Admin må ha gyldig ansattnummer.
-Informasjon om innlogging i programmet står nedenfor.
+This configuration system has an admin page (super user) where it is possible to create and edit new components,
+as well as options for searching the list and file processing of serialized files in their own thread.
+The program has a user page (end user) where automotive products with components and various customizations
+can be created. This system supports price for each component / fitting and calculation of total price. It is
+possible to save lists of products to csv file and get list of previously completed configured products.
+The concept of user and superuser is included on two login pages with the possibility of creating new
+users and super users. Admin must have a valid employee number. Information about logging in to the program is below.
 
 ------
-### **_Nødvendig informasjon for pålogging i programmet_**
+### **_Required information for login to the program_**
 
-#### **Admin pålogging;**
+#### **Admin signin;**
 ````
-Brukernavn: Admin123
+Username: Admin123
 
-Passord: Java13
+Password: Java13
 ````
-Gyldige ansattnummer for ny adminbruker: A1234, A4567, A7890
+Valid employee numbers for new admin user: A1234, A4567, A7890
 
-#### **Bruker pålogging;**
+#### **User signin;**
 ````
-Brukernavn: Bruker123
+Usernavn: User123
 
-Passord: Java13
+Password: Java13
 ````
 ---
 
-### **_Kilder_**
-Billogo:
+### **_Sources_**
+Carlogo:
 https://pixabay.com/no/illustrations/bil-ikonet-bil-logo-auto-3657902/
 
-Nedlastningsdato: 15.04.2020
+Download Date: 15.04.2020
