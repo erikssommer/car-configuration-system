@@ -10,7 +10,7 @@ The concept of user and superuser is included on two login pages with the possib
 users and super users. Admin must have a valid employee number. Information about logging in to the program is below.
 
 ------
-### **_Required information for login to the program_**
+### **_Required information for signin_**
 
 #### **Admin signin;**
 ````
@@ -22,7 +22,7 @@ Valid employee numbers for new admin user: A1234, A4567, A7890
 
 #### **User signin;**
 ````
-Usernavn: User123
+Username: User123
 
 Password: Java13
 ````
