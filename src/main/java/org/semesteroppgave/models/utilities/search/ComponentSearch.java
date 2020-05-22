@@ -9,7 +9,7 @@ import org.semesteroppgave.ApplicationData;
 import org.semesteroppgave.models.data.components.Component;
 
 /**
- * Klasse for å søke på komponenter i komponentlisten
+ * Class to search for components in the component list
  */
 
 public class ComponentSearch {

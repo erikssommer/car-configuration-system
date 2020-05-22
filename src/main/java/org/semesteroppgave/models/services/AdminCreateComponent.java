@@ -16,14 +16,14 @@ import org.semesteroppgave.models.utilities.search.ComponentSearch;
 import java.io.IOException;
 
 /**
- * Klasse for opprettelse av komponenter og redigering i tableview
- * Modell til AdminComponentController
+ * Class for component creation and tableview editing
+ * Model for AdminComponentController
  */
 
 public class AdminCreateComponent {
 
-    private final ObservableList<Component> createComponentList = FXCollections.observableArrayList(); //Liste over nye komponenter
-    private final ObservableList<String> componentChoice = FXCollections.observableArrayList(); //Liste over komponenter i comboboksen
+    private final ObservableList<Component> createComponentList = FXCollections.observableArrayList(); //List of new components
+    private final ObservableList<String> componentChoice = FXCollections.observableArrayList(); //List of components in the combobox
     private final ComponentSearch componentSearch;
 
     public AdminCreateComponent(ComponentSearch componentSearch) {
@@ -34,7 +34,7 @@ public class AdminCreateComponent {
         return this.createComponentList;
     }
 
-    //Metode som oppretter komponent fra input og legger det inn i tableview. Tester for duplikater
+    //Method that creates component from input and inserts it into tableview. Tests for duplicates
     public void addComponent(TableView<Component> tableViewAddedConfig, TextField version, TextField price,
                              TextArea description, ComboBox<String> cbCreate) throws IllegalArgumentException {
 
@@ -77,7 +77,7 @@ public class AdminCreateComponent {
         description.clear();
     }
 
-    //Teser om komponenter finnes fra før i de ulike listene
+    //Tests if components are already included in the various lists
     private void duplicateComponent(Component component) throws IllegalArgumentException {
 
         for (Component createComponent : createComponentList) {
@@ -108,20 +108,20 @@ public class AdminCreateComponent {
         Main.setRoot("admincomponent");
     }
 
-    //Ved endring av komponentnavn i tableview må komponenten konverteres til sin nye komponent-klasse
+    //When changing the component name in tableview, the component must be converted to its new component class
     private void editComponent(Component component) throws InvalidComponentException {
         Component newComponent = ComponentConverter.convert(component);
         int index = ApplicationData.getInstance().getRegisterComponent().getComponentList().indexOf(component);
         ApplicationData.getInstance().getRegisterComponent().getComponentList().remove(component);
-        //Her plasseres det nye objektet på den tidligere plassen til det gamle objektet
+        //Here, the new object is placed in the previous location of the old object
         ApplicationData.getInstance().getRegisterComponent().getComponentList().add(index, newComponent);
     }
 
     /**
-     * Metoder for redigering i tableview, som tester input. Avvik er også håndtert her
+     * Methods for editing in tableview, which tests input. Exceptions are also handled here
      *
-     * @param event              får tak i verdien fra kolonne i tableviw
-     * @param doubleStrConverter objekt i konverteringsklasse for double
+     * @param event              get value from column in tableviw
+     * @param doubleStrConverter object in conversion class for double
      */
 
     public void editPriceColumn(TableColumn.CellEditEvent<Component, Double> event,
@@ -161,7 +161,7 @@ public class AdminCreateComponent {
                 Dialogs.showErrorDialog("Redigeringsfeil", "Duplisering av komponent",
                         newValue + " finnes fra før");
             }
-            //JavaFX bug omvei
+            //JavaFX bug detour
             event.getTableColumn().setVisible(false);
             event.getTableColumn().setVisible(true);
 
@@ -176,15 +176,15 @@ public class AdminCreateComponent {
                 .stream().noneMatch(item -> item.getVersion().equals(value));
     }
 
-    //Sletting av komponenter fra tableview
+    //Deleting components from tableview
     public void deleteRow(TableView<Component> tableViewComponents,
                           ObservableList<Component> list, boolean state) throws IllegalArgumentException {
 
         if (tableViewComponents.getSelectionModel().getSelectedItem() != null) {
             if (state) {
-                //Hvis state er true er det adminComponentController som endres på
-                //Her finner vi ut om det er mulig å slette en komponent
-                //Det må være minst én av hver komponent
+                //If state is true, then it is adminComponentController that changes on
+                //Here we find out if it is possible to delete a component
+                //There must be at least one of each component
                 InputValidation.testComponentCount(tableViewComponents, "slette flere av");
             }
             Dialogs.showConfirmationDialog("Du har valgt komponenten: "
@@ -194,7 +194,7 @@ public class AdminCreateComponent {
                     response -> {
                         if (response == ButtonType.OK) {
                             list.remove(tableViewComponents.getSelectionModel().getSelectedItem());
-                            //Tester om vi finner det samme objektet i søkerListen. Hvis så, sletter vi det også
+                            //Tests whether we find the same object in the Search List. If so, we also delete it
                             for (Component component : componentSearch.getSearchResult()) {
                                 if (component.equals(tableViewComponents.getSelectionModel().getSelectedItem())) {
                                     componentSearch.getSearchResult().remove(component);
@@ -208,7 +208,7 @@ public class AdminCreateComponent {
         }
     }
 
-    //Legger inn verdier i combobox for valg av komponent
+    //Inserts values into combobox for component selection
     public void loadChoice(ComboBox<String> cbCreate) {
         componentChoice.removeAll();
         componentChoice.addAll("Motor", "Felg", "Setetrekk", "Spoiler", "Dekk", "Batteri", "Tank", "Girboks");

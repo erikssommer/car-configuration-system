@@ -5,10 +5,10 @@ import javafx.collections.ObservableList;
 import org.semesteroppgave.models.data.productmodels.Product;
 
 /**
- * Global klasse (hentes fra ApplicationData) som holder på produktlister
- * Listen productList er alle tidligere konfigurerte biler
- * Listen userProductList er liste som inneholder alle produkter opprettet av bruker
- * Objektet selectedProduct er den bilen som skal vises mer informasjon om
+ * Global class (retrieved from ApplicationData) which keeps on product lists
+ * The productList list is all previously configured cars
+ * The userProductList list is the list that contains all user-created products
+ * The selectedProduct object is the car for which more information is displayed
  */
 
 public class RegisterProduct {

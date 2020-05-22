@@ -13,15 +13,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Modell for pålogging admin
+ * Model for login admin
  */
 
 public class AdminSignIn {
 
     private final ArrayList<Admin> adminList = new ArrayList<>();
-    // Oppretter liste med gyldige og ledige ansattnummer
+    //Creates a list of valid and vacant employee numbers
     private final ArrayList<String> availableEmpNos = new ArrayList<>();
-    //Aktiv admin inlogg
     private static String activeAdminId;
 
     public ArrayList<Admin> getAdminList() {
@@ -59,8 +58,8 @@ public class AdminSignIn {
     }
 
     public void register(String username, String password, String empNo) throws IOException, IllegalArgumentException {
-        checkIfNotExisting(username); //Kaster et avvik hvis brukernavnet er opptatt
-        testValidEmpNo(empNo); //Kaster et avvik hvis ansattnummeret ikke er gyldig
+        checkIfNotExisting(username);
+        testValidEmpNo(empNo);
         Admin newAdmin = new Admin(username, password, empNo);
         setAdminList(newAdmin);
         Dialogs.showSuccessDialog("Ny admin", "Ny admin ble registrert",
@@ -71,7 +70,6 @@ public class AdminSignIn {
         Main.setRoot("adminsignin");
     }
 
-    // Sjekker om ansattnummer er gyldig
     private void testValidEmpNo(String empNo) {
         for (String admin : availableEmpNos) {
             if (admin.matches(empNo)) {
@@ -98,7 +96,6 @@ public class AdminSignIn {
                 String empNo = info.next();
                 String username = unamePword.next();
                 String password = unamePword.next();
-                // Oppretter admin fra fil og legger i userList
                 Admin newAdmin = new Admin(username, password, empNo);
                 adminList.add(newAdmin);
                 availableEmpNos.remove(empNo);
@@ -152,7 +149,7 @@ public class AdminSignIn {
         }
     }
 
-    // Lagrer admins brukernavn og passord til fil i target-mappe. Forsvinner med maven clean
+    //Saves admin's username and password to file in target directory. Disappears with maven clean
     private void saveToFileUsernamePassword() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/adminUsernameAndPassword.txt").getFile();
         File file = new File(filepath);
@@ -163,7 +160,7 @@ public class AdminSignIn {
         }
     }
 
-    // Lagrer admins info til fil i target-mappe. Forsvinner med maven clean
+    //Stores admins info to file in target directory. Disappears with maven clean
     private void saveToFileInfo() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/adminInfo.txt").getFile();
         File file = new File(filepath);
@@ -174,7 +171,7 @@ public class AdminSignIn {
         }
     }
 
-    // Skriver admins brukernavn og passord til fil
+    //Writes admin's username and password to file
     private String txtToFileAdminUsernamePassword() {
         StringBuilder msgOut = new StringBuilder();
         for (Admin newAdmin : adminList) {
@@ -183,7 +180,7 @@ public class AdminSignIn {
         return msgOut.toString();
     }
 
-    // Skriver admins ansattnummer til fil
+    //Writes admin's employee number to file
     private String txtToFileAdminInfo() {
         StringBuilder ut = new StringBuilder();
         for (Admin newAdmin : adminList) {

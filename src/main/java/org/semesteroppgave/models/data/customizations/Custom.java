@@ -1,7 +1,7 @@
 package org.semesteroppgave.models.data.customizations;
 
 /**
- * Enum-klasse med konstante verdier for tilpasninger
+ * Enum class with constant values for customizations
  */
 
 public enum Custom {
@@ -28,7 +28,7 @@ public enum Custom {
         return this.price;
     }
 
-    //Index er plassering i array ved opprettelse av produkt
+    //Index is placement in array when creating product
     public int getIndex() {
         return this.index;
     }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Modell for pålogging bruker
+ * Login User Model
  */
 
 public class UserSignIn {
@@ -36,7 +36,7 @@ public class UserSignIn {
     }
 
     public void register(String username, String password, String name, String phonenumber, String eMail) throws IOException, IllegalArgumentException {
-        checkIfNotExisting(username); //Kaster et avvik hvis brukernavn er opptatt
+        checkIfNotExisting(username);
         User newUser = new User(username, password, name, phonenumber, eMail);
         setUserList(newUser);
         Dialogs.showSuccessDialog("Ny bruker", "Ny bruker ble registrert",
@@ -46,10 +46,9 @@ public class UserSignIn {
         Main.setRoot("usersignin");
     }
 
-    // Leser inn eksisterende brukere fra bruker-filene og legger de i en ArrayList.
+    //Loads existing users from user files and places them in an ArrayList.
     public void parseExistingUser() {
         userList.clear();
-        // Tar inn info fra bruker-filer
         String filepathUnamePword = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
         String filepathUInfo = getClass().getResource("/org/semesteroppgave/files/signin/userInfo.txt").getFile();
 
@@ -66,7 +65,6 @@ public class UserSignIn {
                 String email = s.next();
                 String username = g.next();
                 String password = g.next();
-                // Oppretter bruker fra fil og legger i userList
                 User newUser = new User(username, password, name, phonenumber, email);
                 userList.add(newUser);
             }
@@ -118,7 +116,7 @@ public class UserSignIn {
         }
     }
 
-    // Lagrer admins brukernavn og passord til fil i target-mappe. Forsvinner med maven clean
+    //Saves admin's username and password to file in target directory. Disappears with maven clean
     private void saveToFileUsernamePassword() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userUsernameAndPassword.txt").getFile();
         File file = new File(filepath);
@@ -129,7 +127,7 @@ public class UserSignIn {
         }
     }
 
-    // Lagrer admins info til fil i target-mappe. Forsvinner med maven clean
+    //Stores admins info to file in target directory. Disappears with maven clean
     private void saveToFileInfo() {
         String filepath = getClass().getResource("/org/semesteroppgave/files/signin/userInfo.txt").getFile();
         File file = new File(filepath);
@@ -140,7 +138,7 @@ public class UserSignIn {
         }
     }
 
-    // Skriver brukers brukernavn og passord til fil
+    //Writes user's user name and password to file
     private String txtToFileUsernamePassword() {
         StringBuilder msgOut = new StringBuilder();
         for (User newUser : userList) {
@@ -149,7 +147,7 @@ public class UserSignIn {
         return msgOut.toString();
     }
 
-    // Skriver brukers info til fil
+    //Writes user info to file
     private String txtToFileUserInfo() {
         StringBuilder msgOut = new StringBuilder();
         for (User newUser : userList) {

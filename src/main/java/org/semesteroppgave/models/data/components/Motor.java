@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Atributtene blir ikke serialisert fordi de er alltid de samme ved opprettelse av nytt objekt
+ * The attributes are not serialized because they are always the same when creating a new object
  */
 
 public class Motor extends Component {

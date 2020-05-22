@@ -20,7 +20,7 @@ public class User extends Person {
         this.phonenumber = PersonValidator.testValidPhone(phonenumber);
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public String getName() {
         return name;
     }
@@ -33,12 +33,11 @@ public class User extends Person {
         return phonenumber;
     }
 
-    //Format til fil
+    //Format for txt file
     public String printTxtUsernamePassword() {
         return getUsername() + "," + getPassword();
     }
 
-    //Format til fil
     public String printTxtUserInfo() {
         return getName() + "," + getPhonenumber() + "," + getEmail();
     }

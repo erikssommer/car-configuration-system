@@ -4,9 +4,9 @@ import org.semesteroppgave.models.data.registrationdata.RegisterComponent;
 import org.semesteroppgave.models.data.registrationdata.RegisterProduct;
 
 /**
- * Globale objekt som både bruker og admin må ha tilgang til
- * Singelton-designmønster for å garantere at bare et objekt klassen blir opprettet
- * Gir global aksess
+ * Global object that both user and admin must have access to
+ * Singleton design pattern to guarantee that only one object of class is created
+ * Provides global access
  */
 
 public class ApplicationData {

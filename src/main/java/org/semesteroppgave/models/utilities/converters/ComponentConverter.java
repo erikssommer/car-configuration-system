@@ -4,8 +4,8 @@ import org.semesteroppgave.models.data.components.*;
 import org.semesteroppgave.models.exceptions.InvalidComponentException;
 
 /**
- * Klasse som konverterer et Component objekt til en ny underklasse av Componnet
- * Bestemmes av navnet på komponenten som er redigert i tableview
+ * Class that converts a Component object to a new subclass of Componnet
+ * Determined by the name of the component edited in tableview
  */
 
 public class ComponentConverter {

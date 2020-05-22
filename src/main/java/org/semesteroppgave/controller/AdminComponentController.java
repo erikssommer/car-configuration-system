@@ -116,8 +116,8 @@ public class AdminComponentController implements ApplicationThread {
         Main.setRoot("adminsignin");
     }
 
-    //Har valgt å behandle/fange avvik i modellen og ikke i kontrolleren ved redigering i tableview
-    //Det er fordi to og to editMetoder deler samme metode og vil da unngå duplisering
+    //Has chosen to treat / catch exceptions in the model and not in the controller when editing in tableview
+    //This is because two and two edit methods share the same method and will then avoid duplication of code
     @FXML
     private void editComponent(TableColumn.CellEditEvent<Component, String> event) {
         createComponent.editComponentColumn(event, tableViewComponents);

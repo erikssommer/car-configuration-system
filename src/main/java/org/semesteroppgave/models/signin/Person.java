@@ -4,7 +4,7 @@ import org.semesteroppgave.models.exceptions.InvalidUsernameException;
 import org.semesteroppgave.models.utilities.inputhandler.PersonValidator;
 
 /**
- * Abstrakt klasse for alle personer (admin og bruker)
+ * Abstract class for all Person (admin and user)
  */
 
 public abstract class Person {
@@ -19,7 +19,7 @@ public abstract class Person {
         this.password = PersonValidator.testValidPassword(password);
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public String getUsername() {
         return username;
     }

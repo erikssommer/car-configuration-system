@@ -58,7 +58,7 @@ public class ConfiguredProductController implements ApplicationController {
         getSelectedTable(tvConfigurations, tvUserConfigurations);
     }
 
-    //Metode som finner tabellen og rad som er markert og setter den som makert produkt
+    //Method that finds the table and row that is highlighted and sets it as the selected product
     private void getSelectedTable(TableView<Product> tableViewUserConfig, TableView<Product> tableViewConfigs) {
         var userConfig = tableViewUserConfig.getSelectionModel().getSelectedItem();
         var previousConfig = tableViewConfigs.getSelectionModel().getSelectedItem();

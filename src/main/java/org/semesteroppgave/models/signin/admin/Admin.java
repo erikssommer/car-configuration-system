@@ -13,12 +13,12 @@ public class Admin extends Person {
         this.employeeId = employeeId;
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public String getEmployeeId() {
         return employeeId;
     }
 
-    //Format til fil
+    //Format for txt-file
     public String printTxtAdminUsernamePassword() {
         return getUsername() + "," + getPassword();
     }

@@ -6,7 +6,7 @@ import javafx.scene.control.ButtonType;
 import java.util.function.Consumer;
 
 /**
- * Dialogbokser som gir informasjon til bruker ved popup-bokser
+ * Dialogs that provide information to the user when using pop-up boxes
  */
 
 public class Dialogs {

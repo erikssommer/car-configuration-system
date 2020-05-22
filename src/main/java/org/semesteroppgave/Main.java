@@ -27,11 +27,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        //Lager en mappe lokalt på datamaskinen for lagring av filer
+        //Creates a folder locally on your computer for file storage
         createFolderOnComputer();
-        //Lagring av data ved avslutting av programmet
+        //Storing data at the end of the program
         onProgramExit(stage);
-        //Laster inn ferdiglagde podukter
+        //Loading finished products
         loadConfiguredProducts();
         scene = new Scene(loadFXML("usersignin"));
         scene.getStylesheets().add(getClass().getResource("views/stylesheet.css").toExternalForm());
@@ -76,7 +76,7 @@ public class Main extends Application {
         }
     }
 
-    //Lagrer til fil når programmet avsluttes hvis listene ikke er tomme og mappen er opprettet
+    //Saves to file when the program exits if the lists are not empty and the folder is created
     private void onProgramExit(Stage stage) {
         stage.setOnCloseRequest(windowEvent -> {
             if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty() ||

@@ -7,8 +7,8 @@ import java.text.DecimalFormat;
 
 public class Diesel extends Product {
 
-    private final FuelContainer fuelContainer; //Påkreves
-    private final Gearbox gearbox; //Påkreves
+    private final FuelContainer fuelContainer; //Required
+    private final Gearbox gearbox; //Required
 
     protected Diesel(Builder builder) {
         super(builder);
@@ -43,7 +43,7 @@ public class Diesel extends Product {
         }
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public FuelContainer getFuelContainer() {
         return fuelContainer;
     }

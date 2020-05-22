@@ -34,7 +34,6 @@ public class AdminSignInController implements ApplicationController {
     private void btnRegister() {
         lblRegister.setText("");
 
-        // Prøver å opprette ny admin
         try {
             adminSignin.register(txtUsernameRegister.getText(), txtPasswordRegister.getText(), txtEmpNo.getText());
 
@@ -45,9 +44,7 @@ public class AdminSignInController implements ApplicationController {
 
     @FXML
     private void btnSignin() throws IOException {
-        // Henter login-info fra admin-filen
         if (adminSignin.verifyLogin(txtUsernameSignin.getText(), txtPasswordSignin.getText())) {
-            //Setter aktiv admin
             for (Admin admin : adminSignin.getAdminList()) {
                 if (admin.getPassword().equals(txtPasswordSignin.getText())) {
                     AdminSignIn.setActiveAdminId(admin.getEmployeeId());

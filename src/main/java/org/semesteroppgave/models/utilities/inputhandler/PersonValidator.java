@@ -3,14 +3,14 @@ package org.semesteroppgave.models.utilities.inputhandler;
 import org.semesteroppgave.models.exceptions.*;
 
 /**
- * Klasse for validering av nye registrerte brukere og admin
+ * Class for validating new registered users and admin
  */
 
 public class PersonValidator {
 
     public static String testValidName(String name) throws InvalidNameException{
-        //Støtter navn som består av én til fire ord.
-        //De to første navnene kan ha bindestrek mellom navnene. eks: Markus-Johannes Pedersen
+        //Supports names that consist of one to four words.
+        //The first two names may have a hyphen between the names. ex: Markus-Johannes Pedersen
         String[] regex = {
                 "[A-ZÆØÅ][a-zæøå]+",
                 "[A-ZÆØÅ][a-zæøå]+ [A-ZÆØÅ][a-zæøå]+",

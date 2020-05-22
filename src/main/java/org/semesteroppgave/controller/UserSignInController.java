@@ -61,9 +61,7 @@ public class UserSignInController implements ApplicationThread {
 
     @FXML
     private void btnSignin() throws IOException {
-        // Henter login-info fra user-filen
         if (userSignIn.verifyLogin(txtUsernameLogin.getText(), txtPasswordLogin.getText())) {
-            //Setter aktivt brukernavn
             for (User user : userSignIn.getUserList()) {
                 if (user.getPassword().equals(txtPasswordLogin.getText())) {
                     UserSignIn.setActiveUsername(user.getUsername());

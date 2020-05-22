@@ -22,7 +22,7 @@ import static org.semesteroppgave.Main.FOLDERNAME;
 import static org.semesteroppgave.Main.folderCreated;
 
 /**
- * Klasse som tar seg av filhåndering for både .jobj og .csv - filer
+ * Class that handles both .jobj and .csv files
  */
 
 public class FileHandler {
@@ -129,13 +129,13 @@ public class FileHandler {
     }
 
     public static void saveFileJobj(ComponentSearch componentSearch) {
-        //Liste som lagrer orginallisten i tilfelle admin lagrer et søk
+        //List that stores the original list in case admin stores a query
         ObservableList<Component> originalList = FXCollections.observableArrayList();
 
         originalList.addAll(ApplicationData.getInstance().getRegisterComponent().getComponentList());
         File selectedFile = getFileFromFileChooser(FileMode.JOBJ, DialogMode.SAVE);
 
-        //Hvis admin lagrer etter et søk, så blir søkelisten lagret
+        //If admin saves after a search, then the search list is saved
         if (!componentSearch.getSearchResult().isEmpty()){
             ApplicationData.getInstance().getRegisterComponent().setComponentList(componentSearch.getSearchResult());
         }
@@ -162,7 +162,7 @@ public class FileHandler {
                     e.printStackTrace();
                 }
             }
-            //Gjennoppretter orginallisten
+            //Restores the original list
             ApplicationData.getInstance().getRegisterComponent().setComponentList(originalList);
         }
     }
@@ -182,7 +182,7 @@ public class FileHandler {
     private static File getFileFromFileChooser(FileMode file, DialogMode mode) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
-        //Tester om det har blitt opprettet en mappe
+        //Tests whether a folder has been created
         if (folderCreated){
             fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + File.separator + FOLDERNAME));
         }

@@ -7,7 +7,7 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import org.semesteroppgave.models.exceptions.InvalidProductException;
 
 /**
- * Klasse som oppretter nye product-objekter fra csv-fil
+ * Class that creates new product objects from csv file
  */
 
 public class CreateProductCsv {
@@ -101,11 +101,11 @@ public class CreateProductCsv {
     }
 
     private void commonCustom(String[] object) throws InvalidProductException {
-        //Nulstiller tilpasningene ettersom det er mulig at produktet ikke har alle valgt
+        //Resets the customizations as it is possible that the product has not all been selected
         gps = null;
         towbar = null;
         sunroof = null;
-        //Tester om produktet skal ha tilpasningen
+        //Tests whether the product needs customization
         if (object[26].equals(Custom.GPS.getCustomProperty())) {
             gps = Custom.GPS;
         } else if (!object[26].isEmpty()) {

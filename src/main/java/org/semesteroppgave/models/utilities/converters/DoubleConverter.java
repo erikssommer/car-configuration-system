@@ -3,11 +3,10 @@ package org.semesteroppgave.models.utilities.converters;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 /**
- * Klasse som viser en error melding ved galt input ved redigering i tableview
- * Avvik blir ikke kastet her fordi de kan ikke bli behandlet utenfor klassen.
- * Ved feil returnerer klassen 0.0.
- * "conversionSuccessful" er true hvis konverteringen er vellykket
- * Hentet fra løsningsforslag oblig1
+ * Class showing an error message with wrong input when editing in tableview
+ * Exceptions are not thrown here because they cannot be dealt with outside the class.
+ * In case of failure, the class returns 0.0
+ * "conversionSuccessful" is true if conversion is successful
  */
 
 public class DoubleConverter {

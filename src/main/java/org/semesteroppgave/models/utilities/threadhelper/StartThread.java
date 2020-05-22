@@ -7,9 +7,9 @@ import org.semesteroppgave.controller.ApplicationThread;
 import org.semesteroppgave.models.utilities.alerts.Dialogs;
 
 /**
- * Modell for controllerne som behandler tråder
- * Her blir ApplicationThread interfacet brukt til å aktivere gui etter trådbehandling
- * Klassen kaller på OpenWithThread som en tråd
+ * Model for the controllers that process threads
+ * Here, the ApplicationThread interface is used to enable gui after thread processing
+ * The class calls on OpenWithThread as a thread
  */
 
 public class StartThread {

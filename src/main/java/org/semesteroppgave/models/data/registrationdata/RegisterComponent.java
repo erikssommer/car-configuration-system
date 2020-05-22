@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Global klasse (hentes fra ApplicationData) som holder på componentlisten
- * Klassen er serialisert slik at det globale objektet av klassen, funnet i ApplicationData, skal kunne
- * skrives til serialisert jobj-fil
- * Implementerer writeObject og readObject metodene, slik at Java bruker disse istedenfor standard-metodene
- * Klassen inneholder også søkefunksjon med streams
+ * Global class (retrieved from ApplicationData) which holds on the component list
+ * The class is serialized to enable the global object of the class found in ApplicationData
+ * is written to serialized jobj file
+ * Implementes writeObject and readObject methods, so Java uses them instead of standard methods
+ * The class also contains search function with streams
  */
 
 public class RegisterComponent implements Serializable {
@@ -38,7 +38,7 @@ public class RegisterComponent implements Serializable {
         return this.componentList;
     }
 
-    //Søkefunksjon med streams
+    //Search feature with streams
     public ObservableList<Component> searchComponent(String value) {
 
         return componentList.stream().filter(component -> component.getComponent().toLowerCase()
@@ -51,7 +51,7 @@ public class RegisterComponent implements Serializable {
                 .contains(value.toLowerCase())).collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    //Gjør prisen om til string for å få et mer brukervennlig søk
+    //Turn the price into a string to get a more user-friendly search
     public ObservableList<Component> searchPrice(String value) {
 
         return componentList.stream().filter(component -> String.valueOf(component.getPrice()).contains(value))

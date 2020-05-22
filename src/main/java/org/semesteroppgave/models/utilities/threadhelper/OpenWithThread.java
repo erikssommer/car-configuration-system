@@ -5,9 +5,9 @@ import javafx.scene.control.ProgressBar;
 import org.semesteroppgave.models.filehandlers.FileHandler;
 
 /**
- * Klasse som behandler filer i egen tråd
- * Utvides av Task
- * Returnerer void ettersom filbehandlingen legger objektene rett inn i lister og ikke blir returnert
+ * Class that handles files in its own thread
+ * Extends Task
+ * Returns void as the file manager places the items directly into lists and is not returned
  */
 
 public class OpenWithThread extends Task<Void> {
@@ -33,7 +33,7 @@ public class OpenWithThread extends Task<Void> {
             Thread.sleep(1000);
             progressBar.setProgress(1);
         } catch (InterruptedException e) {
-            //Gjør ikke noe her
+            //Don't do anything here
         }
 
         FileHandler.openFileJobjThread(filepath);

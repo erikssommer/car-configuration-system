@@ -100,7 +100,7 @@ public class UserBuildProductController implements ApplicationController {
         }
     }
 
-    //Valg av tilpasninger med checkboxer
+    //Selecting customizations with checkboxes
     @FXML
     public void cbGps() {
         newProduct.customization(cbGps, Custom.GPS);

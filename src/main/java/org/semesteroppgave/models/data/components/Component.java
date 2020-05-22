@@ -12,11 +12,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Abstrakt klasse for alle komponenter
- * JavaFX klasser støtter ikke serialisering. Vi må da selv implementere serialiseringen av de datafeltene
- * som er deklarert med JavaFX klasser, som SimpleStringProperty
- * Skriver verdien til objektet istedenfor å skrive hele property-objektet
- * Implementerer writeObject og readObject metodene, slik at Java bruker disse istedenfor standard-metodene
+ * Abstract class for all components
+ * JavaFX classes do not support serialization. We must then implement the serialization of those data fields ourselves
+ * which is declared with JavaFX classes, such as SimpleStringProperty
+ * Writes the value of the object instead of writing the entire property object
+ * Implementes writeObject and readObject methods, so Java uses them instead of standard methods
  */
 
 public abstract class Component implements Serializable {
@@ -35,7 +35,7 @@ public abstract class Component implements Serializable {
         this.description = new SimpleStringProperty(InputValidation.testValidDescription(desciption));
     }
 
-    //Index som angir posisjon i array ved oppretting av nytt produkt
+    //Index indicating position in array when creating new product
     public abstract int getIndex();
 
     public abstract ArrayList<String> getModel();
@@ -74,8 +74,8 @@ public abstract class Component implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        //Bestemmer hva som skal til for at to objekter er like
-        //Description kan være lik
+        //Decides what it takes for two objects to be the same
+        //Description may be similar
         if (this == obj) {
             return true;
         } else if (obj == null) {
@@ -103,7 +103,7 @@ public abstract class Component implements Serializable {
         this.version = new SimpleStringProperty();
         this.price = new SimpleDoubleProperty();
         this.description = new SimpleStringProperty();
-        //Tester på input fra fil
+        //Tests on input from file
         setVersion(version);
         setPrice(price);
         setDescription(description);

@@ -1,7 +1,7 @@
 package org.semesteroppgave.controller;
 
 /**
- * Interface som alle kontrollerne implementerer
+ * Interface that all the controllers implement
  */
 
 public interface ApplicationController {

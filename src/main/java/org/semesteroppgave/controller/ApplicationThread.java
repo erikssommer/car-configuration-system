@@ -1,9 +1,9 @@
 package org.semesteroppgave.controller;
 
 /**
- * Interface for kontrollere som skal laste inn filer i egen tråd
- * Kontrollerne må implementere 'intitialize' i tillegg
- * Blir brukt i klassen 'StartThread' for å aktivere/deaktivere gui-elementer
+ * Interface for controllers to load files in their own thread.
+ * The controllers must implement 'intitialize' as well.
+ * Used in the 'StartThread' class to enable / disable gui elements
  */
 
 public interface ApplicationThread extends ApplicationController {

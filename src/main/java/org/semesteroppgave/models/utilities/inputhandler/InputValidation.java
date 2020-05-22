@@ -6,7 +6,7 @@ import org.semesteroppgave.models.data.components.Component;
 import org.semesteroppgave.models.exceptions.*;
 
 /**
- * Klasse for validering av input ved opprettelse/redigering av Component-objekt
+ * Input Validation Class for Component Object Creation / Editing
  */
 
 public class InputValidation {
@@ -67,7 +67,7 @@ public class InputValidation {
                 counter++;
             }
         }
-        //Hvis denne intreffer er det bare én av denne type komponent igjen og det blir kastet et avvik
+        //If this occurs, there is only one such component left and an exception is thrown
         if (counter == 1) {
             tableViewComponents.refresh();
             throw new InvalidDeleteException("Kan ikke " + input + " denne komponenten.\n" +

@@ -18,14 +18,14 @@ import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
 /**
- * Modell for opprettelse av produkt på brukeren sin side.
- * Er koblet til UserBuildProductController
+ * Product creation model on the user's site
+ * Is connected to UserBuildProductController
  */
 
 public class UserCreateProduct {
-    private final ObservableList<String> modelComponentsList = FXCollections.observableArrayList(); //Liste for komponentnavn
-    private final ObservableList<Component> chooseComponentList = FXCollections.observableArrayList(); //Liste for valg av komponent
-    private final ObservableList<String> modelChoice = FXCollections.observableArrayList(); //Liste over comboBox valg
+    private final ObservableList<String> modelComponentsList = FXCollections.observableArrayList(); //Component name list
+    private final ObservableList<Component> chooseComponentList = FXCollections.observableArrayList(); //Component selection list
+    private final ObservableList<String> modelChoice = FXCollections.observableArrayList(); //List of comboBox selections
     private final TableView<String> tableViewComponent;
     private final TableView<Component> tableViewVersion;
     private final ComboBox<String> cbModel;
@@ -33,9 +33,9 @@ public class UserCreateProduct {
     private final TextField txtTotalPrice;
 
     private double livePrice;
-    private double[] livePriceList; //Liste som holder på prisene
-    private Component[] productComponants; //Liste som holder på valgte komponenter
-    private Custom[] productCustomization; //Liste som holder på valgte tilpasninger
+    private double[] livePriceList; //List that holds the prices
+    private Component[] productComponants; //List that holds selected components
+    private Custom[] productCustomization; //List that holds selected customizations
 
     public UserCreateProduct(TableView<String> tableViewComponent, TableView<Component> tableViewVersion,
                              ComboBox<String> cbModel, Label lblMessage, TextField txtTotalPrice) {
@@ -48,7 +48,7 @@ public class UserCreateProduct {
 
     public void createNewProduct(String model) {
         modelComponentsList.clear();
-        //Finner komponenter til valgt modell
+        //Finds components for the selected model
         ApplicationData.getInstance().getRegisterComponent().getComponentList()
                 .forEach(modelList -> modelList.getModel()
                         .stream().filter(componentModel -> componentModel.equals(model))
@@ -57,7 +57,7 @@ public class UserCreateProduct {
 
         setLabelText("Du kan nå velge komponenter til din \n" + model.toLowerCase() + " bil");
 
-        //Restarter listene ved valg av ny modeltype
+        //Resets the lists when selecting a new model type
         productComponants = new Component[8];
         productCustomization = new Custom[Custom.values().length];
         livePriceList = new double[13];
@@ -73,7 +73,7 @@ public class UserCreateProduct {
         }
 
         addToPrice();
-        //Bruker streams med .distinct() for å fjerne duplikater og legger de til listen for valg av komponenttype
+        //Uses streams with .distinct() to remove duplicates and adds them to the component type selection list
         tableViewComponent.setItems(modelComponentsList.stream().distinct()
                 .collect(Collectors.toCollection(FXCollections::observableArrayList)));
 
@@ -93,7 +93,7 @@ public class UserCreateProduct {
 
         tableViewVersion.setItems(chooseComponentList);
 
-        //Når bruker holder musepeker over en komponent vil beskrivelsen vises i et vindu
+        //When a user hovers over a component, the description will appear in a window
         tableViewVersion.setRowFactory(tableView -> {
             Tooltip tooltip = new Tooltip();
             tooltip.setShowDelay(new Duration(500));
@@ -118,7 +118,7 @@ public class UserCreateProduct {
         });
     }
 
-    //Legger inn valgte komponenter i listen med indeksen til hver komponent
+    //Inserts selected components into the list of each component's index
     private void addToProduct(Component selectedComponent) {
         productComponants[selectedComponent.getIndex()] = selectedComponent;
         livePriceList[selectedComponent.getIndex() + 1] = selectedComponent.getPrice();
@@ -127,7 +127,7 @@ public class UserCreateProduct {
         setLabelText("Du har valgt ny " + selectedComponent.getComponent().toLowerCase());
     }
 
-    //Metode for valg av tilpasninger
+    //Method of selecting customizations
     public void customization(CheckBox checkBox, Custom mode) {
 
         if (checkBox.isSelected() && productCustomization[mode.getIndex()] == null) {
@@ -172,7 +172,7 @@ public class UserCreateProduct {
         }
     }
 
-    //Metode som oppretter produkter. Bruk av builder-pattern
+    //Method that creates products. Use of builder pattern
     public void finishedProduct() throws IllegalArgumentException {
 
         if (cbModel.getValue() != null) {
@@ -238,7 +238,7 @@ public class UserCreateProduct {
         }
     }
 
-    //Legger inn valg av modelltype i combobox
+    //Inserts model type selection in combobox
     public void loadChoice() {
         modelChoice.removeAll();
         modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");

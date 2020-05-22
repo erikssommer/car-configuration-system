@@ -8,25 +8,23 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 /**
- * Product er superklassen som Electric, Hybrid og Diesel arver fra
- * For å forhindre alt for mange innparametere har vi brukt builder-pattern. Ulempen er at klassen blir vesentlig større
- * For å støtte arvede klasser av Product med builder-pattern har vi brukt 'Curiously Recurring Generic Pattern'
- * Det hadde holdt med Product klassen ettersom builder-patern er brukt, men vi ønsker å vise
- * bruk av abstrakte klasser og underklasser. Vi får også bruk for generisk-programmering som er en modul i faget.
+ * Product is the super class that Electric, Hybrid and Diesel inherit from
+ * To prevent too many input parameters we have used the builder pattern. The disadvantage is that the class is significantly larger
+ * To support inherited classes of Product with builder pattern we have used 'Curiously Recurring Generic Pattern'
  */
 
 public abstract class Product {
 
-    private final String model; //Påkreves
-    private final double modelPrice; //Påkreves
-    private final Motor motor; //Påkreves
-    private final Rim rim; //Påkreves
-    private final SeatCover seatcover; //Påkreves
-    private final Spoiler spoiler; //Påkreves
-    private final Tires tires; //Påkreves
-    private final Custom gps; //Valgfri
-    private final Custom sunroof; //Valgfri
-    private final Custom towbar; //Valgfri
+    private final String model; //Required
+    private final double modelPrice; //Required
+    private final Motor motor; //Required
+    private final Rim rim; //Required
+    private final SeatCover seatcover; //Required
+    private final Spoiler spoiler; //Required
+    private final Tires tires; //Required
+    private final Custom gps; //Optional
+    private final Custom sunroof; //Optional
+    private final Custom towbar; //Optional
 
     protected Product(Builder<?> builder) {
         this.model = builder.model;
@@ -43,8 +41,8 @@ public abstract class Product {
 
     @SuppressWarnings("unchecked")
     public static class Builder<T extends Builder<T>> {
-        private final String model; //Denne er viktig, så den legger vi i konstruktøren
-        private final double modelPrice; //Denne er viktig, så den legger vi i konstruktøren
+        private final String model; //This is important, so we put it in the constructor
+        private final double modelPrice; //This is important, so we put it in the constructor
         private Motor motor;
         private Rim rim;
         private SeatCover seatcover;
@@ -114,7 +112,7 @@ public abstract class Product {
 
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public String getModel() {
         return this.model;
     }
@@ -173,8 +171,8 @@ public abstract class Product {
         return price;
     }
 
-    //Metode som støtter toString metodene til underklassene til Product
-    //For å unngå duplikat kode
+    //Method supporting the toString methods of the subclasses of Product
+    //To avoid duplicate code
     public String customToString(DecimalFormat df, Custom autopilot) {
         String message = "";
 

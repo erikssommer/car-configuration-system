@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Klasse som leser inn fra csv-fil og oppretter produkter
+ * Class that reads from csv file and creates products
  */
 
 public class FileOpenerCsv implements FileOpener {
@@ -22,10 +22,10 @@ public class FileOpenerCsv implements FileOpener {
     @Override
     public void open(Path filePath) throws IOException {
         ApplicationData.getInstance().getRegisterProduct().getProductList().clear();
-        // try-with-resources lukker automatisk filen
+        //try-with-resources automatically closes the file
         try (BufferedReader bufferedReader = Files.newBufferedReader(filePath)) {
             String line;
-            //Hopper over menylinjen
+            //Skip the menu bar
             bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
                 ApplicationData.getInstance().getRegisterProduct().setProductList(parseProduct(line));
@@ -42,9 +42,9 @@ public class FileOpenerCsv implements FileOpener {
     }
 
     /**
-     * @param line rekke med som splittes med ;
-     * @return returnerer produktet ferdig opprettet
-     * @throws IllegalArgumentException hvis det er gal informasjon i csv-filen
+     * @param line series that split with ;
+     * @return returns the product
+     * @throws IllegalArgumentException if there is wrong information in the csv file
      */
     private Product parseProduct(String line) throws IllegalArgumentException {
         Product productRead;

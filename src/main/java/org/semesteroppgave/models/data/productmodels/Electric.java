@@ -9,8 +9,8 @@ import java.util.Objects;
 
 public class Electric extends Product {
 
-    private final Battery battery; //Påkreves
-    private final Custom autopilot; //Valgfri
+    private final Battery battery; //Required
+    private final Custom autopilot; //Optional
 
     public Electric(Builder builder) {
         super(builder);
@@ -44,7 +44,7 @@ public class Electric extends Product {
         }
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public Battery getBattery() {
         return battery;
     }

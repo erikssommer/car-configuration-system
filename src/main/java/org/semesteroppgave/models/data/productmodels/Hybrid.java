@@ -6,8 +6,8 @@ import org.semesteroppgave.models.exceptions.EmptyComponentException;
 import java.text.DecimalFormat;
 
 public class Hybrid extends Product {
-    private final Battery battery; //Påkreves
-    private final FuelContainer fuelContainer; //Påkreves
+    private final Battery battery; //Required
+    private final FuelContainer fuelContainer; //Required
 
     protected Hybrid(Builder builder) {
         super(builder);
@@ -42,7 +42,7 @@ public class Hybrid extends Product {
         }
     }
 
-    // Alle getter og INGEN setter for å gi uforanderlighet
+    //All getters and NO setters to provide immutability
     public Battery getBattery() {
         return battery;
     }
