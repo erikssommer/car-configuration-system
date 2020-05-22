@@ -6,16 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
-            prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserProductInfoController">
-    <Label layoutX="53.0" layoutY="42.0" text="Informasjon om valgt bil">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserProductInfoController">
+    <Label layoutX="53.0" layoutY="42.0" text="Information about selected car">
         <font>
             <Font name="Avenir Book" size="23.0" />
         </font>
     </Label>
     <TextArea fx:id="txtInfo" editable="false" layoutX="52.0" layoutY="87.0" prefHeight="377.0" prefWidth="647.0" />
-    <Button layoutX="641.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnBack" text="Tilbake">
+    <Button layoutX="629.0" layoutY="485.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="29.0" prefWidth="70.0" text="Back">
         <font>
             <Font name="Avenir Book" size="13.0" />
         </font></Button>

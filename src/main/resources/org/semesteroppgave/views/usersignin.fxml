@@ -11,30 +11,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0"
-            prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserSignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.semesteroppgave.controller.UserSignInController">
     <TabPane prefHeight="550.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
-        <Tab style="-fx-font-family: avenir book;" text="Logg inn">
+        <Tab style="-fx-font-family: avenir book;" text="Sign in">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="56.0" layoutY="164.0" prefHeight="32.0" prefWidth="206.0" text="Logg inn bruker">
+                <Label layoutX="67.0" layoutY="168.0" prefHeight="32.0" prefWidth="206.0" text="Sign in user">
                     <font>
                         <Font name="Avenir Book" size="19.0" />
                     </font>
                 </Label>
-                <Label layoutX="56.0" layoutY="215.0" text="Brukernavn">
+                <Label layoutX="67.0" layoutY="216.0" text="Username">
                     <font>
                         <Font name="Avenir Book" size="16.0" />
                     </font>
                 </Label>
-                <Label layoutX="81.0" layoutY="260.0" text="Passord">
+                <Label layoutX="71.0" layoutY="260.0" text="Password">
                     <font>
                         <Font name="Avenir Book" size="16.0" />
                     </font>
                 </Label>
                 <TextField fx:id="txtUsernameLogin" layoutX="148.0" layoutY="214.0" />
                 <TextField fx:id="txtPasswordLogin" layoutX="148.0" layoutY="258.0" />
-                <Button fx:id="btnSignin" layoutX="239.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnSignin" text="Logg inn">
+                <Button fx:id="btnSignin" layoutX="247.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnSignin" prefHeight="29.0" prefWidth="59.0" text="Sign in">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>
@@ -48,42 +46,42 @@
                 <ImageView fitHeight="266.0" fitWidth="353.0" layoutX="355.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@billogo.png" />
                 </ImageView>
-            <Label layoutX="350.0" layoutY="140.0" text="Velkommen til DataMet bilkonfigurering ">
+            <Label layoutX="358.0" layoutY="138.0" text="Welcome to DataMet car configuration">
                <font>
                   <Font name="Avenir Book" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="410.0" layoutY="200.0" text="Bygg din drømmebil hos oss">
+            <Label layoutX="410.0" layoutY="200.0" text="Build your dream car with us">
                <font>
                   <Font name="Avenir Book" size="19.0" />
                </font>
             </Label>
             </AnchorPane>
         </Tab>
-        <Tab fx:id="tabRegister" onSelectionChanged="#tabRegisterSelected" style="-fx-font-family: avenir book;" text="Registrer ny">
+        <Tab fx:id="tabRegister" onSelectionChanged="#tabRegisterSelected" style="-fx-font-family: avenir book;" text="Register new">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <Label layoutX="51.0" layoutY="82.0" text="Registrer ny bruker">
+                <Label layoutX="51.0" layoutY="82.0" text="Register new user">
                     <font>
                         <Font name="Avenir Book" size="27.0" />
                     </font>
                 </Label>
-                <Label layoutX="94.0" layoutY="170.0" text="Navn">
+                <Label layoutX="94.0" layoutY="170.0" text="Name">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="92.0" layoutY="208.0" text="Epost">
+                <Label layoutX="96.0" layoutY="209.0" text="Email">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="64.0" layoutY="245.0" text="Telefonnr">
+                <Label layoutX="89.0" layoutY="247.0" text="Phone">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="51.0" layoutY="285.0" text="Brukernavn">
+                <Label layoutX="66.0" layoutY="287.0" text="Username">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
-                <Label layoutX="74.0" layoutY="334.0" text="Passord">
+                <Label layoutX="68.0" layoutY="335.0" text="Password">
                <font>
                   <Font name="Avenir Book" size="16.0" />
                </font></Label>
@@ -92,7 +90,7 @@
                 <TextField fx:id="txtPhonenumber" layoutX="144.0" layoutY="245.0" />
                 <TextField fx:id="txtUsernameRegister" layoutX="144.0" layoutY="285.0" />
                 <TextField fx:id="txtPasswordRegister" layoutX="144.0" layoutY="333.0" />
-                <Button layoutX="235.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnRegister" text="Registrer">
+                <Button layoutX="235.0" layoutY="379.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="29.0" prefWidth="70.0" text="Register">
                <font>
                   <Font name="Avenir Book" size="13.0" />
                </font></Button>

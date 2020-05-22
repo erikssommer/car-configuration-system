@@ -19,7 +19,7 @@ public class Main extends Application {
 
     private static Scene scene;
     public static boolean folderCreated;
-    public static final String FOLDERNAME = "Semesteroppgave_g6677";
+    public static final String FOLDERNAME = "DataMet_configurations";
 
     public static Scene getScene() {
         return scene;
@@ -35,7 +35,7 @@ public class Main extends Application {
         loadConfiguredProducts();
         scene = new Scene(loadFXML("usersignin"));
         scene.getStylesheets().add(getClass().getResource("views/stylesheet.css").toExternalForm());
-        stage.setTitle("DataMet Bilkonfigurering");
+        stage.setTitle("DataMet Configurations");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setWidth(750);
