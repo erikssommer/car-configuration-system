@@ -41,7 +41,7 @@
                </font></Button>
                 <Label fx:id="lblSignin" alignment="TOP_LEFT" layoutX="148.0" layoutY="337.0" prefHeight="67.0" prefWidth="347.0" />
                 <ImageView fitHeight="166.0" fitWidth="150.0" layoutX="588.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@billogo.png" />
+                    <Image url="@carlogo.png" />
                 </ImageView>
             <Label layoutX="630.0" layoutY="52.0" text="DataMet">
                <font>
@@ -81,7 +81,7 @@
                </font></Button>
                 <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="148.0" layoutY="339.0" prefHeight="72.0" prefWidth="322.0" />
                 <ImageView fitHeight="166.0" fitWidth="150.0" layoutX="588.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@billogo.png" />
+                    <Image url="@carlogo.png" />
                 </ImageView>
             <Label layoutX="630.0" layoutY="52.0" text="DataMet">
                <font>

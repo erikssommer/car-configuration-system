@@ -177,7 +177,7 @@
                </font></Button>
                 <Label fx:id="lblMessageCreate" layoutX="129.0" layoutY="405.0" prefHeight="17.0" prefWidth="198.0" />
                 <ImageView fitHeight="193.0" fitWidth="309.0" layoutX="439.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@billogo.png" />
+                    <Image url="@carlogo.png" />
                 </ImageView>
             </AnchorPane>
         </Tab>

@@ -111,6 +111,6 @@
          <Font name="Avenir Book" size="13.0" />
       </font></Label>
     <ImageView fitHeight="165.0" fitWidth="220.0" layoutX="486.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@billogo.png" />
+        <Image url="@carlogo.png" />
     </ImageView>
 </AnchorPane>

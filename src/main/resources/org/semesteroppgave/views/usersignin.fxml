@@ -44,7 +44,7 @@
                 <ProgressBar fx:id="progressbar" layoutX="27.0" layoutY="446.0" prefHeight="20.0" prefWidth="682.0" progress="0.0" />
                 <Label fx:id="lblThreadMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="412.0" prefHeight="17.0" prefWidth="290.0" />
                 <ImageView fitHeight="266.0" fitWidth="353.0" layoutX="355.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@billogo.png" />
+                    <Image url="@carlogo.png" />
                 </ImageView>
             <Label layoutX="358.0" layoutY="138.0" text="Welcome to DataMet car configuration">
                <font>
@@ -96,7 +96,7 @@
                </font></Button>
                 <Label fx:id="lblRegister" alignment="TOP_LEFT" layoutX="327.0" layoutY="334.0" prefHeight="64.0" prefWidth="273.0" />
                 <ImageView fitHeight="110.0" fitWidth="133.0" layoutX="609.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@billogo.png" />
+                    <Image url="@carlogo.png" />
                 </ImageView>
             <Label layoutX="640.0" layoutY="45.0" text="DataMet">
                <font>
