@@ -55,14 +55,14 @@ public class UserCreateProduct {
                         .map(componentModel -> modelList.getComponent())
                         .forEachOrdered(modelComponentsList::add));
 
-        setLabelText("You can now select components for your \n" + model.toLowerCase() + " car");
+        setLabelText("You can now select components\nfor your " + model.toLowerCase() + " car");
 
         //Resets the lists when selecting a new model type
         productComponants = new Component[8];
         productCustomization = new Custom[Custom.values().length];
         livePriceList = new double[13];
 
-        if (model.equals("Elektrisk")) {
+        if (model.equals("Electric")) {
             livePriceList[0] = 1_200_000;
         }
         if (model.equals("Diesel")) {
@@ -178,8 +178,8 @@ public class UserCreateProduct {
         if (cbModel.getValue() != null) {
             Product product = null;
             switch (cbModel.getValue()) {
-                case "Elektrisk":
-                    product = new Electric.Builder("Elektrisk", 1_200_000)
+                case "Electric":
+                    product = new Electric.Builder("Electric", 1_200_000)
                             .selectedMotor((Motor) productComponants[0])
                             .selectedRim((Rim) productComponants[1])
                             .selectedSeatcover((SeatCover) productComponants[2])
@@ -241,7 +241,7 @@ public class UserCreateProduct {
     //Inserts model type selection in combobox
     public void loadChoice() {
         modelChoice.removeAll();
-        modelChoice.addAll("Elektrisk", "Diesel", "Hybrid");
+        modelChoice.addAll("Electric", "Diesel", "Hybrid");
         cbModel.getItems().addAll(modelChoice);
         cbModel.setPromptText("Choose model");
     }

@@ -18,7 +18,7 @@ public class FuelContainer extends Component {
     public FuelContainer(String version, double price, String description) {
         super(version, price, description);
         this.model = new ArrayList<>(Arrays.asList("Diesel", "Hybrid"));
-        this.component = "Tank";
+        this.component = "Fuel container";
     }
 
     @Override
@@ -52,6 +52,6 @@ public class FuelContainer extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.model = new ArrayList<>(Arrays.asList("Diesel", "Hybrid"));
-        this.component = "Tank";
+        this.component = "Fuel container";
     }
 }

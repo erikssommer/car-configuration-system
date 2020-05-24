@@ -88,11 +88,11 @@ public class Main extends Application {
                                 if (folderCreated) {
                                     if (!ApplicationData.getInstance().getRegisterProduct().getUserProductList().isEmpty()) {
                                         FileHandler.saveFileCsvOnProgramExit(System.getProperty("user.home") + "/"
-                                                + FOLDERNAME + "/lagredeProdukter.csv");
+                                                + FOLDERNAME + "/savedProducts.csv");
                                     }
                                     if (!ApplicationData.getInstance().getRegisterComponent().getComponentList().isEmpty()) {
                                         FileHandler.saveFileJobjOnProgramExit(System.getProperty("user.home") + "/"
-                                                + FOLDERNAME + "/lagredeKomponenter.jobj");
+                                                + FOLDERNAME + "/savedComponents.jobj");
                                     }
                                 } else {
                                     System.out.println("Failed to save because folder was not created");

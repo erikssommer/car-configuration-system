@@ -43,25 +43,25 @@ public class AdminCreateComponent {
             case "Motor":
                 newComponent = new Motor(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Felg":
+            case "Rim":
                 newComponent = new Rim(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Setetrekk":
+            case "Seat cover":
                 newComponent = new SeatCover(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
             case "Spoiler":
                 newComponent = new Spoiler(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Dekk":
+            case "Tire":
                 newComponent = new Tires(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Batteri":
+            case "Battery":
                 newComponent = new Battery(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Tank":
+            case "Fuel container":
                 newComponent = new FuelContainer(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Girboks":
+            case "Gearbox":
                 newComponent = new Gearbox(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
             default:
@@ -212,7 +212,7 @@ public class AdminCreateComponent {
     //Inserts values into combobox for component selection
     public void loadChoice(ComboBox<String> cbCreate) {
         componentChoice.removeAll();
-        componentChoice.addAll("Motor", "Felg", "Setetrekk", "Spoiler", "Dekk", "Batteri", "Tank", "Girboks");
+        componentChoice.addAll("Motor", "Rim", "Seat cover", "Spoiler", "Tire", "Battery", "Fuel container", "Gearbox");
         cbCreate.getItems().addAll(componentChoice);
         cbCreate.setValue(componentChoice.get(0));
     }

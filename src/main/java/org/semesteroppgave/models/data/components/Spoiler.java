@@ -17,7 +17,7 @@ public class Spoiler extends Component {
 
     public Spoiler(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid", "Diesel"));
         this.component = "Spoiler";
     }
 
@@ -51,7 +51,7 @@ public class Spoiler extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid", "Diesel"));
         this.component = "Spoiler";
     }
 }

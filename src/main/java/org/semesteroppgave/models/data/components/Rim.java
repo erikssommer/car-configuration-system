@@ -17,8 +17,8 @@ public class Rim extends Component {
 
     public Rim(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
-        this.component = "Felg";
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid", "Diesel"));
+        this.component = "Rim";
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Rim extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
-        this.component = "Felg";
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid", "Diesel"));
+        this.component = "Rim";
     }
 }

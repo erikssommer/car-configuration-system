@@ -17,8 +17,8 @@ public class Battery extends Component {
 
     public Battery(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid"));
-        this.component = "Batteri";
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid"));
+        this.component = "Battery";
     }
 
     @Override
@@ -51,8 +51,8 @@ public class Battery extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid"));
-        this.component = "Batteri";
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid"));
+        this.component = "Battery";
     }
 
 }

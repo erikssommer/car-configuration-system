@@ -37,7 +37,7 @@ public class CreateProductCsv {
             throw new InvalidProductException("Customization: " + object[32] + " not supported");
         }
 
-        return new Electric.Builder("Elektrisk", 1_200_000)
+        return new Electric.Builder("Electric", 1_200_000)
                 .selectedMotor(motor)
                 .selectedRim(rim)
                 .selectedSeatcover(seatCover)

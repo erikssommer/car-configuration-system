@@ -14,19 +14,19 @@ public class ComponentConverter {
         switch (component.getComponent().toLowerCase()) {
             case "motor":
                 return new Motor(component.getVersion(), component.getPrice(), component.getDescription());
-            case "felg":
+            case "rim":
                 return new Rim(component.getVersion(), component.getPrice(), component.getDescription());
-            case "setetrekk":
+            case "seat cover":
                 return new SeatCover(component.getVersion(), component.getPrice(), component.getDescription());
             case "spoiler":
                 return new Spoiler(component.getVersion(), component.getPrice(), component.getDescription());
-            case "dekk":
+            case "tire":
                 return new Tires(component.getVersion(), component.getPrice(), component.getDescription());
-            case "batteri":
+            case "battery":
                 return new Battery(component.getVersion(), component.getPrice(), component.getDescription());
-            case "tank":
+            case "fuel container":
                 return new FuelContainer(component.getVersion(), component.getPrice(), component.getDescription());
-            case "girboks":
+            case "gearbox":
                 return new Gearbox(component.getVersion(), component.getPrice(), component.getDescription());
 
             default:

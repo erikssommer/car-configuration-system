@@ -55,7 +55,7 @@ public class FileOpenerCsv implements FileOpener {
         }
 
         switch (split[0]) {
-            case "Elektrisk":
+            case "Electric":
                 productRead = create.createElectric(split);
                 break;
             case "Diesel":

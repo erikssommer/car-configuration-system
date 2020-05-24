@@ -42,10 +42,10 @@ public class InputValidation {
     }
 
     public static String testValidComponent(String input) throws InvalidComponentException {
-        if (!input.toLowerCase().equals("motor") && !input.toLowerCase().equals("felg")
-                && !input.toLowerCase().equals("setetrekk") && !input.toLowerCase().equals("dekk")
-                && !input.toLowerCase().equals("spoiler") && !input.toLowerCase().equals("girboks")
-                && !input.toLowerCase().equals("batteri") && !input.toLowerCase().equals("tank")) {
+        if (!input.toLowerCase().equals("motor") && !input.toLowerCase().equals("rim")
+                && !input.toLowerCase().equals("seat cover") && !input.toLowerCase().equals("tire")
+                && !input.toLowerCase().equals("spoiler") && !input.toLowerCase().equals("gearbox")
+                && !input.toLowerCase().equals("battery") && !input.toLowerCase().equals("fuel container")) {
             throw new InvalidComponentException("It is not possible to create a: " + input);
         }
         return input;

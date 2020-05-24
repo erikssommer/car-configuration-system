@@ -79,7 +79,7 @@ public class UserBuildProductController implements ApplicationController {
 
     private void resetChoiceBox(String model) {
 
-        cbAutopilot.setVisible(model.equals("Elektrisk"));
+        cbAutopilot.setVisible(model.equals("Electric"));
 
         gridPaneCustom.setDisable(false);
         tableViewComponent.setDisable(false);

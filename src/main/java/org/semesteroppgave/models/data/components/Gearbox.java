@@ -18,7 +18,7 @@ public class Gearbox extends Component {
     public Gearbox(String version, double price, String description) {
         super(version, price, description);
         this.model = new ArrayList<>(Collections.singletonList("Diesel"));
-        this.component = "Girboks";
+        this.component = "Gearbox";
     }
 
     @Override
@@ -52,6 +52,6 @@ public class Gearbox extends Component {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         this.model = new ArrayList<>(Collections.singletonList("Diesel"));
-        this.component = "Girboks";
+        this.component = "Gearbox";
     }
 }

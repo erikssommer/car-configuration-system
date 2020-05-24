@@ -31,13 +31,13 @@ public class ComponentSearch {
         searchResult.clear();
 
         switch (choiceFilter) {
-            case "Komponent":
+            case "Component":
                 searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchComponent(searchWord));
                 break;
-            case "Versjon":
+            case "Version":
                 searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchVersion(searchWord));
                 break;
-            case "Pris":
+            case "Price":
                 searchResult.addAll(ApplicationData.getInstance().getRegisterComponent().searchPrice(searchWord));
                 break;
         }
@@ -46,9 +46,9 @@ public class ComponentSearch {
 
     public void loadFilter(ComboBox<String> cbFilter) {
         componentFilter.clear();
-        String choice1 = "Komponent";
-        String choice2 = "Versjon";
-        String choice3 = "Pris";
+        String choice1 = "Component";
+        String choice2 = "Version";
+        String choice3 = "Price";
         componentFilter.addAll(choice1, choice2, choice3);
         cbFilter.getItems().addAll(componentFilter);
         cbFilter.setValue(choice1);

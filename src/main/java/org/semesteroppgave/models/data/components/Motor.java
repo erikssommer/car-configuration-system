@@ -17,7 +17,7 @@ public class Motor extends Component {
 
     public Motor(String version, double price, String description) {
         super(version, price, description);
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid", "Diesel"));
         this.component = "Motor";
     }
 
@@ -51,7 +51,7 @@ public class Motor extends Component {
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        this.model = new ArrayList<>(Arrays.asList("Elektrisk", "Hybrid", "Diesel"));
+        this.model = new ArrayList<>(Arrays.asList("Electric", "Hybrid", "Diesel"));
         this.component = "Motor";
     }
 }
