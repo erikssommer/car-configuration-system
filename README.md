@@ -9,6 +9,8 @@ possible to save lists of products to csv file and get list of previously comple
 The concept of user and superuser is included on two login pages with the possibility of creating new
 users and super users. Admin must have a valid employee number. Information about logging in to the program is below.
 
+Junit-tests are in norwegian to test UTF-8 support. Source code is in english 
+
 ------
 ### **_Required information for signin_**
 
