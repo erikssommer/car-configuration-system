@@ -52,7 +52,7 @@ public class AdminCreateComponent {
             case "Spoiler":
                 newComponent = new Spoiler(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
-            case "Tire":
+            case "Tires":
                 newComponent = new Tires(version.getText(), Double.parseDouble(price.getText()), description.getText());
                 break;
             case "Battery":
@@ -212,7 +212,7 @@ public class AdminCreateComponent {
     //Inserts values into combobox for component selection
     public void loadChoice(ComboBox<String> cbCreate) {
         componentChoice.removeAll();
-        componentChoice.addAll("Motor", "Rim", "Seat cover", "Spoiler", "Tire", "Battery", "Fuel container", "Gearbox");
+        componentChoice.addAll("Motor", "Rim", "Seat cover", "Spoiler", "Tires", "Battery", "Fuel container", "Gearbox");
         cbCreate.getItems().addAll(componentChoice);
         cbCreate.setValue(componentChoice.get(0));
     }

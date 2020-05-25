@@ -20,7 +20,7 @@ public class ComponentConverter {
                 return new SeatCover(component.getVersion(), component.getPrice(), component.getDescription());
             case "spoiler":
                 return new Spoiler(component.getVersion(), component.getPrice(), component.getDescription());
-            case "tire":
+            case "tires":
                 return new Tires(component.getVersion(), component.getPrice(), component.getDescription());
             case "battery":
                 return new Battery(component.getVersion(), component.getPrice(), component.getDescription());
