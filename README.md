@@ -1,5 +1,5 @@
 # Car Configuration System
-Semester assignment in program development at OsloMet spring 2020
+Semester assignment in program development at Oslo Metropolitan University (OsloMet) spring 2020
 
 This configuration system has an admin page (super user) where it is possible to create and edit new components,
 as well as options for searching the list and file processing of serialized files in their own thread.
