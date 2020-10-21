@@ -2,6 +2,10 @@ target/
 
 # Compiled class file
 *.class
+*.csv
+*.jobj
+*.png
+*.fxml
 
 # Macos users
 .DS_Store
