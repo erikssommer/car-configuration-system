@@ -29,6 +29,8 @@ Username: User123
 Password: Java13
 ````
 ---
+### **_Maven build_**
+Command line: **_clean compile package exec:java -f pom.xml_**
 
 ### **_Sources_**
 Carlogo:
